@@ -1,0 +1,19 @@
+<?php
+
+print $_GET['l'];
+
+if (!empty($_REQUEST['l'] && !empty($_REQUEST['f'])) ) {
+   	
+	$lme=$_REQUEST['l'];
+	$field=$_REQUEST['f'];
+
+	if (($lme>0) && ($lme<67)) {
+		$thisNode=node_load(58);
+		$thisField=field_get_items('node', $thisNode, 'field_productivity_chla');
+		$output=field_view_value('node',$thisNode,'field_productivity_chla', $thisField[0]);
+			print render($output);
+		}
+
+}
+
+?>

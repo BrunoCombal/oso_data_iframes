@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Highcharts Example</title>
+    
+    
+    <!-- 1. Add these JavaScript inclusions in the head of your page -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="http://code.highcharts.com/highcharts-more.js"></script>
+
+<!-- 2. Add the JavaScript to initialize the chart on document ready -->
+<script type="text/javascript">
+  $(document).ready(function() {
+  
+
+  var options = {
+     chart: { renderTo: 'container', type: 'line'},
+     title: { text: 'Chla' },
+     xAxis: { title:{enabled:true, text:'Average'} },
+     yAxis: { title: { text: 'mg.m<sup>-3</sup>' }, useHTML:true },
+     series: [],
+     plotOptions:{series:{animation:false}},
+     tooltip:{formatter:function(){
+        if (this.series.name =="Min-Max") {
+           return this.series.name+'<br/>'+this.x.toFixed(0) + ': '+Highcharts.numberFormat(this.point.low,6)+' - '+Highcharts.numberFormat(this.point.high,6);
+        } else {
+           return this.series.name+'<br/>'+this.x.toFixed(0) + ': ' +Highcharts.numberFormat(this.y,6)
+        }
+       }}
+  };
+
+
+  var mean_series={name:'Mean', data:[], lineWidth:2, marker:{enabled:false}, color:'#ff0033', zIndex:100};
+  var min_max_series={name:'Min-Max',  data:[], type:'arearange',marker:{enabled:false},lineWidth:1, color:'#66ff00', zIndex:0, fillOpacity:0.5};
+  var median_series={name:'Median', data:[], lineWidth:2, marker:{enabled:false}};
+  var reference_series={name:'Period average', data:[], lineWidth:2, dashStyle:'LongDash', marker:{enabled:false}};
+
+  $.get('../data/agulhas_current.csv', function(data) {
+ 
+     var lines = data.split('\n');
+
+     $.each(lines, function(lineNo, line) {
+  
+       if (line) { // ignore empty line (else lines are not drawn)
+          var items = line.split(' ');
+  
+          if (lineNo != 0) {
+             min_max_series.data.push( [ parseFloat(items[0]), parseFloat(items[1]), parseFloat(items[2])  ] )
+             median_series.data.push( [parseFloat(items[0]), parseFloat(items[3]) ] );
+             mean_series.data.push( [parseFloat(items[0]), parseFloat(items[4])] );
+             reference_series.data.push( [parseFloat(items[0]), parseFloat(items[5])] );
+        }
+       }
+  
+  });
+
+  options.series.push(mean_series);
+  options.series.push(min_max_series);
+  options.series.push(median_series);
+  options.series.push(reference_series);
+  
+  var chart = new Highcharts.Chart(options);
+  });
+  
+  
+  });
+  </script>
+
+</head>
+  <body>
+    
+    <!-- 3. Add the container -->
+    <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+    
+    
+    </body>
+</html>

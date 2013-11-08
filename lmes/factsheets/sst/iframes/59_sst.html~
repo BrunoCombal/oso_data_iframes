@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Net SST change in LMEs, 1957-2012</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        var thisLMECode = 59;
+
+        var options = {
+        chart:{renderTo:'container'},
+        title:{text:'SST ('+'East\ Greenland\ Shelf'+')'},
+        zoomType: 'x',
+        resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-50}, 
+                         theme:{fill: 'white', stroke:'silver', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}
+                         },
+        xAxis:{
+              title: {text:'Year'},
+              labels:{formatter: function() {return this.value }}
+              },
+
+        yAxis:{
+                title: { text: 'Temperature (°C)'},
+                plotLines: [{value: 0,width: 1, color: '#808080' }]
+               },
+        tooltip: {
+                valueSuffix: '°C',
+                valueDecimals: 2,
+                formatter: function() {
+                             return '<b>'+this.point.series.name + '</b><br/>' + (this.x)+': '+this.y.toFixed(2)+' °C'; }
+          },
+         plotOptions:{series:{animation:false}},
+         series: []
+         };
+
+      $.get('../data/sst_data.txt', function(data) {
+        var lines = data.split('\n');
+        $.each(lines, function(lineNo, line) {
+          if (line) {
+            var items = line.split(' ');
+            lmeCode=parseInt(items[0]);
+            var thisData=[];
+            for (var ii=1; ii<items.length; ii++) {  
+//					    console.log([1957+ii-1, parseFloat(items[ii])]);
+					    thisData.push([1957+parseInt(ii)-1, parseFloat(items[ii]) ] ); }
+            var showInLegend=false;
+	    var visible=false;
+	 console.log(lmeCode);
+	    if (lmeCode == thisLMECode) {
+console.log('ok');
+					    showInLegend=true;
+					    visible=true;
+					    };
+
+	    thisSeries={name:ii, data:thisData, showInLegend:showInLegend, visible:visible};
+
+	    options.series.push( thisSeries );
+          } // if (line)
+        }) //each
+      var chart = new Highcharts.Chart(options);
+
+      });
+
+
+      });
+
+    </script>
+
+
+  </head>
+  
+  <body>
+    <div id="container" style="min-width:310px; height:400px; margin:0"> </div>
+  </body>
+
+</html>

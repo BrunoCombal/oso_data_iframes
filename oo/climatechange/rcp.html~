@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>RCP</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            credits: {enabled:true, href:'http://tntcat.iiasa.ac.at:8787/RcpDb/dsd?Action=htmlpage&page=compare#', text:'Get data'},
+            chart: {
+                type: 'line',
+                marginRight: 180,
+                marginBottom: 40,
+                zoomType: 'x',
+                resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-50}, 
+                                  theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}}
+            },
+            title: {
+                text: 'Total radiative forcing <br/>(excludes mineral dust and the effect of land albedo)',
+	        useHTML:true,
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'Source: <a href="http://www.iiasa.ac.at/web-apps/tnt/RcpDb">IASA</a>',
+                x: -20,
+                useHTML: true
+            },
+            xAxis:{
+              title: {text:'Date'},
+              labels:{formatter: function(){return this.value+2000}},
+              allowDecimals: false
+            },
+            yAxis: {
+                title: {
+                    text: 'W.m<sup>-2</sup>',
+                    useHTML:true
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: 'W.m<sup>-2</sup>',
+                useHTML: true,
+                valueDecimals: 2,
+                formatter: function() {
+                             return '<b>'+this.point.series.name + '</b><br/>' + (this.x+2000)+': '+this.y.toFixed(2)+' W.m<sup>-2</sup>';
+                           }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 30,
+                borderWidth: 0
+            },
+            series: [
+{name:'World - AIM -RCP 6.0',
+data:[1.723,1.901,2.089,2.480,2.854,3.146,3.521,3.905,4.443,4.932,5.255,5.481],
+marker: {enabled:false}, color: '#d3d61c'
+},
+{name:'MiniCAM - RCP 4.5',
+data:[1.723,1.905,2.126,2.579,3.005,3.411,3.766,4.021,4.188,4.256,4.265,4.309],
+marker: {enabled:false}, color: '#ffb41d'
+},
+{name:'IMAGE - RCP3-PD (2.6)',
+data:[1.723,1.904,2.129,2.584,2.862,2.999,2.998,2.918,2.854,2.808,2.759,2.714],
+marker: {enabled:false}, color: '#29b11b'
+},
+{name:'MESSAGE - RCP 8.5',
+data:[1.723,1.906,2.154,2.665,3.276,3.993,4.762,5.539,6.299,7.020,7.742,8.388],
+marker: {enabled:false}, color: '#ff231d'
+}
+]
+        });
+    });
+		</script>
+	</head>
+	<body>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<div id="container" style="min-width: 600px; height: 450px; margin: 0 auto"></div>
+
+	</body>
+</html>

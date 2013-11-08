@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title></title>
+    <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 900px;
+      height: 450px;
+      }
+    </style>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script defer="defer" type="text/javascript">
+      function init(){
+         var extent = new OpenLayers.Bounds(-180,-90,180,90);
+         var minResolution=360/900.0;
+         var maxResolution=0.5/900.0;
+         var options = {maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution,
+	         controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+
+         var map = new OpenLayers.Map("map-id", options);
+         var lmes= new OpenLayers.Layer.WMS(
+                "LMEs",
+	        "http://193.191.134.61/geoserver/general/wms",
+	        {layers:"general:lmes66_data",  styles:'LMES_data_area'},
+	        {singleTile:true, wrapDateLine:true, isBaseLayer:true, opacity:1, visibility:true}
+	    );
+
+	    map.addLayer(lmes);
+            map.zoomToMaxExtent();
+      }
+    </script>
+  </head>
+  <body onload="init();">
+    <div id="map-id" ></div>
+  </body>
+</html>

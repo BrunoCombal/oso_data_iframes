@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>LMEs comparator</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <input type="text" id="comparatorVariable"></input>
+    <input type="text" id="comparatorLME">
+    <button id="action">Display</button><br/>
+    
+    <div id="compareLeftPanel"></div>
+    
+    <script type="text/javascript">
+      $(function() {
+      $('#action').click(function() {
+      //var param = {'l': $('comparatorLME').val(), 'f': $('comparatorVariable').val() };
+      var param={'l':1, 'f':1};
+      console.log(param);
+      $('#compareLeftPanel').load('nodeContent.php',param);
+      });  
+      });
+    </script>
+  </body>
+</html>

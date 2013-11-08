@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Indo-Pacific Warmpool</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            credits: {enabled:false},
+            chart: {
+                type: 'line',
+                marginRight: 180,
+                marginBottom: 40,
+                zoomType: 'x',
+                resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-50}, 
+                                  theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}}
+            },
+            title: {
+                text: 'Indo-Pacific warm pool extent projections',
+                x: -20 //center
+            },
+            xAxis:{
+              title: {text:'Date'},
+              labels: {
+                formatter: function () {return Highcharts.numberFormat(this.value, 0, '', '');}
+              }
+
+            },
+            yAxis: {
+                title: {
+                    text: 'km<sup>2</sup>',
+                    useHTML:true
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueDecimals: 0,
+                formatter: function() {
+                             return '<b>'+this.point.series.name + '</b><br/>' + this.x+': '+this.y+' km2';
+                           }
+            },
+            legend: {
+                enabled:false,
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 30,
+                borderWidth: 0
+            },
+            series: [
+{name:'Warmpool',
+marker:{enabled:false},
+color: '#0000DD',
+lineWidth:1,
+data:[[2006, 175360388.77], [2007, 175787090.128], [2008, 176626753.665], [2009, 178335374.432], [2010, 177574237.89], [2011, 177684626.291], [2012, 179732366.701], [2013, 183125199.381], [2014, 183946294.539], [2015, 185325336.245], [2016, 185962171.718], [2017, 185905255.47],  [2018, 186274109.254], [2019, 187854408.723],  [2020, 189184859.983], [2021, 191046249.571], [2022, 191880080.742],  [2023, 191746294.676], [2024, 192282729.611],  [2025, 194571868.041], [2026, 196370083.557], [2027, 195610423.116], [2028, 196202935.72], [2029, 198386352.481], [2030, 197408147.836], [2031, 197865508.035], [2032, 199968443.642], [2033, 201025547.321], [2034, 201766794.676], [2035, 201833569.434], [2036, 204121326.155], [2037, 205003376.671], [2038, 205903854.301], [2039, 208640702.774], [2040, 208839686.791], [2041, 208576930.831], [2042, 210157071.238], [2043, 213519703.16], [2044, 214124543.94], [2045, 213597395.558], [2046, 215579077.572], [2047, 217851765.806], [2048, 218829412.189], [2049, 219717785.429], [2050, 221987325.282], [2051, 222381219.492], [2052, 222742228.91], [2053, 224384138.11], [2054, 225066037.07], [2055, 226342907.857], [2056, 228228497.863], [2057, 228769125.679], [2058, 230333130.624], [2059, 230992131.593]
+]}
+
+]
+
+        });
+
+    });
+    
+
+		</script>
+	</head>
+	<body>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<div id="container" style="min-width: 600px; height: 450px; margin: 0 auto"></div>
+
+	</body>
+</html>

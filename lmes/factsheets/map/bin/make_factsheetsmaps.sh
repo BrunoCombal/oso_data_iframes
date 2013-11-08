@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# author: Bruno Combal
+# date: September 2013
+# purpose: read original data and create well-formated data files and create html template files
+
+template='lme_centered_template.html'
+polarNorthTemplate='lmes_centered_polar_template.html'
+polarSouthTemplate='lmes_centered_polarsouth_template.html'
+outiframe='../iframe'
+csv="/data/private_store/lmes/lmes66_data/lmes_factsheet.csv"
+mkdir -p $outiframe
+
+declare -A nodeCodes=(["0"]=66 ["1"]="51" ["2"]="55" ["3"]="56" ["4"]="57" ["5"]="58" ["6"]="59" ["7"]="60" ["8"]="61" ["9"]="62" ["10"]="63" ["11"]="65" ["12"]="66" ["13"]="67" ["14"]="68" ["15"]="69" ["16"]="70" ["17"]="71" ["18"]="72" ["19"]="73" ["20"]="74" ["21"]="75" ["22"]="76" ["23"]="77" ["24"]="78" ["25"]="79" ["26"]="80" ["27"]="81" ["28"]="82" ["29"]="83" ["30"]="84" ["31"]="85" ["32"]="86" ["33"]="87" ["34"]="88" ["35"]="89" ["36"]="90" ["37"]="91" ["38"]="92" ["39"]="93" ["40"]="94" ["41"]="95" ["42"]="96" ["43"]="97" ["44"]="98" ["45"]="99" ["46"]="100" ["47"]="101" ["48"]="102" ["49"]="103" ["50"]="104" ["51"]="105" ["52"]="106" ["53"]="107" ["54"]="108" ["55"]="109" ["56"]="110" ["57"]="111" ["58"]="112" ["59"]="113" ["60"]="114" ["61"]="115" ["62"]="116" ["63"]="117" ["64"]="118" ["65"]="119" ["66"]="120")
+
+# list of templates
+declare -A LMETemplate
+for ii in $(seq 1 66)
+do
+    LMETemplate[$ii]=${template}
+done
+for ii in 1 18 19 20 21 53 54 55 56 57 58 63 64 65 66
+do
+    LMETemplate[$ii]=${polarNorthTemplate}
+done
+LMETemplate[61]=${polarSouthTemplate}
+
+# 1. create map for each lme number
+for ii in $(seq 1 66)
+do
+    echo processing $ii
+    outname=${outiframe}/${ii##*/}_referencemap.html
+    cp ${LMETemplate[$ii]} ${outname}
+    # edit in place: outname
+    sed -i 's/REPLACELMEID/'${ii}'/' ${outname}
+    # edit in place: LME code
+
+    nextLME=$( echo "(${ii} -1 + 1)%66+1" | bc)
+    prevLME=$( echo "($ii -1)" | bc )
+    nextName=`awk -v lmecode=${nextLME} -F ';' '{if ($2==lmecode) print $1}' $csv`
+    echo "+++++" $nextName
+    if [ $prevLME -eq 0 ]; then
+	prevName=`awk -v lmecode=66 -F ';' '{if ($2==lmecode) print $1}' $csv`
+    else
+	prevName=$(awk -v lmecode=${prevLME} -F ';' '{if ($2==lmecode) print $1}' $csv)
+    fi
+
+    nodeNext=${nodeCodes[$nextLME]}
+    nodePrev=${nodeCodes[$prevLME]}
+    sed -i 's/LMECODETOREPLACE/'${ii}'/' ${outname} 
+    sed -i "s/NODENEXT/${nodeCodes[$nextLME]}/" ${outname}
+    #perl -i -pe 's/NEXTNAME/\Q'${nextName}'/' ${outname}
+    sed -i 's/NODEPREV/'${nodePrev}'/' ${outname}
+    #perl -i -pe 's/PREVNAME/'${prevName}'/' ${outname}
+
+    # edit in place: Area
+    values=(`awk -v lmecode=${ii} -F ';' '{if ($2==lmecode) print $3,$4,$5,$6,$7,$8}' $csv`)
+    countries=`awk -v lmecode=${ii} -F ';' '{if ($2==lmecode) print $9}' $csv`
+
+    echo ${values[@]}
+    sed -i 's/AREATOREPLACE/'${values[0]}'/' ${outname}
+    sed -i 's/SHELFTOREPLACE/'${values[1]}'/' ${outname}
+    sed -i 's/IFATOREPLACE/'${values[2]}'/' ${outname}
+    sed -i 's/CRTOREPLACE/'${values[3]}'/' ${outname}
+    sed -i 's/SMTOREPLACE/'${values[4]}'/' ${outname}
+    sed -i 's/PPTOREPLACE/'${values[5]}'/' ${outname}
+    # replace countries
+    echo "RRRRRR countries"$countries
+    if [ -z "${countries}" ]; then
+	sed -i 's/COUNTRYTOREPLACE/No Country/' ${outname}
+    else
+	plural=0
+	plural=$(echo ${countries} | grep ',' | wc -l)
+	echo "PLURAL "$plural
+	if [ $plural -eq 0 ]; then
+	    countries="\<b\>Country:\<\/b\> "${countries}
+	else
+	    countries="\<b\>Countries:\<\/b\> "${countries}
+	fi
+
+	perl -i -pe "s/COUNTRYTOREPLACE/${countries}/" ${outname}
+
+    # replace WIDTH and HEIGHT
+    widthVal=600
+    heightVal=300
+    #exceptions
+    case $ii in
+	29) widthVal=200; heightVal=380;;
+	30) widthVal=600; heightVal=350;;
+	35) widthVal=300; heightVal=600;;
+    esac
+    sed -i 's/WIDTHTOREPLACE/'${widthVal}'/' ${outname}
+    sed -i 's/HEIGHTTOREPLACE/'${heightVal}'/' ${outname}
+
+    fi
+done
+

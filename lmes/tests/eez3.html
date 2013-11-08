@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Large Marine Ecosystems (66)</title>
+    <link rel="stylesheet" href="http://193.191.134.61:8080/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="http://193.191.134.61:8080/geoserver/openlayers/OpenLayers.js"></script>
+    <script type="text/javascript">
+        var map, layer;
+        function init(){
+            map = new OpenLayers.Map( 'map' );
+            layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+                    "http://193.191.134.61:8080/geoserver/ocean/wms",
+                    {layers: 'ocean:LME66'} );
+            map.addLayer(layer);
+            map.zoomToMaxExtent();
+        }
+    </script>
+  </head>
+  <body onload="init()">
+    <h1 id="title">LMEs (66)</h1>
+
+    <div id="tags">
+        basic, simple, minimal, cleanup
+    </div>
+
+    <div id="shortdesc">Large Marine Ecosystems</div>
+
+    <div id="map" class="smallmap"></div>
+
+  </body>
+</html>

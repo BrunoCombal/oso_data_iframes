@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="http://193.191.134.61:8080/geoserver/openlayers/theme/default/style.css" type="text/css">
+        <style>
+            #map-id {
+                width: 600px;
+                height: 300px;
+            }
+        </style>
+        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    </head>
+    <body>
+
+        <div id="map-id"></div>
+        <script>
+	    var extent = new OpenLayers.Bounds(-180,-90,180,90);
+	    var options = {restrictedExtent:extent};
+
+            var map = new OpenLayers.Map("map-id", options);
+            var imagery = new OpenLayers.Layer.WMS(
+                "Global Imagery",
+                "http://maps.opengeo.org/geowebcache/service/wms",
+                {layers: "bluemarble", isBaseLayer:false, gutter:2}
+            );
+
+	    var lmes=new OpenLayers.Layer.WMS(
+	        "LMEs",
+	        "http://193.191.134.61:8080/geoserver/ocean/wms",
+	        {layers:'ocean:LME66', transparent:true, styles:'LMES_colors'},
+	        {isBaseLayer:false, opacity:1, singleTile:true, visibility:true}
+	    );
+	    map.addLayers([lmes, imagery]);
+            map.zoomToMaxExtent();
+	   
+	    function toggleRestrictedExtent() {
+              if(map.restrictedExtent == null) {
+                map.setOptions({restrictedExtent: extent});
+              } else {
+                map.setOptions({restrictedExtent: null});
+              }
+            }
+
+        </script>
+    </body>
+</html>

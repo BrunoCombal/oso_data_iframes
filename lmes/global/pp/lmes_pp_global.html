@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title></title>
+    <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 900px;
+      height: 450px;
+      }
+    </style>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script defer="defer" type="text/javascript">
+      function init(){
+         var extent = new OpenLayers.Bounds(-180,-90,180,90);
+         var minResolution=360/900.0;
+         var maxResolution=0.5/900.0;
+         var options = {maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution,
+	         controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+
+         var map = new OpenLayers.Map("map-id", options);
+         var countries =  new OpenLayers.Layer.WMS(
+             "Countries", "http://193.191.134.61/geoserver/general/wms",
+             {layers:'general:world_epsg4326', transparent:true, styles:'countries_2'},{transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:true, singleTile:true, ratio:1, isBaseLayer:false,yx:{'EPSG:4326':true}}
+            );
+
+         var lmes=new OpenLayers.Layer.WMS(
+                "LMEs",
+	        "http://193.191.134.61/geoserver/general/wms",
+	        {layers:"general:lmes66_data",  styles:'LMES_data_pp', format:'image/png'},
+	        {singleTile:true, isBaseLayer:true, opacity:1, visibility:true, wrapDateLine:true}
+	    );
+
+	    map.addLayers([lmes, countries]);
+            map.zoomToMaxExtent();
+      }
+    </script>
+  </head>
+  <body onload="init();">
+    <div id="map-id" ></div>
+  </body>
+</html>

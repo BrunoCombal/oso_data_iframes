@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax - Load</title>
+</head>
+<body>
+<input type="text" id="ref">
+<button id="action">Afficher</button><br/>
+<div id="r">Entrez un nombre compris entre 1 et 10 pour afficher un proverbe chinois</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+      $(function() {
+          $('#action').click(function() {
+        var param = 'l=' + $('#ref').val();
+          $('#r').load('proverbes.php',param);
+      });  
+      });
+      </script>
+</body>
+</html>

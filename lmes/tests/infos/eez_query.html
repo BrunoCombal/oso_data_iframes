@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+        <style>
+            #map-id {
+                width: 600px;
+                height: 300px;
+            }
+        </style>
+        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    </head>
+    <body>
+
+        <div id="map-id"></div>
+
+        <script>
+	    var extent = new OpenLayers.Bounds(-180,-90,180,90);
+	    var options = {restrictedExtent:extent};
+
+	    nodeCodes={"1":"51", "2":"55", "3":"56", "4":"57", "5":"58", "6":"59", "7":"60", "8":"61", "9":"62", "10":"63",
+	    "11":"65", "12":"66", "13":"67", "14":"68", "15":"69", "16":"70", "17":"71", "18":"72", "19":"73", "20":"74",
+	    "21":"75", "22":"76", "23":"77", "24":"78", "25":"79", "26":"80", "27":"81", "28":"82", "29":"", "30":"83", 
+	    "31":"", '32':"", '33':"", '34':"", '35':"", '36':"", '37':"", '38':"", '39':"", '40':"", 
+	    "41":"", '42':"", '43':"", '44':"", '45':"", '46':"", '47':"", '48':"", '49':"", '50':"", 
+	    "51":"", '52':"", '53':"", '54':"", '55':"", '56':"", '57':"", '58':"", '59':"", '60':"", 
+	    "61":"", '62':"", '63':"", '64':"", '65':"", '66':""}; // LME_CODE:"nodeCode"
+
+            var map = new OpenLayers.Map("map-id", options);
+            var imagery = new OpenLayers.Layer.WMS(
+                "Global Imagery",
+                "http://maps.opengeo.org/geowebcache/service/wms",
+                {layers: "bluemarble", isBaseLayer:false}
+            );
+
+	    var lmes=new OpenLayers.Layer.WMS(
+	        "LMEs",
+	        "http://193.191.134.61/geoserver/ocean/wms",
+	        {layers:'ocean:LME66', transparent:true, styles:'LMES_colors'},
+	        {isBaseLayer:false, opacity:1, singleTile:true, visibility:true}
+	    );
+	    map.addLayers([lmes, imagery]);
+            map.zoomToMaxExtent();
+	   
+
+	    function lmeCodeToNode(code){
+	      node=8; // page not found
+	      node=nodeCodes[parseInt(code)];
+	      return node;
+	    }
+
+	    var info = new OpenLayers.Control.WMSGetFeatureInfo({
+	       url:'http://193.191.134.61/geoserver/ocean/wms',
+	       title:'identify feature by clicking',
+	       output:'features',
+	       infoFormat:'application/vnd.ogc.gml',
+	       format: new OpenLayers.Format.GML,
+
+	       eventListeners: {
+	        getfeatureinfo: function(event) {
+	          LME_NUMBER=event.features[0].attributes.LME_NUMBER;
+	          LME_NAME=event.features[0].attributes.LME_NAME;
+	          document.getElementById('infoblock').innerHTML=LME_NAME+"(LME 3"+LME_NUMBER+")";
+	          document.getElementById('infoblock').href="http://193.191.134.61/?q=node/"+parseInt(lmeCodeToNode(LME_NUMBER));
+	          document.getElementById('infoblock').target="_blank";
+	        }
+	       }
+	    });
+
+
+	    map.addControl(info);
+	    info.activate();
+        </script>
+    </body>
+
+    <a id="infoblock" href="#"></a>
+
+</html>

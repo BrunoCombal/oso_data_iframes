@@ -1,0 +1,23 @@
+<b>Data information</b><br/>
+dataset name: artic_ice_cap_proj_rcp4.5<br/>
+Geographical coverage: lat: 50°N to 90°N, lon:0° to 180°<br/>
+Temporal coverage: 2006 to 2100, monthly<br/>
+Reference system: geodetic WGS84<br/>
+Description: Projection of Artic Ice cap thickness, as an ensemble mean of CMIP5 models for IPCC scenario RCP 8.5. The datasets contains ensemble mean (regrided models) projections and the computation of the area where ice thicnkess is not null.<br/>
+<b>Data Processor</b><br>
+Dataset processor: Bruno Combal<br/>
+Organisation name: UNESCO-IOC<br/>
+Contact person: Albert Fischer, head of OOS, IOC-UNESCO, Paris, France<br/>
+email: <br/>
+website: <a href="http://ioc-unesco.org">ioc-unesco.org</a><br>
+
+<b>Ownership</b><br/>
+Data owner: IOC-UNESCO<br/>
+Dataset name: artic_ice_cap_proj<br/>
+Contact person: Albert Fischer, head of OOS, IOC-UNESCO, Paris, France<br/>
+email: <br/>
+
+<b>Copyrights</b><br/>
+Web link:<br/>
+Publication rights: GEOSS Common data policy<br/>
+<br/>

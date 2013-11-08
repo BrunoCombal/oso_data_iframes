@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="http://193.191.134.61:8080/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <script src="http://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+    <script type="text/javascript" defer="defer">
+        var map, layerLMEs, click;
+
+        function init(){
+	    var lon=0; var lat=0; var zoom=1;
+	    format='image/png';
+
+            var map = new OpenLayers.Map( 'map', {controls:[new OpenLayers.Control.PanZoom()]} );
+            layerLMEs = new OpenLayers.Layer.WMS( "LMES 66",
+                    "http://193.191.134.61:8080/geoserver/ocean/wms",
+                    {LAYERS: 'ocean:LME66',
+	             STYLES: 'LMES_colors',
+	             format: format,
+	             tiled: true,
+	             tilesOrigin: map.maxExtent.left + ','+map.maxExtent.bottom
+	            }, {buffer:0, displayOutsideMaxExtent:true,isBaseLayer:true, yx:{'EPSG:4326':true}} );
+            map.addLayer(layerLMEs);
+
+	    var panel = new OpenLayers.Control.NavToolbar();
+	    map.addControl(panel);
+
+	    map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+
+	    // support GetFeatureInfo
+	    map.events.register('click', map, function(e) {
+	      document.getElementById('nodelist').innerHTML = "Loading... please wait...";
+	      var params = {
+	        REQUEST: "GetFeatureInfo",
+	        EXCEPTIONS:"application/vnd.ogc.se_xml",
+	        BBOX: map.getExtent().toBBOX(),
+	        SERVICE: "WMS",
+	        INFO_FORMAT: 'text/html',
+	        QUERY_LAYERS: map.layers[0].params.LAYERS,
+	        FEATURE_COUNT: 50,
+	        Layers: 'ocean:LME66',
+	        WIDTH: map.size.w,
+	        HEIGHT: map.size.h,
+	        format: format,
+	        styles: map.layers[0].params.STYLES,
+	        srs: map.layers[0].params.SRS
+	      };
+	     // manage wms 1.3 vs wms 1.1
+	     if (map.layers[0].params.VERSION="1.3.0") {
+	       params.version="1.3.0";
+	       params.j = parseInt(e.xy.x);
+	       params.i = parseInt(e.xy.y);
+	    } else {
+	      params.version="1.1.1";
+	      params.x = parseInt(e.xy.x);
+	      params.y = parseInt(e.xy.y);
+	    }
+	    params.featureid = map.layers[0].params.FEATUREID;
+	    //OpenLayers.loadURL("http://193.191.134.61:8080/geoserver/ocean/wms", params, this, setHTML, setHTML);
+	    openLayers.Request.GET()
+	    OpenLayers.Event.stop(e);
+            }); //end of function(e)
+
+
+        }
+
+	function setHTML(response) {
+	  document.getElementById('nodelist').innerHTML = response.responseText;
+	}
+
+	function showInfo(evt) {
+	
+	if (evt.features && evt.features.length) {
+	  higlightLayer.destroyFeatures();
+	  highlistLayer.addFeatures(evt.features);
+	  hightlightLayer.redraw();
+	} else {
+	  document.getElementById('responseText').innerHTML = evt.text;
+	}
+
+	}
+
+    </script>
+  </head>
+  <body onload="init()">
+
+    <div id="map" style="width:500px; height:250px;"></div>
+
+    <div id="responseText"> </div>
+
+    <div id="nodelist">click on the map</map>
+
+  </body>
+</html>

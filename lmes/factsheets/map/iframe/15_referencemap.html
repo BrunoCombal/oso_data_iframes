@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title></title>
+    <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 600px;
+      height: 300px;
+      }
+    </style>    
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+
+    <script type="text/javascript">
+    function init(){    
+
+    var thisServer=window.location.hostname;
+console.log(thisServer);
+    var wfsUrl = 'http://'+thisServer+'/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=ocean:LME66&outputFormat=GML2&cql_filter=LME_NUMBER=';
+
+    var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
+    var options = {maxExtent:extent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+    var map = new OpenLayers.Map("map-id", options);
+    var imagery = new OpenLayers.Layer.WMS(
+         "Global Imagery", 'http://'+thisServer+'/geoserver/general/wms',
+         {layers: "general:GEBCO_08_Grid", isBaseLayer:false}
+         );
+
+    var lmes=new OpenLayers.Layer.WMS(
+	  "LMEs", 'http://'+thisServer+'/geoserver/ocean/wms',
+	  {layers:'ocean:LME66', transparent:true, styles:'LMES_colors'},
+	  {singleTile:true, isBaseLayer:false, opacity:0.6, visibility:true,  wrapDateLine:true}
+	  );
+    var countries = new OpenLayers.Layer.WMS(
+             "Countries", 'http://'+thisServer+'/geoserver/general/wms',
+             {layers:'general:world_epsg4326', transparent:true, styles:'world_countries'},{transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:true, singleTile:true, ratio:1, isBaseLayer:false,yx:{'EPSG:4326':true}}
+            )
+    map.addLayers([countries,lmes, imagery]);
+
+    var lmeID=15;
+    var extent=OpenLayers.Request.GET({
+                url: wfsUrl + lmeID,
+                async:false,
+                success: function(response) {
+                         var format = new OpenLayers.Format.GML();
+                         var features = format.read(response.responseText);
+                         map.zoomToExtent(features[0].geometry.getBounds());
+                         return features[0].geometry.getBounds();
+                        },
+                failure: function() {
+                       return defaultExtent;
+                    }
+            });
+}
+    
+</script>
+  </head>
+
+
+  <body onload="init();">
+
+    <div style="float:left; clear:none; display:inline"> <!-- abstract containter -->
+    <div id="map-id" style="float:left; margin:0; margin-right:0px; padding:0; display:inline"></div>
+    <div style="float:right;  font-size:10px; max-width:280px; margin-left:0; padding-left:10px; display:inline; font-family:sans-serif;">
+      <b>LME #15</b> (<a target="_top" href="/?q=node/68">previous</a> <a target="_top" href="/?q=node/70">next</a>) <br/>
+      <b>Country:</b> Brazil<br/>
+      <b>Area:</b> 566397 km<sup>2</sup><br/>
+      <b>Shelf Area:</b> 235360 km<sup>2</sup><br/>
+      <b>Inshore Fishing Area:</b> 116393 km<sup>2</sup><br/>
+      <b>Coral reefs:</b> 0%<br/>
+      <b>Sea mounts:</b> 0%<br/>
+      <b>Primary production:</b> 775mgC.m<sup>-2</sup>.day<sup>-1</sup><br/>
+    </div>
+    </div>
+
+  </body>
+  
+</html>
