@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-Equiv="Cache-Control" content="no-cache">
+    <meta http-Equiv="Pragma" Content="no-cache">
+    <meta http-Equiv="Expires" content="0">
+    <title></title>
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 700px;
+      height: 400px;
+      }
+      #layerswitcher.olControlLayerSwitcher{
+      font-size:12px !important;
+      font-family:sans-serif !important;
+      font-weight: normal;
+      }
+      .olControlLayerSwitcher .layersDiv{
+      background-color:#c0c0c0 !important;
+      margin: 0.5em !important;
+      width:12em;
+      padding-top:0;
+      }
+    </style>
+
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  </head>
+  <body>
+
+    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+    <div id="map-id" ></div>
+    
+    <script>
+      var thisServer=window.location.hostname;
+
+      var extent = new OpenLayers.Bounds(-180,-90,180,90);
+      var minResolution=360/700.0;
+      var maxResolution=10/700.0;
+      var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
+
+      var graticule=new OpenLayers.Control.Graticule({numPoints: 2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+
+      var options = {minResolution:minResolution, maxResolution:maxResolution,
+      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+      
+      var map = new OpenLayers.Map("map-id", options);
+      layersSwitcher.maximizeControl();
+
+      var world=new OpenLayers.Layer.WMS(
+      "Countries",
+      "http://"+thisServer+"/geoserver/general/wms",
+      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      {singleTile:true, isBaseLayer:true, visibility:true}
+      );
+      
+      var australia=new OpenLayers.Layer.WMS(
+      "Australia",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_australia", transparent:true, styles:'blue_0025ee_transparent', format:'image/png'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var ne_atlantic=new OpenLayers.Layer.WMS(
+      "NE Atlantic",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_ne_atlantic", transparent:true, styles:'green_00cc68_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var ne_pacific=new OpenLayers.Layer.WMS(
+      "NE Pacific",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_ne_pacific", transparent:true, styles:'lime_dff400_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var n_benguela=new OpenLayers.Layer.WMS(
+      "Northern Benguela",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_northern_benguela", transparent:true, styles:''},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var nw_atlantic=new OpenLayers.Layer.WMS(
+      "NW Atlantic",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_nw_atlantic", transparent:true, styles:'purple_ee00e7_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var nw_pacific=new OpenLayers.Layer.WMS(
+      "NW Pacific",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_nw_pacific", transparent:true, styles:'red_ff0038_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var s_benguela=new OpenLayers.Layer.WMS(
+      "Southern Benguela",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_southern_benguela", transparent:true, styles:'violet_5c00ee_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var southern_ocean=new OpenLayers.Layer.WMS(
+      "Southern Ocean",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:mesozooplankton_roi_southern_ocean", transparent:true, styles:''},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      map.addLayers([ ne_atlantic,nw_atlantic,  nw_pacific, ne_pacific,n_benguela, s_benguela, australia, southern_ocean, world]);
+      map.setLayerIndex(world, 0);
+      map.setLayerIndex(southern_ocean, 1);
+      map.setLayerIndex(australia, 2);
+      map.setLayerIndex(s_benguela, 3);
+      map.setLayerIndex(n_benguela, 4);
+      map.setLayerIndex(ne_pacific, 5);
+      map.setLayerIndex(nw_pacific, 6);
+      map.setLayerIndex(ne_atlantic, 7);
+      map.setLayerIndex(nw_atlantic, 8);
+      map.zoomToExtent(extent);
+	    
+    </script>
+  </body>
+  
+</html>

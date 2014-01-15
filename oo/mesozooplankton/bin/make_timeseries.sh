@@ -6,6 +6,18 @@
 # reads a csv file, output: highcharts formatted time series
 
 # format is : region, year, month, mean Mesozooplankton abundance, mean CCS
+
+declare -A linkedTo
+linkedTo['NE Oceanic Pacific']='NE Oceanic Pacific'
+linkedTo['BC shelf']='NE Oceanic Pacific'
+linkedTo['Cook Inlet']='NE Oceanic Pacific'
+linkedTo['Alaskan Shelf']='NE Oceanic Pacific'
+linkedTo['Aleutian Shelf']='NE Oceanic Pacific'
+linkedTo['Aleutian Shelf']='NE Oceanic Pacific'
+linkedTo['Western Gulf of Alaska']='NE Oceanic Pacific'
+linkedTo['Northern Gulf of Alaska']='NE Oceanic Pacific'
+linkedTo['Bering Sea']='NE Oceanic Pacific'
+
 datacsv='/data/public_store/mesozooplankton/mesozooplankton_timeseries.csv'
 
 # get first the list of regions
@@ -13,7 +25,7 @@ listRegion=($(cat ${datacsv} | grep -v 'Year' | cut -f 1 -d ';' | sed 's/ /_/g' 
 
 echo '$(function(){'
 echo '$('"'"'#mesozoograph'"'"').highcharts({'
-#echo 'credits: {enabled:true, href:'"'"'http://onesharedocean.org/data/public_store/mesozooplanton/data.zip'"'"', text:'"'"'Get data'"'"'},'
+echo 'credits: {enabled:true, href:'"'"'http://onesharedocean.org/data/public_store/mesozooplanton/data.zip'"'"', text:'"'"'Get data'"'"'},'
 
 # chart definition
 echo 'chart: { type:'"'"'scatter'"'"', renderTo:'"'"'mesozoograph'"'"'',
