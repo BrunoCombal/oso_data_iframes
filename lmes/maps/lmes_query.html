@@ -4,7 +4,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title></title>
-    <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
       width: 800px;
@@ -79,7 +79,6 @@ console.log(lmenode);
     
     <script>
       var thisServer=window.location.hostname;
-console.log(thisServer);
 
       var extent = new OpenLayers.Bounds(-180,-90,180,90);
       var minResolution=360/800.0;
@@ -118,6 +117,7 @@ console.log(thisServer);
 	    );
 
 	    map.addLayers([lmes, gebco]);
+//      map.addLayer(lmes);
             map.zoomToMaxExtent();
 
 	    function lmeCodeToNode(code){
@@ -149,7 +149,7 @@ console.log(thisServer);
 
 	    map.addControl(info);
 	    info.activate();
-	    
+  		//alert(123);
         </script>
     </body>
 
