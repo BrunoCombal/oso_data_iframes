@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
     <title>Net SST change in LMEs, 1957-2012</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/highcharts-more.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <style>
       .ui-autocomplete{max-height:100px, overflow-y:auto;overflow-x:hidden;}
       html .ui-autocomplete{height:100px} /* IE6 does not support max-height */
@@ -25,8 +25,8 @@
 
         var options = {
             chart:{renderTo:'container', zoomType:'x', resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-50}, 
-                              theme:{fill: 'white', stroke:'silver', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}
-                             },
+            theme:{fill: 'white', stroke:'silver', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}
+                  },
             },
             legend:{align:'right', verticalAlign:'top', layout:'vertical', y:25},
             credits:{enabled:false},
@@ -43,7 +43,7 @@
             series: []
             };
 
-        $.get('../data/sst_data_trends.txt', function(data) {
+        $.get('../data/sst_data_trend.txt', function(data) {
              var lines = data.split('\n');
              var plotLME={};
              iplot=0;
@@ -83,9 +83,15 @@
              var chart = new Highcharts.Chart(options);
 
              function doAddPlot(){
-	           chart.series[plotLME['LME_'+parseInt(addedLMECode)]].visible=true;
-		   chart.options.series[plotLME['LME_'+parseInt(addedLMECode)]].showInLegend=true;
-	           chart.series[plotLME['LME_'+parseInt(addedLMECode)]].show();
+//	           chart.series[plotLME['LME_'+parseInt(addedLMECode)]].visible=true;
+//		   chart.options.series[plotLME['LME_'+parseInt(addedLMECode)]].showInLegend=true;
+		item=chart.series[plotLME['LME_'+parseInt(addedLMECode)]];
+		item.visible=true;
+		item.options.showInLegend = true;
+		item.show();
+		chart.legend.renderItem(item);
+		chart.legend.render();
+//	           chart.series[plotLME['LME_'+parseInt(addedLMECode)]].show();
                   }
 
              //add function to input button (use function pointer)
@@ -94,37 +100,38 @@
 	    //add the jquery search
 	    $(function() {
 		var availableTags=[
-//        "01 East Bering Sea", "02 Gulf of Alaska", "03 California Current", "04 Gulf of California", "05 Gulf of Mexico",
-//        "06 Southeast U.S. Continental Shelf", "07 Northeast U.S. Continental Shelf", 
+        "01 East Bering Sea", "02 Gulf of Alaska", "03 California Current", "04 Gulf of California", "05 Gulf of Mexico",
+        "06 Southeast U.S. Continental Shelf", "07 Northeast U.S. Continental Shelf", 
 	"08 Scotian Shelf", "09 Newfoundland-Labrador Shelf",
-//        "10 Insular Pacific-Hawaiian", "11 Pacific Central-American Coastal","12 Caribbean Sea", "13 Humboldt Current",
-//	"14 Patagonian Shelf",
+        "10 Insular Pacific-Hawaiian", "11 Pacific Central-American Coastal","12 Caribbean Sea", "13 Humboldt Current",
+	"14 Patagonian Shelf",
 	"15 South Brazil Shelf",
-//"16 East Brazil Shelf",
+	"16 East Brazil Shelf",
         "17 North Brazil Shelf","18 West Greenland Shelf","19 Iceland Shelf",
-//        "20 Barents Sea",
+        "20 Barents Sea",
 	"21 Norwegian Sea","22 North Sea","23 Baltic Sea",
         "24 Celtic-Biscay Shelf","25 Iberian Coastal","26 Mediterranean Sea",
-//        "27 Canary Current","28 Guinea Current","29 Benguela Current",
-//        "30 Agulhas Current","31 Somali Coastal Current","32 Arabian Sea",
+        "27 Canary Current","28 Guinea Current","29 Benguela Current",
+        "30 Agulhas Current","31 Somali Coastal Current","32 Arabian Sea",
         "33 Red Sea",
-//"34 Bay of Bengal","35 Gulf of Thailand",
-//        "36 South China Sea","37 Sulu-Celebes Sea",
-//        "38 Indonesian Sea","39 North Australian Shelf",
-//        "40 Northeast Australian Shelf","41 East-Central Australian Shelf",
-//        "42 Southeast Australian Shelf","43 Southwest Australian Shelf",
-//        "44 West-Central Australian Shelf","45 Northwest Australian Shelf",
-//        "46 New Zealand Shelf",
+	"34 Bay of Bengal","35 Gulf of Thailand",
+        "36 South China Sea","37 Sulu-Celebes Sea",
+        "38 Indonesian Sea","39 North Australian Shelf",
+        "40 Northeast Australian Shelf","41 East-Central Australian Shelf",
+        "42 Southeast Australian Shelf","43 Southwest Australian Shelf",
+        "44 West-Central Australian Shelf","45 Northwest Australian Shelf",
+        "46 New Zealand Shelf",
 	"47 East China Sea","48 Yellow Sea","49 Kuroshio Current",
         "50 Sea of Japan / East Sea","51 Oyashio Current",
-//"52 Sea of Okhotsk","53 West Bering Sea",
+	"52 Sea of Okhotsk","53 West Bering Sea",
         "54 Chukchi Sea",
-//"55 Beaufort Sea","56 East Siberian Sea",
-//        "57 Laptev Sea","58 Kara Sea",
-"59 East Greenland Shelf","60 Faroe Plateau",
-//"61 Antarctic",
-"62 Black Sea" 
-//,"63 Hudson Bay","64 Arctic Ocean"
+	"55 Beaufort Sea","56 East Siberian Sea",
+	"57 Laptev Sea","58 Kara Sea",
+	"59 East Greenland Shelf","60 Faroe Plateau",
+	"61 Antarctic",
+	"62 Black Sea" 
+	,"63 Hudson Bay"
+//,"64 Arctic Ocean"
 	];
 
             $( "#tags" ).autocomplete({
@@ -152,14 +159,18 @@
   </head>
   
   <body>
-    <div align="centre">
-      <div class="ui-widget" style="float:float;">
+
+
+      <div class="ui-widget" style="margin:auto auto">
 	<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important;" value="Type LME code or name"/>
 	<div id="#results" class="ui-front autocomplete" style="float:left;z-index:999 !important" ></div>
-	<input id="addPlot" type="button" value="add Plot"></input>
+	<input id="addPlot" type="button" value="add LME"></input>
+	<input type="button" onClick="history.go(0)" value="Reset plot"></input>
       </div>
-    </div>
-    <div id="container" style="min-width:310px; max-width:600px; height:400px; margin:0 auto"> </div>
+
+
+    <div id="container" style="min-width:310px; max-width:600px; height:400px; margin:auto auto;"> </div>
+
 
   </body>
 </html>
