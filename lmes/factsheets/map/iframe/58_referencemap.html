@@ -4,7 +4,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title></title>
-    <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
       width: 600px;
@@ -16,9 +16,9 @@
     <script type="text/javascript">
     function init(){    
 
-    var thisServer=window.location.hostname
+//    var thisServer=window.location.hostname
 
-    var wfsUrl = 'http://'+thisServer+'/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=general:LMEs_north_epsg_3995&outputFormat=GML2&cql_filter=LME_NUMBER=';
+    var wfsUrl = 'http://onesharedocean.org/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=general:LMEs_north_epsg_3995&outputFormat=GML2&cql_filter=LME_NUMBER=';
 
     var defaultExtent = new OpenLayers.Bounds(-4700000, -4700000,4700000, 4700000);
     var options = {maxExtent:defaultExtent,  minResolution: 30000, maxResolution: 2000, projection:'EPSG:3995', units:'m', 
@@ -26,14 +26,14 @@
     var map = new OpenLayers.Map("map-id", options);
 
     var countries = new OpenLayers.Layer.WMS(
-       "Countries",'http://'+thisServer+'/geoserver/general/wms',
+       "Countries",'http://onesharedocean.org/geoserver/general/wms',
        {layers:'general:Countries_north_epsg_3995', isBaseLayer:true, styles:'countries_north_gray', projection:'EPSG:3995', units:'m'},{singletile:true}
     )
 
     var lmes=new OpenLayers.Layer.WMS(
-	  "LMEs", 'http://'+thisServer+'/geoserver/general/wms',
+	  "LMEs", 'http://onesharedocean.org/geoserver/general/wms',
 	  {layers:'general:LMEs_north_epsg_3995', transparent:true, styles:'lmes_colors_north', projection:'EPSG:3995', units:'m'},
-	  {singleTile:true, isBaseLayer:false, opacity:0.6, visibility:true, projection:'EPSG:3995', units:'m'}
+	  {singleTile:true, isBaseLayer:false, opacity:1, visibility:true, projection:'EPSG:3995', units:'m'}
 	  );
 
     map.addLayers([ lmes, countries]);

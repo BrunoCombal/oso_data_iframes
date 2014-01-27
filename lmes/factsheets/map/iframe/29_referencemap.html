@@ -2,9 +2,10 @@
 <html>
   <head>
     <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title></title>
-    <link rel="stylesheet" href="http://193.191.134.61/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
       width: 200px;
@@ -16,29 +17,34 @@
     <script type="text/javascript">
     function init(){    
 
-    var thisServer=window.location.hostname;
-console.log(thisServer);
-    var wfsUrl = 'http://'+thisServer+'/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=ocean:LME66&outputFormat=GML2&cql_filter=LME_NUMBER=';
+//    var thisServer=window.location.hostname;
+    var wfsUrl = 'http://onesharedocean.org/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=ocean:LME66&outputFormat=GML2&cql_filter=LME_NUMBER=';
 
     var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
-    var options = {maxExtent:extent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+    var minResolution=360/200;
+    var maxResolution=5/200;
+    var options = {minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
+    maxExtent:defaultExtent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
     var map = new OpenLayers.Map("map-id", options);
+/*
     var imagery = new OpenLayers.Layer.WMS(
-         "Global Imagery", 'http://'+thisServer+'/geoserver/general/wms',
+         "Global Imagery", 'http://onesharedocean/geoserver/general/wms',
          {layers: "general:GEBCO_08_Grid", isBaseLayer:false}
          );
-
+*/
     var lmes=new OpenLayers.Layer.WMS(
-	  "LMEs", 'http://'+thisServer+'/geoserver/ocean/wms',
+	  "LMEs", 'http://onesharedocean.org/geoserver/ocean/wms',
 	  {layers:'ocean:LME66', transparent:true, styles:'LMES_colors'},
-	  {singleTile:true, isBaseLayer:false, opacity:0.6, visibility:true,  wrapDateLine:true}
+	  {singleTile:true, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:true}
 	  );
-    var countries = new OpenLayers.Layer.WMS(
-             "Countries", 'http://'+thisServer+'/geoserver/general/wms',
-             {layers:'general:world_epsg4326', transparent:true, styles:'world_countries'},{transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:true, singleTile:true, ratio:1, isBaseLayer:false,yx:{'EPSG:4326':true}}
-            )
-    map.addLayers([countries,lmes, imagery]);
 
+    var countries = new OpenLayers.Layer.WMS(
+             "Countries", 'http://onesharedocean.org/geoserver/general/wms',
+             {layers:'general:world_epsg4326', transparent:true, styles:'countries_north_gray'},
+             {transparent:true, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true, singleTile:true, ratio:1,yx:{'EPSG:4326':true}}
+            )
+//    map.addLayers([countries,lmes, imagery]);
+    map.addLayers([countries, lmes]);
     var lmeID=29;
     var extent=OpenLayers.Request.GET({
                 url: wfsUrl + lmeID,
