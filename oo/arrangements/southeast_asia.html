@@ -59,13 +59,29 @@
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
+      var lmes = new OpenLayers.Layer.WMS(
+      "LMEs & warmpool",
+      "http://"+thisServer+"/geoserver/wms",
+      {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez = new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels', format:'image/png'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+
+/*
       var ccsbt=new OpenLayers.Layer.WMS(
       "CCSBT",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_CCSBT", transparent:true, styles:'crfm_wca'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
+*/
       var ffa=new OpenLayers.Layer.WMS(
       "FFA",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -81,16 +97,31 @@
       );
 
       var seafdec=new OpenLayers.Layer.WMS(
-      "seafdec",
+      "SEAFDEC",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_SEAFDEC", transparent:true, styles:'oldepesca_wca'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
+/*
       var siofa=new OpenLayers.Layer.WMS(
       "SIOFA",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_SIOFA", transparent:true, styles:'ospesca_wca'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+*/
+
+      var apfic = new OpenLayers.Layer.WMS(
+      "APFIC",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:APFIC", transparent:true, styles:"ospesca_wca"},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var cobsea = new OpenLayers.Layer.WMS(
+      "COBSEA",
+      "http://"+thisServer+"/geoserver/arrangements/wms",
+      {layers:"arrangements:RS_East_Asian_Seas", transparent:true, styles:'crfm_wca'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
@@ -108,16 +139,18 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      map.addLayers([worldtop, ccsbt, ffa, iotc, seafdec, siofa, spc, wcpfc, world]);
+      map.addLayers([worldtop, ffa, iotc, seafdec, spc, wcpfc, cobsea, apfic, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(wcpfc, 1);
       map.setLayerIndex(iotc, 2);
-      map.setLayerIndex(ccsbt, 3);
-      map.setLayerIndex(ffa, 4);
-      map.setLayerIndex(spc, 5);
-      map.setLayerIndex(seafdec, 6);
-      map.setLayerIndex(siofa, 7);
+      map.setLayerIndex(ffa, 3);
+      map.setLayerIndex(spc, 4);
+      map.setLayerIndex(seafdec, 5);
+      map.setLayerIndex(cobsea, 6);
+      map.setLayerIndex(apfic, 7);
       map.setLayerIndex(worldtop, 8);
+      map.setLayerIndex(lmes, 9);
+      map.setLayerIndex(eez, 10);
       map.zoomToExtent([95,-15,150,25]);
 	    
     </script>

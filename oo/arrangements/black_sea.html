@@ -59,6 +59,20 @@
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
+      var lmes = new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez = new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
       var bucharest=new OpenLayers.Layer.WMS(
       "Bucharest",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -72,12 +86,22 @@
       {layers:"arrangements:RFB_GFCM", transparent:true, styles:'rfb_gfcm_mediterranean'},
       {singleTile:true, visibility:true, opacity:1}
       );
+
+      var iccat = new OpenLayers.Layer.WMS(
+      "ICCAT",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_ICCAT", transparent:true, style:'iccat_baltic_sea'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
        
-      map.addLayers([worldtop,bucharest, gfcm, world]);
+      map.addLayers([worldtop,bucharest, gfcm, iccat, lmes, eez, world]);
       map.setLayerIndex(world,0);
-      map.setLayerIndex(gfcm, 1);
-      map.setLayerIndex(bucharest, 2);
-      map.setLayerIndex(worldtop,3);
+      map.setLayerIndex(iccat, 1);
+      map.setLayerIndex(gfcm, 2);
+      map.setLayerIndex(bucharest, 3);
+      map.setLayerIndex(worldtop, 4);
+      map.setLayerIndex(lmes, 5);
+      map.setLayerIndex(eez, 6);
       map.zoomToExtent([20,35,45,50]);
 	    
     </script>

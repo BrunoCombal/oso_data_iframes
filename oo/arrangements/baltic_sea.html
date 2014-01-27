@@ -59,6 +59,20 @@
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
+      var lmes = new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez = new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
       var iccat=new OpenLayers.Layer.WMS(
       "ICCAT",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -87,13 +101,14 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
+/*
       var neafc=new OpenLayers.Layer.WMS(
       "NEAFC",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_NEAFC", transparent:true, styles:'neafc_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
+*/
       var helsinki=new OpenLayers.Layer.WMS(
       "Helsinki",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -107,18 +122,18 @@
       {layers:"arrangements:OSPAR", transparent:true, styles:'ospar_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
       
-      map.addLayers([worldtop, helsinki, ices, nasco, nammco, neafc, iccat, ospar, world]);
+      map.addLayers([worldtop, helsinki, ices, nasco, nammco, iccat, ospar, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(ices, 1);
       map.setLayerIndex(nasco, 2);
       map.setLayerIndex(nammco, 3);
       map.setLayerIndex(iccat, 4);
-      map.setLayerIndex(neafc, 5);
-      map.setLayerIndex(ospar, 6);
-      map.setLayerIndex(helsinki, 7);
-      map.setLayerIndex(worldtop, 8);
+      map.setLayerIndex(ospar, 5);
+      map.setLayerIndex(helsinki, 6);
+      map.setLayerIndex(worldtop, 7);
+      map.setLayerIndex(lmes, 8);
+      map.setLayerIndex(eez, 9);
       map.zoomToExtent([-20,40,50,80]);
 	    
     </script>

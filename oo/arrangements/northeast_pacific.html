@@ -59,6 +59,20 @@
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
+      var lmes = new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez = new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+      {isBaseLayer:false, opacity:1, visibility:false}
+      );
+
       var ccbsp=new OpenLayers.Layer.WMS(
       "CCBSP",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -122,7 +136,7 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      map.addLayers([worldtop, ccbsp, iattc, iphc, npafc, oldepesca, pices, psc, wcpfc, antigua, world]);
+      map.addLayers([worldtop, ccbsp, iattc, iphc, npafc, oldepesca, pices, psc, wcpfc, antigua, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(wcpfc, 1);
       map.setLayerIndex(iattc, 2);
@@ -133,8 +147,9 @@
       map.setLayerIndex(antigua, 7);
       map.setLayerIndex(psc, 8);
       map.setLayerIndex(ccbsp, 9);
-
       map.setLayerIndex(worldtop, 10);
+      map.setLayerIndex(lmes, 11);
+      map.setLayerIndex(eez, 12);
       map.zoomToExtent([-170,-5,-80,65]);
 	    
     </script>

@@ -59,6 +59,20 @@
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
+      var lmes=new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez=new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
       var iotc=new OpenLayers.Layer.WMS(
       "IOTC",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -101,7 +115,7 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      map.addLayers([worldtop, iotc, siofa, swiofc, jeddah, kuwait, nairobi, world]);
+      map.addLayers([worldtop, iotc, siofa, swiofc, jeddah, kuwait, nairobi, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(iotc, 1);
       map.setLayerIndex(siofa, 2);
@@ -110,6 +124,8 @@
       map.setLayerIndex(jeddah, 5);
       map.setLayerIndex(kuwait, 6);
       map.setLayerIndex(worldtop, 7);
+      map.setLayerIndex(lmes, 8);
+      map.setLayerIndex(eez, 9);
       map.zoomToExtent([0,-60,150,30]);
 	    
     </script>

@@ -38,9 +38,9 @@
       var minResolution=15000000/600.0;
       var maxResolution=2500000/600.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
-      var graticule=new OpenLayers.Control.Graticule({labelled:true, layerName:'Grid', visible:false});
+//      var graticule=new OpenLayers.Control.Graticule({labelled:true, layerName:'Grid', visible:false});
       var options = {maxExtent:extent, projection:'EPSG:3031', unit:'m', minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:6,
-      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher]};
       
       var map = new OpenLayers.Map("map-id", options);
       layersSwitcher.maximizeControl();
@@ -57,6 +57,20 @@
       "http://"+thisServer+"/geoserver/general/wms",
       {layers:"general:Countries_south_epsg_3031", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
+      );
+
+      var lmes=new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez=new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
       );
 
       var ccamlr=new OpenLayers.Layer.WMS(
@@ -94,7 +108,7 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      map.addLayers([worldtop, ccamlr, iccat, wcpfc, ccas, ats, world]);
+      map.addLayers([worldtop, ccamlr, iccat, wcpfc, ccas, ats, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(ccamlr, 1);
       map.setLayerIndex(iccat, 2);
@@ -102,6 +116,8 @@
       map.setLayerIndex(ccas, 4);
       map.setLayerIndex(ats, 5);
       map.setLayerIndex(worldtop, 6);
+      map.setLayerIndex(lmes, 7);
+      map.setLayerIndex(eez, 8);
       map.zoomToExtent(extent);
 	    
     </script>

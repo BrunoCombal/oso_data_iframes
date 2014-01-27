@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-Equiv="Cache-Control" content="no-cache"/>
-    <meta http-Equiv="Pragma" Content="no-cache"/>
-    <meta http-Equiv="Expires" content="0"/>
-    <title></title>
     <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
-      width: 400px;
+      width: 700px;
       height: 400px;
       }
       #layerswitcher.olControlLayerSwitcher{
@@ -19,14 +12,17 @@
       .olControlLayerSwitcher .layersDiv{
       background-color:#C0C0C0 !important;
       margin:0.5em !important;
-      width:12em;
+      width:12em; !important;
+      max-height:400px; !important;
       padding-top:0;
+      word-wrap:break-word; !important;
+      position: relative;
+      }
+      .olControlLayerSwitcher .maximizeDiv{
+      position: relative;
       }
     </style>
 
-    <script src="http://openlayers.org/api/OpenLayers.js"></script>
-  </head>
-  <body>
 
     <div id="layerswitcher" class="olControlLayerSwitcher"></div>
     <div id="map-id" ></div>
@@ -34,13 +30,13 @@
     <script>
       var thisServer=window.location.hostname;
 
-      var extent = new OpenLayers.Bounds(-180,-90,180,90);
-      var minResolution=360/400.0;
-      var maxResolution=5/400.0;
+      var extent = new OpenLayers.Bounds(-10000000, -10000000, 10000000, 4000000);
+      var minResolution=10000000/600.0;
+      var maxResolution=50000/600.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher'),'ascending':false});
       var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
-      var options = {minResolution:minResolution, maxResolution:maxResolution,
-      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+      var options = {minResolution:minResolution, maxResolution:maxResolution, maxExtent:extent, projection:'EPSG:3995', units:'m', numZoolLevels:6,
+      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher]};
       
       var map = new OpenLayers.Map("map-id", options);
       layersSwitcher.maximizeControl();
@@ -48,14 +44,14 @@
       var world=new OpenLayers.Layer.WMS(
       "Countries (background)",
       "http://"+thisServer+"/geoserver/general/wms",
-      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      {layers:"general:Countries_north_epsg_3995", styles:'world_epsg4326_top', format:'image/png'},
       {singleTile:true, isBaseLayer:true, visibility:true}
       );
       
       var worldtop=new OpenLayers.Layer.WMS(
       "Countries",
       "http://"+thisServer+"/geoserver/general/wms",
-      {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
+      {layers:"general:Countries_north_epsg_3995", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
@@ -63,15 +59,8 @@
       "LMEs",
       "http://"+thisServer+"/geoserver/ocean/wms",
       {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
-      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility: false}
       );
-
-      var eez = new OpenLayers.Layer.WMS(
-      "EEZ",
-      "http://onesharedocean.org/geoserver/ocean/wms",
-      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
-      {isBaseLayer:false, opacity:1, visibility:false}
-      )
 
       var iccat=new OpenLayers.Layer.WMS(
       "ICCAT",
@@ -80,63 +69,58 @@
       {singleTile:true, visibility:true, opacity:1}
       );
       
-      var ccsbt=new OpenLayers.Layer.WMS(
-      "CCSBT",
+      var ices=new OpenLayers.Layer.WMS(
+      "ICES",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_CCSBT", transparent:true, styles:'blue_0025ee_transparent'},
+      {layers:"arrangements:RFB_ICES", transparent:true, styles:'ices_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      var cecaf=new OpenLayers.Layer.WMS(
-      "CECAF",
+      var neafc=new OpenLayers.Layer.WMS(
+      "NEAFC",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_CECAF", transparent:true, styles:'lime_dff400_transparent'},
+      {layers:"arrangements:RFB_NEAFC", transparent:true, styles:'nafo_northwest_atlantic'},
       {singleTile:true, visibility:true, opacity:1}
       );
        
-      var comhafat=new OpenLayers.Layer.WMS(
-      "COMHAFAT",
+      var nammco=new OpenLayers.Layer.WMS(
+      "NAMMCO",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_COMHAFAT", transparent:true, styles:'orange_ff7c00_transparent'},
+      {layers:"arrangements:RFB_NAMMCO", transparent:true, styles:'nammco_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      var corep=new OpenLayers.Layer.WMS(
-      "COREP",
+      var nasco=new OpenLayers.Layer.WMS(
+      "NASCO",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_COREP", transparent:true, styles:'purple_ee00e7_transparent'},
+      {layers:"arrangements:RFB_NASCO", transparent:true, styles:'nasco_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      var srfc=new OpenLayers.Layer.WMS(
-      "SRFC",
+      var neafc=new OpenLayers.Layer.WMS(
+      "NEAFC",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_SRFC", transparent:true, styles:'violet_5c00ee_transparent'},
+      {layers:"arrangements:RFB_NEAFC", transparent:true, styles:'neafc_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      var abidjan=new OpenLayers.Layer.WMS(
-      "Abidjan",
+      var ospar=new OpenLayers.Layer.WMS(
+      "OSPAR",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:Abidjan", transparent:true, styles:'abidjan_southeast_atlantic'},
+      {layers:"arrangements:OSPAR", transparent:true, styles:'ospar_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
-      map.addLayers([worldtop, ccsbt, cecaf, comhafat, corep, iccat, srfc, lmes, abidjan, eez, world]);
+      
+      map.addLayers([worldtop, ices, nasco, neafc, nammco, iccat, ospar, lmes, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(iccat, 1);
-      map.setLayerIndex(comhafat, 2);
-      map.setLayerIndex(cecaf, 3);
-      map.setLayerIndex(ccsbt, 4);
-      map.setLayerIndex(abidjan, 5);
-      map.setLayerIndex(srfc, 6);
-      map.setLayerIndex(corep, 7);
-      map.setLayerIndex(worldtop, 8);
-      map.setLayerIndex(lmes, 9);
-      map.setLayerIndex(eez, 10);
-      map.zoomToExtent([-70,-70,35,35]);
+      map.setLayerIndex(nasco, 2);
+      map.setLayerIndex(nammco, 3);
+      map.setLayerIndex(ospar, 4);
+      map.setLayerIndex(ices, 5);
+      map.setLayerIndex(neafc, 6);
+      map.setLayerIndex(worldtop, 7);
+      map.setLayerIndex(lmes, 8);
+      map.zoomToExtent(extent);
 	    
     </script>
-  </body>
-  
-</html>

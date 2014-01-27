@@ -59,20 +59,34 @@
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
+      var lmes=new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+
+      var eez = new OpenLayers.Layer.WMS(
+      "EEZ",
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:"eez_nofill_contour_orange_labels"},
+      {singleTile:true, isBaseLayer:false, visibility:false, opacity:1}
+      );
+
       var iccat=new OpenLayers.Layer.WMS(
       "ICCAT",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_ICCAT", transparent:true, styles:'iccat_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-      
+/*      
       var ices=new OpenLayers.Layer.WMS(
       "ICES",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_ICES", transparent:true, styles:'ices_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
+ */
       var nafo=new OpenLayers.Layer.WMS(
       "NAFO",
       "http://"+thisServer+"/geoserver/arrangements/wms",
@@ -101,30 +115,31 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
+/*
       var neafc=new OpenLayers.Layer.WMS(
       "NEAFC",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_NEAFC", transparent:true, styles:'neafc_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-
+*/
+/*
       var ospar=new OpenLayers.Layer.WMS(
       "OSPAR",
       "http://"+thisServer+"/geoserver/arrangements/wms",
       {layers:"arrangements:OSPAR", transparent:true, styles:'ospar_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-      
-      map.addLayers([worldtop, ices, nasco, nafo,nammco, iccat, neafc, ospar, world]);
+*/      
+      map.addLayers([worldtop, nasco, nafo,nammco, iccat, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(iccat, 1);
       map.setLayerIndex(nasco, 2);
       map.setLayerIndex(nammco, 3);
-      map.setLayerIndex(ospar, 4);
-      map.setLayerIndex(ices, 5);
-      map.setLayerIndex(nafo, 6);
-      map.setLayerIndex(neafc, 7);
-      map.setLayerIndex(worldtop, 8);
+      map.setLayerIndex(nafo, 4);
+      map.setLayerIndex(worldtop, 5);
+      map.setLayerIndex(lmes, 6);
+      map.setLayerIndex(eez, 7);
       map.zoomToExtent(extent);
 	    
     </script>
