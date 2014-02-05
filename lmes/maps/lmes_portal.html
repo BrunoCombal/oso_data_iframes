@@ -16,9 +16,20 @@
 <style type="text/css">
 .ui-front{
      z-index: 9999999999 !important;
-     cursor: pointer;
+	 cursor: pointer;
 }
-</style>
+#ui-id-1{
+	max-height:300px;
+	 overflow-y: auto;
+	 overflow-x: hidden;
+}
+	 </style>
+
+
+
+
+	
+	
     <script type="text/javascript">
         $(function() {
 	    var availableTags = [
@@ -92,37 +103,39 @@
 	      open: function(e, ui) {
 	            var list = '';
 	            var results = $('ul.ui-autocomplete.ui-widget-content a');
-	            //results.each(function() {
-	            //});
+	            results.each(function() {
 	                //list += $(this).html();
+	            });
 	            $('#results').html(list);
 	        },
 	      select: function(e, ui) {
-			var lmename = ui.item.value.split(' ');
-			var lmecode = lmename.shift();
-			var lmenode=nodeCodes[parseInt(lmecode)];
-			$('#infoblock').html('Visit '+lmename.join(' ')+' (LME #'+lmecode+')');
-			$('#infoblock').attr('href','http://'+thisServer+'/?q=node/'+parseInt(lmeCodeToNode(lmecode)));
-			$('#infoblock').attr('target','_blank');
+                  var lmename = ui.item.value.split(' ');
+	          var lmecode = lmename.shift();
+	          var lmenode=nodeCodes[parseInt(lmecode)];
+
+	          $('#infoblock').html('Visit '+lmename.join(' ')+' (LME #'+lmecode+')');
+	          $('#infoblock').attr('href','http://'+thisServer+'/?q=node/'+parseInt(lmeCodeToNode(lmecode)));
+	          $('#infoblock').attr('target','_blank');
 	      }
 	    });
 	  });
     </script>
+	
+
 </head>
 <body>
 
 <div class="ui-widget" style="float:none;">
-	<a id="infoblock" href="#">Select a LME from the list on the map or search;</a>
-	<input id="tags" style="width:320px;"/>
-	<div id="results" class="ui-front autocomplete"></div>
-</div>
+       <a id="infoblock" href="#">Select a LME from the list on the map or search;</a>
+       <input id="tags" style="width:320px;"/>
+      <div id="results" class="ui-front autocomplete"></div>
+    </div>
 
 <div style="float:left">
-	<div id="mapOL" style="width:750px; height:375px;"></div>
-</div>
+<div id="mapOL" style="width:750px; height:375px;"></div>
+	</div>
 
-<div id="accordion" style="font-family:sans-serif">
-<small>Choose a layer to display</small>
+<div id="accordion">
 	<ul>
 		<li><h3 style="margin-top: 6px;"><span onclick="showLayer(map, 1);">LMEs</span></h3>
 		</li>
@@ -139,123 +152,126 @@
 				<li><span onclick="showLayer(map, 4);">Coral reefs</span></li>
 			</ul>
 		</li>
-		<li><h3><span>Socioeconomic</span></h3>
+		<li><h3><span>Socioeconomica</span></h3>
                 </li>
 		<li><h3><span>Governance</span></h3>
 			<ul>
 				<li><span onclick="showLayer(map, 5);">Areas</span></li>
 			</ul>
 		</li>
-	</ul>
-</div>
+	</ul>	
+</div>	
 
 </body>	
+	
+	
+    <script>
+      var thisServer='onesharedocean.org';  //window.location.hostname;
 
-<script>
-	var thisServer='onesharedocean.org';  //window.location.hostname;
-	var extent = new OpenLayers.Bounds(-180,-90,180,90);
-	var minResolution=375/$('#mapOL').width();
-	var maxResolution=0.5/$('#mapOL').width();
-	var options = {restrictedExtent:extent, maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution,
+      var extent = new OpenLayers.Bounds(-180,-90,180,90);
+      var minResolution=375/750.0;
+      var maxResolution=0.5/800.0;
+      var options = {restrictedExtent:extent, maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution,
 	    controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
 
-	nodeCodes={"1":"51", "2":"55", "3":"56", "4":"57", "5":"58", "6":"59", "7":"60", "8":"61", "9":"62", "10":"63",
-		"11":"65", "12":"66", "13":"67", "14":"68", "15":"69", "16":"70", "17":"71", "18":"72", "19":"73", "20":"74",
+      nodeCodes={"1":"51", "2":"55", "3":"56", "4":"57", "5":"58", "6":"59", "7":"60", "8":"61", "9":"62", "10":"63",
+	    "11":"65", "12":"66", "13":"67", "14":"68", "15":"69", "16":"70", "17":"71", "18":"72", "19":"73", "20":"74",
 	    "21":"75", "22":"76", "23":"77", "24":"78", "25":"79", "26":"80", "27":"81", "28":"82", "29":"83", "30":"84", 
 	    "31":"85", "32":"86", "33":"87", "34":"88", "35":"89", "36":"90", "37":"91", "38":"92", "39":"93", "40":"94", 
 	    "41":"95", "42":"96", "43":"97", "44":"98", "45":"99", "46":"100", "47":"101", "48":"102", "49":"103", "50":"104", 
 	    "51":"105", "52":"106", "53":"107", "54":"108", "55":"109", "56":"110", "57":"111", "58":"112", "59":"113", "60":"114", 
 	    "61":"115", "62":"116", "63":"117", "64":"118", "65":"119", "66":"120"}; // LME_CODE:"nodeCode"
 
-	var map = new OpenLayers.Map("mapOL", options);
+      var map = new OpenLayers.Map("mapOL", options);
 
-	//Map of the world
-	var worldtop=new OpenLayers.Layer.WMS(
-		"Countries",
-		"http://onesharedocean.org/geoserver/general/wms",
-		{layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
-		{singleTile:true, isBaseLayer:true, visibility:true, opacity:1}
-	);
-
+	  //Map of the world
+	  var worldtop=new OpenLayers.Layer.WMS(
+      "Countries",
+      "http://"+thisServer+"/geoserver/general/wms",
+      {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
+      {singleTile:true, isBaseLayer:true, visibility:true, opacity:1}
+      );
+	
 	//LMEs
-	var lmes = new OpenLayers.Layer.WMS(
-		"LMEs",
-		"http://onesharedocean.org/geoserver/ocean/wms",
-		{layers:"ocean:LME66", transparent:true, styles:'LMES_colors'},
-		{singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
-	);
-
+		var lmes = new OpenLayers.Layer.WMS(
+      "LMEs",
+      "http://"+thisServer+"/geoserver/ocean/wms",
+      {layers:"ocean:LME66", transparent:true, styles:'LMES_colors'},
+      {singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      );
+	  
+	
 	//Productivity
-	//Primary productivity
-	var pp=new OpenLayers.Layer.WMS(
-		"PP",
-		"http://onesharedocean.org/geoserver/general/wms",
-		{layers:"general:lmes66_data",  transparent:true, styles:'LMES_data_pp', format:'image/png'},
-		{singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-	);
-
-	//SST net change
-	var sst_net_change=new OpenLayers.Layer.WMS(
-		"SST net change",
-		"http://onesharedocean.org/geoserver/lmes/wms",
-		{layers:"lmes:lmes_sst_change_1957_2012", transparent:true, styles:'lmes_sst_change', format:'image/png'},
-		{singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-    );
+		//Primary productivity
+		var pp=new OpenLayers.Layer.WMS(
+			"PP",
+            "http://193.191.134.61/geoserver/general/wms",
+            {layers:"general:lmes66_data",  transparent:true, styles:'LMES_data_pp', format:'image/png'},
+            {singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
+		
+		//SST net change
+		var sst_net_change=new OpenLayers.Layer.WMS(
+			"SST net change",
+            "http://onesharedocean.org/geoserver/lmes/wms",
+            {layers:"lmes:lmes_sst_change_1957_2012", transparent:true, styles:'lmes_sst_change', format:'image/png'},
+            {singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
 
 	//Ecosystem
-	//Coral reefs
-	var coral=new OpenLayers.Layer.WMS(
-		"Coral reefs",
-		"http://onesharedocean.org/geoserver/general/wms",
-		{layers:"general:lmes66_data",  styles:'LMES_data_coral', transparent:true, format:'image/png'},
-		{singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-	);
+		//Coral reefs
+		var coral=new OpenLayers.Layer.WMS(
+			"Coral reefs",
+            "http://193.191.134.61/geoserver/general/wms",
+            {layers:"general:lmes66_data",  styles:'LMES_data_coral', transparent:true, format:'image/png'},
+            {singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
 	//Governance
-	//Areas
-	var areas= new OpenLayers.Layer.WMS(
-		"Areas",
-		"http://onesharedocean.org/geoserver/general/wms",
-		{layers:"general:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
-		{singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
-	);
-	
-	//Add layers to map objects
-	map.addLayers([
-		worldtop,
-		lmes,
-		pp,
-		sst_net_change,
-		coral,
-		areas
-	]);
+		//Areas
+		 var areas= new OpenLayers.Layer.WMS(
+			"Areas",
+            "http://193.191.134.61/geoserver/general/wms",
+            {layers:"general:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
+            {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+        );
+					
+	    //Add layers to map objects
+		map.addLayers([
+			worldtop,
+			lmes,
+			pp,
+			sst_net_change,
+			coral,
+			areas
+		]);
 		
-	function showLayer(map, n){
-		for(var i=1; i<map.getNumLayers();i++){
-			if(i == n){
-				map.layers[i].setVisibility(true);
-			} else {
-				map.layers[i].setVisibility(false);
+		function showLayer(map, n){
+			for(var i=1; i<map.getNumLayers();i++){
+				if(i == n){
+					map.layers[i].setVisibility(true);
+				} else {
+					map.layers[i].setVisibility(false);
+				}
 			}
 		}
-	}
-    
-    map.zoomToMaxExtent();
+//      
+            map.zoomToMaxExtent();
 
-    function lmeCodeToNode(code){
+	    function lmeCodeToNode(code){
 	      node=8; // page not found
 	      node=nodeCodes[parseInt(code)];
 	      return node;
-    };
+	    };
 
-    var info = new OpenLayers.Control.WMSGetFeatureInfo({
+	    var info = new OpenLayers.Control.WMSGetFeatureInfo({
 	       url:'http://'+thisServer+'/geoserver/ocean/wms',
 	       title:'identify feature by clicking',
 	       output:'features',
 	       infoFormat:'application/vnd.ogc.gml',
 	       format: new OpenLayers.Format.GML,
 
-       eventListeners: {
-        getfeatureinfo: function(event) {
+	       eventListeners: {
+	        getfeatureinfo: function(event) {
 	          
 	          if (typeof(event.features[0])=='undefined'){return};
 	          LME_NUMBER=event.features[0].attributes.LME_NUMBER;
@@ -266,14 +282,14 @@
 
 	        }
 	       }
-    });
+	    });
 
-	map.addControl(info);
-	info.activate();
+	    map.addControl(info);
+	    info.activate();
+
+        </script>
 	
-</script>
-	
-<script>
+		<script>
 	$(document).ready(function(){
 	$("#accordion h3").click(function(){
 		//slide up all the link lists
@@ -299,6 +315,7 @@
 });
 
 </script>
+
 
 
 </html>
