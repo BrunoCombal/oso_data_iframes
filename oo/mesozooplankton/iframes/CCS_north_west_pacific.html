@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http_equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <title>Mesozooplankton time series</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+
+	north_atlantic={name:'North Atlantic',data:['A1', 'A6', 'A8', 'B1', 'B2', 'B4','B5','B6','B7','B8','C1','C2','C3','C4','C5','C6','C7','C8','D1','D2','D3','D4','D5','D6','D7','D8','D9','E4','E5','E6','E7','E8','E9','E10','F4','F5','F6','F7','F8','F9','F10']};
+	north_east_pacific={name:'North East Pacific', data:['Alaskan Shelf','Aleutian shelf','Bc shelf','Bering Sea','NE Oceanic Pacific','N GoA','WGoA','PWS Shelf']};
+	north_west_atlantic={name:'North West Atlantic',data:['Gulf of Maine','MidAtlantic Bight']};
+	north_west_pacific={name:'North West Pacific', data:['WSG','Oyashio']};
+	southern_ocean={name:'Southern Ocean', data:['EASAZ', 'RSSAZ','EAPFZ','RSPFZ','EAPOOZ','RSPOOZ','EASIZ','RSSIZ']};
+	benguela={name:'Benguela region', data:['NB','SB']};
+	australian={name:'Australia', data:['ARCH','AUSE','AUSW','SSTC','TASM']};
+	selection=north_west_pacific.data;
+	
+	dataType={name:'CCS', column:3};
+
+	var legendIndex=0;
+	
+	var options = ({
+		credits: {enabled:true, href:'/public_store/mesozooplankton/mesozooplankton_data.zip', text:'Get data'},
+		chart: { defaultSeriesType:'scatter', renderTo:'mesozoograph',
+			//marginRight:180, marginBottom: 40,
+			zoomType:'x', 
+			resetZoomButton:{relativeTo:'chart', position:{align:'right', verticalAlign:'bottom', x:-10, y:-50}}
+		},
+		subtitle:{text:'Mesozooplankton '+dataType.name.toLowerCase()}, title:{text:north_west_pacific.name},
+		xAxis:{title:{text:'Year'}, type:'date', allowDecimals:false}, 
+		yAxis:{title:{text:dataType.name+' seasonal variability', useHTML:true}},
+		legend:{
+			//layout:'bottom', //align:'right', enabled:true,
+			//borderRadius:0, margin:10, 
+			itemMarginTop:2, itemMarginBottom:2, width:650, itemWidth:Math.max(50, 650/parseFloat(selection.length)-5), itemStyle:{width:Math.max(50, 650/parseFloat(selection.length)-10)},
+			//verticalAlign:'top', x:-10, y:10, borderWidth:0
+			},
+		plotOptions:{
+			//scatter:{lineWidth:0.25, marker:{radius:4, symbol:"diamond", state:{selected:{lineWidth:10}}}},
+			allowPointSelect:true
+			},
+		series: []
+	});
+
+	// get data
+	seriesMax=[];
+	seriesMin=[];
+	seriesAvg=[];
+	seriesCount=[];
+	var thisName='';
+	
+	$.get('/public_store/mesozooplankton/deviation_yearly_avg.csv', function(data) {
+		var lines = data.split('\n');
+		$.each(lines, function (lineNo, line) {
+			var items = line.split(',');
+			if (lineNo != 0) {
+				thisData=parseFloat(items[dataType.column]);
+				thisRegion=items[0];
+				thisYearID=items[1];
+				thisYear=parseInt(items[1]);
+				if ( $.inArray( thisRegion, selection ) != -1 ){
+
+				if (thisRegion != thisName) { // accumulate in a new series
+					if ( (typeof(thisSeries)!='undefined') && (thisSeries.data.length>0) ) { // push former series
+						thisSeries.type='scatter';
+						thisSeries.marker={radius:3, symbol:"circle", lineColor:"#FFFFFF", lineWidth:0.5};
+						thisSeries.visible=true;
+						thisSeries.zIndex=1;
+						legendIndex:legendIndex; legendIndex+=1;
+						options.series.push(thisSeries);
+					} 
+					// create a new series
+					thisName=thisRegion;
+					// create a series (or refresh it)
+					if ( isNaN(thisData) == false ) {
+						thisSeries={data:[ [ thisYear, parseFloat(thisData)] ]};
+						if ( typeof(seriesMax[thisYear])=='undefined') {
+							seriesMax[ thisYear ]=thisData;
+							seriesMin[ thisYear ]=thisData;
+							seriesAvg[ thisYear]=thisData;
+							seriesCount[thisYear]=1;
+						} else {
+						seriesMax[ thisYear ] = Math.max( seriesMax[ thisYear ], thisData);
+						seriesMin[ thisYear ] = Math.min( seriesMin[ thisYear ], thisData);
+						seriesAvg[ thisYear ] += thisData;
+						seriesCount[ thisYear] += 1;
+						}
+					} else {
+						thisSeries={data:[]};
+					}
+					thisSeries.name=thisRegion;
+				} else if ( isNaN(thisData) ==false) { // accumulate data
+					thisSeries.data.push([ thisYear, thisData]);
+					if ( typeof(seriesMax[ thisYear ] )=='undefined') {// this year does not exists
+						seriesMax[ thisYear ]=thisData;
+						seriesMin[ thisYear ]=thisData;
+						seriesAvg[ thisYear]=thisData;
+						seriesCount[thisYear]=1;
+					} else {
+						seriesMax[ thisYear ] = Math.max( seriesMax[ thisYear ], thisData);
+						seriesMin[ thisYear ] = Math.min( seriesMin[ thisYear ], thisData);
+						seriesAvg[ thisYear ] += thisData;
+						seriesCount[ thisYear] += 1;
+						}
+					}
+				} // if ($.inArray())
+			}
+		} // end of function(lineNo, line) {
+		) //end of $.each{lines, function(lineNo, line){
+		
+		// push last data
+		if ( (typeof(thisSeries)!='undefined') && (thisSeries.data.length>0) ) { // push former series
+			thisSeries.type='scatter';
+			thisSeries.marker={radius:3, symbol:"circle", lineColor:"#FFFFFF", lineWidth:0.5};
+			thisSeries.visible=true;
+			thisSeries.zIndex=1;
+			options.series.push(thisSeries);
+		} 		
+
+		// ranges
+		arearange={name:'min-max', type:'arearange', zindex:0, data:[], legendIndex:legendIndex};
+		legendIndex+=1;
+		for (year in seriesMin) {
+			arearange.data.push([ parseInt(year), seriesMin[year], seriesMax[year] ]);
+		}
+		options.series.push(arearange);
+
+		// average series
+		average={name:'Average', type:'line', dashStyle:'dash', marker:{enabled:false}, zIndex:2, visible:true, data:[], legendIndex:legendIndex};
+		for ( year in seriesAvg ) {
+			if ( typeof(seriesCount[year])!='undefined'   ) {
+				average.data.push( [ parseInt(year) , seriesAvg[year] /parseFloat(seriesCount[year]) ] );
+			}
+		}
+		options.series.push(average);
+
+		var chart = new Highcharts.Chart(options);
+	} // end of function(data)
+	); // end of $.get
+	//options.series.push(thisSeries);
+});
+</script>
+</head>
+<body>
+  <div id="mesozoograph" style="min-width:600px, height:450px; margin:0 auto">LOADING DATA...PLEASE WAIT</div>
+</body>
+</html>
