@@ -14,26 +14,44 @@
 		
 		<script type="text/javascript">
 			
-			function getColor( index ){
-				colors=['#C6F9D2','#CCCCB3','#CECEFF', '#FFCAFF', '#D0CCCD', '#FFCC99', '#FFCBB9', '#EAEC93', '#D7FBE6', '#FFCACA']
-				return colors[index % colors.length];
+			function getColor( name ){
+				thisName = name.split(',',1)[0].split(' ',1);
+				colors={'Arctic':'#ff231d', 'Atlantic':'#2a2dff', 'Mediterranean':'#76FF00', 'Indian':'#ffb41d', 'Pacific':'#29b11b'};
+				return colors[ thisName ];
 			}
 			
+			/*
+			categories:['FAO-18', 'FAO-21', 'FAO-27',
+										   'FA0-31', 'FA0-34', 'FA0-37',
+										   'FA0-41', 'FA0-47', 'FA0-48', 'FA0-51',
+										   'FA0-57', 'FA0-58', 'FA0-61',
+										   'FA0-67', 'FA0-71', 'FA0-77',
+										   'FA0-81', 'FA0-87', 'FA0-88',]
+			*/
 			var dataCumul={};
 			var cumul={name:'Cumulative Index', data:[], type:'column'};
-			var codeMapping={18:'Arctic Sea', 21:'Atlantic, Northwest', 27:'Atlantic, Northeast',
-							31:'Atlantic, Western Central', 34:'Atlantic, Eastern Central', 37:'Mediterranean and Black Sea',
-							41:'Atlantic, Southwest', 47:'Atlantic, Southeast', 48:'Atlantic, Antarctic', 51:'Indian Ocean, Western',
-							57:'Indian Ocean, Eastern', 58:'Indian Ocean, Antarctic and Southern', 61:'Pacific, Northwest', 
+			var codeMapping={18:'Arctic Sea',
+							21:'Atlantic, Northwest', 27:'Atlantic, Northeast', 31:'Atlantic, Western Central', 34:'Atlantic, Eastern Central',
+							41:'Atlantic, Southwest', 47:'Atlantic, Southeast', 48:'Atlantic, Antarctic', 
+							37:'Mediterranean and Black Sea',
+							51:'Indian Ocean, Western', 57:'Indian Ocean, Eastern', 58:'Indian Ocean, Antarctic and Southern',
+							61:'Pacific, Northwest', 
 							67:'Pacific, Northeast', 71:'Pacific, Western Central', 77:'Pacific, Eastern Central', 
 							81:'Pacific, Southwest', 87:'Pacific, Southeast', 88:'Pacific, Antarctic'};
 			
 			$(document).ready(function() {
 				var options=({
 						credits: {enabled:true, href:'/public_store/', text:'Get data'},
+						title:{text:'Cumulative index'},
 						chart: { polar:true, renderTo:'cumulIndex', type:'column'},
 						plotOptions:{series:{shadow:false}, column:{colorByPoint:true}},
 						legend:{enabled:false},
+						tooltip:{formatter:function(){
+											return this.key+'<br/>'+this.y;
+											}},
+						xAxis:{categories:[],
+								labels:{style:{fontsize:'9px', fontFamily:'Verdana, sans-serif'}}},
+						yAxis:{min:0, max:5, tickInterval:1, minorTickInterval:0.5, allowDecimals:false, gridLineDashStyle:'Dash', minorGridLineDashStyle:'Dot'},
 						series:[]
 				});
 			
@@ -51,8 +69,12 @@
 								}
 							if (thisData.length > 0) {dataCumul[items[0]] = thisData;}
 							if ( isNaN(parseFloat(items[1])) == false) {
-								cumul.data.push({y:parseFloat(items[1]), color:getColor(ipos), name:items[0]});
-								//options.series.push(cumul);
+								cumul.data.push({y:parseFloat(items[1]), color:getColor(items[0]), name:items[0]});
+								faoCode = '';
+								for (code in codeMapping) {
+									if (codeMapping[code]==items[0]) {faoCode=code}
+								}
+								options.xAxis.categories.push('FAO-'+faoCode);
 								}
 						}
 						ipos+=1;
