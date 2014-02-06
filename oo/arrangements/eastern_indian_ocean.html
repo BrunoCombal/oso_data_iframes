@@ -22,18 +22,22 @@
       width:12em;
       padding-top:0;
       }
+	  #infoArrangement, #infoGeneral{
+	  font-size:12px !important;
+	  font-weight:normal;
+	  font-family:sans-serif !important;
+	  }
     </style>
 
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
-
-    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+	<div id="infoArrangement">&nbsp;</div>
+	<div id="infoGeneral">&nbsp;</div>
     <div id="map-id" ></div>
+    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
     
     <script>
-      var thisServer=window.location.hostname;
-
       var extent = new OpenLayers.Bounds(-180,-90,180,90);
       var minResolution=360/700.0;
       var maxResolution=10/700.0;
@@ -47,65 +51,65 @@
 
       var world=new OpenLayers.Layer.WMS(
       "Countries (background)",
-      "http://"+thisServer+"/geoserver/general/wms",
+      "http://onesharedocean.org/geoserver/general/wms",
       {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
-      {singleTile:true, isBaseLayer:true, visibility:true}
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:true, visibility:true}
       );
       
       var worldtop=new OpenLayers.Layer.WMS(
       "Countries",
-      "http://"+thisServer+"/geoserver/general/wms",
+      "http://onesharedocean.org/geoserver/general/wms",
       {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
-      {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
       var lmes = new OpenLayers.Layer.WMS(
-      "LMEs",
-      "http://"+thisServer+"/geoserver/ocean/wms",
-      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
-      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      "LMEs & warmpool",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
       );
 
       var eez = new OpenLayers.Layer.WMS(
       "EEZ",
       "http://onesharedocean.org/geoserver/ocean/wms",
       {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
-      {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
       );
 
       var apfic=new OpenLayers.Layer.WMS(
       "APFIC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:APFIC", transparent:true, styles:'crfm_wca'},
-      {singleTile:true, visibility:true, opacity:1}
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, visibility:true, opacity:1}
       );
 
       var bobpigo=new OpenLayers.Layer.WMS(
       "BOBP-IGO",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_BOBP_IGO", transparent:true, styles:'iccat_wca'},
-      {singleTile:true, visibility:true, opacity:1}
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, visibility:true, opacity:1}
       );
 
       var iotc=new OpenLayers.Layer.WMS(
       "IOTC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_IOTC", transparent:true, styles:'nammco_wca'},
-      {singleTile:true, visibility:true, opacity:1}
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, visibility:true, opacity:1}
       );
 
       var seafdec=new OpenLayers.Layer.WMS(
       "SEAFDEC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_SEAFDEC", transparent:true, styles:'oldepesca_wca'},
-      {singleTile:true, visibility:true, opacity:1}
+      {wrapDateLine:true, singleTile:true, visibility:true, opacity:1}
       );
 
       var wcpfc=new OpenLayers.Layer.WMS(
       "WCPFC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_WCPFC", transparent:true, styles:'ospesca_wca'},
-      {singleTile:true, visibility:true, opacity:1}
+      {wrapDateLine:true, singleTile:true, visibility:true, opacity:1}
       );
 
       map.addLayers([worldtop, bobpigo, iotc, seafdec, wcpfc, apfic, lmes, eez, world]);
@@ -118,8 +122,58 @@
       map.setLayerIndex(worldtop, 6);
       map.setLayerIndex(lmes, 7);
       map.setLayerIndex(eez, 8);
+	  
       map.zoomToExtent([25,-60,150,30]);
-	    
+	  
+	  var infoGnrl = new OpenLayers.Control.WMSGetFeatureInfo({
+	       url:'http://onesharedocean.org/geoserver/ocean/wms',
+	       title:'identify feature by clicking',
+	       output:'features', infoFormat:'application/vnd.ogc.gml',
+	       format: new OpenLayers.Format.GML,
+	       eventListeners: {
+	        getfeatureinfo: function(event) {
+				eezName='';
+				lmeName='';
+				if (typeof(event.features[0])=='undefined'){document.getElementById('infoGeneral').innerHTML='&nbsp;'; return};
+				for (ii=0; ii< event.features.length; ii++){
+					//console.log(event.features[ii].attributes);
+					thisEEZNAME=event.features[ii].attributes['eez'];
+					thisLMENAME=event.features[ii].attributes['LME_NAME'];
+					if (typeof(thisEEZNAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {eezName+=', '+thisEEZNAME}};
+					if (typeof(thisLMENAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {lmeName+=', '+thisLMENAME}};
+				}
+	          document.getElementById('infoGeneral').innerHTML=eezName;
+	        }
+	       }
+	    });
+		
+		uneprsid={'2053':'Abidjan', '170':'Antigua', '994':'Bucharest', '2041':'Helsinki', '2054':'Lima', '1125':'Jeddah', '1119':'Kuwait', '2051':'Noumea', '510':'Cartagena', '2049':'Barcelona', '1960':'Nairobi'};
+		var infoArrangement = new OpenLayers.Control.WMSGetFeatureInfo({
+	       url:'http://onesharedocean.org/geoserver/arrangements/wms',
+	       title:'identify feature by clicking',
+	       output:'features', infoFormat:'application/vnd.ogc.gml',
+	       format: new OpenLayers.Format.GML,
+	       eventListeners: {
+	        getfeatureinfo: function(event) {
+				rfbName='';
+				if (typeof(event.features[0])=='undefined'){document.getElementById('infoArrangement').innerHTML='&nbsp;'; return};
+				for (ii=0; ii< event.features.length; ii++){
+					console.log(event.features[ii].attributes);
+					thisRFBNAME=event.features[ii].attributes['RFB'];
+					thisUnepRSID=event.features[ii].attributes['UNEP_RS_ID'];
+					if (typeof(thisUnepRSID)!='undefined') {if (rfbName=='') {rfbName=uneprsid[thisUnepRSID]} else {rfbName+=', '+uneprsid[thisUnepRSID]}}
+					if (typeof(thisRFBNAME)!='undefined'){if (rfbName=='') {rfbName=thisRFBNAME} else { rfbName+=', '+thisRFBNAME}};
+					if (typeof(thisOther)!='undefined'){if (rfbName=='') {rfbName=thisRFBNAME} else {rfbName+=', '+thisOther}};
+				}
+	          document.getElementById('infoArrangement').innerHTML=rfbName;
+	        }
+	       }
+	    });
+	  
+	  map.addControl(infoGnrl);
+	  infoGnrl.activate();
+	  map.addControl(infoArrangement);
+	  infoArrangement.activate();
     </script>
   </body>
   

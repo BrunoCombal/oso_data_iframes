@@ -22,21 +22,29 @@
       width:12em;
       padding-top:0;
       }
+	  #infoArrangement, #infoGeneral{
+	  margin:0px;
+	  padding:0;
+	  font-size:12px !important;
+	  font-weight:normal;
+	  font-family:sans-serif !important;
+	  }
     </style>
 
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
-
-    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+	<div id="infoArrangement">&nbsp;</div>
+	<div id="infoGeneral">&nbsp;</div>
     <div id="map-id" ></div>
+    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
     
     <script>
       var thisServer=window.location.hostname;
 
       var extent = new OpenLayers.Bounds(-180,-90,180,90);
-      var minResolution=360/800.0;
-      var maxResolution=0.5/800.0;
+      var minResolution=360/700.0;
+      var maxResolution=0.5/700.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
       var graticule =  new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
       var options = {minResolution:minResolution, maxResolution:maxResolution,
@@ -60,9 +68,9 @@
       );
 
       var lmes = new OpenLayers.Layer.WMS(
-      "LMEs",
-      "http://"+thisServer+"/geoserver/ocean/wms",
-      {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      "LMEs & warmpool",
+      "http://"+thisServer+"/geoserver/wms",
+      {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
       {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
       );
 
@@ -136,6 +144,56 @@
       map.setLayerIndex(eez, 9);
       map.zoomToExtent([-180,-65,-70,5]);
 	    
+		
+		  var infoGnrl = new OpenLayers.Control.WMSGetFeatureInfo({
+	       url:'http://onesharedocean.org/geoserver/ocean/wms',
+	       title:'identify feature by clicking',
+	       output:'features', infoFormat:'application/vnd.ogc.gml',
+	       format: new OpenLayers.Format.GML,
+	       eventListeners: {
+	        getfeatureinfo: function(event) {
+				eezName='';
+				lmeName='';
+				if (typeof(event.features[0])=='undefined'){document.getElementById('infoGeneral').innerHTML='&nbsp;'; return};
+				for (ii=0; ii< event.features.length; ii++){
+					//console.log(event.features[ii].attributes);
+					thisEEZNAME=event.features[ii].attributes['eez'];
+					thisLMENAME=event.features[ii].attributes['LME_NAME'];
+					if (typeof(thisEEZNAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {eezName+=', '+thisEEZNAME}};
+					if (typeof(thisLMENAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {lmeName+=', '+thisLMENAME}};
+				}
+	          document.getElementById('infoGeneral').innerHTML=eezName;
+	        }
+	       }
+	    });
+		
+		uneprsid={'2053':'Abidjan', '170':'Antigua', '994':'Bucharest', '2041':'Helsinki', '2054':'Lima', '1125':'Jeddah', '1119':'Kuwait', '2051':'Noumea', '510':'Cartagena', '2049':'Barcelona', '1960':'Nairobi'};
+		var infoArrangement = new OpenLayers.Control.WMSGetFeatureInfo({
+	       url:'http://onesharedocean.org/geoserver/arrangements/wms',
+	       title:'identify feature by clicking',
+	       output:'features', infoFormat:'application/vnd.ogc.gml',
+	       format: new OpenLayers.Format.GML,
+	       eventListeners: {
+	        getfeatureinfo: function(event) {
+				rfbName='';
+				if (typeof(event.features[0])=='undefined'){document.getElementById('infoArrangement').innerHTML='&nbsp;'; return};
+				for (ii=0; ii< event.features.length; ii++){
+					console.log(event.features[ii].attributes);
+					thisRFBNAME=event.features[ii].attributes['RFB'];
+					thisUnepRSID=event.features[ii].attributes['UNEP_RS_ID'];
+					if (typeof(thisUnepRSID)!='undefined') {if (rfbName=='') {rfbName=uneprsid[thisUnepRSID]} else {rfbName+=', '+uneprsid[thisUnepRSID]}}
+					if (typeof(thisRFBNAME)!='undefined'){if (rfbName=='') {rfbName=thisRFBNAME} else { rfbName+=', '+thisRFBNAME}};
+					if (typeof(thisOther)!='undefined'){if (rfbName=='') {rfbName=thisRFBNAME} else {rfbName+=', '+thisOther}};
+				}
+	          document.getElementById('infoArrangement').innerHTML=rfbName;
+	        }
+	       }
+	    });
+	  
+	  map.addControl(infoGnrl);
+	  infoGnrl.activate();
+	  map.addControl(infoArrangement);
+	  infoArrangement.activate();
     </script>
   </body>
   
