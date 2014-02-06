@@ -85,11 +85,17 @@
 				});
 			});
 			function displayData(areaCode) {
-				$("#cumulDetail").html("Area: "+areaCode+' '+codeMapping[areaCode]);
+				//$("#cumulDetail").html("FAO Fishing Area: "+codeMapping[areaCode]+" ("+areaCode+")");
+				thisData=dataCumul[codeMapping[areaCode]];
+				text='';
+				for (ii=0; ii< thisData.length; ii++) {
+					text += thisData[ii]+'<br/>';
+				}
+				$("#cumulDetail").html("FAO Fishing Area: "+codeMapping[areaCode]+" ("+areaCode+")"+'<br/>'+text);
 				console.log(dataCumul[codeMapping[areaCode]]);
 			};
 		</script>
-		
+
 	</head>
 	<body>
 		Browse FAO Fishing Areas Fact Sheets by map<br>
