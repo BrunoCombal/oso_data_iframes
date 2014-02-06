@@ -5,28 +5,28 @@
     <meta http-equiv="Expires" content="0">
     <title></title>
 	
-<script src="http://onesharedocean.org/sites/all/libraries/jquery-1.11.0.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="http://openlayers.org/api/OpenLayers.js"></script>
+	<script src="http://onesharedocean.org/sites/all/libraries/jquery-1.11.0.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="http://openlayers.org/api/OpenLayers.js"></script>
 
-<link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
-<link rel="stylesheet" href="http://onesharedocean.org/sites/all/libraries/accordion/lmes_accordion.css" type="text/css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+	<link rel="stylesheet" href="http://onesharedocean.org/sites/all/libraries/accordion/lmes_accordion.css" type="text/css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css">
 
-<style type="text/css">
-.ui-front{
-	z-index: 9999999999 !important;
-	cursor: pointer;
-	font-family:sans-serif; font-size:12px;
-}
-#ui-id-1{
-	max-height:300px;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-	 </style>
+	<style type="text/css">
+	.ui-front{
+		z-index: 9999999999 !important;
+		cursor: pointer;
+		font-family:sans-serif; font-size:12px;
+	}
+	#ui-id-1{
+		max-height:300px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	</style>
 	
-    <script type="text/javascript">
+<script type="text/javascript">
         $(function() {
 	    var availableTags = [
 		"01 East Bering Sea", 
@@ -212,7 +212,7 @@
 		//Coral reefs
 		var coral=new OpenLayers.Layer.WMS(
 			"Coral reefs",
-            "http://oensharedocean.org/geoserver/general/wms",
+            "http://onesharedocean.org/geoserver/general/wms",
             {layers:"general:lmes66_data",  styles:'LMES_data_coral', transparent:true, format:'image/png'},
             {singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
         );
@@ -220,7 +220,7 @@
 		//Areas
 		 var areas= new OpenLayers.Layer.WMS(
 			"Areas",
-            "http://oensharedocean.org/geoserver/general/wms",
+            "http://onesharedocean.org/geoserver/general/wms",
             {layers:"general:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
             {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
         );
@@ -298,10 +298,8 @@
 				if($('#accordion').height() > iFrame.height){
 					iFrame.height = $('#accordion').height()+25;
 				}
-			
 			});
 		}
-		
 	})
 });
 
