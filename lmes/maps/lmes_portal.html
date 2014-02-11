@@ -136,42 +136,48 @@ top:1px;
 	    ];
 		$(function() {
 	    var comboText = "Search for an LME or click on the map";
-		$('#buttonLMEs').css('display', 'none');
-		$('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
-		$('#deleteTags').attr('title', 'Clear search box');
-		$('#deleteTags').css('display', 'none');
-		$('#deleteTags').css('margin-right','20px');
-		//$('#deleteTags').css('vertical-align', 'middle');
-		$('#deleteTags').click(function(){
+		$('#deleteTags')
+		.click(function(){
 			$('#tags').attr('value', '');
 			$('#tags').prop('value', '');
 			$('#tags').focus();
 			$('#buttonLMEs').css('display', 'none');
 			$('#deleteTags').css('display', 'none');
-		});
-		$('#deleteTags').mouseenter(function(){
+		})
+		.mouseenter(function(){
 			$('#deleteTags').attr('src', '/iframes/lmes/images/delete_red.png');
 		});
-		$('#deleteTags').mouseleave(function(){
+			$('#deleteTags').mouseleave(function(){
 			$('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
 		});
-		$( "#tags" ).click(function(){
+		
+		
+		$('#tags')
+		.keyup(function(){
+			console.log($('#tags').attr('value'));
+			if($('#tags').prop('value') == ""){
+				$('#deleteTags').css('display','none');
+				$('#buttonLMEs').css('display', 'none');
+			}
+		})
+		.click(function(){
 			if(this.value == comboText){
 				this.value = "";
 				$( "#tags" ).css('color', '#000000');
 			}
-		});
-		$( "#tags" ).keypress(function(){
+		})
+		.keypress(function(){
 			$('#deleteTags').css('display','inline-block');
-		});
-		$( "#tags" ).blur(function(){
+		})
+		.blur(function(){
 			if(this.value ==""){
 				$( "#tags" ).css('color', '#c0c0c0');
 				this.value = comboText;
-				$('#infoblock').css('display', 'none');
+				$('#deleteTags').css('display','none');
+				$('#buttonLMEs').css('display', 'none');
 			}
-		});
-		$( "#tags" ).autocomplete({
+		})
+		.autocomplete({
 	      source: availableTags,
 	      open: function(e, ui) {
 	            var list = '';
@@ -200,8 +206,8 @@ top:1px;
 <body>
 <div class="ui-widget" style="float:none; line-height:50px;">
     <input id="tags" style=" display:inline-block; width:250px; font-family:sans-serif; font-size:12px; border:1px solid #c0c0c0; color:#c0c0c0; vertical-align:middle" value="Search for an LME or click on the map"/>
-    <img id="deleteTags" style="display:none; vertical-align:middle;" />
-	<a id="buttonLMEs" style="vertical-align:middle">Visit LME factsheet</a>
+    <img id="deleteTags" src="/iframes/lmes/images/delete_gray.png" title="Clear search box" style="display:none; vertical-align:middle;margin-right:20px" />
+	<a id="buttonLMEs" style="vertical-align:middle; display:none;">Visit LME factsheet</a>
 	<div id="results" class="ui-front autocomplete; "></div>
 </div>
 
