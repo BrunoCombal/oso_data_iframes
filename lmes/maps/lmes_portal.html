@@ -24,6 +24,47 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
+#buttonLMEs {
+-moz-box-shadow: 0px 1px 0px 0px #ffffff;
+-webkit-box-shadow: 0px 1px 0px 0px #ffffff;
+box-shadow: 0px 1px 0px 0px #ffffff;
+background-color:#ededed;
+-webkit-border-top-left-radius:0px;
+-moz-border-radius-topleft:0px;
+border-top-left-radius:0px;
+-webkit-border-top-right-radius:0px;
+-moz-border-radius-topright:0px;
+border-top-right-radius:0px;
+-webkit-border-bottom-right-radius:0px;
+-moz-border-radius-bottomright:0px;
+border-bottom-right-radius:0px;
+-webkit-border-bottom-left-radius:0px;
+-moz-border-radius-bottomleft:0px;
+border-bottom-left-radius:0px;
+text-indent:0;
+border:1px solid #dcdcdc;
+display:inline-block;
+color:#777777;
+font-family:sans-serif;
+font-size:10px;
+font-weight:bold;
+font-style:normal;
+height:40px;
+line-height:40px;
+width:100px;
+text-decoration:none;
+text-align:center;
+text-shadow:1px 1px 0px #ffffff;
+}
+#b:hover {
+background-color:#dfdfdf;
+vertical-align:middle;
+}
+#buttonLMEs:active {
+position:relative;
+top:1px;
+}
 	 </style>
 	
     <script type="text/javascript">
@@ -95,13 +136,37 @@
 	    ];
 		$(function() {
 	    var comboText = "Search for an LME or click on the map";
+		$('#buttonLMEs').css('display', 'none');
+		$('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
+		$('#deleteTags').attr('title', 'Clear search box');
+		$('#deleteTags').css('display', 'none');
+		$('#deleteTags').css('margin-right','20px');
+		//$('#deleteTags').css('vertical-align', 'middle');
+		$('#deleteTags').click(function(){
+			$('#tags').attr('value', '');
+			$('#tags').prop('value', '');
+			$('#tags').focus();
+			$('#buttonLMEs').css('display', 'none');
+			$('#deleteTags').css('display', 'none');
+		});
+		$('#deleteTags').mouseenter(function(){
+			$('#deleteTags').attr('src', '/iframes/lmes/images/delete_red.png');
+		});
+		$('#deleteTags').mouseleave(function(){
+			$('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
+		});
 		$( "#tags" ).click(function(){
 			if(this.value == comboText){
 				this.value = "";
+				$( "#tags" ).css('color', '#000000');
 			}
+		});
+		$( "#tags" ).keypress(function(){
+			$('#deleteTags').css('display','inline-block');
 		});
 		$( "#tags" ).blur(function(){
 			if(this.value ==""){
+				$( "#tags" ).css('color', '#c0c0c0');
 				this.value = comboText;
 				$('#infoblock').css('display', 'none');
 			}
@@ -121,20 +186,22 @@
 	          var lmecode = lmename.shift();
 	          var lmenode=nodeCodes[parseInt(lmecode)];
 
-	          $('#infoblock').html('Visit '+lmename.join(' ')+' (LME #'+lmecode+')');
-	          $('#infoblock').attr('href','http://onesharedocean.org/?q=node/'+parseInt(lmeCodeToNode(lmecode)));
-	          $('#infoblock').attr('target','_blank');
-			  $('#infoblock').css("display", "block");
+	          $('#buttonLMEs').attr('href','http://onesharedocean.org/?q=node/'+parseInt(lmeCodeToNode(lmecode)));
+	          $('#buttonLMEs').attr('target','_blank');
+			  $('#buttonLMEs').css("display", "inline-block");
 	      }
 	    });
 	  });
-    </script>
-
+   
+	
+   </script>
+	
 </head>
 <body>
-<div class="ui-widget" style="float:none;">
-    <input id="tags" style="float:left; width:320px; font-family:sans-serif; font-size:12px;margin-right:20px" value="Search for an LME or click on the map"/>
-    <a id="infoblock" style="display:none;font-family:sans-serif;" href="#">Select a LME from the list on the map or search;</a>
+<div class="ui-widget" style="float:none; line-height:50px;">
+    <input id="tags" style=" display:inline-block; width:250px; font-family:sans-serif; font-size:12px; border:1px solid #c0c0c0; color:#c0c0c0; vertical-align:middle" value="Search for an LME or click on the map"/>
+    <img id="deleteTags" style="display:none; vertical-align:middle;" />
+	<a id="buttonLMEs" style="vertical-align:middle">Visit LME factsheet</a>
 	<div id="results" class="ui-front autocomplete; "></div>
 </div>
 
@@ -145,26 +212,26 @@
 
 <div id="accordion">
 	<ul>
-		<li><h3 style="margin-top: 6px;"><span onclick="showLayer(map, 1);">LMEs</span></h3>
+		<li><h3 style="margin-top: 6px;"><span onclick="showLayer('lmes');">LMEs</span></h3>
 		</li>
 		<li><h3><span>Productivity</span></h3>
 			<ul>
-				<li><span onclick="showLayer(map, 2);">Primary productivity</span></li>
-				<li><span onclick="showLayer(map, 3);">SST net change</span></li>
+				<li><span onclick="showLayer('pp');">Primary productivity</span></li>
+				<li><span onclick="showLayer('sst_net_change');">SST net change</span></li>
 			</ul>
 		</li>
 		<li><h3><span>Fisheries</span></h3>
 		</li>
 		<li><h3><span>Ecosystem health</span></h3>
 			<ul>
-				<li><span onclick="showLayer(map, 4);">Coral reefs</span></li>
+				<li><span onclick="showLayer('coral');">Coral reefs</span></li>
 			</ul>
 		</li>
 		<li><h3><span>Socio-economic</span></h3>
                 </li>
 		<li><h3><span>Governance</span></h3>
 			<ul>
-				<li><span onclick="showLayer(map, 5);">Areas</span></li>
+				<li><span onclick="showLayer('areas');">Areas</span></li>
 			</ul>
 		</li>
 	</ul>	
@@ -201,7 +268,7 @@
       "LMEs",
       "http://onesharedocean.org/geoserver/ocean/wms",
       {layers:"ocean:LME66", transparent:true, styles:'LMES_colors'},
-      {singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {layerId:'lmes', singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	//Productivity
@@ -241,7 +308,7 @@
 	    //Add layers to map objects
 	    //Add layers to map objects
 		map.addLayers([
-			worldtop,
+			worldtop, //always in first position
 			lmes,
 			pp,
 			sst_net_change,
@@ -249,15 +316,15 @@
 			areas
 		]);
 		
-		function showLayer(map, n){
+		function showLayer(menuItem){
 			for(var i=1; i<map.getNumLayers();i++){
-				var a = map.layers[i].layerId;
-				if(i == n){
+				var layerId = map.layers[i].layerId;
+				if(layerId == menuItem){
 					map.layers[i].setVisibility(true);
-					$('#leg-'+a).css('display', 'block');
+					$('#leg-'+layerId).css('display', 'block');
 				} else {
 					map.layers[i].setVisibility(false);
-					$('#leg-'+a).css('display', 'none');
+					$('#leg-'+layerId).css('display', 'none');
 				}
 			}
 		}
@@ -283,11 +350,12 @@
 			  if (typeof(event.features[0])=='undefined'){return};
 	          LME_NUMBER=event.features[0].attributes.LME_NUMBER;
 	          LME_NAME=event.features[0].attributes.LME_NAME;
-	          $('#infoblock').html('Visit '+LME_NAME+" (LME #"+parseInt(LME_NUMBER)+")");
-	          $('#infoblock').attr("href","http://onesharedocean.org/?q=node/"+parseInt(lmeCodeToNode(LME_NUMBER)));
-	          $('#infoblock').attr("target","_blank");
-			  $('#infoblock').css('display', 'block');
+	          $('#buttonLMEs').attr("href","http://onesharedocean.org/?q=node/"+parseInt(lmeCodeToNode(LME_NUMBER)));
+	          $('#buttonLMEs').attr("target","_blank");
+			  $('#buttonLMEs').css('display', 'inline-block');
 			  $('#tags').prop('value', availableTags[parseInt(LME_NUMBER)-1]);
+			  $('#tags').css('color', '#000000');
+			  $('#deleteTags').css('display', 'inline-block');
 			}
 	       }
 	    });
