@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-Equiv="Cache-Control" content="no-cache"/>
+    <meta http-Equiv="Pragma" Content="no-cache"/>
+    <meta http-Equiv="Expires" content="0"/>
+    <title></title>
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 400px;
+      height: 700px;
+      }
+      #layerswitcher.olControlLayerSwitcher{
+      font-size:12px !important;
+      font-family:sans-serif !important;
+      font-weight: normal;
+      }
+      .olControlLayerSwitcher .layersDiv{
+      background-color:#c0c0c0 !important;
+      margin: 0.5em !important;
+      width:12em;
+      padding-top:0;
+      }
+	  #infoArrangement, #infoGeneral{
+	  font-size:12px !important;
+	  font-weight:normal;
+	  font-family:sans-serif !important;
+	  }
+    </style>
+
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  </head>
+  <body>
+    <div id="map-id" ></div>
+    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+    
+    <script>
+      var extent = new OpenLayers.Bounds(-180,-90,180,90);
+      var minResolution=360/700.0;
+      var maxResolution=5/700.0;
+      var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
+      var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+      var options = {minResolution:minResolution, maxResolution:maxResolution,
+      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+      
+      var map = new OpenLayers.Map("map-id", options);
+      layersSwitcher.maximizeControl();
+
+      var world=new OpenLayers.Layer.WMS(
+      "Countries",
+      "http://onesharedocean.org/geoserver/general/wms",
+      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:true, visibility:true}
+      );
+      
+       var plastics1986 = new OpenLayers.Layer.WMS(
+      "1986",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"SEA_plastics_1986", transparent:true, styles:'SEA_plastics+5px', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      );
+	  
+       var plastics1987 = new OpenLayers.Layer.WMS(
+      "1987",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"SEA_plastics_1987", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      );
+	  
+	  var plastics1989 = new OpenLayers.Layer.WMS(
+      "1989",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"SEA_plastics_1989", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      );
+	  
+	  var plastics1990 = new OpenLayers.Layer.WMS(
+      "1990",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"SEA_plastics_1990", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      );
+	  
+	  var plastics1991 = new OpenLayers.Layer.WMS(
+      "1991",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"SEA_plastics_1991", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      );
+	  
+      map.addLayers([plastics1986, plastics1987, plastics1989, plastics1990, plastics1991, world]);
+      map.setLayerIndex(world, 0);
+      map.setLayerIndex(plastics1986, 1);
+	  map.setLayerIndex(plastics1987, 1);
+	  map.setLayerIndex(plastics1989, 1);
+	  map.setLayerIndex(plastics1990, 1);
+	  map.setLayerIndex(plastics1991, 1);
+      map.zoomToExtent([-87, 10, -57, 48]);
+	  
+    </script>
+  </body>
+  
+</html>
