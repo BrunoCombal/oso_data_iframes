@@ -47,7 +47,7 @@
 		<td style="background:#ffcc00; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">5,000 &ndash; 10,000</td>
 		<td style="background:#ff9900; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">10,000 &ndash; 20,000</td>
 		<td style="background:#ff6600; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20,000 &ndash; 50,000</td>
-		<td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt;50,000</td>
+		<td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt; 50,000</td>
 		</col>
 		</tr>
 		</table>
@@ -57,8 +57,8 @@
     
     <script>
       var extent = new OpenLayers.Bounds(-87, 10, -55, 48);
-      var minResolution=360/760.0;
-      var maxResolution=5/760.0;
+      var minResolution=360/640.0;
+      var maxResolution=5/640.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
       var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
       var options = {minResolution:minResolution, maxResolution:maxResolution,
