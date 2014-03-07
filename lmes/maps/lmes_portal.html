@@ -132,7 +132,9 @@ top:1px;
 		"61 Antarctic",
 		"62 Black Sea",
 		"63 Hudson Bay",
-		"64 Arctic Ocean"
+		"64 Arctic Ocean",
+		"65 Aleutian Islands",
+		"66 Canadian High Arctic / North Greenland"
 	    ];
 		$(function() {
 	    var comboText = "Search for an LME or click on the map";
@@ -228,16 +230,17 @@ top:1px;
 		</li>
 		<li><h3><span>Fisheries</span></h3>
 		</li>
-		<li><h3><span>Ecosystem health</span></h3>
+		<li><h3><span>Pollution &amp; Ecosystems</span></h3>
 			<ul>
 				<li><span onclick="showLayer('coral');">Coral reefs</span></li>
+				<li><span onclick="showLayer('cumulImpact');">Cumulative Impact</span></li>
 			</ul>
 		</li>
-		<li><h3><span>Socio-economic</span></h3>
-                </li>
-		<li><h3><span>Governance</span></h3>
+		<li><h3><span>Socio-economics</span></h3>
+        </li>
+		<li><h3><span>General information</span></h3>
 			<ul>
-				<li><span onclick="showLayer('areas');">Areas</span></li>
+				<li><span onclick="showLayer('areas');">LMEs Area</span></li>
 			</ul>
 		</li>
 	</ul>	
@@ -245,44 +248,43 @@ top:1px;
 <div id="legOL" style="clear:both; width:750px"></div>
 </body>	
     <script>
-      var extent = new OpenLayers.Bounds(-180,-90,180,90);
-      var minResolution=365/$("#mapOL").width();
-      var maxResolution=0.5/$("#mapOL").width();
-      var options = {restrictedExtent:extent, maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution,
-	    controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+		var extent = new OpenLayers.Bounds(-180,-90,180,90);
+		var minResolution=365/$("#mapOL").width();
+		var maxResolution=0.5/$("#mapOL").width();
+		var options = {restrictedExtent:extent, maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution,
+			controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
 
-      nodeCodes={"1":"51", "2":"55", "3":"56", "4":"57", "5":"58", "6":"59", "7":"60", "8":"61", "9":"62", "10":"63",
-	    "11":"65", "12":"66", "13":"67", "14":"68", "15":"69", "16":"70", "17":"71", "18":"72", "19":"73", "20":"74",
-	    "21":"75", "22":"76", "23":"77", "24":"78", "25":"79", "26":"80", "27":"81", "28":"82", "29":"83", "30":"84", 
-	    "31":"85", "32":"86", "33":"87", "34":"88", "35":"89", "36":"90", "37":"91", "38":"92", "39":"93", "40":"94", 
-	    "41":"95", "42":"96", "43":"97", "44":"98", "45":"99", "46":"100", "47":"101", "48":"102", "49":"103", "50":"104", 
-	    "51":"105", "52":"106", "53":"107", "54":"108", "55":"109", "56":"110", "57":"111", "58":"112", "59":"113", "60":"114", 
-	    "61":"115", "62":"116", "63":"117", "64":"118", "65":"119", "66":"120"}; // LME_CODE:"nodeCode"
+		nodeCodes={"1":"51", "2":"55", "3":"56", "4":"57", "5":"58", "6":"59", "7":"60", "8":"61", "9":"62", "10":"63",
+		"11":"65", "12":"66", "13":"67", "14":"68", "15":"69", "16":"70", "17":"71", "18":"72", "19":"73", "20":"74",
+		"21":"75", "22":"76", "23":"77", "24":"78", "25":"79", "26":"80", "27":"81", "28":"82", "29":"83", "30":"84", 
+		"31":"85", "32":"86", "33":"87", "34":"88", "35":"89", "36":"90", "37":"91", "38":"92", "39":"93", "40":"94", 
+		"41":"95", "42":"96", "43":"97", "44":"98", "45":"99", "46":"100", "47":"101", "48":"102", "49":"103", "50":"104", 
+		"51":"105", "52":"106", "53":"107", "54":"108", "55":"109", "56":"110", "57":"111", "58":"112", "59":"113", "60":"114", 
+		"61":"115", "62":"116", "63":"117", "64":"118", "65":"119", "66":"120"}; // LME_CODE:"nodeCode"
 
-      var map = new OpenLayers.Map("mapOL", options);
+		var map = new OpenLayers.Map("mapOL", options);
 
-	  //Map of the world
-	  var worldtop=new OpenLayers.Layer.WMS(
-      "Countries",
-      "http://onesharedocean.org/geoserver/general/wms",
-      {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
-      {singleTile:true, isBaseLayer:true, visibility:true, opacity:1}
-      );
+		//Map of the world
+		var worldtop=new OpenLayers.Layer.WMS(
+			"Countries",
+			"http://onesharedocean.org/geoserver/general/wms",
+			{layers:"general:world_epsg4326", transparent:true,styles:'countries_lightyellow_noname', format:'image/png'},
+			{singleTile:true, isBaseLayer:true, visibility:true, opacity:1}
+		);
 	
-	//LMEs
+		//LMEs
 		var lmes = new OpenLayers.Layer.WMS(
-      "LMEs",
-      "http://onesharedocean.org/geoserver/ocean/wms",
-      {layers:"ocean:LME66", transparent:true, styles:'LMES_colors'},
-      {layerId:'lmes', singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
-      );
+			"LMEs",
+			"http://onesharedocean.org/geoserver/ocean/wms",
+			{layers:"ocean:LME66", transparent:true, styles:'LMES_colors'},
+			{layerId:'lmes', singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+		);
 	  
-	//Productivity
 		//Primary productivity
 		var pp=new OpenLayers.Layer.WMS(
 			"PP",
-            "http://onesharedocean.org/geoserver/general/wms",
-            {layers:"general:lmes66_data",  transparent:true, styles:'LMES_data_pp', format:'image/png'},
+            "http://onesharedocean.org/geoserver/lmes/wms",
+            {layers:"lmes:lmes66_data",  transparent:true, styles:'lmes_data_pp', format:'image/png'},
             {layerId:'pp', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
         );
 		
@@ -294,24 +296,31 @@ top:1px;
             {layerId:'sst_net_change',singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
         );
 
-	//Ecosystem
+		//Ecosystem
 		//Coral reefs
 		var coral=new OpenLayers.Layer.WMS(
 			"Coral reefs",
-            "http://onesharedocean.org/geoserver/general/wms",
-            {layers:"general:lmes66_data",  styles:'LMES_data_coral', transparent:true, format:'image/png'},
+            "http://onesharedocean.org/geoserver/lmes/wms",
+            {layers:"lmes:lmes66_data",  styles:'lmes_data_coral', transparent:true, format:'image/png'},
             {layerId:'coral', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
         );
-	//Governance
+
 		//Areas
 		 var areas= new OpenLayers.Layer.WMS(
 			"Areas",
-            "http://onesharedocean.org/geoserver/general/wms",
-            {layers:"general:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
+            "http://onesharedocean.org/geoserver/lmes/wms",
+            {layers:"lmes:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
             {layerId:'areas', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
         );
-					
-	    //Add layers to map objects
+
+		// Impacts
+		var cumulImpact = new OpenLayers.Layer.WMS(
+			"CumulImpact",
+			"http://onesharedocean.org/geoserver/lmes/wms",
+			{layers:"lmes:cumulImpact_LME66", styles:'lmes_cumulimpact', transparent:true, format:'image/png'},
+			{layerId:'cumulImpact', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+		);
+
 	    //Add layers to map objects
 		map.addLayers([
 			worldtop, //always in first position
@@ -319,7 +328,8 @@ top:1px;
 			pp,
 			sst_net_change,
 			coral,
-			areas
+			areas,
+			cumulImpact
 		]);
 		
 		function showLayer(menuItem){
@@ -334,8 +344,8 @@ top:1px;
 				}
 			}
 		}
-//      
-            map.zoomToMaxExtent();
+
+		map.zoomToMaxExtent();
 
 	    function lmeCodeToNode(code){
 	      node=8; // page not found
@@ -399,8 +409,9 @@ top:1px;
 $.get("/iframes/lmes/maps/lmes_portal_legends.html", function(data){
 	$('#legOL').html(data);
 });
+
+//Post-change of the controls position on the map
+$('#OpenLayers_Control_PanZoom_2').css('top','220px');
 </script>
-
-
 
 </html>
