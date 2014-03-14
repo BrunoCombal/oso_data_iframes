@@ -219,31 +219,37 @@ top:1px;
 </div>
 
 <div id="accordion">
-	<ul>
-		<li><h3 style="margin-top: 6px;"><span onclick="showLayer('lmes');">LMEs</span></h3>
-		</li>
-		<li><h3><span>Productivity</span></h3>
-			<ul>
-				<li><span onclick="showLayer('pp');">Primary productivity</span></li>
-				<li><span onclick="showLayer('sst_net_change');">SST net change</span></li>
-			</ul>
-		</li>
-		<li><h3><span>Fisheries</span></h3>
-		</li>
-		<li><h3><span>Pollution &amp; Ecosystems</span></h3>
-			<ul>
-				<li><span onclick="showLayer('coral');">Coral reefs</span></li>
-				<li><span onclick="showLayer('cumulImpact');">Cumulative Impact</span></li>
-			</ul>
-		</li>
-		<li><h3><span>Socio-economics</span></h3>
-        </li>
-		<li><h3><span>General information</span></h3>
-			<ul>
-				<li><span onclick="showLayer('areas');">LMEs Area</span></li>
-			</ul>
-		</li>
-	</ul>	
+  <ul>
+    <li><h3 style="margin-top: 6px;"><span onclick="showLayer('lmes');">LMEs</span></h3>
+    </li>
+    <li><h3><span>Productivity</span></h3>
+      <ul>
+	<li><span onclick="showLayer('pp');">Primary productivity</span></li>
+	<li><span onclick="showLayer('sst_net_change');">SST net change</span></li>
+      </ul>
+    </li>
+    <li><h3><span>Fisheries</span></h3>
+    </li>
+    <li><h3><span>Pollution &amp; Ecosystems</span></h3>
+      <ul>
+	<li><span onclick="showLayer('coral');">Coral reefs</span></li>
+	<li><span onclick="showLayer('mangroves');">Mangroves</span></li>
+	<li><span onclick="showLayer('cumulImpact');">Cumulative Impact</span></li>
+      </ul>
+    </li>
+    <li><h3><span>Socio-economics</span></h3>
+      <ul>
+	<li><span onclick="showLayer('population');">Total population</span></li>
+	<li><span onclick="showLayer('ruralpopulation')">Rural population</span></li>
+	<li><span onclick="showLayer('urbanpopulation')">Urban population</span></li>
+      </ul>
+    </li>
+    <li><h3><span>General information</span></h3>
+      <ul>
+	<li><span onclick="showLayer('areas');">LMEs Area</span></li>
+      </ul>
+    </li>
+  </ul>	
 </div>
 <div id="legOL" style="clear:both; width:750px"></div>
 </body>	
@@ -305,6 +311,14 @@ top:1px;
             {layerId:'coral', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
         );
 
+		// mangroves
+		var coral=new OpenLayers.Layer.WMS(
+			"Mangroves",
+            "http://onesharedocean.org/geoserver/lmes/wms",
+            {layers:"lmes:mangrovepercent_lmes66",  styles:'lmes_mangrovespercent', transparent:true, format:'image/png'},
+            {layerId:'mangroves', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
+		
 		//Areas
 		 var areas= new OpenLayers.Layer.WMS(
 			"Areas",
@@ -321,15 +335,43 @@ top:1px;
 			{layerId:'cumulImpact', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
 		);
 
+
+		// Socio eco: population
+		var population = new OpenLayers.Layer.WMS(
+		"Population",
+		"http://onesharedocean.org/geoserver/lmes/wms",
+		{layers:"lmes:population_LME66", styles:'lmes_population', transparent:true, format:'image/png'},
+		{layerId:'population', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+		);
+
+
+		var ruralpopulation = new OpenLayers.Layer.WMS(
+		"Rural population",
+		"http://onesharedocean.org/geoserver/lmes/wms",
+		{layers:"lmes:population_LME66", styles:'lmes_ruralpopulation', transparent:true, format:'image/png'},
+		{layerId:'ruralpopulation', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+		);
+
+		var urbanpopulation = new OpenLayers.Layer.WMS(
+		"Urban population",
+		"http://onesharedocean.org/geoserver/lmes/wms",
+		{layers:"lmes:population_LME66", styles:'lmes_urbanpopulation', transparent:true, format:'image/png'},
+		{layerId:'urbanpopulation', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+		);
+
+
 	    //Add layers to map objects
 		map.addLayers([
-			worldtop, //always in first position
-			lmes,
-			pp,
-			sst_net_change,
-			coral,
-			areas,
-			cumulImpact
+		worldtop, //always in first position
+		lmes,
+		pp,
+		sst_net_change,
+		coral,
+		areas,
+		cumulImpact,
+		population,
+		ruralpopulation,
+		urbanpopulation
 		]);
 		
 		function showLayer(menuItem){
