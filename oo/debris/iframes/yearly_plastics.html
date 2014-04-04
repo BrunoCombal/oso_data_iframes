@@ -47,7 +47,7 @@
 		<td style="background:#ffcc00; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">5,000 &ndash; 10,000</td>
 		<td style="background:#ff9900; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">10,000 &ndash; 20,000</td>
 		<td style="background:#ff6600; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20,000 &ndash; 50,000</td>
-		<td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt; 50,000</td>
+		<td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt;50,000</td>
 		</col>
 		</tr>
 		</table>
@@ -57,8 +57,8 @@
     
     <script>
       var extent = new OpenLayers.Bounds(-87, 10, -55, 48);
-      var minResolution=360/640.0;
-      var maxResolution=5/640.0;
+      var minResolution=360/760.0;
+      var maxResolution=5/760.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
       var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
       var options = {minResolution:minResolution, maxResolution:maxResolution,
@@ -76,155 +76,155 @@
       
       var plastics1986 = new OpenLayers.Layer.WMS(
       "1986",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1986", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1986", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 
       var plastics1987 = new OpenLayers.Layer.WMS(
       "1987",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1987", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1987", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1989 = new OpenLayers.Layer.WMS(
       "1989",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1989", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1989", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1990 = new OpenLayers.Layer.WMS(
       "1990",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1990", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1990", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1991 = new OpenLayers.Layer.WMS(
       "1991",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1991", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1991", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 
 	  var plastics1992 = new OpenLayers.Layer.WMS(
       "1992",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1992", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1992", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1993 = new OpenLayers.Layer.WMS(
       "1993",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1993", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1993", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );	  
 	  
 	  var plastics1994 = new OpenLayers.Layer.WMS(
       "1994",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1994", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1994", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1995 = new OpenLayers.Layer.WMS(
       "1995",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1995", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1995", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1996 = new OpenLayers.Layer.WMS(
       "1996",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1996", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1996", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics1997 = new OpenLayers.Layer.WMS(
       "1997",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1997", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1997", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 
 	  var plastics1998 = new OpenLayers.Layer.WMS(
       "1998",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1998", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1998", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	
 	  var plastics1999 = new OpenLayers.Layer.WMS(
       "1999",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_1999", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_1999", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	
 	  var plastics2000 = new OpenLayers.Layer.WMS(
       "1998",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2000", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2000", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );	
 	
 	  var plastics2001 = new OpenLayers.Layer.WMS(
       "1998",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2001", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2001", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );	
 
 	  var plastics2002 = new OpenLayers.Layer.WMS(
       "2002",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2002", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2002", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics2003 = new OpenLayers.Layer.WMS(
       "2003",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2003", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2003", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );	  
 	  
 	  var plastics2004 = new OpenLayers.Layer.WMS(
       "2004",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2004", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2004", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );  
 	  
 	  var plastics2005 = new OpenLayers.Layer.WMS(
       "2005",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2005", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2005", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics2006 = new OpenLayers.Layer.WMS(
       "2006",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2006", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2006", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );	  
 	  
 	  var plastics2007 = new OpenLayers.Layer.WMS(
       "2007",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2007", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2007", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics2008 = new OpenLayers.Layer.WMS(
       "2008",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"SEA_plastics_2008", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:SEA_plastics_2008", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
       {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
       );
 
