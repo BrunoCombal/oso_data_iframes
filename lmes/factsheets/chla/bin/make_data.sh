@@ -8,10 +8,15 @@ inDir='../annual_mean_chl_data_csv_files'
 template='chla_template.html'
 outiframe='../iframes'
 outdata='../data'
+codeFile='../data/'
 
 for f in ${inDir}/*.CSV
 do
     lme=$(awk -F ',' 'NR==2 {print $1}' $f | tr '[:upper:]' '[:lower:]')
+
+    
+
+
     lmeName=$(echo ${lme} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g")
     outfile=${outdata}/${lme}.csv
     awk -F ',' '{if ($3>2) print $2,$4,$5,$6,$7,$10}' $f | sed 's/!Y_//g' > ${outfile}
@@ -20,7 +25,7 @@ do
     cp ${template} ${iframe}
     # update information in the html page
     title=($(echo $lme | sed 's/_/\ /g'))
-echo ${title[@]}
+    echo ${title[@]}
     perl -i -pe 's/CHARTTITLETOREPLACE/Chlorophyl-a ('"${lmeName}"')/' ${iframe}
     recodedoutfile=$(echo $outfile | sed 's|/|\\/|g' | sed 's|\.|\\.|g')
     echo $recodedoutfile
