@@ -25,6 +25,8 @@
 	margin:0 6px 0 0;
 	font-size:12px;
 }
+
+
 #leg-areas ul li{
    width:175px;
 }
@@ -39,25 +41,47 @@
 }
 
 </style>
-<div id="leg-pp" class="legendOL" rel="LMES_data_pp">
-<span>Primary Productivity ( mgC.m<sup>-2</sup>.day<sup>-1</sup>)</span><br /><br />
+<div id="leg-chla" class="legendOL" rel="LMES_data_chla">
+<span>Long term mean Chlorophyll-A concentration (mg.m<sup>-3</sup>) <small>Source: J.E. O'Reilly <a href="http://onesharedocean.org/?q=node/27">get data and metainformation</a></small></span><br /><br />
 	<ul>
-		<li><span style="background-color:#F0F9E8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>23,00 - 494,75</li>
-		<li><span style="background-color:#BAE4BC;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>494,75 - 966,50</li>
-		<li><span style="background-color:#7BCCC4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>966,50 - 1438,25</li>
-		<li><span style="background-color:#2B8CBE;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1438,25 - 1910,00</li>
-		<li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>No data</li>
+		<li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.05 &ndash; 0.20</li>
+		<li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.20 &ndash; 0.40</li>
+		<li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.40 &ndash; 0.60</li>
+		<li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.60 &ndash; 0.80</li>
+		<li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&gt;0.8</li>
 	</ul>
+</div>
+
+<div id="leg-pp_mean" class="legendOL" rel="LMES_data_pp">
+<span>Long term mean primary productivity (g.C.m<sup>-2</sup>.day<sup>-1</sup>) <small>Source: J.E. O'Reilly <a href="http://onesharedocean.org/?q=node/27">get data and metainformation</a></small></span><br /><br />
+	<ul>
+		<li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.15 &ndash; 0.40</li>
+		<li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.40 &ndash; 0.80</li>
+		<li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.80 &ndash; 1.20</li>
+		<li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1.20 &ndash; 1.60</li>
+		<li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1.60 &ndash; 2.00</li>
+	</ul>
+</div>
+
+<div id="leg-pp_trend" class="legendOL" rel="LMES_data_pp">
+  <span>Primary productivity change rate, 1996 &ndash; 2014 (g.C.m<sup>-2</sup>.day<sup>-1</sup>.year<sup>-1</sup>)</span><br/><span><small>Source: J.E. O'Reilly <a href="http://onesharedocean.org/?q=node/27">get data and metainformation</a></small></span><br/><br/>
+  <ul>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-0.040 &ndash; -0.020</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-0.020 &ndash; -0.005</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-0.005 &ndash; 0.005</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.005 &ndash; 0.020</li>
+    <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.020 &ndash; 0.040</li>
+  </ul>
 </div>
 
 <div id="leg-sst_net_change" class="legendOL" ref="lmes_sst_change">
 <span>Net SST change (&deg;C) between 1957 and 2012 <small>Source: I.M. Belkin, <a href="http://onesharedocean.org/?q=node/27" target="_top"> get data and meta-information</a></small></span><br /><br />
 	<ul>
-		<li><span style="background-color:#2189b4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-0.5 - 0</li>
-		<li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0 - 0.5</li>
-		<li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.5 - 1.0</li>
-		<li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1.0 - 1.5</li>
-		<li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1.5 - 2.0</li>
+		<li><span style="background-color:#2189b4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-0.5 &ndash; 0.0</li>
+		<li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.0 &ndash; 0.5</li>
+		<li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0.5 &ndash; 1.0</li>
+		<li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1.0 &ndash; 1.5</li>
+		<li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1.5 &ndash; 2.0</li>
 		<li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>No data</li>
 	</ul>
 </div>
@@ -66,11 +90,11 @@
 	<span>Percentage of world coral reefs <small> source: <a href="http://www.seaaroundus.org/" target="_blank">www.seaaroundus.org</a></small></span><br /><br />
 	<ul>
 		<li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>No coral</li>
-		<li><span style="background-color:#1A7D50;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 - 1%[</li>
-		<li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]1% - 5%[</li>
-		<li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]5% - 10%[</li>
-		<li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]10% - 15%[</li>
-		<li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]15% - 20%[</li>
+		<li><span style="background-color:#1A7D50;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 &ndash; 1%[</li>
+		<li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]1% &ndash; 5%[</li>
+		<li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]5% &ndash; 10%[</li>
+		<li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]10% &ndash; 15%[</li>
+		<li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]15% &ndash; 20%[</li>
 	</ul>
 </div>
  
@@ -78,11 +102,11 @@
 <span>LME area (km<sup>2</sup>) <small> source: <a href="http://www.seaaroundus.org/" target="_blank">www.seaaroundus.org</a></small></span><br /><br />
 	<ul>
 		<li><span style="background-color:#FFFFCC;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt; 1,000,000</li>
-		<li><span style="background-color:#FFEDA0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1,000,000 - 2,000,000</li>
-		<li><span style="background-color:#FEB24C;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2,000,000 - 3,000,000</li>
-		<li><span style="background-color:#FC4E2A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>3,000,000 - 4,000,000</li>
-		<li><span style="background-color:#BD0026;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>4,000,000 - 5,000,000</li>
-		<li><span style="background-color:#800026;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5,000,000 - 6,000,000</li>
+		<li><span style="background-color:#FFEDA0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1,000,000 &ndash; 2,000,000</li>
+		<li><span style="background-color:#FEB24C;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2,000,000 &ndash; 3,000,000</li>
+		<li><span style="background-color:#FC4E2A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>3,000,000 &ndash; 4,000,000</li>
+		<li><span style="background-color:#BD0026;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>4,000,000 &ndash; 5,000,000</li>
+		<li><span style="background-color:#800026;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5,000,000 &ndash; 6,000,000</li>
 		<li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>no data</li>
 	</ul>
 </div>
@@ -90,64 +114,104 @@
 <div id="leg-cumulImpact" class="legendOL" ref="lmes_cumulimpact">
 <span>Cumulative impact <small>source: <a href="http://onesharedocean.org/?q=node/30" target="_blank">B. Halpern, UCSB</a>. Download <a href="#">data</a></small></span><br /><br />
 	<ul>
-		<li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0 - 1[</li>
-		<li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 - 2[</li>
-		<li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[2 - 3[</li>
-		<li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[3 - 4[</li>
-		<li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[4 - 5[</li>
-		<li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[5 - 6]</li>
+		<li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0 &ndash; 1[</li>
+		<li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 &ndash; 2[</li>
+		<li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[2 &ndash; 3[</li>
+		<li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[3 &ndash; 4[</li>
+		<li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[4 &ndash; 5[</li>
+		<li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[5 &ndash; 6]</li>
 	</ul>
 </div>
+
+<div id="leg-icep" class="legendOL" ref="lmes_icep">
+<span>ICEP, Index of Coastal Eutrophication (kg.C.km<sup>-2</sup>.day<sup>-1</sup>)<small><br/>Source: S. P. Seitzinger. <a href="http://onesharedocean.org/?q=node/27">get data and metainformation</a></small></span><br /><br />
+	<ul>
+	  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;-5</li>
+	  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-5 &ndash; -2</li>
+	  <li><span style="background-color:rgb(174,207,71);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-2 &ndash; 0</li>
+	  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0 &ndash; 2</li>
+	  <li><span style="background-color:rgb(233,193,67);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2 &ndash; 5</li>
+	  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5 &ndash; 10</li>
+	  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&gt; 10</li>
+	</ul>
+</div>
+
+<div id="leg-icep_n" class="legendOL" ref="lmes_icep_n">
+<span>ICEP&ndash;N, Index of Nitrogen Coastal Eutrophication (kg.C.km<sup>-2</sup>.day<sup>-1</sup>)<small><br/>Source: S. P. Seitzinger. <a href="http://onesharedocean.org/?q=node/27">get data and metainformation</a></small></span><br /><br />
+	<ul>
+	  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;-5</li>
+	  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-5 &ndash; -2</li>
+	  <li><span style="background-color:rgb(174,207,71);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-2 &ndash; 0</li>
+	  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0 &ndash; 2</li>
+	  <li><span style="background-color:rgb(233,193,67);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2 &ndash; 5</li>
+	  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5 &ndash; 10</li>
+	  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&gt; 10</li>
+	</ul>
+</div>
+
+<div id="leg-icep_p" class="legendOL" ref="lmes_icep_p">
+<span>ICEP&ndash;P, Index of Phosphorus Coastal Eutrophication (kg.C.km<sup>-2</sup>.day<sup>-1</sup>)<small><br/>Source: S. P. Seitzinger. <a href="http://onesharedocean.org/?q=node/27">get data and metainformation</a></small></span><br /><br />
+	<ul>
+	  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;-5</li>
+	  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-5 &ndash; -2</li>
+	  <li><span style="background-color:rgb(174,207,71);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-2 &ndash; 0</li>
+	  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0 &ndash; 2</li>
+	  <li><span style="background-color:rgb(233,193,67);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2 &ndash; 5</li>
+	  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5 &ndash; 10</li>
+	  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&gt; 10</li>
+	</ul>
+</div>
+
 
 <div id="leg-mangroves" class="legendOL" ref="lmes_mangroves">
 <span>Percentage of mangrove area of the LME<small>source: <a href="http://www.unep-wcmc.org/" target="_blank">WCMC</a>. Download <a href="#">data</a></small></span><br /><br />
 	<ul>
-		<li><span style="background-color:#BAE4B3;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.2% - 0.4%[</li>
-		<li><span style="background-color:#74c476;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.4% - 0.6%[</li>
-		<li><span style="background-color:#31A354;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.6% - 0.8%[</li>
-		<li><span style="background-color:#006d2c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.8% - 0.1%[</li>
+		<li><span style="background-color:#BAE4B3;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.2% &ndash; 0.4%[</li>
+		<li><span style="background-color:#74c476;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.4% &ndash; 0.6%[</li>
+		<li><span style="background-color:#31A354;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.6% &ndash; 0.8%[</li>
+		<li><span style="background-color:#006d2c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[0.8% &ndash; 0.1%[</li>
 	</ul>
 </div>
 
 <div id="leg-population" class="legendOL" ref="lmes_population">
-<span>Total population leaving by the LME (up to 100 km) in 2010 <small>source: <a href="#" target="_blank">Liana Mc Manus</a>. Download <a href="#">data</a></small></span><br/><br/>
+<span>Total population living by the LME (up to 100 km) in 2010 <small>source: <a href="#" target="_blank">Liana Mc Manus</a>. Download <a href="#">data</a></small></span><br/><br/>
 <ul>
-  <li><span style="background-color:#2789B4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 - 100 000[</li>
-  <li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]100 000 - 1 000 000[</li>
-  <li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 000 000 - 10 000 000[</li>
-  <li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[10 000 000 - 50 000 000[</li>
-  <li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[50 000 000 - 100 000 000[</li>
-  <li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[100 000 000 - 250 000 000[</li>
-  <li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[250 000 000 - 500 000 000]</li>
+  <li><span style="background-color:#2789B4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 &ndash; 100 000[</li>
+  <li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]100 000 &ndash; 1 000 000[</li>
+  <li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 000 000 &ndash; 10 000 000[</li>
+  <li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[10 000 000 &ndash; 50 000 000[</li>
+  <li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[50 000 000 &ndash; 100 000 000[</li>
+  <li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[100 000 000 &ndash; 250 000 000[</li>
+  <li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[250 000 000 &ndash; 500 000 000]</li>
   <li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>no data or no population</li>
 </ul>
 </div>
 
 <div id="leg-ruralpopulation" class="legendOL" ref="lmes_ruralpopulation">
-<span>Rural population leaving by the LME (up to 100 km) in 2010 <small>source: <a href="#" target="_blank">Liana Mc Manus</a>. Download <a href="#">data</a></small></span><br/><br/>
+<span>Rural population living by the LME (up to 100 km) in 2010 <small>source: <a href="#" target="_blank">Liana Mc Manus</a>. Download <a href="#">data</a></small></span><br/><br/>
 <ul>
-  <li><span style="background-color:#2789B4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 - 100 000[</li>
-  <li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]100 000 - 1 000 000[</li>
-  <li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 000 000 - 10 000 000[</li>
-  <li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[10 000 000 - 50 000 000[</li>
-  <li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[50 000 000 - 100 000 000[</li>
-  <li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[100 000 000 - 250 000 000[</li>
-  <li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[250 000 000 - 500 000 000]</li>
+  <li><span style="background-color:#2789B4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 &ndash; 100 000[</li>
+  <li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]100 000 &ndash; 1 000 000[</li>
+  <li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 000 000 &ndash; 10 000 000[</li>
+  <li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[10 000 000 &ndash; 50 000 000[</li>
+  <li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[50 000 000 &ndash; 100 000 000[</li>
+  <li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[100 000 000 &ndash 250 000 000[</li>
+  <li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[250 000 000 &ndash; 500 000 000]</li>
   <li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>no data or no population</li>
 </ul>
 </div>
 
 
 <div id="leg-urbanpopulation" class="legendOL" ref="lmes_urbanpopulation">
-<span>Urban population leaving by the LME (up to 100 km) in 2010 <small>source: <a href="#" target="_blank">Liana Mc Manus</a>. Download <a href="#">data</a></small></span><br/><br/>
+<span>Urban population living by the LME (up to 100 km) in 2010 <small>source: <a href="#" target="_blank">Liana Mc Manus</a>. Download <a href="#">data</a></small></span><br/><br/>
 <ul>
-  <li><span style="background-color:#2789B4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 - 100 000[</li>
-  <li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]100 000 - 1 000 000[</li>
-  <li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 000 000 - 10 000 000[</li>
-  <li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[10 000 000 - 50 000 000[</li>
-  <li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[50 000 000 - 100 000 000[</li>
-  <li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[100 000 000 - 250 000 000[</li>
-  <li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[250 000 000 - 500 000 000]</li>
+  <li><span style="background-color:#2789B4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]0 &ndash; 100 000[</li>
+  <li><span style="background-color:#1A9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]100 000 &ndash; 1 000 000[</li>
+  <li><span style="background-color:#91CF60;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[1 000 000 &ndash; 10 000 000[</li>
+  <li><span style="background-color:#D9EF8B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[10 000 000 &ndash; 50 000 000[</li>
+  <li><span style="background-color:#FEE08B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[50 000 000 &ndash; 100 000 000[</li>
+  <li><span style="background-color:#FC8D59;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[100 000 000 &ndash; 250 000 000[</li>
+  <li><span style="background-color:#D73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[250 000 000 &ndash; 500 000 000]</li>
   <li><span style="background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>no data or no population</li>
 </ul>
 </div>
