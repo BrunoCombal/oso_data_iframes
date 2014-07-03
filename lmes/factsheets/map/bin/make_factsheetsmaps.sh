@@ -38,7 +38,6 @@ do
     nextLME=$( echo "(${ii} -1 + 1)%66+1" | bc)
     prevLME=$( echo "($ii -1)" | bc )
     nextName=`awk -v lmecode=${nextLME} -F ';' '{if ($2==lmecode) print $1}' $csv`
-    echo "+++++" $nextName
     if [ $prevLME -eq 0 ]; then
 	prevName=`awk -v lmecode=66 -F ';' '{if ($2==lmecode) print $1}' $csv`
     else
@@ -65,13 +64,11 @@ do
     sed -i 's/SMTOREPLACE/'${values[4]}'/' ${outname}
     sed -i 's/PPTOREPLACE/'${values[5]}'/' ${outname}
     # replace countries
-    echo "RRRRRR countries"$countries
     if [ -z "${countries}" ]; then
 		sed -i 's/COUNTRYTOREPLACE/No Country/' ${outname}
     else
 		plural=0
 		plural=$(echo ${countries} | grep ',' | wc -l)
-		echo "PLURAL "$plural
 		if [ $plural -eq 0 ]; then
 			countries="\<b\>Country:\<\/b\> "${countries}
 		else
