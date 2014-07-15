@@ -167,8 +167,10 @@
 	<li><h3><span>Pollution</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('icep');">ICEP</span></li>
-	    <li><span onclick="showLayer('icep_n');">ICEP-N</span></li>
+
+<!--	    <li><span onclick="showLayer('icep_n');">ICEP-N</span></li>
 	    <li><span onclick="showLayer('icep_p');">ICEP-P</span></li>
+-->
 	    <li><span onclick="showLayer('plasticsmicro');">Micro Plastics</span></li>
 	    <li><span onclick="showLayer('plasticsmacro');">Macro Plastics</span></li>
 	  </ul>
@@ -231,7 +233,6 @@
     var lmes = new OpenLayers.Layer.WMS(
     "LMES",
     "http://onesharedocean.org/geoserver/lmes/wms",
-//    {layers:"ocean:LME66", transparent:true, styles:'LMES_colors'},
     {layers:"lmes:lmes66_pwp", transparent:true, styles:'', format:'image/png'},
     {layerId:'lmes', singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
     );
@@ -327,7 +328,7 @@
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep', transparent:true, format:'image/png'},
     {layerId:'icep', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
-
+<!--
     var icepn = new OpenLayers.Layer.WMS(
     "ICEP N",
     "http://onesharedocean.org/geoserver/lmes/wms",
@@ -341,7 +342,7 @@
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep_p', transparent:true, format:'image/png'},
     {layerId:'icep_p', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
-
+-->
     var plasticsModelMicroCount = new OpenLayers.Layer.WMS(
     "Micro plastics",
     "http://onesharedocean.org/geoserver/lmes/wms",
@@ -371,7 +372,8 @@
     population,
     ruralpopulation,
     urbanpopulation,
-    icep, icepn, icepp,
+    icep,
+    //icepn, icepp,
     plasticsModelMicroCount, plasticsModelMacroWeight
     ]);
     
@@ -390,26 +392,27 @@
 		     
 		     map.zoomToMaxExtent();
 		     
-		     var info = new OpenLayers.Control.WMSGetFeatureInfo({
-		     url:'http://onesharedocean.org/geoserver/lmes/wms',
-		     title:'identify feature by clicking',
-		     output:'features',
-		     infoFormat:'application/vnd.ogc.gml',
-		     format: new OpenLayers.Format.GML,
 		     
-		     eventListeners: {
-	             getfeatureinfo: function(event) {
+		     var info = new OpenLayers.Control.WMSGetFeatureInfo({
+		       url:'http://onesharedocean.org/geoserver/lmes/wms',
+		       output:'features',
+		       infoFormat:'application/vnd.ogc.gml',
+		       format: new OpenLayers.Format.GML,
+		       layers:[lmes],
+		     
+		       eventListeners: {
+	                getfeatureinfo: function(event) {
 	             
-		     if (typeof(event.features[0])=='undefined'){return};
-	             LME_NUMBER=event.features[0].attributes.LME_NUMBER;
-				 LME_NAME=event.features[0].attributes.LME_NAME;
-				 $('#buttonLMEs').attr("href","http://onesharedocean.org/?q=node/"+parseInt(lmeCodeToNode(
+		         if (typeof(event.features[0])=='undefined'){return};
+	                 LME_NUMBER=event.features[0].attributes.LME_NUMBER;
+			 LME_NAME=event.features[0].attributes.LME_NAME;
+			 $('#buttonLMEs').attr("href","http://onesharedocean.org/?q=node/"+parseInt(lmeCodeToNode(
 				 LME_NUMBER)));
-				 $('#buttonLMEs').attr("target","_blank");
-				$('#buttonLMEs').css('display', 'inline-block');
-				$('#tags').prop('value', LME_NUMBER+' '+LME_NAME);
-				$('#tags').css('color', '#000000');
-				$('#deleteTags').css('display', 'inline-block');
+			 $('#buttonLMEs').attr("target","_blank");
+			$('#buttonLMEs').css('display', 'inline-block');
+			$('#tags').prop('value', LME_NUMBER+' '+LME_NAME);
+			$('#tags').css('color', '#000000');
+			$('#deleteTags').css('display', 'inline-block');
 		     }
 		     }
 		     });
