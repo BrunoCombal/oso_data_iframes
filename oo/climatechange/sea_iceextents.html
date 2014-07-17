@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Artic minimal sea ice extent, actual and projections</title>
+		<title>Arctic minimal sea ice extent, actual and projections</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript">
 $(function () {
@@ -10,15 +10,18 @@ $(function () {
             credits: {enabled:true, href:'http://nsidc.org/data/seaice_index/', text:'Measured data: NSDIC'},
             chart: {
                 type: 'line',
-                marginRight: 180,
-                marginBottom: 40,
+                marginRight: 0,
+                marginBottom: 100,
                 zoomType: 'x',
                 resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-50}, 
                                   theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}}
             },
             title: {
-                text: 'Artic minimal sea ice extent (actual and projections)',
-                x: -60 //center
+                text: '<center>Arctic minimal sea ice extent<br/><small>observations and projections</small></center>',
+                x: 0, //center
+                useHTML: true,
+                align:'center',
+                style:{font:'14px Verdana, sans-serif', color:'#000000'}
             },
             xAxis:{
               title: {text:'Date'},
@@ -43,12 +46,8 @@ $(function () {
                            }
             },
             legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -10,
-                y: 30,
-                borderWidth: 0
+                borderWidth: 0,
+                y:10
             },
             series: [
 {name:'Monthly (NSDIC)',
@@ -86,11 +85,10 @@ data: [ [ Date.UTC(1979,9,15), 8.0356-0.0914 ], [ Date.UTC(2012,9,15), 8.0356-0.
 		</script>
 	</head>
 	<body>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
-
-<div id="container" style="min-width: 600px; height: 450px; margin: 0 auto"></div>
-
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+	  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+	  	  
+	  <div id="container" style="min-width: 400px; height: 510px; margin: 0 auto"></div>
+	  
 	</body>
 </html>

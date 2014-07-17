@@ -32,28 +32,34 @@
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
-	<div id="legend" style="width:100%; font-family:sans-serif; font-size:12px;">
-		<caption>Number of pieces per km<sup>2</sup></caption>
-		<table border="0" style="width:150px; line-height:12px;">
-		<col width="150px">
-		<tr>
-		<td style="background:#FFFFFF; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0</td>
-		<td style="background:#0099cc; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0 &ndash; 500</td>
-		<td style="background:#00cc00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">500 &ndash; 1,000</td>
-		<td style="background:#ace600; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">1,000 &ndash; 2,000</td>
-		<td style="background:#ffff00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">2,000 &ndash; 5,000</td>
-		</tr>
-		<tr>
-		<td style="background:#ffcc00; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">5,000 &ndash; 10,000</td>
-		<td style="background:#ff9900; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">10,000 &ndash; 20,000</td>
-		<td style="background:#ff6600; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20,000 &ndash; 50,000</td>
-		<td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt;50,000</td>
-		</col>
-		</tr>
-		</table>
-	</div>
-  <div id="map-id" ></div>
+    <div id="legend" style="width:100%; font-family:sans-serif; font-size:12px;">
+      <caption>Number of pieces per km<sup>2</sup></caption>
+      <table border="0" style="width:150px; line-height:12px;">
+	<col width="150px" />
+	<tr>
+	  <td style="background:#FFFFFF; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0</td>
+	  <td style="background:#0099cc; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0 &ndash; 500</td>
+	  <td style="background:#00cc00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">500 &ndash; 1,000</td>
+	  <td style="background:#ace600; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">1,000 &ndash; 2,000</td>
+	  <td style="background:#ffff00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">2,000 &ndash; 5,000</td>
+	</tr>
+	<tr>
+	  <td style="background:#ffcc00; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">5,000 &ndash; 10,000</td>
+	  <td style="background:#ff9900; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">10,000 &ndash; 20,000</td>
+	  <td style="background:#ff6600; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20,000 &ndash; 50,000</td>
+	  <td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt;50,000</td>
+	</tr>
+      </table>
+    </div>
+    <div id="map-id" ></div>
     <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+    <div style="float:right; margin:auto;">
+      <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+    </div>
+    <div style="clear:both"></div>
+    <div style="float:right; margin:auto;"><small><a href="http://onesharedocean.org/?q=data#256" target="_top">Get data and meta-information</a></small></div>
+    <div style="clear:both"></div>
+
     
     <script>
       var extent = new OpenLayers.Bounds(-87, 10, -55, 48);
@@ -61,171 +67,176 @@
       var maxResolution=5/760.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
       var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
-      var options = {minResolution:minResolution, maxResolution:maxResolution,
+      var options = {minResolution:minResolution, maxResolution:maxResolution, restrictexExtend:new OpenLayers.Bounds(-180,180,-90,90),
       controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
       
       var map = new OpenLayers.Map("map-id", options);
       layersSwitcher.maximizeControl();
 
+
+      var WDL = false;
+      var TILE=false;
+      var TSIZE=new OpenLayers.Size(256, 256);
+
       var world=new OpenLayers.Layer.WMS(
       "Countries",
-      "http://onesharedocean.org/geoserver/general/wms",
-      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
-      {wrapDateLine:true, displayInLayerSwitcher:false,  displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:true, visibility:true}
+      "http://onesharedocean.org/geoserver/general/gwc/service/wms",
+      {layers:"general:world_epsg4326", styles:'countries_lightyellow_noname', format:'image/png'},
+      {wrapDateLine:WDL, displayInLayerSwitcher:false,  singleTile:TILE, tileSize:TSIZE, isBaseLayer:true, visibility:true}
       );
       
       var plastics1986 = new OpenLayers.Layer.WMS(
       "1986",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1986", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
       );
 
       var plastics1987 = new OpenLayers.Layer.WMS(
       "1987",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1987", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1989 = new OpenLayers.Layer.WMS(
       "1989",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1989", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1990 = new OpenLayers.Layer.WMS(
       "1990",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1990", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1991 = new OpenLayers.Layer.WMS(
       "1991",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1991", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 
 	  var plastics1992 = new OpenLayers.Layer.WMS(
       "1992",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1992", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1993 = new OpenLayers.Layer.WMS(
       "1993",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1993", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );	  
 	  
 	  var plastics1994 = new OpenLayers.Layer.WMS(
       "1994",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1994", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1995 = new OpenLayers.Layer.WMS(
       "1995",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1995", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1996 = new OpenLayers.Layer.WMS(
       "1996",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1996", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics1997 = new OpenLayers.Layer.WMS(
       "1997",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1997", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 
 	  var plastics1998 = new OpenLayers.Layer.WMS(
       "1998",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1998", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	
 	  var plastics1999 = new OpenLayers.Layer.WMS(
       "1999",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_1999", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	
 	  var plastics2000 = new OpenLayers.Layer.WMS(
-      "1998",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "2000",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2000", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );	
 	
 	  var plastics2001 = new OpenLayers.Layer.WMS(
-      "1998",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "2001",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2001", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );	
 
 	  var plastics2002 = new OpenLayers.Layer.WMS(
       "2002",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2002", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );
 	  
 	  var plastics2003 = new OpenLayers.Layer.WMS(
       "2003",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2003", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );	  
 	  
 	  var plastics2004 = new OpenLayers.Layer.WMS(
       "2004",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2004", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL,  singleTile:TILE, isBaseLayer:false, opacity:1, visibility:false}
       );  
 	  
 	  var plastics2005 = new OpenLayers.Layer.WMS(
       "2005",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2005", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics2006 = new OpenLayers.Layer.WMS(
       "2006",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2006", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
       );	  
 	  
 	  var plastics2007 = new OpenLayers.Layer.WMS(
       "2007",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2007", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
       );
 	  
 	  var plastics2008 = new OpenLayers.Layer.WMS(
       "2008",
-      "http://onesharedocean.org/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
       {layers:"ocean:SEA_plastics_2008", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
-      {wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:true}
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
       );
 
       map.addLayers([plastics1986, plastics1987, plastics1989, plastics1990, plastics1991, plastics1992, plastics1993,

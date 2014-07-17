@@ -22,11 +22,12 @@
       width:12em;
       padding-top:0;
       }
-	#infoArrangement, #infoGeneral{
-	  font-size:12px !important;
-	  font-weight:normal;
-	  font-family:sans-serif !important;
-	}
+      #infoArrangement, #infoGeneral{
+      font-size:12px !important;
+      font-weight:normal;
+      font-family:sans-serif !important;
+      width:100%;
+      }
     </style>
 
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
@@ -34,8 +35,9 @@
   <body>
 	<div id="infoArrangement">&nbsp;</div>
 	<div id="infoGeneral">&nbsp;</div>
-    <div id="map-id" ></div>
-    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+	<div id="map-id" ></div>
+	<div id="layerswitcher" class="olControlLayerSwitcher"></div>
+
     
     <script>
       var thisServer=window.location.hostname;

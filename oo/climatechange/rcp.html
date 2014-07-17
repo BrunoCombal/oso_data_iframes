@@ -14,20 +14,22 @@ $(function () {
             chart: {
                 type: 'line',
                 marginRight: 180,
-                marginBottom: 40,
+                marginBottom: 50,
                 zoomType: 'x',
                 resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-50}, 
                                   theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}}
             },
             title: {
-                text: 'Total radiative forcing <br/>(excludes mineral dust and the effect of land albedo)',
+                text: '<center>Total radiative forcing <br/><small>(excludes mineral dust and the effect of land albedo)</small></center>',
 	        useHTML:true,
-                x: -20 //center
+                x: -20 ,
+                style:{font:'14px Verdana, sans-serif', color:'#000000'}
             },
             subtitle: {
                 text: 'Source: <a href="http://www.iiasa.ac.at/web-apps/tnt/RcpDb">IASA</a>',
                 x: -20,
-                useHTML: true
+                useHTML: true,
+                style:{font:'10px Verdana, sans-serif', color:'#00000'}
             },
             xAxis:{
               title: {text:'Date'},
@@ -57,12 +59,13 @@ $(function () {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: -10,
-                y: 73,
-                borderWidth: 0
+                x: 5,
+                y: 60,
+                borderWidth: 0,
+                itemStyle:{font:'12px Verdana, sans-serif'}
             },
             series: [
-{name:'World - AIM -RCP 6.0',
+{name:'World - AIM - RCP 6.0',
 data:[ [2000,1.723],[2005, 1.901],[2010, 2.089],[2020,2.480],[2030,2.854],[2040, 3.146],[2050,3.521],[2060,3.905],[2070,4.443],[2080,4.932],[2090,5.255],[2100,5.481]],
 marker: {enabled:false}, color: '#d3d61c'
 },
