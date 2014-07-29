@@ -155,8 +155,8 @@
 	<li><h3><span>Productivity</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('chla');">Chlorophyll-A</span></li>
-	    <li><span onclick="showLayer('pp_mean');">Primary productivity (Mean)</span></li>
-	    <li><span onclick="showLayer('pp_trend');">Primary productivity (Trend)</span></li>
+	    <li><span onclick="showLayer('pp_mean');" >Primary productivity (Mean)</span></li>
+	    <li><span onclick="showLayer('pp_trend');" >Primary productivity (Trend)</span></li>
 	    <li><span onclick="showLayer('sst_net_change');">SST net change</span></li>
 	  </ul>
 	</li>
@@ -194,10 +194,10 @@
 	<li><h3><span>Governance</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('govIntCat');">Integration categories</span></li>
+	    <li><span onclick="showLayer('govEngCat');">Engagement Category</span></li>
 	    <li><span onclick="showLayer('govEngScore');">Engagement Score</span></li>
 	    <li><span onclick="showLayer('govIntScore');">Integration Score</span></li>
 	    <li><span onclick="showLayer('govComplScore');">Completeness Score</span></li>
-	    <li><span onclick="showLayer('govEngCat');">Engagement Category</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>General information</span></h3>
@@ -286,7 +286,8 @@
     //Coral reefs
     var coral = new OpenLayers.Layer.WMS(
     "Coral reefs",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes66_data",  styles:'lmes_data_coral', transparent:true, format:'image/png'},
     {layerId:'coral', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
     );
@@ -294,7 +295,8 @@
     // mangroves
     var mangroves=new OpenLayers.Layer.WMS(
     "Mangroves",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:mangrovepercent_lmes66",  styles:'lmes_mangrovespercent', transparent:true, format:'image/png'},
     {layerId:'mangroves', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
     );
@@ -302,7 +304,8 @@
     //Areas
     var areas= new OpenLayers.Layer.WMS(
     "Areas",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
     {layerId:'areas', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
@@ -310,7 +313,8 @@
     // Impacts
     var cumulImpact = new OpenLayers.Layer.WMS(
     "CumulImpact",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:cumulImpact_LME66", styles:'lmes_cumulimpact', transparent:true, format:'image/png'},
     {layerId:'cumulImpact', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
