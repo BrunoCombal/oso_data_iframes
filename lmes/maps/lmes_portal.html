@@ -251,31 +251,35 @@
     //Primary productivity
     var chla=new OpenLayers.Layer.WMS(
     "Chlorophyll-A",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes_chla_longterm",  transparent:true, styles:'lmes_chla_mean', format:'image/png'},
-    {layerId:'chla', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+    {layerId:'chla', tiled:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
     );
 
     var pp_mean=new OpenLayers.Layer.WMS(
     "PP_MEAN",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes_ppd_longterm_mean",  transparent:true, styles:'lmes_ppd_mean', format:'image/png'},
-    {layerId:'pp_mean', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+    {layerId:'pp_mean', tiled:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
     );
 
     var pp_trend=new OpenLayers.Layer.WMS(
     "PP_TREND",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes_ppd_longterm_trend",  transparent:true, styles:'lmes_ppd_trend', format:'image/png'},
-    {layerId:'pp_trend', singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+    {layerId:'pp_trend', tiled:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
     );
     
     //SST net change
     var sst_net_change=new OpenLayers.Layer.WMS(
     "SST net change",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes_sst_change_1957_2012", transparent:true, styles:'lmes_sst_change', format:'image/png'},
-    {layerId:'sst_net_change',singleTile:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+    {layerId:'sst_net_change', tiled:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
     );
     
     //Ecosystem
@@ -335,9 +339,10 @@
     
     var icep = new OpenLayers.Layer.WMS(
     "ICEP",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep', transparent:true, format:'image/png'},
-    {layerId:'icep', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+    {layerId:'icep', tiled:true, isBaseLayer:false, opacity:1, visibility:false}
     );
 <!--
     var icepn = new OpenLayers.Layer.WMS(
@@ -356,14 +361,16 @@
 -->
     var plasticsModelMicroCount = new OpenLayers.Layer.WMS(
     "Micro plastics",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+     GWCLMES,
     {layers:"lmes:lmes_plastics_modeldistribution", styles:'lmes_plasticsdistr_5classes_micro_count', transparent:true, format:'image/png'},
     {layerId:'plasticsmicro', tiled:true, isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var plasticsModelMacroWeight = new OpenLayers.Layer.WMS(
     "Macro plastics",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+     GWCLMES,
     {layers:"lmes:lmes_plastics_modeldistribution", styles:'lmes_plasticsdistr_5classes_macro_weight', transparent:true, format:'image/png'},
     {layerId:'plasticsmacro', tiled:true, isBaseLayer:false, opacity:1, visibility:false}
     );
