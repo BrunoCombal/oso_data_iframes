@@ -173,6 +173,9 @@
 -->
 	    <li><span onclick="showLayer('plasticsmicro');">Micro Plastics</span></li>
 	    <li><span onclick="showLayer('plasticsmacro');">Macro Plastics</span></li>
+	    <li><span onclick="showLayer('pops_ddt');">DDT score</span></li>
+	    <li><span onclick="showLayer('pops_hch');">HCHs score</span></li>
+	    <li><span onclick="showLayer('pops_pcb');">PCBs score</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>Ecosystem health</span></h3>
@@ -236,7 +239,7 @@
     //"http://onesharedocean.org/geoserver/general/wms",
     GWCWORLD,
     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname'},
-    {tiled:true, isBaseLayer:true, visibility:true, opacity:1}
+    {tiled:true, tileSize:TSIZE, isBaseLayer:true, visibility:true, opacity:1}
     );
     
     //LMEs
@@ -245,7 +248,7 @@
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
     {layers:"lmes:lmes66_pwp", transparent:true, styles:'', format:'image/png'},
-    {layerId:'lmes', tiled:true, isBaseLayer:false, opacity:1, visibility:true}
+    {layerId:'lmes', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
     );
     
     //Primary productivity
@@ -411,12 +414,33 @@
         {layerId:'govComplScore', tiled:true, isBaseLayer:false, opacity:1, visibility:false}
     );
 
-    var goverance_engt_cat = new OpenLayers.Layer.WMS(
+    var governance_engt_cat = new OpenLayers.Layer.WMS(
         "Engagement Categories",
 //        "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
         {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_engagement_categories', transparent:true, format:'image/png'},
         {layerId:'govEngCat', tiled:true, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var pops_ddt = new OpenLayers.Layer.WMS(
+        "DDT score",
+        GWCLMES,
+        {layers:"lmes:lmes_pops", styles:'lmes_pops_ddt', transparent:true, format:'image/png'},
+        {layerId:'pops_ddt', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var pops_hch = new OpenLayers.Layer.WMS(
+        "HCHs score",
+        GWCLMES,
+        {layers:"lmes:lmes_pops", styles:'lmes_pops_hch', transparent:true, format:'image/png'},
+        {layerId:'pops_hch', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var pops_pcb = new OpenLayers.Layer.WMS(
+        "DDT score",
+        GWCLMES,
+        {layers:"lmes:lmes_pops", styles:'lmes_pops_pcb', transparent:true, format:'image/png'},
+        {layerId:'pops_pcb', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
     );
 
     //Add layers to map objects
@@ -437,7 +461,8 @@
     icep,
     //icepn, icepp,
     plasticsModelMicroCount, plasticsModelMacroWeight,
-    governance_int_cat, governance_engt_score, governance_int_score, governance_compl_score, goverance_engt_cat
+    governance_int_cat, governance_engt_score, governance_int_score, governance_compl_score, governance_engt_cat,
+    pops_ddt, pops_hch, pops_pcb
     ]);
     
     function showLayer(menuItem){
@@ -457,7 +482,7 @@
 		     
 		     
 		     var info = new OpenLayers.Control.WMSGetFeatureInfo({
-		       url:'http://onesharedocean.org/geoserver/lmes/wms',
+		       url:GWCLMES, //'http://onesharedocean.org/geoserver/lmes/wms',
 		       output:'features',
 		       infoFormat:'application/vnd.ogc.gml',
 		       format: new OpenLayers.Format.GML,
