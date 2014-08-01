@@ -196,7 +196,7 @@
 	</li>
 	<li><h3><span>Governance</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('govIntCat');">Integration categories</span></li>
+	    <li><span onclick="showLayer('govIntCat');">Integration Categories</span></li>
 	    <li><span onclick="showLayer('govEngCat');">Engagement Category</span></li>
 	    <li><span onclick="showLayer('govEngScore');">Engagement Score</span></li>
 	    <li><span onclick="showLayer('govIntScore');">Integration Score</span></li>
@@ -223,22 +223,27 @@
     var maxResolution=50/$("#mapOL").width();
     var numZoomLevels=5;
     // resolution are: 360/256, 180/256, 90/256, etc... does not exactly match the map
-    //var resolution = [0.703125, 0.3515625, 0.17578125, 0.087890625, 0.0439453125];
-    OpenLayers.DOTS_PER_INCH = 90.71428571428572;
+   // var resolution = [0.703125, 0.3515625, 0.17578125, 0.087890625, 0.0439453125];
+    var resolution = [0.48, 0.24, 0.12, 0.06, 0.03];
+     
+//OpenLayers.DOTS_PER_INCH = 90.71428571428572;
 
     var options = {restrictedExtent:extent, maxExtent:extent,
-    minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:numZoomLevels,
-//    resolution: resolution, 
+   // minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:numZoomLevels,
+    resolutions: resolution, 
     projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
     controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
 
     var map = new OpenLayers.Map("mapOL", options);
     var WDL = false;
     var STYLE='';
-    var TSIZE=new OpenLayers.Size(256,256);
+    //MF var TSIZE=new OpenLayers.Size(256,256);
+    var TSIZE=new OpenLayers.Size(375,375);
     var TORG = new OpenLayers.LonLat(-180.0, 90.0);
-    var GWCLMES="http://onesharedocean.org/geoserver/lmes/gwc/service/wms";
-    var GWCWORLD="http://onesharedocean.org/geoserver/general/gwc/service/wms";
+   //MF var GWCLMES="http://onesharedocean.org/geoserver/lmes/gwc/service/wms";
+    //MF var GWCWORLD="http://onesharedocean.org/geoserver/general/gwc/service/wms";
+    var GWCLMES="http://onesharedocean.org/geoserver/gwc/service/wms";
+    var GWCWORLD="http://onesharedocean.org/geoserver/gwc/service/wms";
 
  
     
@@ -256,7 +261,7 @@
     "LMES",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes66_pwp", transparent:true, styles:'', format:'image/png'},
+    {layers:"lmes:lmes66_pwp", transparent:true, styles:'lmes66_pwp_green_blue', format:'image/png'},
     {layerId:'lmes', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:true}
     );
     
@@ -393,8 +398,8 @@
 
     var governance_int_cat = new OpenLayers.Layer.WMS(
         "Integration Categories",
-//        "http://onesharedocean.org/geoserver/lmes/wms",
-        GWCLMES,
+        "http://onesharedocean.org/geoserver/lmes/wms",
+//        GWCLMES,
         {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_integration_categories', transparent:true, format:'image/png'},
         {layerId:'govIntCat', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
@@ -409,24 +414,24 @@
 
     var governance_int_score = new OpenLayers.Layer.WMS(
         "Integration Score",
-//        "http://onesharedocean.org/geoserver/lmes/wms",
-       GWCLMES,
+        "http://onesharedocean.org/geoserver/lmes/wms",
+//       GWCLMES,
         {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_integration_score', transparent:true, format:'image/png'},
         {layerId:'govIntScore', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var governance_compl_score = new OpenLayers.Layer.WMS(
         "Completeness Score",
-//        "http://onesharedocean.org/geoserver/lmes/wms",
-      GWCLMES,
+        "http://onesharedocean.org/geoserver/lmes/wms",
+//      GWCLMES,
         {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_completeness_score', transparent:true, format:'image/png'},
         {layerId:'govComplScore', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var governance_engt_cat = new OpenLayers.Layer.WMS(
         "Engagement Categories",
-//        "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+        "http://onesharedocean.org/geoserver/lmes/wms",
+//     GWCLMES,
         {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_engagement_categories', transparent:true, format:'image/png'},
         {layerId:'govEngCat', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
