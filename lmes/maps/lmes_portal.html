@@ -320,10 +320,10 @@
     
     //Areas
     var areas= new OpenLayers.Layer.WMS(
-    "Areas",
+    "Shelf Area",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes66_data",  styles:'LMES_data_area', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_shelf_area",  styles:'lmes_shelf_area', transparent:true, format:'image/png'},
     {layerId:'areas', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
     
