@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-Equiv="Cache-Control" content="no-cache"/>
+    <meta http-Equiv="Pragma" Content="no-cache"/>
+    <meta http-Equiv="Expires" content="0"/>
+    <title></title>
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 512px;
+      height: 256px;
+      }
+      #layerswitcher.olControlLayerSwitcher{
+      font-size:12px !important;
+      font-family:sans-serif !important;
+      font-weight: normal;
+      }
+      .olControlLayerSwitcher .layersDiv{
+      background-color:#c0c0c0 !important;
+      margin: 0.5em !important;
+      width:12em;
+      padding-top:0;
+      }
+	  #infoArrangement, #infoGeneral{
+	  font-size:12px !important;
+	  font-weight:normal;
+	  font-family:sans-serif !important;
+	  }
+    </style>
+    
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  </head>
+  <body>
+    <div id="legend" style="width:100%; font-family:sans-serif; font-size:12px;">
+      <caption>Number of pieces per km<sup>2</sup></caption>
+      <table border="0" style="width:150px; line-height:12px;">
+	<col width="150px"/>
+	<tr>
+	  <td style="background:#5FBADD; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0 &ndash; 0.1</td>
+	  <td style="background:#78BB4B; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0.1 &ndash; 20</td>
+	  <td style="background:#E4E344; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20 &ndash; 50</td>
+	  <td style="background:#ee9F42; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">50 &ndash; 200</td>
+	  <td style="background:#D8232A; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt; 200</td>
+	</tr>
+      </table>
+    </div>
+    <div id="map-id" style="float:left"></div>
+    <div style="float:right">
+      <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+    </div>
+    <div style="clear:both"></div>
+    <div style="float:right; margin:auto;">
+      <small><a href="http://onesharedocean.org/?q=data#276" target="_top">Get data and meta-information</a></small>
+    </div>
+    <div style="clear:both"></div>
+
+    <script>
+      var extent = new OpenLayers.Bounds([-180, -60, 180, 60]);
+      var minResolution=360/512.0;
+      var maxResolution=5/512.0;
+      var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
+      var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+      var options = {minResolution:minResolution, maxResolution:maxResolution, restrictexExtend:new OpenLayers.Bounds(-180,180,-90,90),
+      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+      
+      var map = new OpenLayers.Map("map-id", options);
+      layersSwitcher.maximizeControl();
+
+
+      var WDL = false;
+      var TILE=false;
+      var STYLE='';
+      var TSIZE=new OpenLayers.Size(256,256);
+
+      var world=new OpenLayers.Layer.WMS(
+      "Countries",
+      "http://onesharedocean.org/geoserver/general/gwc/service/wms",
+      {layers:"general:world_epsg4326", styles:'countries_lightyellow_noname', format:'image/png'},
+      {wrapDateLine:WDL, displayInLayerSwitcher:false,  singleTile:TILE, tileSize:TSIZE, isBaseLayer:true, visibility:true}
+      );
+      
+      var malaspina = new OpenLayers.Layer.WMS(
+      "Concentration",
+      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
+      {layers:"ocean:plastic_concentration_malaspina", transparent:true, styles:STYLE, format:'image/png'},
+      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
+      );
+
+      map.addLayers([malaspina,  world]);
+
+      map.setLayerIndex(world, 0);
+      map.setLayerIndex(malaspina, 1);
+      
+      map.zoomToExtent(extent);
+	  
+    </script>
+  </body>
+  
+</html>

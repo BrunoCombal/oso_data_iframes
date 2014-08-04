@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title></title>
+
+	
+<script src="/sites/all/libraries/timemap.2.0.1/lib/jquery-1.6.2.min.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/lib/mxn/mxn.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/lib/mxn/mxn.openlayers.core.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/lib/mxn/mxn.core.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/lib/timeline-2.3.0.js"></script>
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/src/timemap.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/src/loaders/json.js"></script>
+<script src="/sites/all/libraries/timemap.2.0.1/src/loaders/progressive.js"></script>
+
+<link rel="stylesheet" href="/sites/all/libraries/timemap.2.0.1/lib/timeline-2.3.0.css" type="text/css" />
+   <link href="/sites/all/libraries/timemap.2.0.1/examples/examples.css" type="text/css" rel="stylesheet"/>
+
+ <script type="text/javascript">
+
+var tm;
+$(function() {
+//Create 10 themes with different icon sizes
+for (var i=10; i>0; i--){
+	TimeMap.themes["theme_"+i] = TimeMapTheme.create("orange",
+		{
+			icon: "/iframes/lmes/images/circle_orange_fill_60_outline_full.png",
+			iconSize:[i*10,i*10],
+			iconAnchor:[i*5,i*10]
+		}
+	);    
+  }  
+	tm = TimeMap.init({
+        mapId: "map",               // Id of map div element (required)
+        timelineId: "timeline",     // Id of timeline div element (required)
+        options: {
+            eventIconPath: "/sites/all/librarues/timemap.2.0.1/images/",
+			showMapTypeCtrl: true,
+			spcOptions: {
+				layerSwitcher: "layerswitcher",
+				gradicule: true
+			}
+        },
+        datasets: [
+            {
+                title: "Debris",
+                theme: "orange",
+                type: "progressive",
+				options: {
+                    type: "json",
+					url: 'http://onesharedocean.org/iframes/oo/debris/scripts/timemap.php?start=[start]&end=[end]&callback=?',
+					start: "1986-01-01",
+					dataMinDate: "1986-01-01",
+					interval: 60*60*24*(365.4*2)*1000,
+					formatDate: function(d){
+						return TimeMap.util.formatDate(d, 1);
+					}
+                }
+            }
+        ],
+		bandIntervals: "mon"
+	});
+	 var world=new OpenLayers.Layer.WMS(
+      "Countries",
+      "http://onesharedocean.org/geoserver/general/wms",
+      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      {layerId:'countries', displayInLayerSwitcher: false, wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:true, visibility:true}
+      );
+      
+      var plastics = new OpenLayers.Layer.WMS(
+      "SEA plastics",
+      "http://onesharedocean.org/geoserver/wms",
+      {layers:"SEA_plastics", transparent:true, styles:'SEA_plastics_5px', format:'image/png'},
+      {layerId: 'plastics', wrapDateLine:true, displayOutsideMaxExtent: true, singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+      );
+	var m = tm.getNativeMap();
+	m.addLayers([world, plastics]);
+	m.removeLayer(m.layers[0]);
+	m.setBaseLayer('countries');
+	
+	var extent = new OpenLayers.Bounds(-87, 10, -55, 48);
+    var minResolution=360/760.0;
+    var maxResolution=5/760.0;
+    var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('ls') , 'ascending':false});
+    var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+    var options = {minResolution:minResolution, maxResolution:maxResolution, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+	
+	m.addControl(graticule);
+	
+	console.log(tm.getNativeMap());
+});
+ </script>
+    <style>
+    div#timelinecontainer { height: 300px;	}
+	div#timeline{font-size: 9px;}
+    div#mapcontainer { height: 760px; width:640px; }
+    div.olFramedCloudPopupContent { width: 200px; }
+	#layerswitcher.olControlLayerSwitcher{
+      font-size:12px !important;
+      font-family:sans-serif !important;
+      font-weight: normal;
+      }
+      .olControlLayerSwitcher .layersDiv{
+      background-color:#c0c0c0 !important;
+      margin: 0.5em !important;
+      width:12em;
+      padding-top:0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="timemap">
+        <div id="timelinecontainer">
+          <div id="timeline"></div>
+        </div>
+        <div id="mapcontainer" style="float:left">
+          <div id="map"></div>
+		  
+	</div>
+    <div id="layerswitcher" class="olControlLayerSwitcher" style="position:relative; float:left;"></div>
+	
+  </body>
+</html>
