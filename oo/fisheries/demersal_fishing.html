@@ -2,61 +2,61 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Open Ocean, bottom catch</title>
+    <title>Open Ocean, demersal fishing, 1950 to 2006</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript">
       $(function () {
       $('#container').highcharts({
-      credits: {enabled:false},
-            chart: {
+         credits: {enabled:false},
+         chart: {
               type: 'line',
               marginRight: 0,
               marginBottom: 100, 
               zoomType: 'x',
-resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-78},
-                                  theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'
+              resetZoomButton: {relativeTo: 'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-78},
+                   theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'
 }}}}}
-            },
-            title: {
+         },
+         title: {
                 text: 'Bottom catch',
                 x: 0, //center
                 useHTML: true,
                 align:'center',
                 style:{font:'14px Verdana, sans-serif', color:'#000000'}
-            },
-            xAxis:{
-              title: {text:'Date'},
-              labels: {
-                formatter: function () {return Highcharts.numberFormat(this.value, 0, '', '');}
+         },
+         xAxis:{
+             title: {text:'Date'},
+             labels: {
+               formatter: function () {return Highcharts.numberFormat(this.value, 0, '', '');}
+             },
+         },
+         yAxis: {
+              title: {
+                  text: 'Catch (tonnes/year)',
+                  useHTML:true
               },
-            },
-            yAxis: {
-                title: {
-                    text: 'Catch (tonnes/year)',
-                    useHTML:true
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }],
-                floor:0
-            },
-            tooltip: {
-                valueDecimals: 0,
-                formatter: function() {
-                             return '<b>'+this.series.name+'<br/>'+this.x+': </b>'+ Highcharts.numberFormat(this.y, 2, '.');
-                           }
-            },
-            legend: {
-                enabled:true,
-                layout: 'horizontal',
-                align: 'right',
-                verticalAlign: 'bottom',
-                align:'center',
-                itemStyle:{font:'10px Verdana, sans-serif'},
-                x: 0,
-                y: 0,
+         plotLines: [{
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+         }],
+         floor:0
+         },
+         tooltip: {
+               valueDecimals: 0,
+               formatter: function() {
+                      return '<b>'+this.series.name+'<br/>'+this.x+': </b>'+ Highcharts.numberFormat(this.y, 2, '.');
+               }
+         },
+         legend: {
+              enabled:true,
+              layout: 'horizontal',
+              align: 'right',
+              verticalAlign: 'bottom',
+              align:'center',
+              itemStyle:{font:'10px Verdana, sans-serif'},
+              x: 0,
+              y: 0,
                 borderWidth: 0
             },
             series: [

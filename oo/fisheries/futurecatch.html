@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
-       width: 720px;
-       height: 360px;
+       width: 750px;
+       height: 375px;
        margin:0;
        padding:0;
       }
@@ -31,49 +31,51 @@
 
         OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5
 
-        var defaultExtent = new OpenLayers.Bounds(-180,-85,180,90);
-        var minResolution = (90+85)/360.0;
-        var maxResolution = 5/720.0;
-        var options = {restrictedExtent: defaultExtent, minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
-          maxExtent:defaultExtent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+        var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
+        var resolution = [0.48, 0.24, 0.12];
+        var options = {restrictedExtent: defaultExtent,maxExtent:defaultExtent,
+          resolutions: resolution,
+          projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
+          controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
         var map = new OpenLayers.Map("map-id", options);
         var layerSwitcher = new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('lswitcher')}) ;
         map.addControl(layerSwitcher);
 
-      thisWrapDateLine = false;
-      thisSingleTile=false;
+        var thisWrapDateLine = false;
+        var GWC="http://onesharedocean.org/geoserver/gwc/service/wms";
+        TSIZE=new OpenLayers.Size(375,375);
+        TORG=new OpenLayers.LonLat(-180.0, 90.0);
 
         var countriesBack = new OpenLayers.Layer.WMS(
-          "Countries", 'http://onesharedocean.org/geoserver/general/wms',
-          {layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname', bgcolor:'0xDCF0FA'},
-          {transparent:true, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:thisWrapDateLine, singleTile:thisSingleTile, ratio:1, yx:{"EPSG:4326":true}}
+          "Countries", GWC, //'http://onesharedocean.org/geoserver/general/wms',
+          {layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname'}, //bgcolor:'0xDCF0FA'},
+          {tiled:true, tileSize:TSIZE, tileOrigin:TORG, transparent:true, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:thisWrapDateLine}
         );
       
         var catch2030=new OpenLayers.Layer.WMS(
-          "2030", 'http://onesharedocean.org/geoserver/ocean/wms',
+          "2030",GWC, //'http://onesharedocean.org/geoserver/ocean/wms',
 //          {layers:'ocean:HS_CPSRESA1B_2030', transparent:true, styles:'oo_future_fish_catch', wrapDateLine:thisWrapDateLine},
-      {layers:'ocean:fisheries_pc_2030_relativeto_2000_percent', transparent:true, styles:'futureFishCatch_percent', wrapDateLine:thisWrapDateLine},
-          {singleTile:thisSingleTile, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:thisWrapDateLine}
+          {layers:'ocean:fisheries_pc_2030_relativeto_2000_percent', transparent:true, styles:'futureFishCatch_percent'},
+          {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:true}
         );
 
         var catch2050=new OpenLayers.Layer.WMS(
-          "2050", 'http://onesharedocean.org/geoserver/ocean/wms',
+          "2050", GWC, //'http://onesharedocean.org/geoserver/ocean/wms',
 //          {layers:'ocean:HS_CPSRESA1B_2050', transparent:true, styles:'oo_future_fish_catch', wrapDateLine:thisWrapDateLine},
           {layers:'ocean:fisheries_pc_2050_relativeto_2000_percent', transparent:true, styles:'futureFishCatch_percent', wrapDateLine:thisWrapDateLine},
-          {singleTile:thisSingleTile, isBaseLayer:false, opacity:1, visibility:false,  wrapDateLine:thisWrapDateLine}
+          {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false,  wrapDateLine:thisWrapDateLine}
         );
 
-
         var ffa = new OpenLayers.Layer.WMS(
-          "FAO Fishing Areas", 'http://onesharedocean.org/geoserver/ocean/wms',
+          "FAO Fishing Areas", GWC, //'http://onesharedocean.org/geoserver/ocean/wms',
           {layers:'ocean:FAO_fishingareas_oceans', transparent:true, styles:'FAO_fishingareas_ocean'},
-          {transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:thisWrapDateLine, singleTile:thisSingleTile, ratio:1,yx:{'EPSG:4326':true}}
+          {tiled:true, tileSize:TSIZE, tileOrigin:TORG, transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:thisWrapDateLine }
         );
 
         var countries = new OpenLayers.Layer.WMS(
-          "Countries", 'http://onesharedocean.org/geoserver/general/wms',
-          {layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname', bgcolor:'0xDCF0FA'},
-          {transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:thisWrapDateLine, singleTile:thisSingleTile, ratio:1,yx:{'EPSG:4326':true}}
+          "Countries", GWC, //'http://onesharedocean.org/geoserver/general/wms',
+          {layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname'}, //bgcolor:'0xDCF0FA'},
+          {tiled:true, tileSize:TSIZE, tileOrigin:TORG, transparent:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:thisWrapDateLine}
         );
 
         map.addLayers([countriesBack, catch2030, catch2050, ffa,  countries]);
@@ -92,8 +94,10 @@
 
   <body onload="init();">
     
-    <div id="map-id" style="float:left; margin-right:0px; "></div>
-    <div id="lswitcher" class="olControlLayerSwitcher" style="float:left; width:100px; padding:0; margin:0;"></div>
+    <div>
+      <div id="map-id" style="float:left; vertical_align:top; margin-top:0; padding-top:0; margin-right:0px; "></div>
+      <div id="lswitcher" class="olControlLayerSwitcher" style="float:left; vertical-align:top;width:150px; padding:0; margin:0;"></div>
+    </div>
     <div style="clear:both"></div>
   </body>
   
