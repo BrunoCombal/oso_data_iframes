@@ -167,6 +167,8 @@
 	<li><h3><span>Pollution</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('icep');">ICEP</span></li>
+	    <li><span onclick="showLayer('ld_din');">DIN loading</span></li>
+	    <li><span onclick="showLayer('merged_ind');">Merged indicator</span></li>
 
 <!--	    <li><span onclick="showLayer('icep_n');">ICEP-N</span></li>
 	    <li><span onclick="showLayer('icep_p');">ICEP-P</span></li>
@@ -196,11 +198,9 @@
 	</li>
 	<li><h3><span>Governance</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('govIntCat');">Integration Categories</span></li>
-	    <li><span onclick="showLayer('govEngCat');">Engagement Category</span></li>
-	    <li><span onclick="showLayer('govEngScore');">Engagement Score</span></li>
-	    <li><span onclick="showLayer('govIntScore');">Integration Score</span></li>
-	    <li><span onclick="showLayer('govComplScore');">Completeness Score</span></li>
+	    <li><span onclick="showLayer('govInt');">Integration</span></li>
+	    <li><span onclick="showLayer('govEng');">Engagement</span></li>
+	    <li><span onclick="showLayer('govCompl');">Completeness</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>General information</span></h3>
@@ -240,17 +240,14 @@
     //MF var TSIZE=new OpenLayers.Size(256,256);
     var TSIZE=new OpenLayers.Size(375,375);
     var TORG = new OpenLayers.LonLat(-180.0, 90.0);
-   //MF var GWCLMES="http://onesharedocean.org/geoserver/lmes/gwc/service/wms";
+    //MF var GWCLMES="http://onesharedocean.org/geoserver/lmes/gwc/service/wms";
     //MF var GWCWORLD="http://onesharedocean.org/geoserver/general/gwc/service/wms";
     var GWCLMES="http://onesharedocean.org/geoserver/gwc/service/wms";
     var GWCWORLD="http://onesharedocean.org/geoserver/gwc/service/wms";
 
- 
-    
     //Map of the world
     var worldtop=new OpenLayers.Layer.WMS(
     "Countries",
-    //"http://onesharedocean.org/geoserver/general/wms",
     GWCWORLD,
     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname'},
     {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1}
@@ -259,7 +256,6 @@
     //LMEs
     var lmes = new OpenLayers.Layer.WMS(
     "LMES",
-//    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
     {layers:"lmes:lmes66_pwp", transparent:true, styles:'lmes66_pwp_green_blue', format:'image/png'},
     {layerId:'lmes', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:true}
@@ -268,7 +264,6 @@
     //Primary productivity
     var chla=new OpenLayers.Layer.WMS(
     "Chlorophyll-A",
-//    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
     {layers:"lmes:lmes_chla_longterm",  transparent:true, styles:'lmes_chla_mean', format:'image/png'},
     {layerId:'chla', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
@@ -276,7 +271,6 @@
 
     var pp_mean=new OpenLayers.Layer.WMS(
     "PP_MEAN",
-//    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
     {layers:"lmes:lmes_ppd_longterm_mean",  transparent:true, styles:'lmes_ppd_mean', format:'image/png'},
     {layerId:'pp_mean', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
@@ -330,7 +324,6 @@
     // Impacts
     var cumulImpact = new OpenLayers.Layer.WMS(
     "CumulImpact",
-//    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
     {layers:"lmes:cumulImpact_LME66", styles:'lmes_cumulimpact', transparent:true, format:'image/png'},
     {layerId:'cumulImpact', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
@@ -362,9 +355,26 @@
     "ICEP",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_eutrophication", styles:'lmes_nutrients_eutrophication_icep_cat', transparent:true, format:'image/png'},
     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
+
+    var ld_din = new OpenLayers.Layer.WMS(
+    "ICEP",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_eutrophication", styles:'lmes_nutrients_eutrophication_ld_din_cat', transparent:true, format:'image/png'},
+    {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var merged_ind = new OpenLayers.Layer.WMS(
+    "ICEP",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_eutrophication", styles:'lmes_nutrients_eutrophication_mergedin_cat', transparent:true, format:'image/png'},
+    {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
 <!--
     var icepn = new OpenLayers.Layer.WMS(
     "ICEP N",
@@ -396,45 +406,28 @@
     {layerId:'plasticsmacro', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
-    var governance_int_cat = new OpenLayers.Layer.WMS(
-        "Integration Categories",
-        "http://onesharedocean.org/geoserver/lmes/wms",
-//        GWCLMES,
-        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_integration_categories', transparent:true, format:'image/png'},
-        {layerId:'govIntCat', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    var governance_int = new OpenLayers.Layer.WMS(
+        "Integration",
+        GWCLMES,
+        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_integration', transparent:true, format:'image/png'},
+        {layerId:'govInt', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
-    var governance_engt_score = new OpenLayers.Layer.WMS(
-        "Engagement Score",
-//        "http://onesharedocean.org/geoserver/lmes/wms",
+    var governance_engt = new OpenLayers.Layer.WMS(
+        "Engagement",
        GWCLMES,
-        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_engagement_score', transparent:true, format:'image/png'},
-        {layerId:'govEngScore', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_engagement', transparent:true, format:'image/png'},
+        {layerId:'govEng', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
-    var governance_int_score = new OpenLayers.Layer.WMS(
-        "Integration Score",
-        "http://onesharedocean.org/geoserver/lmes/wms",
-//       GWCLMES,
-        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_integration_score', transparent:true, format:'image/png'},
-        {layerId:'govIntScore', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    var governance_compl = new OpenLayers.Layer.WMS(
+        "Completeness",
+//        "http://onesharedocean.org/geoserver/lmes/wms",
+        GWCLMES,
+        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_completeness', transparent:true, format:'image/png'},
+        {layerId:'govCompl', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
-    var governance_compl_score = new OpenLayers.Layer.WMS(
-        "Completeness Score",
-        "http://onesharedocean.org/geoserver/lmes/wms",
-//      GWCLMES,
-        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_completeness_score', transparent:true, format:'image/png'},
-        {layerId:'govComplScore', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
-    );
-
-    var governance_engt_cat = new OpenLayers.Layer.WMS(
-        "Engagement Categories",
-        "http://onesharedocean.org/geoserver/lmes/wms",
-//     GWCLMES,
-        {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_engagement_categories', transparent:true, format:'image/png'},
-        {layerId:'govEngCat', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
-    );
 
     var pops_ddt = new OpenLayers.Layer.WMS(
         "DDT score",
@@ -472,10 +465,10 @@
     population,
     ruralpopulation,
     urbanpopulation,
-    icep,
+    icep, ld_din, merged_ind,
     //icepn, icepp,
     plasticsModelMicroCount, plasticsModelMacroWeight,
-    governance_int_cat, governance_engt_score, governance_int_score, governance_compl_score, governance_engt_cat,
+    governance_int, governance_engt, governance_compl,
     pops_ddt, pops_hch, pops_pcb
     ]);
     
@@ -530,8 +523,8 @@
     //slide up all the link lists
     $("#accordion ul ul").slideUp(400, function(){
     var iFrame = parent.document.getElementById("iFrame");
-    if($('#accordion').height() < iFrame.height-25){
-				  iFrame.height = 600;
+    if($('#accordion').height() < iFrame.height-100){
+				  iFrame.height = 700;
 				  }
 				  });
 				  //slide down the link list below the h3 clicked - only if its closed
@@ -540,7 +533,7 @@
 				  $(this).next().slideDown(400, function(){
 				  var iFrame = parent.document.getElementById("iFrame");
 				  if($('#accordion').height() > iFrame.height){
-      iFrame.height = $('#accordion').height()+25;
+      iFrame.height = $('#accordion').height()+100;
       }
       });
       }
