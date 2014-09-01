@@ -8,7 +8,7 @@ template='lme_centered_template.html'
 polarNorthTemplate='lmes_centered_polar_template.html'
 polarSouthTemplate='lmes_centered_polarsouth_template.html'
 pwpTemplate='pwp.html'
-outiframe='../iframe'
+outiframe='../iframe_test'
 csv="/data/private_store/lmes/lmes66_data/lmes_factsheet.csv"
 mkdir -p $outiframe
 
@@ -89,8 +89,6 @@ do
 		perl -i -pe "s/COUNTRYTOREPLACE/${countries}/" ${outname}
 	fi
 	# replace WIDTH and HEIGHT
-	widthVal=600
-	heightVal=300
 	#exceptions
 	case $ii in
 		29) widthVal=200; heightVal=380;;
