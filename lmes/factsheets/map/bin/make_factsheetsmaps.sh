@@ -25,6 +25,7 @@ do
     LMETemplate[$ii]=${polarNorthTemplate}
 done
 LMETemplate[61]=${polarSouthTemplate}
+LMETemplate[99]=${pwpTemplate}
 
 # 1. create map for each lme number
 for ii in $(seq 1 66) 99
@@ -32,13 +33,14 @@ do
     echo processing $ii
     outname=${outiframe}/${ii##*/}_referencemap.html
     cp ${LMETemplate[$ii]} ${outname}
+
     # edit in place: outname
     sed -i 's/REPLACELMEID/'${ii}'/' ${outname}
     # edit in place: LME code
 
     if [ $ii -le 66 ]; then
 	nextLME=$(echo "(${ii} -1 + 1)%66+1" | bc)
-	if [ nextLME -eq 1 ]; then
+	if [ $nextLME -eq 1 ]; then
 	    nextLME=99
 	fi
 	prevLME=$(echo "($ii -1)" | bc )
@@ -69,40 +71,41 @@ do
 
     echo ${values[@]}
     sed -i 's/AREATOREPLACE/'${values[0]}'/' ${outname}
-    sed -i 's/SHELFTOREPLACE/'${values[1]}'/' ${outname}
-    sed -i 's/IFATOREPLACE/'${values[2]}'/' ${outname}
-    sed -i 's/CRTOREPLACE/'${values[3]}'/' ${outname}
-    sed -i 's/SMTOREPLACE/'${values[4]}'/' ${outname}
-    sed -i 's/PPTOREPLACE/'${values[5]}'/' ${outname}
+#    sed -i 's/SHELFTOREPLACE/'${values[1]}'/' ${outname}
+#    sed -i 's/IFATOREPLACE/'${values[2]}'/' ${outname}
+#    sed -i 's/CRTOREPLACE/'${values[3]}'/' ${outname}
+#    sed -i 's/SMTOREPLACE/'${values[4]}'/' ${outname}
+#    sed -i 's/PPTOREPLACE/'${values[5]}'/' ${outname}
     # replace countries
     if [ -z "${countries}" ]; then
-		sed -i 's/COUNTRYTOREPLACE/No Country/' ${outname}
+	sed -i 's/COUNTRYTOREPLACE/No Country/' ${outname}
     else
-		plural=0
-		plural=$(echo ${countries} | grep ',' | wc -l)
-		if [ $plural -eq 0 ]; then
-			countries="\<b\>Country:\<\/b\> "${countries}
-		else
-			countries="\<b\>Countries:\<\/b\> "${countries}
-		fi
-
-		perl -i -pe "s/COUNTRYTOREPLACE/${countries}/" ${outname}
+	plural=0
+	plural=$(echo ${countries} | grep ',' | wc -l)
+	if [ $plural -eq 0 ]; then
+	    countries="\<b\>Country:\<\/b\> "${countries}
+	else
+	    countries="\<b\>Countries:\<\/b\> "${countries}
 	fi
-	# replace WIDTH and HEIGHT
-	#exceptions
-	case $ii in
-		29) widthVal=200; heightVal=380;;
-		30) widthVal=600; heightVal=350;;
-		35) widthVal=300; heightVal=600;;
-		61) widthVal=600; heightVal=400;;
-	esac
-	echo ${widthVal}  ${outname}
-	sed -i 's/WIDTHTOREPLACE/'${widthVal}'/' ${outname}
-	sed -i 's/HEIGHTTOREPLACE/'${heightVal}'/' ${outname}
-
+	
+	perl -i -pe "s/COUNTRYTOREPLACE/${countries}/" ${outname}
+    fi
+    # replace WIDTH and HEIGHT
+    widthVal=600
+    heightVal=300
+    #exceptions
+    case $ii in
+	29) widthVal=200; heightVal=380;;
+	30) widthVal=600; heightVal=350;;
+	35) widthVal=300; heightVal=600;;
+	61) widthVal=600; heightVal=400;;
+    esac
+    echo ${widthVal}  ${outname}
+    sed -i 's/WIDTHTOREPLACE/'${widthVal}'/' ${outname}
+    sed -i 's/HEIGHTTOREPLACE/'${heightVal}'/' ${outname}
 done
 
 # PWPW
-cp $pwpTemplate $outiframe/99_referencemap.html
+cp $pwpTemplate ${outiframe}/99_referencemap.html
 
 # end of script
