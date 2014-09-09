@@ -2,13 +2,16 @@
 <html>
   <head>
     <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="cache-control" content="max-age=0">
     <meta http-equiv="Expires" content="0">
-    <title></title>
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+    <title>LMEs data portal</title>
 	
 	<script src="http://onesharedocean.org/sites/all/libraries/jquery-1.11.0.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="http://openlayers.org/api/OpenLayers.js"></script>
-	<script src="/iframes/common/iframes/js/lmes.js"></script>
+	<script src="/iframes/common/js/lmes.js"></script>
 
 	<link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
 	<link rel="stylesheet" href="http://onesharedocean.org/sites/all/libraries/accordion/lmes_accordion.css" type="text/css">
@@ -332,7 +335,7 @@
     // Socio eco: population
     var population = new OpenLayers.Layer.WMS(
     "Population",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+   "http://onesharedocean.org/geoserver/lmes/wms",
     {layers:"lmes:population_LME66", styles:'lmes_population', transparent:true, format:'image/png'},
     {layerId:'population', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
@@ -355,7 +358,7 @@
     "ICEP",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_nutrients_eutrophication", styles:'lmes_nutrients_eutrophication_icep_cat', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_nutrients_eutrophication_icep_cat', transparent:true, format:'image/png'},
     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
@@ -363,7 +366,7 @@
     "ICEP",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_nutrients_eutrophication", styles:'lmes_nutrients_eutrophication_ld_din_cat', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_nutrients_eutrophication_ld_din_cat', transparent:true, format:'image/png'},
     {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
@@ -371,7 +374,7 @@
     "ICEP",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_nutrients_eutrophication", styles:'lmes_nutrients_eutrophication_mergedin_cat', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_nutrients_eutrophication_mergedin_cat', transparent:true, format:'image/png'},
     {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
@@ -524,7 +527,7 @@
     $("#accordion ul ul").slideUp(400, function(){
     var iFrame = parent.document.getElementById("iFrame");
     if($('#accordion').height() < iFrame.height-100){
-				  iFrame.height = 700;
+				  iFrame.height = 800;
 				  }
 				  });
 				  //slide down the link list below the h3 clicked - only if its closed
