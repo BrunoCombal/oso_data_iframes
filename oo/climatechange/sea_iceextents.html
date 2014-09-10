@@ -9,6 +9,13 @@ $(function () {
         $('#container').highcharts({
             credits: {enabled:true, href:'http://nsidc.org/data/seaice_index/', text:'Measured data: NSDIC'},
             chart: {
+                event:{load:function(){
+                       this.credits.element.onclick = function() {
+                        window.open(
+                        'http://nsidc.org/data/seaice_index/',
+                        '_blank'
+                           );
+                       }}},
                 type: 'line',
                 marginRight: 0,
                 marginBottom: 100,
@@ -47,7 +54,7 @@ $(function () {
             },
             legend: {
                 borderWidth: 0,
-                y:10
+                y:0
             },
             series: [
 {name:'Monthly (NSDIC)',
@@ -86,9 +93,7 @@ data: [ [ Date.UTC(1979,9,15), 8.0356-0.0914 ], [ Date.UTC(2012,9,15), 8.0356-0.
 	</head>
 	<body>
 	  <script src="http://code.highcharts.com/highcharts.js"></script>
-	  <script src="http://code.highcharts.com/modules/exporting.js"></script>
-	  	  
-	  <div id="container" style="min-width: 400px; height: 510px; margin: 0 auto"></div>
-	  
+	  <script src="http://code.highcharts.com/modules/exporting.js"></script>  	  
+	  <div id="container" style="min-width: 400px; height: 510px; margin: 0; padding:0 "></div>
 	</body>
 </html>
