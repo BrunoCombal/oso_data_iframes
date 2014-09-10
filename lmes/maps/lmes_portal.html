@@ -165,25 +165,28 @@
 	</li>
 	<li><h3><span>Fish &amp; Fisheries</span></h3>
 	</li>
-	<!--<li><h3><span>Pollution &amp; Ecosystem health</span></h3>
-	    <ul>-->
-	<li><h3><span>Pollution</span></h3>
+	<li><h3><span>Pollution</span></h3></li>
+	<li><h3 style="padding-left:12px!important;"><span>Nutrients</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('icep');">ICEP</span></li>
 	    <li><span onclick="showLayer('ld_din');">DIN loading</span></li>
 	    <li><span onclick="showLayer('merged_ind');">Merged indicator</span></li>
-
-<!--	    <li><span onclick="showLayer('icep_n');">ICEP-N</span></li>
-	    <li><span onclick="showLayer('icep_p');">ICEP-P</span></li>
--->
+	  </ul>
+	</li>
+	<li><h3 style="padding-left:12px!important; ">Plastics</h3>
+	  <ul>
 	    <li><span onclick="showLayer('plasticsmicro');">Micro Plastics</span></li>
 	    <li><span onclick="showLayer('plasticsmacro');">Macro Plastics</span></li>
+	  </ul>
+	</li>
+	<li><h3 style="padding-left:12px!important; ">POPs</h3>
+	  <ul>
 	    <li><span onclick="showLayer('pops_ddt');">DDT score</span></li>
 	    <li><span onclick="showLayer('pops_hch');">HCHs score</span></li>
 	    <li><span onclick="showLayer('pops_pcb');">PCBs score</span></li>
 	  </ul>
 	</li>
-	<li><h3><span>Ecosystem health</span></h3>
+	<li><h3 style="padding-left:12px!important;"><span>Ecosystem health</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('coral');">Coral reefs</span></li>
 	    <li><span onclick="showLayer('mangroves');">Mangroves</span></li>
@@ -358,23 +361,23 @@
     "ICEP",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_nutrients_eutrophication_icep_cat', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var ld_din = new OpenLayers.Layer.WMS(
-    "ICEP",
+    "ld_din",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_nutrients_eutrophication_ld_din_cat', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
     {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var merged_ind = new OpenLayers.Layer.WMS(
-    "ICEP",
+    "Merged indicator",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_nutrients_eutrophication_mergedin_cat', transparent:true, format:'image/png'},
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
     {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
@@ -469,7 +472,6 @@
     ruralpopulation,
     urbanpopulation,
     icep, ld_din, merged_ind,
-    //icepn, icepp,
     plasticsModelMicroCount, plasticsModelMacroWeight,
     governance_int, governance_engt, governance_compl,
     pops_ddt, pops_hch, pops_pcb
