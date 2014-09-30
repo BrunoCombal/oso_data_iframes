@@ -11,21 +11,21 @@ if($templateCache == true){
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>LMEs data portal</title>
-	
-	<link rel="stylesheet" href="/sites/all/libraries/jquery-ui-1.11.1/jquery-ui.min.css" />
+    <title>LMEs data portal</title>
+    
+    <link rel="stylesheet" href="/sites/all/libraries/jquery-ui-1.11.1/jquery-ui.min.css" />
     <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1/external/jquery/jquery.js"></script>
     <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js"></script>
-	<!--<script src="http://openlayers.org/api/OpenLayers.js"></script>-->
-	<script src="/iframes/common/js/lmes.js"></script>
-	<!-- For some reason the following css must be loaded instead of the stock one -->
-	<link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
-	<link rel="stylesheet" href="http://onesharedocean.org/sites/all/libraries/accordion/lmes_accordion.css" type="text/css">
-	
-
-<style type="text/css">
-	.ui-front{
+    <script type="text/javascript" src="/sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js"></script>
+    <!--<script src="http://openlayers.org/api/OpenLayers.js"></script>-->
+    <script src="/iframes/common/js/lmes.js"></script>
+    <!-- For some reason the following css must be loaded instead of the stock one -->
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="http://onesharedocean.org/sites/all/libraries/accordion/lmes_accordion.css" type="text/css">
+    
+    
+    <style type="text/css">
+      .ui-front{
 		z-index: 9999999999 !important;
 		cursor: pointer;
 		font-family:sans-serif; font-size:12px;
@@ -310,7 +310,7 @@ if($templateCache == true){
     "SST net change",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_sst_change_1957_2012", transparent:true, styles:'lmes_sst_change', format:'image/png'},
+    {layers:"lmes:lmes_sst_net_change", transparent:true, styles:'lmes_sst_change', format:'image/png'},
     {layerId:'sst_net_change', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
     
@@ -410,7 +410,7 @@ if($templateCache == true){
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep_p', transparent:true, format:'image/png'},
     {layerId:'icep_p', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
--->
+
     var plasticsModelMicroCount = new OpenLayers.Layer.WMS(
     "Micro plastics",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
