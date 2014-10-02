@@ -9,8 +9,8 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <style>
       #map-id {
-      width: WIDTHTOREPLACEpx;
-      height: HEIGHTTOREPLACEpx;
+      width: 600px;
+      height: 300px;
       }
       #lswitcher.olControlLayerSwitcher{
        font-size:11px !important;
@@ -43,15 +43,15 @@
     var wfsUrl = 'http://onesharedocean.org/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=ocean:LME66&outputFormat=GML2&cql_filter=LME_NUMBER=';
 
     var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
-    var minResolution=360/WIDTHTOREPLACE.0;
-    var maxResolution=5/WIDTHTOREPLACE.0;
+    var minResolution=360/600.0;
+    var maxResolution=5/600.0;
     var options = {minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
     maxExtent:defaultExtent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
     var map = new OpenLayers.Map("map-id", options);
     var layerSwitcher = new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('map-selector')});
     map.addControl(layerSwitcher);
 
-    var lmeID=LMEIDTOREPLACE;
+    var lmeID=10;
 
     wrapDateLine=true;
     if (lmeID==46) { wrapDateLine=false;}
