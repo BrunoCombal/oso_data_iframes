@@ -49,7 +49,7 @@ $(document).ready(function() {
 	}
 	//Define the behaviour of the View Data link according to the host permissions
 	$('#viewData').click(function(){
-		var sourceURL = "http://onesharedocean.org/?q=data#189";
+		var sourceURL = "http://onesharedocean.org/?q=node/27#381";
 		if(sameHost){
 			window.parent.window.location = sourceURL;
 		} else {
@@ -112,7 +112,7 @@ $(document).ready(function() {
 						var thisData=[];
 						if (plotType=='data') {
 							for (var ii=2; ii<items.length; ii++) {
-							thisData.push([1957+parseInt(ii)-1, parseFloat(items[ii]) ] );
+							thisData.push([1957+parseInt(ii)-2, parseFloat(items[ii]) ] );
 						} //for
 						} else {
 						thisData.push( [1957+parseFloat(items[2]), parseFloat(items[3])] );
