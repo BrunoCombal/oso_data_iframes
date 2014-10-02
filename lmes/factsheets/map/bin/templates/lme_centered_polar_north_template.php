@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
-      width: 600px;
-      height: 300px;
+      width: WIDTHTOREPLACEpx;
+      height: HEIGHTTOREPLACEpx;
       }
     </style>    
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
@@ -67,7 +67,7 @@
 		map.setLayerIndex(countriesNames, 3);
 		map.setLayerIndex(lmesName, 4);
 
-		var lmeID=65;
+		var lmeID=LMECODETOREPLACE;
 		var extent=OpenLayers.Request.GET({
 			url: wfsUrl + lmeID,
 			async:false,
@@ -102,9 +102,9 @@
     <div style="float:left; clear:none; display:inline"> <!-- abstract containter -->
       <div id="map-id" style="float:left; margin:0; margin-right:0px; padding:0; display:inline"></div>
       <div style="float:right;  font-size:10px; max-width:280px; margin-left:0; padding-left:10px; display:inline; font-family:sans-serif;">
-	<b>LME #65</b> (<a target="_top" href="/?q=node/118">previous</a> <a target="_top" href="/?q=node/120">next</a>) <br/>
-	<b>Country:</b> United States of America<br/>
-	<b>Area:</b>  km<sup>2</sup><br/>
+	<b>LME #LMECODETOREPLACE</b> (<a target="_top" href="/?q=node/NODEPREV">previous</a> <a target="_top" href="/?q=node/NODENEXT">next</a>) <br/>
+	COUNTRYTOREPLACE<br/>
+	<b>Area:</b> AREATOREPLACE km<sup>2</sup><br/>
       </div>
     </div>
     

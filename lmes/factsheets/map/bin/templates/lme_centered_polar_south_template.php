@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
-      width: 600px;
-      height: 400px;
+      width: WIDTHTOREPLACEpx;
+      height: HEIGHTTOREPLACEpx;
       }
     </style>    
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
@@ -81,14 +81,9 @@
     <div style="float:left; clear:none; display:inline"> <!-- abstract containter -->
     <div id="map-id" style="float:left; margin:0; margin-right:0px; padding:0; display:inline"></div>
     <div style="float:right;  font-size:10px; max-width:280px; margin-left:0; padding-left:10px; display:inline; font-family:sans-serif;">
-      <b>LME #61</b> (<a target="_top" href="/?q=node/114">previous</a> <a target="_top" href="/?q=node/116">next</a>) <br/>
-      <b>Country:</b> Antartica<br/>
-      <b>Area:</b> 3486169 km<sup>2</sup><br/>
-      <b>Shelf Area:</b> 1001926 km<sup>2</sup><br/>
-      <b>Inshore Fishing Area:</b> 0 km<sup>2</sup><br/>
-      <b>Coral reefs:</b> 0%<br/>
-      <b>Sea mounts:</b> 0.1%<br/>
-      <b>Primary production:</b> 273mgC.m<sup>-2</sup>.day<sup>-1</sup><br/>
+      <b>LME #LMECODETOREPLACE</b> (<a target="_top" href="/?q=node/NODEPREV">previous</a> <a target="_top" href="/?q=node/NODENEXT">next</a>) <br/>
+      COUNTRYTOREPLACE<br/>
+      <b>Area:</b> AREATOREPLACE km<sup>2</sup><br/>
     </div>
     </div>
 
