@@ -1,0 +1,3319 @@
+Year,LME,LME_name,Effective Effort (kilowatt)
+1950,1,East Bering Sea,24 398 823.01
+1950,2,Gulf of Alaska,88 941 730.22
+1950,3,California Current,53 057 675.09
+1950,4,Gulf of California,2 001 706.38
+1950,5,Gulf of Mexico,44 611 613.22
+1950,6,Southeast U.S. Continental Shelf,9 173 701.85
+1950,7,Northeast U.S. Continental Shelf,71 221 575.13
+1950,8,Scotian Shelf,37 372 709.65
+1950,9,Newfoundland-Labrador Shelf,46 415 450.46
+1950,10,Insular Pacific-Hawaiian,10 883 270.30
+1950,11,Pacific Central-American Coastal,22 672 013.99
+1950,12,Caribbean Sea,24 616 745.11
+1950,13,Humboldt Current,13 196 788.61
+1950,14,Patagonian Shelf,3 975 778.83
+1950,15,South Brazil Shelf,3 925 485.76
+1950,16,East Brazil Shelf,9 961 369.21
+1950,17,North Brazil Shelf,8 189 290.65
+1950,18,Canadian Eastern Arctic -West Greenland,17 874 100.56
+1950,19,Iceland Shelf/Sea,3 166 010.38
+1950,20,Barents Sea,40 656 422.30
+1950,21,Norwegian Sea,18 336 462.49
+1950,22,North Sea,160 303 164.51
+1950,23,Baltic Sea,127 907 686.40
+1950,24,Celtic-Biscay Shelf,132 557 172.28
+1950,25,Iberian Coastal,19 112 103.88
+1950,26,Mediterranean Sea,170 275 163.57
+1950,27,Canary Current,15 907 268.72
+1950,28,Guinea Current,39 884 597.98
+1950,29,Benguela Current,2 149 867.22
+1950,30,Agulhas Current,6 021 696.80
+1950,31,Somali Coastal Current,2 633 633.05
+1950,32,Arabian Sea,19 328 263.67
+1950,33,Red Sea,6 686 011.12
+1950,34,Bay of Bengal,15 040 978.72
+1950,35,Gulf of Thailand,10 272 785.68
+1950,36,South China Sea,42 998 981.36
+1950,37,Sulu-Celebes Sea,73 542 182.46
+1950,38,Indonesian Sea,20 236 236.85
+1950,39,North Australian Shelf,2 394 255.24
+1950,40,Northeast Australian Shelf,3 605 516.91
+1950,41,East Central Australian Shelf,3 150 455.05
+1950,42,Southeast Australian Shelf,2 608 946.58
+1950,43,Southwest Australian Shelf,2 730 092.82
+1950,44,West Central Australian Shelf,1 259 685.96
+1950,45,Northwest Australian Shelf,3 344 536.11
+1950,46,New Zealand Shelf,846 001.52
+1950,47,East China Sea,17 414 689.95
+1950,48,Yellow Sea,9 062 648.79
+1950,49,Kuroshio Current,34 807 995.99
+1950,50,Sea of Japan,23 553 198.81
+1950,51,Oyashio Current,2 429 724.91
+1950,52,Okhotsk Sea,14 238 090.33
+1950,53,West Bering Sea,1 047 959.44
+1950,54,Nrothern Bering - Chukchi Sea,6 623 089.87
+1950,59,Greenland Sea,39 063 150.73
+1950,60,Faroe Plateau,324 007.36
+1950,62,Black Sea,50 834 723.94
+1950,65,Aleutian,3 687 232.45
+1951,1,East Bering Sea,25 002 514.03
+1951,2,Gulf of Alaska,92 077 730.27
+1951,3,California Current,55 836 990.93
+1951,4,Gulf of California,2 281 772.73
+1951,5,Gulf of Mexico,46 042 343.62
+1951,6,Southeast U.S. Continental Shelf,9 535 247.13
+1951,7,Northeast U.S. Continental Shelf,78 428 658.74
+1951,8,Scotian Shelf,37 355 380.43
+1951,9,Newfoundland-Labrador Shelf,51 690 744.37
+1951,10,Insular Pacific-Hawaiian,11 206 610.54
+1951,11,Pacific Central-American Coastal,28 475 768.80
+1951,12,Caribbean Sea,26 372 748.84
+1951,13,Humboldt Current,12 956 811.48
+1951,14,Patagonian Shelf,4 195 303.98
+1951,15,South Brazil Shelf,4 327 063.20
+1951,16,East Brazil Shelf,10 739 653.83
+1951,17,North Brazil Shelf,8 933 768.85
+1951,18,Canadian Eastern Arctic -West Greenland,21 977 080.29
+1951,19,Iceland Shelf/Sea,1 490 998.35
+1951,20,Barents Sea,36 845 278.18
+1951,21,Norwegian Sea,19 710 074.35
+1951,22,North Sea,175 664 393.32
+1951,23,Baltic Sea,108 484 184.11
+1951,24,Celtic-Biscay Shelf,115 564 126.65
+1951,25,Iberian Coastal,20 611 292.37
+1951,26,Mediterranean Sea,178 406 002.18
+1951,27,Canary Current,9 479 119.67
+1951,28,Guinea Current,6 290 210.83
+1951,29,Benguela Current,2 249 682.65
+1951,30,Agulhas Current,6 376 117.90
+1951,31,Somali Coastal Current,2 750 927.80
+1951,32,Arabian Sea,20 161 093.49
+1951,33,Red Sea,6 730 404.77
+1951,34,Bay of Bengal,15 819 226.12
+1951,35,Gulf of Thailand,10 277 838.49
+1951,36,South China Sea,44 358 189.40
+1951,37,Sulu-Celebes Sea,73 718 880.33
+1951,38,Indonesian Sea,22 463 208.16
+1951,39,North Australian Shelf,2 449 066.68
+1951,40,Northeast Australian Shelf,3 757 970.53
+1951,41,East Central Australian Shelf,3 316 459.27
+1951,42,Southeast Australian Shelf,2 608 579.83
+1951,43,Southwest Australian Shelf,3 375 511.78
+1951,44,West Central Australian Shelf,1 332 491.13
+1951,45,Northwest Australian Shelf,3 465 014.93
+1951,46,New Zealand Shelf,966 783.30
+1951,47,East China Sea,17 912 795.71
+1951,48,Yellow Sea,9 375 553.26
+1951,49,Kuroshio Current,35 599 013.99
+1951,50,Sea of Japan,24 249 883.82
+1951,51,Oyashio Current,2 391 904.16
+1951,52,Okhotsk Sea,14 599 090.17
+1951,53,West Bering Sea,1 072 672.27
+1951,54,Nrothern Bering - Chukchi Sea,6 885 932.66
+1951,59,Greenland Sea,17 395 065.99
+1951,60,Faroe Plateau,199 595.12
+1951,62,Black Sea,53 584 918.84
+1951,65,Aleutian,3 784 145.62
+1952,1,East Bering Sea,24 087 634.56
+1952,2,Gulf of Alaska,87 697 930.02
+1952,3,California Current,58 025 580.88
+1952,4,Gulf of California,3 711 729.30
+1952,5,Gulf of Mexico,47 673 617.34
+1952,6,Southeast U.S. Continental Shelf,9 772 846.19
+1952,7,Northeast U.S. Continental Shelf,84 100 616.76
+1952,8,Scotian Shelf,45 189 876.70
+1952,9,Newfoundland-Labrador Shelf,62 857 599.27
+1952,10,Insular Pacific-Hawaiian,10 880 520.95
+1952,11,Pacific Central-American Coastal,34 428 416.26
+1952,12,Caribbean Sea,29 252 971.08
+1952,13,Humboldt Current,12 785 850.63
+1952,14,Patagonian Shelf,4 302 908.20
+1952,15,South Brazil Shelf,4 052 332.20
+1952,16,East Brazil Shelf,9 817 384.55
+1952,17,North Brazil Shelf,8 730 454.33
+1952,18,Canadian Eastern Arctic -West Greenland,26 365 897.66
+1952,19,Iceland Shelf/Sea,1 556 191.77
+1952,20,Barents Sea,34 000 141.44
+1952,21,Norwegian Sea,19 462 580.93
+1952,22,North Sea,168 250 818.22
+1952,23,Baltic Sea,98 180 575.46
+1952,24,Celtic-Biscay Shelf,122 887 925.26
+1952,25,Iberian Coastal,19 817 069.56
+1952,26,Mediterranean Sea,181 228 050.63
+1952,27,Canary Current,8 510 085.26
+1952,28,Guinea Current,6 186 844.91
+1952,29,Benguela Current,2 223 144.40
+1952,30,Agulhas Current,6 714 086.02
+1952,31,Somali Coastal Current,2 879 522.97
+1952,32,Arabian Sea,24 626 808.84
+1952,33,Red Sea,6 682 842.87
+1952,34,Bay of Bengal,19 378 867.07
+1952,35,Gulf of Thailand,10 552 149.41
+1952,36,South China Sea,44 504 587.94
+1952,37,Sulu-Celebes Sea,73 619 196.56
+1952,38,Indonesian Sea,23 528 943.55
+1952,39,North Australian Shelf,2 425 516.07
+1952,40,Northeast Australian Shelf,3 670 259.22
+1952,41,East Central Australian Shelf,3 336 232.62
+1952,42,Southeast Australian Shelf,2 672 063.37
+1952,43,Southwest Australian Shelf,3 119 487.86
+1952,44,West Central Australian Shelf,1 182 871.78
+1952,45,Northwest Australian Shelf,3 502 780.56
+1952,46,New Zealand Shelf,891 510.24
+1952,47,East China Sea,17 363 973.94
+1952,48,Yellow Sea,8 784 754.20
+1952,49,Kuroshio Current,36 391 180.24
+1952,50,Sea of Japan,24 184 604.00
+1952,51,Oyashio Current,2 522 816.08
+1952,52,Okhotsk Sea,14 127 593.48
+1952,53,West Bering Sea,1 013 163.08
+1952,54,Nrothern Bering - Chukchi Sea,6 591 973.58
+1952,59,Greenland Sea,17 839 381.58
+1952,60,Faroe Plateau,185 994.91
+1952,62,Black Sea,52 769 671.46
+1952,65,Aleutian,3 646 340.72
+1953,1,East Bering Sea,24 873 387.10
+1953,2,Gulf of Alaska,89 592 554.05
+1953,3,California Current,60 410 216.81
+1953,4,Gulf of California,3 781 027.16
+1953,5,Gulf of Mexico,50 927 830.01
+1953,6,Southeast U.S. Continental Shelf,9 273 725.01
+1953,7,Northeast U.S. Continental Shelf,87 815 041.84
+1953,8,Scotian Shelf,48 489 929.73
+1953,9,Newfoundland-Labrador Shelf,65 900 325.85
+1953,10,Insular Pacific-Hawaiian,11 131 904.38
+1953,11,Pacific Central-American Coastal,36 384 990.38
+1953,12,Caribbean Sea,29 249 406.53
+1953,13,Humboldt Current,11 064 591.49
+1953,14,Patagonian Shelf,5 103 771.08
+1953,15,South Brazil Shelf,5 018 966.81
+1953,16,East Brazil Shelf,11 198 074.40
+1953,17,North Brazil Shelf,9 381 034.10
+1953,18,Canadian Eastern Arctic -West Greenland,25 667 471.83
+1953,19,Iceland Shelf/Sea,1 645 361.07
+1953,20,Barents Sea,31 651 054.95
+1953,21,Norwegian Sea,17 489 545.25
+1953,22,North Sea,158 869 408.84
+1953,23,Baltic Sea,91 890 031.25
+1953,24,Celtic-Biscay Shelf,130 969 544.90
+1953,25,Iberian Coastal,21 989 332.32
+1953,26,Mediterranean Sea,188 043 350.80
+1953,27,Canary Current,14 603 498.79
+1953,28,Guinea Current,6 970 154.13
+1953,29,Benguela Current,2 389 351.16
+1953,30,Agulhas Current,7 037 571.93
+1953,31,Somali Coastal Current,3 050 575.16
+1953,32,Arabian Sea,25 661 628.39
+1953,33,Red Sea,6 818 094.97
+1953,34,Bay of Bengal,20 180 720.18
+1953,35,Gulf of Thailand,10 995 363.58
+1953,36,South China Sea,45 393 170.79
+1953,37,Sulu-Celebes Sea,75 107 002.85
+1953,38,Indonesian Sea,23 925 323.22
+1953,39,North Australian Shelf,2 512 868.62
+1953,40,Northeast Australian Shelf,3 822 050.64
+1953,41,East Central Australian Shelf,3 419 972.85
+1953,42,Southeast Australian Shelf,2 737 140.51
+1953,43,Southwest Australian Shelf,3 118 914.01
+1953,44,West Central Australian Shelf,1 239 506.26
+1953,45,Northwest Australian Shelf,3 633 937.98
+1953,46,New Zealand Shelf,764 699.80
+1953,47,East China Sea,17 272 949.03
+1953,48,Yellow Sea,8 708 709.92
+1953,49,Kuroshio Current,37 959 448.40
+1953,50,Sea of Japan,24 191 865.29
+1953,51,Oyashio Current,2 490 869.81
+1953,52,Okhotsk Sea,14 221 685.95
+1953,53,West Bering Sea,1 018 903.31
+1953,54,Nrothern Bering - Chukchi Sea,7 149 566.43
+1953,59,Greenland Sea,17 250 516.38
+1953,60,Faroe Plateau,121 444.07
+1953,62,Black Sea,53 848 396.50
+1953,65,Aleutian,3 842 377.56
+1954,1,East Bering Sea,24 631 901.26
+1954,2,Gulf of Alaska,90 481 951.17
+1954,3,California Current,61 766 273.29
+1954,4,Gulf of California,3 800 173.95
+1954,5,Gulf of Mexico,54 676 666.28
+1954,6,Southeast U.S. Continental Shelf,8 664 541.32
+1954,7,Northeast U.S. Continental Shelf,92 242 524.84
+1954,8,Scotian Shelf,45 165 710.60
+1954,9,Newfoundland-Labrador Shelf,63 185 829.05
+1954,10,Insular Pacific-Hawaiian,11 068 545.13
+1954,11,Pacific Central-American Coastal,37 121 454.34
+1954,12,Caribbean Sea,32 288 167.83
+1954,13,Humboldt Current,12 346 525.18
+1954,14,Patagonian Shelf,4 785 721.48
+1954,15,South Brazil Shelf,5 715 162.64
+1954,16,East Brazil Shelf,12 389 570.40
+1954,17,North Brazil Shelf,10 307 180.77
+1954,18,Canadian Eastern Arctic -West Greenland,24 345 130.47
+1954,19,Iceland Shelf/Sea,1 695 321.36
+1954,20,Barents Sea,31 338 613.43
+1954,21,Norwegian Sea,16 837 701.77
+1954,22,North Sea,153 918 847.75
+1954,23,Baltic Sea,89 348 052.24
+1954,24,Celtic-Biscay Shelf,149 478 834.75
+1954,25,Iberian Coastal,21 987 654.48
+1954,26,Mediterranean Sea,198 063 716.32
+1954,27,Canary Current,15 500 347.60
+1954,28,Guinea Current,7 063 669.99
+1954,29,Benguela Current,2 447 379.58
+1954,30,Agulhas Current,7 470 191.08
+1954,31,Somali Coastal Current,3 180 444.52
+1954,32,Arabian Sea,33 475 654.46
+1954,33,Red Sea,8 461 139.59
+1954,34,Bay of Bengal,20 834 665.72
+1954,35,Gulf of Thailand,11 197 103.08
+1954,36,South China Sea,45 714 071.82
+1954,37,Sulu-Celebes Sea,75 559 030.45
+1954,38,Indonesian Sea,24 001 897.35
+1954,39,North Australian Shelf,2 567 636.65
+1954,40,Northeast Australian Shelf,4 385 051.49
+1954,41,East Central Australian Shelf,3 557 996.19
+1954,42,Southeast Australian Shelf,2 780 752.68
+1954,43,Southwest Australian Shelf,2 951 599.48
+1954,44,West Central Australian Shelf,1 285 314.47
+1954,45,Northwest Australian Shelf,3 575 152.64
+1954,46,New Zealand Shelf,818 434.99
+1954,47,East China Sea,17 253 474.83
+1954,48,Yellow Sea,7 855 529.29
+1954,49,Kuroshio Current,38 194 634.87
+1954,50,Sea of Japan,24 037 444.75
+1954,51,Oyashio Current,2 382 193.76
+1954,52,Okhotsk Sea,13 987 202.86
+1954,53,West Bering Sea,988 527.42
+1954,54,Nrothern Bering - Chukchi Sea,7 011 618.08
+1954,59,Greenland Sea,17 065 514.61
+1954,60,Faroe Plateau,200 945.89
+1954,62,Black Sea,53 855 376.92
+1954,65,Aleutian,3 757 242.20
+1955,1,East Bering Sea,25 496 982.33
+1955,2,Gulf of Alaska,92 719 007.06
+1955,3,California Current,60 064 952.98
+1955,4,Gulf of California,3 930 512.74
+1955,5,Gulf of Mexico,55 083 663.44
+1955,6,Southeast U.S. Continental Shelf,7 858 316.76
+1955,7,Northeast U.S. Continental Shelf,88 283 798.41
+1955,8,Scotian Shelf,46 710 090.60
+1955,9,Newfoundland-Labrador Shelf,62 652 680.02
+1955,10,Insular Pacific-Hawaiian,11 273 641.48
+1955,11,Pacific Central-American Coastal,37 683 912.47
+1955,12,Caribbean Sea,33 628 812.71
+1955,13,Humboldt Current,13 006 268.24
+1955,14,Patagonian Shelf,4 352 340.99
+1955,15,South Brazil Shelf,5 761 503.17
+1955,16,East Brazil Shelf,12 368 661.12
+1955,17,North Brazil Shelf,10 163 571.25
+1955,18,Canadian Eastern Arctic -West Greenland,24 531 991.69
+1955,19,Iceland Shelf/Sea,656 082.36
+1955,20,Barents Sea,31 880 761.73
+1955,21,Norwegian Sea,18 513 448.58
+1955,22,North Sea,181 903 498.41
+1955,23,Baltic Sea,42 413 783.66
+1955,24,Celtic-Biscay Shelf,159 538 029.21
+1955,25,Iberian Coastal,22 217 491.18
+1955,26,Mediterranean Sea,208 822 301.46
+1955,27,Canary Current,17 336 792.56
+1955,28,Guinea Current,9 771 852.32
+1955,29,Benguela Current,2 494 556.37
+1955,30,Agulhas Current,7 528 769.00
+1955,31,Somali Coastal Current,3 220 125.67
+1955,32,Arabian Sea,34 130 944.94
+1955,33,Red Sea,8 626 702.48
+1955,34,Bay of Bengal,21 930 097.35
+1955,35,Gulf of Thailand,13 672 607.89
+1955,36,South China Sea,48 874 248.36
+1955,37,Sulu-Celebes Sea,88 575 944.79
+1955,38,Indonesian Sea,27 814 116.70
+1955,39,North Australian Shelf,3 340 581.73
+1955,40,Northeast Australian Shelf,5 132 435.83
+1955,41,East Central Australian Shelf,2 296 603.27
+1955,42,Southeast Australian Shelf,3 220 821.30
+1955,43,Southwest Australian Shelf,4 395 054.14
+1955,44,West Central Australian Shelf,1 816 364.52
+1955,45,Northwest Australian Shelf,4 747 972.87
+1955,46,New Zealand Shelf,1 318 928.55
+1955,47,East China Sea,17 652 761.87
+1955,48,Yellow Sea,7 377 915.74
+1955,49,Kuroshio Current,33 518 818.16
+1955,50,Sea of Japan,22 213 847.17
+1955,51,Oyashio Current,2 278 338.83
+1955,52,Okhotsk Sea,13 788 521.12
+1955,53,West Bering Sea,1 113 062.13
+1955,54,Nrothern Bering - Chukchi Sea,7 229 397.45
+1955,59,Greenland Sea,9 373 271.21
+1955,62,Black Sea,56 543 840.29
+1955,65,Aleutian,3 895 892.21
+1956,1,East Bering Sea,24 749 327.78
+1956,2,Gulf of Alaska,88 537 378.70
+1956,3,California Current,55 745 517.28
+1956,4,Gulf of California,3 435 210.96
+1956,5,Gulf of Mexico,57 118 058.32
+1956,6,Southeast U.S. Continental Shelf,8 468 246.23
+1956,7,Northeast U.S. Continental Shelf,95 297 579.13
+1956,8,Scotian Shelf,49 098 608.02
+1956,9,Newfoundland-Labrador Shelf,70 512 637.30
+1956,10,Insular Pacific-Hawaiian,10 831 875.76
+1956,11,Pacific Central-American Coastal,37 594 045.65
+1956,12,Caribbean Sea,45 934 470.93
+1956,13,Humboldt Current,13 217 367.57
+1956,14,Patagonian Shelf,3 848 804.22
+1956,15,South Brazil Shelf,4 182 905.92
+1956,16,East Brazil Shelf,13 390 371.49
+1956,17,North Brazil Shelf,12 369 539.00
+1956,18,Canadian Eastern Arctic -West Greenland,26 813 675.76
+1956,19,Iceland Shelf/Sea,1 395 827.27
+1956,20,Barents Sea,33 603 593.44
+1956,21,Norwegian Sea,18 133 978.30
+1956,22,North Sea,192 503 158.52
+1956,23,Baltic Sea,41 835 251.91
+1956,24,Celtic-Biscay Shelf,172 478 994.45
+1956,25,Iberian Coastal,19 624 226.94
+1956,26,Mediterranean Sea,208 645 524.75
+1956,27,Canary Current,14 969 247.82
+1956,28,Guinea Current,7 720 424.47
+1956,29,Benguela Current,2 545 654.99
+1956,30,Agulhas Current,7 889 408.80
+1956,31,Somali Coastal Current,3 404 910.55
+1956,32,Arabian Sea,32 973 304.64
+1956,33,Red Sea,8 291 394.38
+1956,34,Bay of Bengal,21 792 843.98
+1956,35,Gulf of Thailand,13 769 394.29
+1956,36,South China Sea,49 265 851.61
+1956,37,Sulu-Celebes Sea,84 845 296.88
+1956,38,Indonesian Sea,27 634 172.89
+1956,39,North Australian Shelf,3 433 683.12
+1956,40,Northeast Australian Shelf,5 239 164.75
+1956,41,East Central Australian Shelf,2 247 442.73
+1956,42,Southeast Australian Shelf,3 640 633.34
+1956,43,Southwest Australian Shelf,4 805 763.37
+1956,44,West Central Australian Shelf,1 891 017.57
+1956,45,Northwest Australian Shelf,4 951 731.09
+1956,46,New Zealand Shelf,1 354 887.86
+1956,47,East China Sea,17 815 461.02
+1956,48,Yellow Sea,6 626 730.40
+1956,49,Kuroshio Current,32 245 854.54
+1956,50,Sea of Japan,24 028 457.50
+1956,51,Oyashio Current,2 192 263.14
+1956,52,Okhotsk Sea,13 255 233.64
+1956,53,West Bering Sea,1 081 361.09
+1956,54,Nrothern Bering - Chukchi Sea,6 979 332.47
+1956,59,Greenland Sea,8 567 718.41
+1956,62,Black Sea,56 413 632.42
+1956,65,Aleutian,3 744 920.02
+1957,1,East Bering Sea,25 012 818.84
+1957,2,Gulf of Alaska,89 744 185.38
+1957,3,California Current,57 752 417.77
+1957,4,Gulf of California,3 613 938.15
+1957,5,Gulf of Mexico,57 190 421.68
+1957,6,Southeast U.S. Continental Shelf,9 293 860.55
+1957,7,Northeast U.S. Continental Shelf,94 832 021.41
+1957,8,Scotian Shelf,47 472 318.15
+1957,9,Newfoundland-Labrador Shelf,67 142 960.92
+1957,10,Insular Pacific-Hawaiian,10 933 551.30
+1957,11,Pacific Central-American Coastal,26 657 890.06
+1957,12,Caribbean Sea,50 959 941.48
+1957,13,Humboldt Current,17 839 190.05
+1957,14,Patagonian Shelf,3 927 636.12
+1957,15,South Brazil Shelf,4 179 753.25
+1957,16,East Brazil Shelf,13 591 445.06
+1957,17,North Brazil Shelf,12 853 847.16
+1957,18,Canadian Eastern Arctic -West Greenland,26 770 172.26
+1957,19,Iceland Shelf/Sea,659 616.19
+1957,20,Barents Sea,18 135 839.63
+1957,21,Norwegian Sea,1 911 798.52
+1957,22,North Sea,210 010 453.56
+1957,23,Baltic Sea,52 571 832.77
+1957,24,Celtic-Biscay Shelf,164 954 892.99
+1957,25,Iberian Coastal,21 508 579.73
+1957,26,Mediterranean Sea,197 159 988.14
+1957,27,Canary Current,16 172 099.84
+1957,28,Guinea Current,8 671 742.87
+1957,29,Benguela Current,2 615 000.28
+1957,30,Agulhas Current,5 727 914.13
+1957,31,Somali Coastal Current,3 454 802.43
+1957,32,Arabian Sea,33 393 438.63
+1957,33,Red Sea,7 747 961.42
+1957,34,Bay of Bengal,22 645 580.81
+1957,35,Gulf of Thailand,14 287 989.85
+1957,36,South China Sea,50 327 885.27
+1957,37,Sulu-Celebes Sea,88 231 513.52
+1957,38,Indonesian Sea,29 611 778.13
+1957,39,North Australian Shelf,3 644 995.76
+1957,40,Northeast Australian Shelf,4 647 731.54
+1957,41,East Central Australian Shelf,1 166 736.19
+1957,42,Southeast Australian Shelf,3 774 292.73
+1957,43,Southwest Australian Shelf,4 264 866.17
+1957,44,West Central Australian Shelf,1 863 338.82
+1957,45,Northwest Australian Shelf,5 189 670.63
+1957,46,New Zealand Shelf,1 403 885.48
+1957,47,East China Sea,18 332 797.88
+1957,48,Yellow Sea,7 596 871.77
+1957,49,Kuroshio Current,33 871 665.81
+1957,50,Sea of Japan,22 543 376.09
+1957,51,Oyashio Current,2 294 713.34
+1957,52,Okhotsk Sea,13 859 493.51
+1957,53,West Bering Sea,1 073 722.15
+1957,54,Nrothern Bering - Chukchi Sea,7 080 581.02
+1957,59,Greenland Sea,9 158 650.22
+1957,62,Black Sea,57 800 356.90
+1957,65,Aleutian,3 762 479.10
+1958,1,East Bering Sea,25 154 584.60
+1958,2,Gulf of Alaska,94 036 623.07
+1958,3,California Current,61 972 867.54
+1958,4,Gulf of California,3 696 588.32
+1958,5,Gulf of Mexico,60 869 172.62
+1958,6,Southeast U.S. Continental Shelf,10 055 851.80
+1958,7,Northeast U.S. Continental Shelf,87 023 382.83
+1958,8,Scotian Shelf,78 136 478.78
+1958,9,Newfoundland-Labrador Shelf,73 013 818.12
+1958,10,Insular Pacific-Hawaiian,11 951 173.57
+1958,11,Pacific Central-American Coastal,26 181 100.88
+1958,12,Caribbean Sea,58 344 065.71
+1958,13,Humboldt Current,15 609 478.48
+1958,14,Patagonian Shelf,3 939 794.41
+1958,15,South Brazil Shelf,4 517 216.32
+1958,16,East Brazil Shelf,15 043 786.63
+1958,17,North Brazil Shelf,14 853 645.21
+1958,18,Canadian Eastern Arctic -West Greenland,27 558 116.76
+1958,19,Iceland Shelf/Sea,700 660.42
+1958,20,Barents Sea,18 084 313.66
+1958,21,Norwegian Sea,1 903 776.60
+1958,22,North Sea,209 980 943.91
+1958,23,Baltic Sea,40 850 299.62
+1958,24,Celtic-Biscay Shelf,174 622 212.07
+1958,25,Iberian Coastal,22 003 650.25
+1958,26,Mediterranean Sea,213 078 101.14
+1958,27,Canary Current,19 959 140.88
+1958,28,Guinea Current,12 721 104.88
+1958,29,Benguela Current,2 834 183.82
+1958,30,Agulhas Current,7 260 977.62
+1958,31,Somali Coastal Current,3 808 391.33
+1958,32,Arabian Sea,34 282 555.79
+1958,33,Red Sea,9 133 398.65
+1958,34,Bay of Bengal,23 447 796.73
+1958,35,Gulf of Thailand,12 982 997.63
+1958,36,South China Sea,58 384 249.08
+1958,37,Sulu-Celebes Sea,88 402 741.17
+1958,38,Indonesian Sea,31 076 484.50
+1958,39,North Australian Shelf,3 628 931.18
+1958,40,Northeast Australian Shelf,5 581 832.39
+1958,41,East Central Australian Shelf,2 304 325.94
+1958,42,Southeast Australian Shelf,3 511 208.36
+1958,43,Southwest Australian Shelf,3 935 749.11
+1958,44,West Central Australian Shelf,1 725 343.13
+1958,45,Northwest Australian Shelf,5 033 581.40
+1958,46,New Zealand Shelf,1 499 759.24
+1958,47,East China Sea,19 556 046.07
+1958,48,Yellow Sea,8 010 596.50
+1958,49,Kuroshio Current,37 187 563.03
+1958,50,Sea of Japan,24 592 446.26
+1958,51,Oyashio Current,2 235 831.92
+1958,52,Okhotsk Sea,13 944 618.51
+1958,53,West Bering Sea,1 107 937.10
+1958,54,Nrothern Bering - Chukchi Sea,7 104 804.20
+1958,59,Greenland Sea,11 242 132.07
+1958,62,Black Sea,54 521 048.17
+1958,65,Aleutian,3 809 498.62
+1959,1,East Bering Sea,25 326 552.48
+1959,2,Gulf of Alaska,96 177 694.50
+1959,3,California Current,61 644 838.32
+1959,4,Gulf of California,3 567 673.04
+1959,5,Gulf of Mexico,59 754 111.12
+1959,6,Southeast U.S. Continental Shelf,10 146 214.16
+1959,7,Northeast U.S. Continental Shelf,89 749 800.78
+1959,8,Scotian Shelf,81 618 344.29
+1959,9,Newfoundland-Labrador Shelf,77 132 319.95
+1959,10,Insular Pacific-Hawaiian,12 200 808.30
+1959,11,Pacific Central-American Coastal,27 184 150.49
+1959,12,Caribbean Sea,60 890 853.10
+1959,13,Humboldt Current,16 624 308.47
+1959,14,Patagonian Shelf,3 862 471.23
+1959,15,South Brazil Shelf,4 638 849.41
+1959,16,East Brazil Shelf,19 000 128.37
+1959,17,North Brazil Shelf,15 826 679.55
+1959,18,Canadian Eastern Arctic -West Greenland,29 811 110.35
+1959,19,Iceland Shelf/Sea,317 929.17
+1959,20,Barents Sea,30 574 548.74
+1959,21,Norwegian Sea,13 443 793.62
+1959,22,North Sea,200 387 433.27
+1959,23,Baltic Sea,43 501 887.39
+1959,24,Celtic-Biscay Shelf,154 371 671.26
+1959,25,Iberian Coastal,21 363 306.58
+1959,26,Mediterranean Sea,213 875 609.67
+1959,27,Canary Current,20 221 904.00
+1959,28,Guinea Current,14 723 346.64
+1959,29,Benguela Current,3 045 545.91
+1959,30,Agulhas Current,6 979 798.97
+1959,31,Somali Coastal Current,4 073 724.86
+1959,32,Arabian Sea,34 070 137.77
+1959,33,Red Sea,9 095 024.40
+1959,34,Bay of Bengal,23 903 410.47
+1959,35,Gulf of Thailand,13 700 084.09
+1959,36,South China Sea,71 390 866.06
+1959,37,Sulu-Celebes Sea,86 362 331.90
+1959,38,Indonesian Sea,35 145 920.99
+1959,39,North Australian Shelf,4 050 274.52
+1959,40,Northeast Australian Shelf,5 396 844.80
+1959,41,East Central Australian Shelf,2 275 291.17
+1959,42,Southeast Australian Shelf,3 696 343.85
+1959,43,Southwest Australian Shelf,4 708 901.39
+1959,44,West Central Australian Shelf,1 930 439.43
+1959,45,Northwest Australian Shelf,5 396 559.15
+1959,46,New Zealand Shelf,1 618 856.26
+1959,47,East China Sea,19 244 623.65
+1959,48,Yellow Sea,8 679 561.33
+1959,49,Kuroshio Current,37 408 929.35
+1959,50,Sea of Japan,24 148 849.54
+1959,51,Oyashio Current,2 258 868.01
+1959,52,Okhotsk Sea,13 909 655.88
+1959,53,West Bering Sea,1 089 418.84
+1959,54,Nrothern Bering - Chukchi Sea,7 218 739.70
+1959,59,Greenland Sea,17 997 020.28
+1959,62,Black Sea,55 103 042.76
+1959,65,Aleutian,3 796 658.34
+1960,1,East Bering Sea,22 423 762.22
+1960,2,Gulf of Alaska,91 968 378.43
+1960,3,California Current,63 489 241.69
+1960,4,Gulf of California,4 001 243.22
+1960,5,Gulf of Mexico,63 771 991.79
+1960,6,Southeast U.S. Continental Shelf,9 598 163.77
+1960,7,Northeast U.S. Continental Shelf,89 014 189.00
+1960,8,Scotian Shelf,87 893 694.82
+1960,9,Newfoundland-Labrador Shelf,77 896 403.59
+1960,10,Insular Pacific-Hawaiian,13 858 697.79
+1960,11,Pacific Central-American Coastal,34 643 589.31
+1960,12,Caribbean Sea,60 665 282.94
+1960,13,Humboldt Current,16 643 044.25
+1960,14,Patagonian Shelf,5 061 616.25
+1960,15,South Brazil Shelf,3 514 129.07
+1960,16,East Brazil Shelf,18 635 421.28
+1960,17,North Brazil Shelf,15 342 030.02
+1960,18,Canadian Eastern Arctic -West Greenland,28 417 573.98
+1960,19,Iceland Shelf/Sea,1 659 284.63
+1960,20,Barents Sea,41 831 109.49
+1960,21,Norwegian Sea,14 570 581.51
+1960,22,North Sea,211 415 771.12
+1960,23,Baltic Sea,103 970 226.75
+1960,24,Celtic-Biscay Shelf,168 781 661.08
+1960,25,Iberian Coastal,15 538 015.59
+1960,26,Mediterranean Sea,224 119 405.25
+1960,27,Canary Current,29 542 117.17
+1960,28,Guinea Current,82 196 225.36
+1960,29,Benguela Current,1 022 249.78
+1960,30,Agulhas Current,6 632 439.19
+1960,31,Somali Coastal Current,5 455 546.77
+1960,32,Arabian Sea,36 427 699.07
+1960,33,Red Sea,8 985 149.18
+1960,34,Bay of Bengal,24 109 120.47
+1960,35,Gulf of Thailand,13 540 728.21
+1960,36,South China Sea,62 842 629.40
+1960,37,Sulu-Celebes Sea,81 677 333.00
+1960,38,Indonesian Sea,29 378 641.21
+1960,39,North Australian Shelf,3 553 028.39
+1960,40,Northeast Australian Shelf,4 294 364.29
+1960,41,East Central Australian Shelf,1 617 174.96
+1960,42,Southeast Australian Shelf,3 870 301.19
+1960,43,Southwest Australian Shelf,4 228 639.68
+1960,44,West Central Australian Shelf,1 920 322.97
+1960,45,Northwest Australian Shelf,4 981 898.68
+1960,46,New Zealand Shelf,1 571 410.94
+1960,47,East China Sea,19 956 389.55
+1960,48,Yellow Sea,9 062 610.76
+1960,49,Kuroshio Current,38 581 680.09
+1960,50,Sea of Japan,25 515 170.78
+1960,51,Oyashio Current,2 206 038.54
+1960,52,Okhotsk Sea,12 695 735.14
+1960,53,West Bering Sea,987 301.40
+1960,54,Nrothern Bering - Chukchi Sea,6 504 019.11
+1960,59,Greenland Sea,9 710 443.92
+1960,62,Black Sea,57 115 951.74
+1960,65,Aleutian,3 435 686.67
+1961,1,East Bering Sea,22 109 152.96
+1961,2,Gulf of Alaska,95 056 655.94
+1961,3,California Current,60 868 890.33
+1961,4,Gulf of California,4 514 199.58
+1961,5,Gulf of Mexico,63 069 624.70
+1961,6,Southeast U.S. Continental Shelf,10 734 184.19
+1961,7,Northeast U.S. Continental Shelf,88 577 376.18
+1961,8,Scotian Shelf,89 410 186.45
+1961,9,Newfoundland-Labrador Shelf,79 696 770.66
+1961,10,Insular Pacific-Hawaiian,13 632 302.70
+1961,11,Pacific Central-American Coastal,46 516 548.18
+1961,12,Caribbean Sea,62 588 253.96
+1961,13,Humboldt Current,16 817 430.66
+1961,14,Patagonian Shelf,5 351 892.11
+1961,15,South Brazil Shelf,6 417 588.29
+1961,16,East Brazil Shelf,20 495 970.43
+1961,17,North Brazil Shelf,14 544 098.86
+1961,18,Canadian Eastern Arctic -West Greenland,29 826 001.63
+1961,19,Iceland Shelf/Sea,1 681 584.38
+1961,20,Barents Sea,32 202 482.48
+1961,21,Norwegian Sea,17 123 236.19
+1961,22,North Sea,168 575 549.21
+1961,23,Baltic Sea,53 859 474.16
+1961,24,Celtic-Biscay Shelf,181 001 282.90
+1961,25,Iberian Coastal,37 368 079.95
+1961,26,Mediterranean Sea,211 674 331.21
+1961,27,Canary Current,14 186 521.93
+1961,28,Guinea Current,80 416 476.64
+1961,29,Benguela Current,2 624 786.33
+1961,30,Agulhas Current,6 597 934.98
+1961,31,Somali Coastal Current,5 271 919.46
+1961,32,Arabian Sea,38 436 112.03
+1961,33,Red Sea,9 174 669.77
+1961,34,Bay of Bengal,24 364 665.16
+1961,35,Gulf of Thailand,13 081 799.47
+1961,36,South China Sea,64 182 824.74
+1961,37,Sulu-Celebes Sea,78 259 031.70
+1961,38,Indonesian Sea,25 051 607.59
+1961,39,North Australian Shelf,2 514 117.27
+1961,40,Northeast Australian Shelf,5 438 278.56
+1961,41,East Central Australian Shelf,2 548 861.61
+1961,42,Southeast Australian Shelf,4 227 341.21
+1961,43,Southwest Australian Shelf,1 423 461.50
+1961,44,West Central Australian Shelf,1 363 726.98
+1961,45,Northwest Australian Shelf,3 543 960.06
+1961,46,New Zealand Shelf,2 140 775.68
+1961,47,East China Sea,20 372 983.56
+1961,48,Yellow Sea,9 075 069.39
+1961,49,Kuroshio Current,38 281 046.86
+1961,50,Sea of Japan,26 134 083.07
+1961,51,Oyashio Current,2 216 734.80
+1961,52,Okhotsk Sea,12 665 611.00
+1961,53,West Bering Sea,970 797.79
+1961,54,Nrothern Bering - Chukchi Sea,6 473 516.51
+1961,59,Greenland Sea,10 805 424.66
+1961,62,Black Sea,58 252 613.60
+1961,65,Aleutian,3 367 444.23
+1962,1,East Bering Sea,23 158 482.26
+1962,2,Gulf of Alaska,102 505 244.49
+1962,3,California Current,64 049 321.45
+1962,4,Gulf of California,4 451 925.74
+1962,5,Gulf of Mexico,62 122 319.06
+1962,6,Southeast U.S. Continental Shelf,10 253 585.89
+1962,7,Northeast U.S. Continental Shelf,93 300 599.10
+1962,8,Scotian Shelf,94 038 841.74
+1962,9,Newfoundland-Labrador Shelf,85 715 919.29
+1962,10,Insular Pacific-Hawaiian,14 156 608.13
+1962,11,Pacific Central-American Coastal,42 399 729.97
+1962,12,Caribbean Sea,65 667 405.34
+1962,13,Humboldt Current,16 797 313.86
+1962,14,Patagonian Shelf,5 205 027.53
+1962,15,South Brazil Shelf,6 988 240.27
+1962,16,East Brazil Shelf,22 997 411.54
+1962,17,North Brazil Shelf,16 296 018.98
+1962,18,Canadian Eastern Arctic -West Greenland,32 092 028.87
+1962,19,Iceland Shelf/Sea,2 129 554.91
+1962,20,Barents Sea,39 845 741.57
+1962,21,Norwegian Sea,17 065 245.19
+1962,22,North Sea,180 610 846.67
+1962,23,Baltic Sea,116 201 929.78
+1962,24,Celtic-Biscay Shelf,190 602 398.73
+1962,25,Iberian Coastal,34 838 223.05
+1962,26,Mediterranean Sea,210 138 462.36
+1962,27,Canary Current,16 819 667.52
+1962,28,Guinea Current,79 768 295.20
+1962,29,Benguela Current,1 759 793.31
+1962,30,Agulhas Current,7 432 724.54
+1962,31,Somali Coastal Current,5 563 321.92
+1962,32,Arabian Sea,40 370 117.01
+1962,33,Red Sea,9 271 078.94
+1962,34,Bay of Bengal,25 467 824.88
+1962,35,Gulf of Thailand,13 846 217.68
+1962,36,South China Sea,68 273 148.72
+1962,37,Sulu-Celebes Sea,89 124 091.05
+1962,38,Indonesian Sea,27 713 285.09
+1962,39,North Australian Shelf,3 221 133.25
+1962,40,Northeast Australian Shelf,5 913 390.24
+1962,41,East Central Australian Shelf,2 992 894.63
+1962,42,Southeast Australian Shelf,4 833 719.31
+1962,43,Southwest Australian Shelf,1 756 497.63
+1962,44,West Central Australian Shelf,1 393 278.05
+1962,45,Northwest Australian Shelf,4 391 082.58
+1962,46,New Zealand Shelf,1 685 150.66
+1962,47,East China Sea,21 866 486.08
+1962,48,Yellow Sea,9 990 926.05
+1962,49,Kuroshio Current,40 193 247.54
+1962,50,Sea of Japan,26 424 306.61
+1962,51,Oyashio Current,2 280 642.29
+1962,52,Okhotsk Sea,13 553 737.93
+1962,53,West Bering Sea,1 041 205.66
+1962,54,Nrothern Bering - Chukchi Sea,6 780 591.98
+1962,59,Greenland Sea,20 631 222.46
+1962,60,Faroe Plateau,198 322.81
+1962,62,Black Sea,58 466 944.67
+1962,65,Aleutian,3 587 757.19
+1963,1,East Bering Sea,23 928 646.76
+1963,2,Gulf of Alaska,94 811 977.69
+1963,3,California Current,63 761 686.77
+1963,4,Gulf of California,7 107 784.79
+1963,5,Gulf of Mexico,56 662 333.02
+1963,6,Southeast U.S. Continental Shelf,7 575 079.13
+1963,7,Northeast U.S. Continental Shelf,125 619 579.16
+1963,8,Scotian Shelf,59 530 084.34
+1963,9,Newfoundland-Labrador Shelf,58 151 068.52
+1963,10,Insular Pacific-Hawaiian,14 595 428.24
+1963,11,Pacific Central-American Coastal,57 550 400.75
+1963,12,Caribbean Sea,94 190 310.69
+1963,13,Humboldt Current,19 826 790.43
+1963,14,Patagonian Shelf,5 440 581.11
+1963,15,South Brazil Shelf,5 830 517.10
+1963,16,East Brazil Shelf,22 222 220.41
+1963,17,North Brazil Shelf,22 201 190.72
+1963,18,Canadian Eastern Arctic -West Greenland,19 099 664.40
+1963,19,Iceland Shelf/Sea,2 294 100.59
+1963,20,Barents Sea,18 464 696.10
+1963,21,Norwegian Sea,1 658 107.56
+1963,22,North Sea,157 492 179.75
+1963,23,Baltic Sea,58 885 807.13
+1963,24,Celtic-Biscay Shelf,195 198 026.38
+1963,25,Iberian Coastal,35 071 478.07
+1963,26,Mediterranean Sea,206 768 510.93
+1963,27,Canary Current,16 001 163.09
+1963,28,Guinea Current,79 554 856.28
+1963,29,Benguela Current,2 089 904.74
+1963,30,Agulhas Current,10 902 862.93
+1963,31,Somali Coastal Current,10 124 848.36
+1963,32,Arabian Sea,54 807 391.85
+1963,33,Red Sea,10 789 507.85
+1963,34,Bay of Bengal,28 998 184.36
+1963,35,Gulf of Thailand,16 918 271.87
+1963,36,South China Sea,68 529 464.58
+1963,37,Sulu-Celebes Sea,93 738 593.41
+1963,38,Indonesian Sea,32 683 563.06
+1963,39,North Australian Shelf,3 939 536.81
+1963,40,Northeast Australian Shelf,6 685 954.38
+1963,41,East Central Australian Shelf,3 323 633.38
+1963,42,Southeast Australian Shelf,5 333 881.59
+1963,43,Southwest Australian Shelf,1 802 622.68
+1963,44,West Central Australian Shelf,1 634 516.09
+1963,45,Northwest Australian Shelf,5 240 698.14
+1963,46,New Zealand Shelf,1 733 924.79
+1963,47,East China Sea,21 997 919.84
+1963,48,Yellow Sea,9 617 901.92
+1963,49,Kuroshio Current,41 145 495.02
+1963,50,Sea of Japan,28 306 852.91
+1963,51,Oyashio Current,2 317 266.58
+1963,52,Okhotsk Sea,13 728 087.49
+1963,53,West Bering Sea,1 077 485.67
+1963,54,Nrothern Bering - Chukchi Sea,7 030 285.77
+1963,59,Greenland Sea,11 666 514.96
+1963,62,Black Sea,59 302 523.50
+1963,65,Aleutian,3 683 784.36
+1964,1,East Bering Sea,20 222 161.26
+1964,2,Gulf of Alaska,80 112 711.09
+1964,3,California Current,56 121 199.97
+1964,4,Gulf of California,6 767 056.45
+1964,5,Gulf of Mexico,54 655 073.88
+1964,6,Southeast U.S. Continental Shelf,7 388 106.33
+1964,7,Northeast U.S. Continental Shelf,126 930 913.14
+1964,8,Scotian Shelf,48 825 032.28
+1964,9,Newfoundland-Labrador Shelf,76 729 477.10
+1964,10,Insular Pacific-Hawaiian,13 105 285.98
+1964,11,Pacific Central-American Coastal,61 937 699.08
+1964,12,Caribbean Sea,95 184 488.53
+1964,13,Humboldt Current,25 234 207.59
+1964,14,Patagonian Shelf,10 221 789.19
+1964,15,South Brazil Shelf,7 171 710.09
+1964,16,East Brazil Shelf,24 388 189.63
+1964,17,North Brazil Shelf,22 410 034.03
+1964,18,Canadian Eastern Arctic -West Greenland,22 076 571.19
+1964,19,Iceland Shelf/Sea,2 690 292.10
+1964,20,Barents Sea,44 708 723.10
+1964,21,Norwegian Sea,1 795 050.43
+1964,22,North Sea,178 877 288.30
+1964,23,Baltic Sea,111 599 917.15
+1964,24,Celtic-Biscay Shelf,205 292 948.69
+1964,25,Iberian Coastal,33 290 480.73
+1964,26,Mediterranean Sea,212 218 208.97
+1964,27,Canary Current,16 423 072.05
+1964,28,Guinea Current,83 492 786.31
+1964,29,Benguela Current,1 517 965.12
+1964,30,Agulhas Current,28 956 470.50
+1964,31,Somali Coastal Current,13 136 573.50
+1964,32,Arabian Sea,49 270 396.72
+1964,33,Red Sea,12 420 885.66
+1964,34,Bay of Bengal,31 626 709.16
+1964,35,Gulf of Thailand,15 871 874.34
+1964,36,South China Sea,68 493 203.42
+1964,37,Sulu-Celebes Sea,82 760 274.20
+1964,38,Indonesian Sea,36 280 915.48
+1964,39,North Australian Shelf,4 566 409.53
+1964,40,Northeast Australian Shelf,7 579 532.45
+1964,41,East Central Australian Shelf,3 582 185.54
+1964,42,Southeast Australian Shelf,6 103 906.79
+1964,43,Southwest Australian Shelf,2 051 206.92
+1964,44,West Central Australian Shelf,1 892 165.99
+1964,45,Northwest Australian Shelf,6 153 723.15
+1964,46,New Zealand Shelf,2 550 351.34
+1964,47,East China Sea,19 100 638.96
+1964,48,Yellow Sea,9 176 276.77
+1964,49,Kuroshio Current,40 300 372.38
+1964,50,Sea of Japan,31 966 160.18
+1964,51,Oyashio Current,2 303 877.55
+1964,52,Okhotsk Sea,9 514 724.93
+1964,53,West Bering Sea,1 653 372.20
+1964,54,Nrothern Bering - Chukchi Sea,5 911 709.89
+1964,59,Greenland Sea,13 354 484.78
+1964,62,Black Sea,60 532 768.13
+1964,65,Aleutian,3 132 762.42
+1965,1,East Bering Sea,19 965 412.79
+1965,2,Gulf of Alaska,70 993 197.61
+1965,3,California Current,61 262 641.90
+1965,4,Gulf of California,6 175 972.84
+1965,5,Gulf of Mexico,50 481 285.51
+1965,6,Southeast U.S. Continental Shelf,7 228 841.10
+1965,7,Northeast U.S. Continental Shelf,100 958 648.96
+1965,8,Scotian Shelf,82 293 888.29
+1965,9,Newfoundland-Labrador Shelf,39 123 115.74
+1965,10,Insular Pacific-Hawaiian,11 894 326.70
+1965,11,Pacific Central-American Coastal,56 375 787.04
+1965,12,Caribbean Sea,88 115 825.95
+1965,13,Humboldt Current,24 863 243.59
+1965,14,Patagonian Shelf,10 070 467.20
+1965,15,South Brazil Shelf,7 873 578.78
+1965,16,East Brazil Shelf,25 711 001.48
+1965,17,North Brazil Shelf,22 526 844.33
+1965,18,Canadian Eastern Arctic -West Greenland,19 283 543.12
+1965,19,Iceland Shelf/Sea,2 386 187.73
+1965,20,Barents Sea,42 719 633.88
+1965,21,Norwegian Sea,1 668 084.91
+1965,22,North Sea,193 037 281.02
+1965,23,Baltic Sea,120 656 695.23
+1965,24,Celtic-Biscay Shelf,217 486 894.27
+1965,25,Iberian Coastal,33 474 753.82
+1965,26,Mediterranean Sea,216 423 522.15
+1965,27,Canary Current,18 053 027.62
+1965,28,Guinea Current,86 211 855.95
+1965,29,Benguela Current,3 575 979.89
+1965,30,Agulhas Current,33 046 307.77
+1965,31,Somali Coastal Current,14 647 214.36
+1965,32,Arabian Sea,62 401 377.32
+1965,33,Red Sea,14 673 154.33
+1965,34,Bay of Bengal,33 687 363.08
+1965,35,Gulf of Thailand,15 642 115.39
+1965,36,South China Sea,66 001 507.22
+1965,37,Sulu-Celebes Sea,78 213 817.54
+1965,38,Indonesian Sea,33 307 626.01
+1965,39,North Australian Shelf,1 282 916.79
+1965,40,Northeast Australian Shelf,7 453 321.57
+1965,41,East Central Australian Shelf,1 438 251.64
+1965,42,Southeast Australian Shelf,11 265 413.11
+1965,43,Southwest Australian Shelf,7 858 600.12
+1965,44,West Central Australian Shelf,1 008 116.12
+1965,45,Northwest Australian Shelf,4 509 823.54
+1965,46,New Zealand Shelf,2 798 092.80
+1965,47,East China Sea,18 467 282.44
+1965,48,Yellow Sea,8 734 940.44
+1965,49,Kuroshio Current,36 484 413.44
+1965,50,Sea of Japan,30 446 346.90
+1965,51,Oyashio Current,2 443 817.96
+1965,52,Okhotsk Sea,9 553 468.02
+1965,53,West Bering Sea,1 518 749.53
+1965,54,Nrothern Bering - Chukchi Sea,5 661 805.67
+1965,59,Greenland Sea,11 032 566.01
+1965,62,Black Sea,60 569 776.82
+1965,65,Aleutian,3 212 850.06
+1966,1,East Bering Sea,21 993 836.10
+1966,2,Gulf of Alaska,70 879 712.39
+1966,3,California Current,71 840 893.31
+1966,4,Gulf of California,5 299 461.98
+1966,5,Gulf of Mexico,55 091 514.29
+1966,6,Southeast U.S. Continental Shelf,7 627 937.98
+1966,7,Northeast U.S. Continental Shelf,111 061 059.72
+1966,8,Scotian Shelf,74 736 442.22
+1966,9,Newfoundland-Labrador Shelf,43 143 033.55
+1966,10,Insular Pacific-Hawaiian,12 561 498.31
+1966,11,Pacific Central-American Coastal,38 114 311.84
+1966,12,Caribbean Sea,104 926 715.34
+1966,13,Humboldt Current,25 435 231.27
+1966,14,Patagonian Shelf,11 969 359.20
+1966,15,South Brazil Shelf,11 821 472.27
+1966,16,East Brazil Shelf,31 251 464.19
+1966,17,North Brazil Shelf,22 390 694.04
+1966,18,Canadian Eastern Arctic -West Greenland,22 399 662.45
+1966,19,Iceland Shelf/Sea,2 730 224.27
+1966,20,Barents Sea,39 563 591.67
+1966,21,Norwegian Sea,1 764 009.40
+1966,22,North Sea,184 866 119.39
+1966,23,Baltic Sea,124 780 091.38
+1966,24,Celtic-Biscay Shelf,227 392 470.89
+1966,25,Iberian Coastal,50 958 810.76
+1966,26,Mediterranean Sea,231 280 742.47
+1966,27,Canary Current,16 599 135.47
+1966,28,Guinea Current,89 397 834.60
+1966,29,Benguela Current,3 009 750.59
+1966,30,Agulhas Current,35 007 221.15
+1966,31,Somali Coastal Current,15 011 700.63
+1966,32,Arabian Sea,68 377 031.95
+1966,33,Red Sea,15 484 560.53
+1966,34,Bay of Bengal,33 336 586.22
+1966,35,Gulf of Thailand,16 649 498.80
+1966,36,South China Sea,70 227 426.77
+1966,37,Sulu-Celebes Sea,84 570 814.97
+1966,38,Indonesian Sea,38 105 462.92
+1966,39,North Australian Shelf,1 419 893.46
+1966,40,Northeast Australian Shelf,7 848 660.94
+1966,41,East Central Australian Shelf,887 923.08
+1966,42,Southeast Australian Shelf,11 739 938.32
+1966,43,Southwest Australian Shelf,8 172 524.72
+1966,44,West Central Australian Shelf,963 406.59
+1966,45,Northwest Australian Shelf,4 601 552.21
+1966,46,New Zealand Shelf,2 837 982.25
+1966,47,East China Sea,19 348 044.11
+1966,48,Yellow Sea,9 205 591.18
+1966,49,Kuroshio Current,39 404 851.12
+1966,50,Sea of Japan,32 700 100.07
+1966,51,Oyashio Current,2 671 993.64
+1966,52,Okhotsk Sea,10 620 498.35
+1966,53,West Bering Sea,1 716 190.87
+1966,54,Nrothern Bering - Chukchi Sea,6 352 636.68
+1966,59,Greenland Sea,12 426 544.83
+1966,62,Black Sea,63 058 645.54
+1966,65,Aleutian,3 482 649.74
+1967,1,East Bering Sea,21 231 331.55
+1967,2,Gulf of Alaska,69 637 789.13
+1967,3,California Current,83 226 269.84
+1967,4,Gulf of California,9 070 960.79
+1967,5,Gulf of Mexico,48 846 333.24
+1967,6,Southeast U.S. Continental Shelf,6 162 266.60
+1967,7,Northeast U.S. Continental Shelf,104 122 369.22
+1967,8,Scotian Shelf,61 672 052.76
+1967,9,Newfoundland-Labrador Shelf,60 048 781.12
+1967,10,Insular Pacific-Hawaiian,11 699 695.97
+1967,11,Pacific Central-American Coastal,42 142 901.67
+1967,12,Caribbean Sea,98 126 270.42
+1967,13,Humboldt Current,23 194 051.64
+1967,14,Patagonian Shelf,11 891 237.24
+1967,15,South Brazil Shelf,10 879 798.67
+1967,16,East Brazil Shelf,28 394 449.80
+1967,17,North Brazil Shelf,20 410 746.88
+1967,18,Canadian Eastern Arctic -West Greenland,21 801 955.03
+1967,19,Iceland Shelf/Sea,2 654 890.84
+1967,20,Barents Sea,40 748 873.64
+1967,21,Norwegian Sea,1 765 440.13
+1967,22,North Sea,191 130 475.88
+1967,23,Baltic Sea,128 484 329.90
+1967,24,Celtic-Biscay Shelf,238 154 119.96
+1967,25,Iberian Coastal,37 252 870.05
+1967,26,Mediterranean Sea,237 299 091.40
+1967,27,Canary Current,21 391 605.28
+1967,28,Guinea Current,64 135 009.62
+1967,29,Benguela Current,21 753 419.69
+1967,30,Agulhas Current,35 265 689.64
+1967,31,Somali Coastal Current,15 167 299.12
+1967,32,Arabian Sea,69 835 901.20
+1967,33,Red Sea,16 044 510.39
+1967,34,Bay of Bengal,35 157 042.14
+1967,35,Gulf of Thailand,16 959 519.93
+1967,36,South China Sea,69 304 730.49
+1967,37,Sulu-Celebes Sea,80 388 175.78
+1967,38,Indonesian Sea,36 805 108.49
+1967,39,North Australian Shelf,1 499 314.26
+1967,40,Northeast Australian Shelf,7 185 315.35
+1967,41,East Central Australian Shelf,679 280.52
+1967,42,Southeast Australian Shelf,11 517 758.93
+1967,43,Southwest Australian Shelf,8 189 625.33
+1967,44,West Central Australian Shelf,841 719.76
+1967,45,Northwest Australian Shelf,4 565 771.08
+1967,46,New Zealand Shelf,3 339 163.47
+1967,47,East China Sea,18 175 082.08
+1967,48,Yellow Sea,8 845 756.11
+1967,49,Kuroshio Current,35 839 773.33
+1967,50,Sea of Japan,29 118 635.25
+1967,51,Oyashio Current,2 274 210.70
+1967,52,Okhotsk Sea,9 670 238.52
+1967,53,West Bering Sea,1 614 475.43
+1967,54,Nrothern Bering - Chukchi Sea,6 062 804.98
+1967,59,Greenland Sea,12 984 508.93
+1967,62,Black Sea,58 118 550.24
+1967,65,Aleutian,3 260 494.47
+1968,1,East Bering Sea,21 671 638.63
+1968,2,Gulf of Alaska,81 381 042.21
+1968,3,California Current,68 562 952.97
+1968,4,Gulf of California,7 436 967.75
+1968,5,Gulf of Mexico,53 413 704.12
+1968,6,Southeast U.S. Continental Shelf,6 099 732.61
+1968,7,Northeast U.S. Continental Shelf,101 761 072.20
+1968,8,Scotian Shelf,80 083 919.10
+1968,9,Newfoundland-Labrador Shelf,47 548 312.63
+1968,10,Insular Pacific-Hawaiian,12 585 849.52
+1968,11,Pacific Central-American Coastal,73 656 463.27
+1968,12,Caribbean Sea,102 604 748.50
+1968,13,Humboldt Current,22 507 185.06
+1968,14,Patagonian Shelf,12 764 297.48
+1968,15,South Brazil Shelf,11 053 185.78
+1968,16,East Brazil Shelf,28 699 612.85
+1968,17,North Brazil Shelf,21 786 114.35
+1968,18,Canadian Eastern Arctic -West Greenland,19 650 925.50
+1968,19,Iceland Shelf/Sea,11 467 963.19
+1968,20,Barents Sea,41 396 091.55
+1968,21,Norwegian Sea,16 954 026.41
+1968,22,North Sea,198 516 533.84
+1968,23,Baltic Sea,134 424 193.75
+1968,24,Celtic-Biscay Shelf,228 303 082.15
+1968,25,Iberian Coastal,36 438 390.46
+1968,26,Mediterranean Sea,251 039 890.75
+1968,27,Canary Current,22 894 080.95
+1968,28,Guinea Current,58 559 802.08
+1968,29,Benguela Current,29 811 257.18
+1968,30,Agulhas Current,36 487 740.57
+1968,31,Somali Coastal Current,14 100 393.86
+1968,32,Arabian Sea,70 307 787.35
+1968,33,Red Sea,14 422 517.02
+1968,34,Bay of Bengal,35 941 039.66
+1968,35,Gulf of Thailand,17 162 199.66
+1968,36,South China Sea,65 988 068.27
+1968,37,Sulu-Celebes Sea,79 929 081.10
+1968,38,Indonesian Sea,36 529 967.49
+1968,39,North Australian Shelf,1 588 220.99
+1968,40,Northeast Australian Shelf,7 204 054.24
+1968,41,East Central Australian Shelf,930 124.61
+1968,42,Southeast Australian Shelf,13 030 480.39
+1968,43,Southwest Australian Shelf,8 498 014.62
+1968,44,West Central Australian Shelf,962 285.11
+1968,45,Northwest Australian Shelf,4 957 444.69
+1968,46,New Zealand Shelf,3 143 247.45
+1968,47,East China Sea,18 043 361.88
+1968,48,Yellow Sea,8 565 504.96
+1968,49,Kuroshio Current,34 854 689.29
+1968,50,Sea of Japan,28 477 382.27
+1968,51,Oyashio Current,2 167 601.15
+1968,52,Okhotsk Sea,9 522 063.28
+1968,53,West Bering Sea,1 567 527.77
+1968,54,Nrothern Bering - Chukchi Sea,6 216 096.22
+1968,59,Greenland Sea,23 467 733.79
+1968,60,Faroe Plateau,216 559.05
+1968,62,Black Sea,57 193 609.60
+1968,65,Aleutian,3 205 097.60
+1969,1,East Bering Sea,23 896 929.65
+1969,2,Gulf of Alaska,87 439 097.42
+1969,3,California Current,76 270 276.29
+1969,4,Gulf of California,10 275 448.99
+1969,5,Gulf of Mexico,60 702 365.96
+1969,6,Southeast U.S. Continental Shelf,7 031 890.88
+1969,7,Northeast U.S. Continental Shelf,101 839 210.54
+1969,8,Scotian Shelf,75 186 844.70
+1969,9,Newfoundland-Labrador Shelf,61 510 968.02
+1969,10,Insular Pacific-Hawaiian,14 681 633.59
+1969,11,Pacific Central-American Coastal,49 690 137.59
+1969,12,Caribbean Sea,123 813 633.24
+1969,13,Humboldt Current,20 717 476.05
+1969,14,Patagonian Shelf,15 824 081.89
+1969,15,South Brazil Shelf,13 434 518.55
+1969,16,East Brazil Shelf,32 903 505.89
+1969,17,North Brazil Shelf,23 673 701.01
+1969,18,Canadian Eastern Arctic -West Greenland,23 555 867.79
+1969,19,Iceland Shelf/Sea,2 948 004.79
+1969,20,Barents Sea,43 596 364.57
+1969,21,Norwegian Sea,2 117 520.64
+1969,22,North Sea,196 745 456.95
+1969,23,Baltic Sea,116 807 830.47
+1969,24,Celtic-Biscay Shelf,244 532 126.66
+1969,25,Iberian Coastal,37 160 104.35
+1969,26,Mediterranean Sea,251 690 246.77
+1969,27,Canary Current,27 272 153.14
+1969,28,Guinea Current,86 006 668.99
+1969,29,Benguela Current,21 871 538.22
+1969,30,Agulhas Current,35 007 335.23
+1969,31,Somali Coastal Current,15 359 812.60
+1969,32,Arabian Sea,68 158 488.97
+1969,33,Red Sea,15 667 969.35
+1969,34,Bay of Bengal,39 964 590.93
+1969,35,Gulf of Thailand,16 733 104.09
+1969,36,South China Sea,63 094 238.94
+1969,37,Sulu-Celebes Sea,89 067 184.79
+1969,38,Indonesian Sea,42 234 593.03
+1969,39,North Australian Shelf,2 215 648.50
+1969,40,Northeast Australian Shelf,9 835 661.25
+1969,41,East Central Australian Shelf,792 195.72
+1969,42,Southeast Australian Shelf,18 102 399.31
+1969,43,Southwest Australian Shelf,11 502 395.40
+1969,44,West Central Australian Shelf,1 141 911.54
+1969,45,Northwest Australian Shelf,6 113 840.97
+1969,46,New Zealand Shelf,6 328 573.38
+1969,47,East China Sea,19 790 307.46
+1969,48,Yellow Sea,9 179 722.31
+1969,49,Kuroshio Current,39 628 381.43
+1969,50,Sea of Japan,32 569 056.77
+1969,51,Oyashio Current,2 517 736.55
+1969,52,Okhotsk Sea,11 041 827.67
+1969,53,West Bering Sea,1 830 091.06
+1969,54,Nrothern Bering - Chukchi Sea,6 687 248.22
+1969,59,Greenland Sea,14 486 512.43
+1969,62,Black Sea,60 621 403.34
+1969,65,Aleutian,3 591 346.47
+1970,1,East Bering Sea,21 995 967.04
+1970,2,Gulf of Alaska,97 849 044.04
+1970,3,California Current,60 812 749.88
+1970,4,Gulf of California,13 248 383.88
+1970,5,Gulf of Mexico,60 278 502.29
+1970,6,Southeast U.S. Continental Shelf,7 474 193.75
+1970,7,Northeast U.S. Continental Shelf,101 676 740.86
+1970,8,Scotian Shelf,67 133 029.84
+1970,9,Newfoundland-Labrador Shelf,50 551 325.68
+1970,10,Insular Pacific-Hawaiian,15 670 393.77
+1970,11,Pacific Central-American Coastal,73 898 700.06
+1970,12,Caribbean Sea,124 362 937.18
+1970,13,Humboldt Current,24 795 451.36
+1970,14,Patagonian Shelf,20 634 492.53
+1970,15,South Brazil Shelf,14 436 840.37
+1970,16,East Brazil Shelf,28 341 498.00
+1970,17,North Brazil Shelf,26 345 327.19
+1970,18,Canadian Eastern Arctic -West Greenland,22 374 298.61
+1970,19,Iceland Shelf/Sea,2 837 630.40
+1970,20,Barents Sea,45 893 825.62
+1970,21,Norwegian Sea,1 991 468.76
+1970,22,North Sea,126 875 386.21
+1970,23,Baltic Sea,169 598 814.29
+1970,24,Celtic-Biscay Shelf,263 981 519.46
+1970,25,Iberian Coastal,37 590 519.29
+1970,26,Mediterranean Sea,253 284 722.52
+1970,27,Canary Current,29 493 548.56
+1970,28,Guinea Current,110 253 637.84
+1970,29,Benguela Current,5 998 331.92
+1970,30,Agulhas Current,37 903 990.30
+1970,31,Somali Coastal Current,10 628 074.49
+1970,32,Arabian Sea,66 443 884.00
+1970,33,Red Sea,10 504 865.26
+1970,34,Bay of Bengal,36 087 734.11
+1970,35,Gulf of Thailand,19 695 936.74
+1970,36,South China Sea,37 833 719.55
+1970,37,Sulu-Celebes Sea,95 155 023.63
+1970,38,Indonesian Sea,38 330 705.04
+1970,39,North Australian Shelf,2 314 750.89
+1970,40,Northeast Australian Shelf,10 020 305.33
+1970,41,East Central Australian Shelf,639 791.44
+1970,42,Southeast Australian Shelf,18 403 377.84
+1970,43,Southwest Australian Shelf,11 330 472.17
+1970,44,West Central Australian Shelf,1 453 308.72
+1970,45,Northwest Australian Shelf,6 443 577.32
+1970,46,New Zealand Shelf,7 287 054.83
+1970,47,East China Sea,19 656 781.83
+1970,48,Yellow Sea,9 142 086.98
+1970,49,Kuroshio Current,37 947 632.62
+1970,50,Sea of Japan,30 908 742.82
+1970,51,Oyashio Current,2 313 908.89
+1970,52,Okhotsk Sea,9 386 724.85
+1970,53,West Bering Sea,1 647 919.35
+1970,54,Nrothern Bering - Chukchi Sea,6 070 265.23
+1970,59,Greenland Sea,14 298 854.46
+1970,62,Black Sea,53 450 989.38
+1970,65,Aleutian,3 286 657.18
+1971,1,East Bering Sea,18 745 975.33
+1971,2,Gulf of Alaska,78 700 329.32
+1971,3,California Current,61 932 306.19
+1971,4,Gulf of California,9 360 194.98
+1971,5,Gulf of Mexico,61 051 990.54
+1971,6,Southeast U.S. Continental Shelf,6 904 617.17
+1971,7,Northeast U.S. Continental Shelf,104 380 700.19
+1971,8,Scotian Shelf,76 518 233.01
+1971,9,Newfoundland-Labrador Shelf,47 112 824.67
+1971,10,Insular Pacific-Hawaiian,15 188 318.16
+1971,11,Pacific Central-American Coastal,81 669 058.60
+1971,12,Caribbean Sea,132 956 978.04
+1971,13,Humboldt Current,28 520 690.04
+1971,14,Patagonian Shelf,13 709 990.60
+1971,15,South Brazil Shelf,14 178 571.21
+1971,16,East Brazil Shelf,29 394 060.27
+1971,17,North Brazil Shelf,27 796 207.66
+1971,18,Canadian Eastern Arctic -West Greenland,22 977 367.50
+1971,19,Iceland Shelf/Sea,2 985 504.20
+1971,20,Barents Sea,48 413 383.33
+1971,21,Norwegian Sea,2 348 264.41
+1971,22,North Sea,187 867 095.60
+1971,23,Baltic Sea,161 791 889.89
+1971,24,Celtic-Biscay Shelf,230 158 881.01
+1971,25,Iberian Coastal,80 884 818.85
+1971,26,Mediterranean Sea,268 507 509.79
+1971,27,Canary Current,34 588 064.03
+1971,28,Guinea Current,107 893 711.83
+1971,29,Benguela Current,10 322 399.75
+1971,30,Agulhas Current,36 952 169.00
+1971,31,Somali Coastal Current,13 601 484.73
+1971,32,Arabian Sea,69 470 744.01
+1971,33,Red Sea,10 837 888.65
+1971,34,Bay of Bengal,37 992 534.27
+1971,35,Gulf of Thailand,21 148 814.11
+1971,36,South China Sea,38 137 294.70
+1971,37,Sulu-Celebes Sea,103 522 317.19
+1971,38,Indonesian Sea,42 180 206.54
+1971,39,North Australian Shelf,2 151 201.02
+1971,40,Northeast Australian Shelf,10 054 338.11
+1971,41,East Central Australian Shelf,1 204 509.82
+1971,42,Southeast Australian Shelf,17 257 053.79
+1971,43,Southwest Australian Shelf,11 372 436.24
+1971,44,West Central Australian Shelf,1 510 406.41
+1971,45,Northwest Australian Shelf,6 379 836.54
+1971,46,New Zealand Shelf,13 002 689.43
+1971,47,East China Sea,20 225 294.95
+1971,48,Yellow Sea,9 431 471.84
+1971,49,Kuroshio Current,41 645 781.96
+1971,50,Sea of Japan,30 959 311.56
+1971,51,Oyashio Current,2 283 317.92
+1971,52,Okhotsk Sea,9 630 861.44
+1971,53,West Bering Sea,1 606 574.96
+1971,54,Nrothern Bering - Chukchi Sea,6 412 370.08
+1971,59,Greenland Sea,16 684 317.09
+1971,61,Antarctic,16 800.05
+1971,62,Black Sea,53 819 929.11
+1971,65,Aleutian,3 375 218.11
+1972,1,East Bering Sea,20 777 126.54
+1972,2,Gulf of Alaska,93 633 133.76
+1972,3,California Current,71 610 135.74
+1972,4,Gulf of California,7 943 297.45
+1972,5,Gulf of Mexico,59 433 047.41
+1972,6,Southeast U.S. Continental Shelf,9 906 178.57
+1972,7,Northeast U.S. Continental Shelf,116 831 640.23
+1972,8,Scotian Shelf,61 676 035.65
+1972,9,Newfoundland-Labrador Shelf,65 104 291.51
+1972,10,Insular Pacific-Hawaiian,14 609 646.23
+1972,11,Pacific Central-American Coastal,72 276 911.84
+1972,12,Caribbean Sea,133 432 379.79
+1972,13,Humboldt Current,31 497 679.55
+1972,14,Patagonian Shelf,11 403 409.32
+1972,15,South Brazil Shelf,15 670 605.56
+1972,16,East Brazil Shelf,30 364 493.52
+1972,17,North Brazil Shelf,29 199 820.40
+1972,18,Canadian Eastern Arctic -West Greenland,21 844 702.59
+1972,19,Iceland Shelf/Sea,2 348 953.06
+1972,20,Barents Sea,51 034 918.38
+1972,21,Norwegian Sea,2 276 848.66
+1972,22,North Sea,205 786 528.56
+1972,23,Baltic Sea,147 226 285.98
+1972,24,Celtic-Biscay Shelf,247 548 501.70
+1972,25,Iberian Coastal,58 349 608.00
+1972,26,Mediterranean Sea,275 879 362.82
+1972,27,Canary Current,38 580 381.50
+1972,28,Guinea Current,122 498 083.38
+1972,29,Benguela Current,18 771 347.16
+1972,30,Agulhas Current,34 472 386.18
+1972,31,Somali Coastal Current,14 754 043.67
+1972,32,Arabian Sea,73 298 015.23
+1972,33,Red Sea,11 123 224.45
+1972,34,Bay of Bengal,39 771 193.31
+1972,35,Gulf of Thailand,20 964 369.24
+1972,36,South China Sea,39 571 678.83
+1972,37,Sulu-Celebes Sea,106 720 241.36
+1972,38,Indonesian Sea,43 694 163.53
+1972,39,North Australian Shelf,2 377 334.03
+1972,40,Northeast Australian Shelf,10 393 811.76
+1972,41,East Central Australian Shelf,1 192 297.92
+1972,42,Southeast Australian Shelf,17 665 506.13
+1972,43,Southwest Australian Shelf,12 055 629.10
+1972,44,West Central Australian Shelf,1 471 999.54
+1972,45,Northwest Australian Shelf,6 795 698.09
+1972,46,New Zealand Shelf,13 581 371.04
+1972,47,East China Sea,23 988 104.49
+1972,48,Yellow Sea,10 159 540.95
+1972,49,Kuroshio Current,55 020 391.90
+1972,50,Sea of Japan,32 790 799.51
+1972,51,Oyashio Current,3 507 876.51
+1972,52,Okhotsk Sea,11 221 675.98
+1972,53,West Bering Sea,1 781 110.63
+1972,54,Nrothern Bering - Chukchi Sea,7 000 812.84
+1972,59,Greenland Sea,31 757 673.45
+1972,61,Antarctic,20 712.69
+1972,62,Black Sea,50 770 551.10
+1972,65,Aleutian,3 650 813.36
+1973,1,East Bering Sea,24 437 547.98
+1973,2,Gulf of Alaska,105 095 859.64
+1973,3,California Current,76 267 217.63
+1973,4,Gulf of California,7 984 613.72
+1973,5,Gulf of Mexico,57 855 338.57
+1973,6,Southeast U.S. Continental Shelf,9 469 774.83
+1973,7,Northeast U.S. Continental Shelf,119 177 759.30
+1973,8,Scotian Shelf,48 887 785.48
+1973,9,Newfoundland-Labrador Shelf,57 303 225.62
+1973,10,Insular Pacific-Hawaiian,16 111 473.12
+1973,11,Pacific Central-American Coastal,82 377 063.89
+1973,12,Caribbean Sea,110 455 695.82
+1973,13,Humboldt Current,35 192 397.20
+1973,14,Patagonian Shelf,10 405 693.81
+1973,15,South Brazil Shelf,14 730 507.65
+1973,16,East Brazil Shelf,29 296 501.74
+1973,17,North Brazil Shelf,24 696 089.14
+1973,18,Canadian Eastern Arctic -West Greenland,22 183 839.45
+1973,19,Iceland Shelf/Sea,2 932 780.97
+1973,20,Barents Sea,38 830 792.15
+1973,21,Norwegian Sea,2 077 725.81
+1973,22,North Sea,202 595 288.64
+1973,23,Baltic Sea,170 335 293.26
+1973,24,Celtic-Biscay Shelf,249 254 834.33
+1973,25,Iberian Coastal,32 741 010.21
+1973,26,Mediterranean Sea,270 301 710.55
+1973,27,Canary Current,37 431 335.65
+1973,28,Guinea Current,113 784 455.20
+1973,29,Benguela Current,21 344 891.36
+1973,30,Agulhas Current,33 977 618.95
+1973,31,Somali Coastal Current,13 870 541.76
+1973,32,Arabian Sea,77 309 168.35
+1973,33,Red Sea,11 248 408.08
+1973,34,Bay of Bengal,41 667 203.91
+1973,35,Gulf of Thailand,25 440 171.79
+1973,36,South China Sea,45 109 819.18
+1973,37,Sulu-Celebes Sea,117 281 133.95
+1973,38,Indonesian Sea,45 128 108.54
+1973,39,North Australian Shelf,2 840 299.02
+1973,40,Northeast Australian Shelf,10 623 086.04
+1973,41,East Central Australian Shelf,1 687 800.71
+1973,42,Southeast Australian Shelf,17 590 039.78
+1973,43,Southwest Australian Shelf,12 647 660.20
+1973,44,West Central Australian Shelf,896 218.23
+1973,45,Northwest Australian Shelf,6 349 425.17
+1973,46,New Zealand Shelf,13 827 031.49
+1973,47,East China Sea,23 807 685.46
+1973,48,Yellow Sea,10 661 378.74
+1973,49,Kuroshio Current,50 819 672.45
+1973,50,Sea of Japan,31 728 447.55
+1973,51,Oyashio Current,3 367 372.14
+1973,52,Okhotsk Sea,11 223 252.31
+1973,53,West Bering Sea,1 742 268.50
+1973,54,Nrothern Bering - Chukchi Sea,7 484 314.91
+1973,59,Greenland Sea,15 634 656.29
+1973,61,Antarctic,28 963.68
+1973,62,Black Sea,28 734 244.82
+1973,65,Aleutian,3 728 641.54
+1974,1,East Bering Sea,24 123 858.07
+1974,2,Gulf of Alaska,105 092 266.56
+1974,3,California Current,74 239 838.73
+1974,4,Gulf of California,10 125 178.93
+1974,5,Gulf of Mexico,60 914 513.38
+1974,6,Southeast U.S. Continental Shelf,10 096 035.52
+1974,7,Northeast U.S. Continental Shelf,125 508 186.66
+1974,8,Scotian Shelf,62 490 310.36
+1974,9,Newfoundland-Labrador Shelf,54 412 725.07
+1974,10,Insular Pacific-Hawaiian,16 032 578.64
+1974,11,Pacific Central-American Coastal,86 537 934.81
+1974,12,Caribbean Sea,130 367 752.44
+1974,13,Humboldt Current,32 277 662.88
+1974,14,Patagonian Shelf,11 371 994.60
+1974,15,South Brazil Shelf,15 588 933.96
+1974,16,East Brazil Shelf,30 791 739.68
+1974,17,North Brazil Shelf,29 621 028.08
+1974,18,Canadian Eastern Arctic -West Greenland,23 644 680.87
+1974,19,Iceland Shelf/Sea,3 043 978.07
+1974,20,Barents Sea,45 026 967.84
+1974,21,Norwegian Sea,2 707 852.81
+1974,22,North Sea,224 760 527.00
+1974,23,Baltic Sea,182 712 678.37
+1974,24,Celtic-Biscay Shelf,239 924 165.82
+1974,25,Iberian Coastal,29 373 197.91
+1974,26,Mediterranean Sea,284 259 644.49
+1974,27,Canary Current,38 728 755.83
+1974,28,Guinea Current,121 259 324.32
+1974,29,Benguela Current,21 451 354.93
+1974,30,Agulhas Current,40 175 404.95
+1974,31,Somali Coastal Current,14 977 094.21
+1974,32,Arabian Sea,86 582 652.72
+1974,33,Red Sea,15 582 084.71
+1974,34,Bay of Bengal,46 383 814.06
+1974,35,Gulf of Thailand,25 682 903.88
+1974,36,South China Sea,48 849 850.29
+1974,37,Sulu-Celebes Sea,118 205 887.76
+1974,38,Indonesian Sea,46 773 370.98
+1974,39,North Australian Shelf,4 347 181.88
+1974,40,Northeast Australian Shelf,10 756 050.93
+1974,41,East Central Australian Shelf,2 232 667.56
+1974,42,Southeast Australian Shelf,16 613 323.11
+1974,43,Southwest Australian Shelf,12 129 982.47
+1974,44,West Central Australian Shelf,1 044 170.99
+1974,45,Northwest Australian Shelf,6 735 781.85
+1974,46,New Zealand Shelf,14 372 196.58
+1974,47,East China Sea,24 111 892.93
+1974,48,Yellow Sea,10 797 344.36
+1974,49,Kuroshio Current,51 069 387.72
+1974,50,Sea of Japan,34 875 131.81
+1974,51,Oyashio Current,3 594 862.89
+1974,52,Okhotsk Sea,11 732 510.15
+1974,53,West Bering Sea,1 952 081.50
+1974,54,Nrothern Bering - Chukchi Sea,7 843 633.41
+1974,59,Greenland Sea,14 901 766.49
+1974,60,Faroe Plateau,31.95
+1974,61,Antarctic,25 414.58
+1974,62,Black Sea,33 729 396.95
+1974,65,Aleutian,4 038 244.37
+1975,1,East Bering Sea,18 831 595.18
+1975,2,Gulf of Alaska,103 349 655.67
+1975,3,California Current,76 459 516.06
+1975,4,Gulf of California,11 960 180.73
+1975,5,Gulf of Mexico,62 933 509.01
+1975,6,Southeast U.S. Continental Shelf,10 620 412.49
+1975,7,Northeast U.S. Continental Shelf,138 132 339.56
+1975,8,Scotian Shelf,84 705 525.84
+1975,9,Newfoundland-Labrador Shelf,56 117 753.42
+1975,10,Insular Pacific-Hawaiian,17 030 815.35
+1975,11,Pacific Central-American Coastal,88 348 242.33
+1975,12,Caribbean Sea,142 735 245.24
+1975,13,Humboldt Current,32 495 142.57
+1975,14,Patagonian Shelf,12 494 925.56
+1975,15,South Brazil Shelf,16 323 246.54
+1975,16,East Brazil Shelf,32 791 060.47
+1975,17,North Brazil Shelf,31 667 743.19
+1975,18,Canadian Eastern Arctic -West Greenland,22 797 947.85
+1975,19,Iceland Shelf/Sea,3 024 359.35
+1975,20,Barents Sea,52 293 690.25
+1975,21,Norwegian Sea,20 587 936.05
+1975,22,North Sea,204 628 376.83
+1975,23,Baltic Sea,201 265 635.28
+1975,24,Celtic-Biscay Shelf,241 330 827.15
+1975,25,Iberian Coastal,30 797 919.04
+1975,26,Mediterranean Sea,247 877 929.15
+1975,27,Canary Current,52 861 381.33
+1975,28,Guinea Current,114 216 582.84
+1975,29,Benguela Current,24 093 996.10
+1975,30,Agulhas Current,48 524 615.56
+1975,31,Somali Coastal Current,15 516 531.39
+1975,32,Arabian Sea,89 805 782.33
+1975,33,Red Sea,14 994 899.64
+1975,34,Bay of Bengal,52 753 395.37
+1975,35,Gulf of Thailand,24 924 675.52
+1975,36,South China Sea,54 648 610.86
+1975,37,Sulu-Celebes Sea,115 821 305.02
+1975,38,Indonesian Sea,40 554 976.27
+1975,39,North Australian Shelf,5 602 466.02
+1975,40,Northeast Australian Shelf,9 669 849.65
+1975,41,East Central Australian Shelf,1 670 842.71
+1975,42,Southeast Australian Shelf,17 716 771.29
+1975,43,Southwest Australian Shelf,14 210 519.59
+1975,44,West Central Australian Shelf,1 369 040.40
+1975,45,Northwest Australian Shelf,7 371 643.72
+1975,46,New Zealand Shelf,14 640 288.22
+1975,47,East China Sea,25 843 156.62
+1975,48,Yellow Sea,11 116 437.83
+1975,49,Kuroshio Current,56 381 048.97
+1975,50,Sea of Japan,32 237 724.16
+1975,51,Oyashio Current,3 452 999.11
+1975,52,Okhotsk Sea,11 023 625.35
+1975,53,West Bering Sea,1 848 089.89
+1975,54,Nrothern Bering - Chukchi Sea,7 876 346.72
+1975,59,Greenland Sea,17 411 673.42
+1975,61,Antarctic,33 079.51
+1975,62,Black Sea,35 302 616.99
+1975,65,Aleutian,3 962 050.13
+1976,1,East Bering Sea,18 784 291.08
+1976,2,Gulf of Alaska,107 851 859.04
+1976,3,California Current,84 045 492.39
+1976,4,Gulf of California,9 759 291.99
+1976,5,Gulf of Mexico,67 480 421.71
+1976,6,Southeast U.S. Continental Shelf,11 041 874.57
+1976,7,Northeast U.S. Continental Shelf,146 543 938.35
+1976,8,Scotian Shelf,90 949 168.79
+1976,9,Newfoundland-Labrador Shelf,59 885 640.09
+1976,10,Insular Pacific-Hawaiian,18 883 006.17
+1976,11,Pacific Central-American Coastal,89 124 745.45
+1976,12,Caribbean Sea,132 998 504.02
+1976,13,Humboldt Current,38 791 130.87
+1976,14,Patagonian Shelf,14 228 880.48
+1976,15,South Brazil Shelf,16 349 206.66
+1976,16,East Brazil Shelf,32 226 197.97
+1976,17,North Brazil Shelf,30 463 534.11
+1976,18,Canadian Eastern Arctic -West Greenland,23 560 004.76
+1976,19,Iceland Shelf/Sea,53 080 062.10
+1976,20,Barents Sea,22 833 755.85
+1976,22,North Sea,207 075 279.86
+1976,23,Baltic Sea,178 641 898.10
+1976,24,Celtic-Biscay Shelf,277 024 379.46
+1976,25,Iberian Coastal,29 774 348.10
+1976,26,Mediterranean Sea,272 144 211.84
+1976,27,Canary Current,54 277 413.73
+1976,28,Guinea Current,119 438 772.77
+1976,29,Benguela Current,18 164 002.00
+1976,30,Agulhas Current,46 671 830.14
+1976,31,Somali Coastal Current,17 594 282.94
+1976,32,Arabian Sea,92 733 053.20
+1976,33,Red Sea,15 989 674.75
+1976,34,Bay of Bengal,53 349 730.19
+1976,35,Gulf of Thailand,32 213 038.13
+1976,36,South China Sea,63 498 668.70
+1976,37,Sulu-Celebes Sea,123 169 523.38
+1976,38,Indonesian Sea,47 406 410.27
+1976,39,North Australian Shelf,6 253 877.48
+1976,40,Northeast Australian Shelf,10 971 889.13
+1976,41,East Central Australian Shelf,1 794 069.17
+1976,42,Southeast Australian Shelf,19 726 901.43
+1976,43,Southwest Australian Shelf,15 313 314.86
+1976,44,West Central Australian Shelf,1 140 183.52
+1976,45,Northwest Australian Shelf,7 591 406.06
+1976,46,New Zealand Shelf,16 218 865.45
+1976,47,East China Sea,28 880 020.45
+1976,48,Yellow Sea,12 553 745.60
+1976,49,Kuroshio Current,57 435 046.13
+1976,50,Sea of Japan,30 457 214.38
+1976,51,Oyashio Current,3 796 178.97
+1976,52,Okhotsk Sea,14 201 843.03
+1976,53,West Bering Sea,1 871 692.42
+1976,54,Nrothern Bering - Chukchi Sea,8 151 510.83
+1976,59,Greenland Sea,5 935 357.00
+1976,61,Antarctic,130 313.17
+1976,62,Black Sea,35 099 744.84
+1976,64,Central Arctic Ocean,9 561.92
+1976,65,Aleutian,4 168 821.81
+1977,1,East Bering Sea,20 386 696.20
+1977,2,Gulf of Alaska,117 932 476.42
+1977,3,California Current,84 477 557.65
+1977,4,Gulf of California,8 586 295.97
+1977,5,Gulf of Mexico,72 556 052.50
+1977,6,Southeast U.S. Continental Shelf,11 603 291.28
+1977,7,Northeast U.S. Continental Shelf,157 220 533.49
+1977,8,Scotian Shelf,100 057 934.34
+1977,9,Newfoundland-Labrador Shelf,67 821 141.28
+1977,10,Insular Pacific-Hawaiian,19 863 247.39
+1977,11,Pacific Central-American Coastal,67 859 430.52
+1977,12,Caribbean Sea,113 465 170.48
+1977,13,Humboldt Current,45 611 309.64
+1977,14,Patagonian Shelf,15 207 918.34
+1977,15,South Brazil Shelf,18 722 119.55
+1977,16,East Brazil Shelf,35 658 131.79
+1977,17,North Brazil Shelf,27 235 151.34
+1977,18,Canadian Eastern Arctic -West Greenland,30 302 177.97
+1977,19,Iceland Shelf/Sea,3 926 321.12
+1977,20,Barents Sea,29 906 629.80
+1977,21,Norwegian Sea,3 129 702.83
+1977,22,North Sea,260 595 129.85
+1977,23,Baltic Sea,170 149 432.59
+1977,24,Celtic-Biscay Shelf,276 436 903.12
+1977,25,Iberian Coastal,29 517 577.49
+1977,26,Mediterranean Sea,268 204 792.73
+1977,27,Canary Current,62 230 082.92
+1977,28,Guinea Current,134 161 089.63
+1977,29,Benguela Current,12 411 293.44
+1977,30,Agulhas Current,54 705 100.58
+1977,31,Somali Coastal Current,17 865 001.93
+1977,32,Arabian Sea,98 165 239.12
+1977,33,Red Sea,17 777 587.48
+1977,34,Bay of Bengal,64 949 730.89
+1977,35,Gulf of Thailand,21 650 776.86
+1977,36,South China Sea,73 266 707.86
+1977,37,Sulu-Celebes Sea,141 380 667.93
+1977,38,Indonesian Sea,61 644 108.24
+1977,39,North Australian Shelf,3 881 310.18
+1977,40,Northeast Australian Shelf,12 675 050.62
+1977,41,East Central Australian Shelf,2 309 986.23
+1977,42,Southeast Australian Shelf,24 833 132.78
+1977,43,Southwest Australian Shelf,18 300 474.75
+1977,44,West Central Australian Shelf,1 896 956.85
+1977,45,Northwest Australian Shelf,9 458 836.14
+1977,46,New Zealand Shelf,15 813 686.46
+1977,47,East China Sea,33 621 382.95
+1977,48,Yellow Sea,14 207 576.16
+1977,49,Kuroshio Current,61 760 792.87
+1977,50,Sea of Japan,39 968 157.93
+1977,51,Oyashio Current,3 820 640.08
+1977,52,Okhotsk Sea,16 088 525.39
+1977,53,West Bering Sea,1 723 580.05
+1977,54,Nrothern Bering - Chukchi Sea,8 465 492.16
+1977,59,Greenland Sea,24 596 120.64
+1977,61,Antarctic,139 739.93
+1977,62,Black Sea,52 656 904.26
+1977,65,Aleutian,4 416 333.52
+1978,1,East Bering Sea,19 580 311.84
+1978,2,Gulf of Alaska,120 184 182.52
+1978,3,California Current,86 675 766.28
+1978,4,Gulf of California,11 928 319.86
+1978,5,Gulf of Mexico,74 253 699.25
+1978,6,Southeast U.S. Continental Shelf,10 971 066.06
+1978,7,Northeast U.S. Continental Shelf,156 925 589.92
+1978,8,Scotian Shelf,107 817 674.99
+1978,9,Newfoundland-Labrador Shelf,54 488 261.17
+1978,10,Insular Pacific-Hawaiian,19 511 045.21
+1978,11,Pacific Central-American Coastal,89 925 305.27
+1978,12,Caribbean Sea,118 662 081.91
+1978,13,Humboldt Current,50 669 597.55
+1978,14,Patagonian Shelf,10 935 723.27
+1978,15,South Brazil Shelf,18 081 157.54
+1978,16,East Brazil Shelf,35 610 165.53
+1978,17,North Brazil Shelf,24 680 515.93
+1978,18,Canadian Eastern Arctic -West Greenland,27 940 579.07
+1978,19,Iceland Shelf/Sea,3 691 187.49
+1978,20,Barents Sea,29 716 559.45
+1978,21,Norwegian Sea,3 164 376.21
+1978,22,North Sea,241 844 079.04
+1978,23,Baltic Sea,187 139 110.39
+1978,24,Celtic-Biscay Shelf,283 409 996.96
+1978,25,Iberian Coastal,38 326 297.24
+1978,26,Mediterranean Sea,251 833 785.51
+1978,27,Canary Current,58 280 279.62
+1978,28,Guinea Current,129 993 915.81
+1978,29,Benguela Current,39 493 378.30
+1978,30,Agulhas Current,58 614 486.39
+1978,31,Somali Coastal Current,21 107 203.16
+1978,32,Arabian Sea,103 050 770.42
+1978,33,Red Sea,17 192 876.59
+1978,34,Bay of Bengal,63 671 854.08
+1978,35,Gulf of Thailand,22 704 042.35
+1978,36,South China Sea,67 445 221.65
+1978,37,Sulu-Celebes Sea,152 011 006.57
+1978,38,Indonesian Sea,70 730 265.74
+1978,39,North Australian Shelf,4 369 686.29
+1978,40,Northeast Australian Shelf,14 088 994.15
+1978,41,East Central Australian Shelf,1 800 911.11
+1978,42,Southeast Australian Shelf,27 518 542.42
+1978,43,Southwest Australian Shelf,19 032 924.55
+1978,44,West Central Australian Shelf,1 763 566.47
+1978,45,Northwest Australian Shelf,9 738 412.56
+1978,46,New Zealand Shelf,14 683 426.11
+1978,47,East China Sea,33 387 611.56
+1978,48,Yellow Sea,16 305 810.06
+1978,49,Kuroshio Current,68 129 539.06
+1978,50,Sea of Japan,38 450 406.57
+1978,51,Oyashio Current,4 318 604.67
+1978,52,Okhotsk Sea,16 914 629.60
+1978,53,West Bering Sea,1 752 510.23
+1978,54,Nrothern Bering - Chukchi Sea,8 921 019.86
+1978,59,Greenland Sea,16 030 340.56
+1978,61,Antarctic,1 274 512.55
+1978,62,Black Sea,49 938 003.59
+1978,65,Aleutian,4 695 028.83
+1979,1,East Bering Sea,18 038 217.63
+1979,2,Gulf of Alaska,124 271 673.29
+1979,3,California Current,76 935 197.03
+1979,4,Gulf of California,12 943 276.13
+1979,5,Gulf of Mexico,74 403 758.54
+1979,6,Southeast U.S. Continental Shelf,11 477 854.97
+1979,7,Northeast U.S. Continental Shelf,158 229 081.03
+1979,8,Scotian Shelf,82 164 048.93
+1979,9,Newfoundland-Labrador Shelf,67 186 953.85
+1979,10,Insular Pacific-Hawaiian,20 017 824.82
+1979,11,Pacific Central-American Coastal,84 988 914.52
+1979,12,Caribbean Sea,127 921 749.30
+1979,13,Humboldt Current,56 467 598.99
+1979,14,Patagonian Shelf,14 937 931.00
+1979,15,South Brazil Shelf,19 872 643.87
+1979,16,East Brazil Shelf,40 153 714.44
+1979,17,North Brazil Shelf,22 433 870.73
+1979,18,Canadian Eastern Arctic -West Greenland,23 919 089.62
+1979,19,Iceland Shelf/Sea,3 250 179.70
+1979,20,Barents Sea,64 041 085.98
+1979,21,Norwegian Sea,3 227 637.21
+1979,22,North Sea,234 339 411.82
+1979,23,Baltic Sea,148 172 303.65
+1979,24,Celtic-Biscay Shelf,287 177 534.31
+1979,25,Iberian Coastal,39 699 021.31
+1979,26,Mediterranean Sea,232 073 717.76
+1979,27,Canary Current,50 092 012.11
+1979,28,Guinea Current,122 374 550.73
+1979,29,Benguela Current,39 767 512.90
+1979,30,Agulhas Current,57 470 207.21
+1979,31,Somali Coastal Current,21 117 320.63
+1979,32,Arabian Sea,109 200 961.38
+1979,33,Red Sea,17 407 218.02
+1979,34,Bay of Bengal,78 413 021.53
+1979,35,Gulf of Thailand,23 159 080.34
+1979,36,South China Sea,68 276 095.27
+1979,37,Sulu-Celebes Sea,180 555 468.53
+1979,38,Indonesian Sea,93 484 419.97
+1979,39,North Australian Shelf,5 146 179.83
+1979,40,Northeast Australian Shelf,15 024 355.62
+1979,41,East Central Australian Shelf,2 007 460.12
+1979,42,Southeast Australian Shelf,25 228 093.47
+1979,43,Southwest Australian Shelf,18 754 786.98
+1979,44,West Central Australian Shelf,1 704 616.68
+1979,45,Northwest Australian Shelf,9 772 063.16
+1979,46,New Zealand Shelf,15 069 763.62
+1979,47,East China Sea,34 557 435.29
+1979,48,Yellow Sea,19 103 714.02
+1979,49,Kuroshio Current,77 909 196.11
+1979,50,Sea of Japan,38 447 187.49
+1979,51,Oyashio Current,4 647 715.29
+1979,52,Okhotsk Sea,19 226 488.82
+1979,53,West Bering Sea,1 456 264.94
+1979,54,Nrothern Bering - Chukchi Sea,8 878 661.36
+1979,59,Greenland Sea,22 109 907.16
+1979,61,Antarctic,11 653 457.57
+1979,62,Black Sea,31 183 462.34
+1979,65,Aleutian,4 454 693.98
+1980,1,East Bering Sea,24 139 887.87
+1980,2,Gulf of Alaska,159 477 025.03
+1980,3,California Current,79 973 134.07
+1980,4,Gulf of California,10 716 246.42
+1980,5,Gulf of Mexico,81 478 249.50
+1980,6,Southeast U.S. Continental Shelf,12 593 346.09
+1980,7,Northeast U.S. Continental Shelf,153 546 197.85
+1980,8,Scotian Shelf,71 956 672.85
+1980,9,Newfoundland-Labrador Shelf,71 961 836.38
+1980,10,Insular Pacific-Hawaiian,23 602 438.99
+1980,11,Pacific Central-American Coastal,61 342 375.92
+1980,12,Caribbean Sea,127 461 842.62
+1980,13,Humboldt Current,61 807 586.88
+1980,14,Patagonian Shelf,17 397 387.98
+1980,15,South Brazil Shelf,19 704 543.57
+1980,16,East Brazil Shelf,39 024 286.23
+1980,17,North Brazil Shelf,21 683 817.23
+1980,18,Canadian Eastern Arctic -West Greenland,27 406 928.27
+1980,19,Iceland Shelf/Sea,3 841 528.93
+1980,20,Barents Sea,64 558 760.71
+1980,21,Norwegian Sea,3 273 291.53
+1980,22,North Sea,249 489 324.92
+1980,23,Baltic Sea,153 726 957.49
+1980,24,Celtic-Biscay Shelf,303 061 683.41
+1980,25,Iberian Coastal,47 708 966.97
+1980,26,Mediterranean Sea,226 768 412.79
+1980,27,Canary Current,44 609 238.49
+1980,28,Guinea Current,156 951 865.28
+1980,29,Benguela Current,43 424 990.62
+1980,30,Agulhas Current,59 759 023.14
+1980,31,Somali Coastal Current,22 176 563.37
+1980,32,Arabian Sea,111 099 505.51
+1980,33,Red Sea,16 894 271.85
+1980,34,Bay of Bengal,75 986 394.92
+1980,35,Gulf of Thailand,23 717 314.78
+1980,36,South China Sea,74 793 976.37
+1980,37,Sulu-Celebes Sea,169 471 689.92
+1980,38,Indonesian Sea,107 579 092.83
+1980,39,North Australian Shelf,5 787 762.64
+1980,40,Northeast Australian Shelf,16 277 047.69
+1980,41,East Central Australian Shelf,1 701 694.22
+1980,42,Southeast Australian Shelf,26 132 714.61
+1980,43,Southwest Australian Shelf,18 920 600.68
+1980,44,West Central Australian Shelf,1 639 147.79
+1980,45,Northwest Australian Shelf,10 379 492.43
+1980,46,New Zealand Shelf,16 031 729.36
+1980,47,East China Sea,37 905 072.50
+1980,48,Yellow Sea,20 922 168.50
+1980,49,Kuroshio Current,77 318 976.63
+1980,50,Sea of Japan,42 192 846.16
+1980,51,Oyashio Current,6 171 355.53
+1980,52,Okhotsk Sea,19 128 824.98
+1980,53,West Bering Sea,1 530 327.95
+1980,54,Nrothern Bering - Chukchi Sea,9 794 175.47
+1980,59,Greenland Sea,22 069 438.14
+1980,61,Antarctic,1 951 410.90
+1980,62,Black Sea,34 209 789.03
+1980,65,Aleutian,4 974 753.99
+1981,1,East Bering Sea,33 315 657.37
+1981,2,Gulf of Alaska,151 836 757.72
+1981,3,California Current,86 431 568.56
+1981,4,Gulf of California,14 426 752.56
+1981,5,Gulf of Mexico,85 684 067.68
+1981,6,Southeast U.S. Continental Shelf,12 736 237.99
+1981,7,Northeast U.S. Continental Shelf,155 529 346.39
+1981,8,Scotian Shelf,64 433 912.91
+1981,9,Newfoundland-Labrador Shelf,72 227 637.82
+1981,10,Insular Pacific-Hawaiian,22 063 077.35
+1981,11,Pacific Central-American Coastal,82 923 567.18
+1981,12,Caribbean Sea,113 838 971.21
+1981,13,Humboldt Current,63 670 906.09
+1981,14,Patagonian Shelf,17 123 473.62
+1981,15,South Brazil Shelf,23 387 858.11
+1981,16,East Brazil Shelf,45 670 208.85
+1981,17,North Brazil Shelf,25 810 602.74
+1981,18,Canadian Eastern Arctic -West Greenland,31 265 560.06
+1981,19,Iceland Shelf/Sea,3 197 295.33
+1981,20,Barents Sea,60 283 021.96
+1981,21,Norwegian Sea,2 948 094.39
+1981,22,North Sea,257 468 014.70
+1981,23,Baltic Sea,154 380 379.09
+1981,24,Celtic-Biscay Shelf,282 388 274.90
+1981,25,Iberian Coastal,54 691 386.02
+1981,26,Mediterranean Sea,213 428 119.82
+1981,27,Canary Current,54 364 256.24
+1981,28,Guinea Current,151 628 014.13
+1981,29,Benguela Current,41 670 397.09
+1981,30,Agulhas Current,50 050 787.54
+1981,31,Somali Coastal Current,20 523 118.57
+1981,32,Arabian Sea,122 472 189.96
+1981,33,Red Sea,16 788 258.96
+1981,34,Bay of Bengal,78 071 856.02
+1981,35,Gulf of Thailand,24 023 076.33
+1981,36,South China Sea,64 427 698.75
+1981,37,Sulu-Celebes Sea,173 821 124.79
+1981,38,Indonesian Sea,100 833 813.37
+1981,39,North Australian Shelf,3 595 246.11
+1981,40,Northeast Australian Shelf,12 909 452.86
+1981,41,East Central Australian Shelf,3 679 532.52
+1981,42,Southeast Australian Shelf,26 965 947.82
+1981,43,Southwest Australian Shelf,17 740 776.41
+1981,44,West Central Australian Shelf,1 819 445.02
+1981,45,Northwest Australian Shelf,9 656 052.40
+1981,46,New Zealand Shelf,18 556 735.52
+1981,47,East China Sea,34 722 203.33
+1981,48,Yellow Sea,19 763 650.06
+1981,49,Kuroshio Current,72 092 461.36
+1981,50,Sea of Japan,37 784 943.04
+1981,51,Oyashio Current,4 742 175.26
+1981,52,Okhotsk Sea,19 224 271.10
+1981,53,West Bering Sea,1 709 218.53
+1981,54,Nrothern Bering - Chukchi Sea,9 347 228.08
+1981,59,Greenland Sea,20 079 832.51
+1981,61,Antarctic,743 013.03
+1981,62,Black Sea,31 174 707.94
+1981,65,Aleutian,4 923 164.48
+1982,1,East Bering Sea,31 622 808.67
+1982,2,Gulf of Alaska,151 760 782.80
+1982,3,California Current,58 448 291.39
+1982,4,Gulf of California,8 302 070.97
+1982,5,Gulf of Mexico,75 201 906.77
+1982,6,Southeast U.S. Continental Shelf,13 098 048.44
+1982,7,Northeast U.S. Continental Shelf,139 670 983.36
+1982,8,Scotian Shelf,50 160 878.70
+1982,9,Newfoundland-Labrador Shelf,77 844 653.53
+1982,10,Insular Pacific-Hawaiian,22 123 108.25
+1982,11,Pacific Central-American Coastal,75 890 531.79
+1982,12,Caribbean Sea,111 153 608.05
+1982,13,Humboldt Current,66 935 732.75
+1982,14,Patagonian Shelf,19 026 159.66
+1982,15,South Brazil Shelf,22 917 648.35
+1982,16,East Brazil Shelf,40 635 642.73
+1982,17,North Brazil Shelf,22 654 540.60
+1982,18,Canadian Eastern Arctic -West Greenland,23 368 841.17
+1982,19,Iceland Shelf/Sea,3 172 318.12
+1982,20,Barents Sea,48 623 787.42
+1982,21,Norwegian Sea,2 562 345.53
+1982,22,North Sea,220 854 021.73
+1982,23,Baltic Sea,172 615 641.40
+1982,24,Celtic-Biscay Shelf,329 940 098.36
+1982,25,Iberian Coastal,49 042 172.68
+1982,26,Mediterranean Sea,223 861 961.73
+1982,27,Canary Current,62 427 574.36
+1982,28,Guinea Current,146 827 608.21
+1982,29,Benguela Current,47 337 857.69
+1982,30,Agulhas Current,55 994 351.07
+1982,31,Somali Coastal Current,20 197 266.09
+1982,32,Arabian Sea,123 600 427.58
+1982,33,Red Sea,16 430 844.82
+1982,34,Bay of Bengal,77 891 702.07
+1982,35,Gulf of Thailand,24 633 462.45
+1982,36,South China Sea,77 630 579.28
+1982,37,Sulu-Celebes Sea,178 348 345.18
+1982,38,Indonesian Sea,103 230 758.73
+1982,39,North Australian Shelf,5 115 622.06
+1982,40,Northeast Australian Shelf,16 003 907.46
+1982,41,East Central Australian Shelf,3 527 497.18
+1982,42,Southeast Australian Shelf,28 857 730.98
+1982,43,Southwest Australian Shelf,21 061 461.27
+1982,44,West Central Australian Shelf,2 088 060.17
+1982,45,Northwest Australian Shelf,11 384 061.76
+1982,46,New Zealand Shelf,18 907 221.75
+1982,47,East China Sea,38 269 100.22
+1982,48,Yellow Sea,19 082 125.21
+1982,49,Kuroshio Current,75 372 625.78
+1982,50,Sea of Japan,44 231 669.91
+1982,51,Oyashio Current,5 163 833.73
+1982,52,Okhotsk Sea,18 867 232.35
+1982,53,West Bering Sea,1 736 614.13
+1982,54,Nrothern Bering - Chukchi Sea,8 974 843.70
+1982,59,Greenland Sea,21 551 054.41
+1982,61,Antarctic,1 391 175.54
+1982,62,Black Sea,28 742 414.35
+1982,63,Hudson Bay Complex,783.45
+1982,65,Aleutian,4 617 336.20
+1983,1,East Bering Sea,26 489 402.96
+1983,2,Gulf of Alaska,176 215 884.17
+1983,3,California Current,64 856 471.46
+1983,4,Gulf of California,10 079 523.97
+1983,5,Gulf of Mexico,80 088 171.16
+1983,6,Southeast U.S. Continental Shelf,13 994 680.31
+1983,7,Northeast U.S. Continental Shelf,152 403 285.30
+1983,8,Scotian Shelf,48 420 707.65
+1983,9,Newfoundland-Labrador Shelf,101 450 451.45
+1983,10,Insular Pacific-Hawaiian,26 575 679.36
+1983,11,Pacific Central-American Coastal,67 256 046.41
+1983,12,Caribbean Sea,141 221 507.85
+1983,13,Humboldt Current,62 900 679.95
+1983,14,Patagonian Shelf,22 694 429.20
+1983,15,South Brazil Shelf,27 991 955.12
+1983,16,East Brazil Shelf,44 626 931.47
+1983,17,North Brazil Shelf,25 360 666.30
+1983,18,Canadian Eastern Arctic -West Greenland,24 205 108.90
+1983,19,Iceland Shelf/Sea,3 437 842.40
+1983,20,Barents Sea,54 238 584.23
+1983,21,Norwegian Sea,2 887 902.72
+1983,22,North Sea,259 369 651.37
+1983,23,Baltic Sea,147 902 275.80
+1983,24,Celtic-Biscay Shelf,361 922 091.29
+1983,25,Iberian Coastal,55 629 614.10
+1983,26,Mediterranean Sea,271 763 008.89
+1983,27,Canary Current,59 287 321.23
+1983,28,Guinea Current,246 177 640.84
+1983,29,Benguela Current,56 719 456.63
+1983,30,Agulhas Current,58 936 645.04
+1983,31,Somali Coastal Current,21 816 125.09
+1983,32,Arabian Sea,130 989 148.00
+1983,33,Red Sea,18 816 856.95
+1983,34,Bay of Bengal,87 848 526.31
+1983,35,Gulf of Thailand,22 519 635.86
+1983,36,South China Sea,88 779 010.94
+1983,37,Sulu-Celebes Sea,226 861 027.36
+1983,38,Indonesian Sea,111 966 849.95
+1983,39,North Australian Shelf,5 317 204.91
+1983,40,Northeast Australian Shelf,14 078 591.56
+1983,41,East Central Australian Shelf,2 696 819.71
+1983,42,Southeast Australian Shelf,24 224 241.21
+1983,43,Southwest Australian Shelf,17 950 757.14
+1983,44,West Central Australian Shelf,1 769 149.19
+1983,45,Northwest Australian Shelf,10 202 578.05
+1983,46,New Zealand Shelf,24 082 564.05
+1983,47,East China Sea,35 218 489.28
+1983,48,Yellow Sea,12 696 150.64
+1983,49,Kuroshio Current,65 132 375.28
+1983,50,Sea of Japan,35 623 569.94
+1983,51,Oyashio Current,4 411 745.90
+1983,52,Okhotsk Sea,16 777 419.16
+1983,53,West Bering Sea,2 095 802.37
+1983,54,Nrothern Bering - Chukchi Sea,10 128 512.97
+1983,59,Greenland Sea,22 911 034.19
+1983,61,Antarctic,2 079 431.95
+1983,62,Black Sea,82 353 799.51
+1983,65,Aleutian,5 136 132.44
+1984,1,East Bering Sea,41 899 480.21
+1984,2,Gulf of Alaska,203 820 309.09
+1984,3,California Current,77 001 502.20
+1984,4,Gulf of California,12 514 271.86
+1984,5,Gulf of Mexico,96 927 360.82
+1984,6,Southeast U.S. Continental Shelf,17 649 701.40
+1984,7,Northeast U.S. Continental Shelf,168 598 244.89
+1984,8,Scotian Shelf,61 323 298.49
+1984,9,Newfoundland-Labrador Shelf,105 038 003.69
+1984,10,Insular Pacific-Hawaiian,29 930 245.81
+1984,11,Pacific Central-American Coastal,77 945 381.94
+1984,12,Caribbean Sea,131 338 058.38
+1984,13,Humboldt Current,74 142 387.51
+1984,14,Patagonian Shelf,26 499 992.06
+1984,15,South Brazil Shelf,29 926 405.41
+1984,16,East Brazil Shelf,47 370 179.24
+1984,17,North Brazil Shelf,30 415 684.68
+1984,18,Canadian Eastern Arctic -West Greenland,59 833 905.13
+1984,19,Iceland Shelf/Sea,3 602 816.13
+1984,20,Barents Sea,62 959 024.02
+1984,21,Norwegian Sea,33 330 424.44
+1984,22,North Sea,350 553 650.08
+1984,23,Baltic Sea,178 063 178.57
+1984,24,Celtic-Biscay Shelf,284 863 682.60
+1984,25,Iberian Coastal,43 547 080.03
+1984,26,Mediterranean Sea,320 382 069.41
+1984,27,Canary Current,63 050 883.79
+1984,28,Guinea Current,202 812 013.44
+1984,29,Benguela Current,57 346 737.10
+1984,30,Agulhas Current,71 372 208.76
+1984,31,Somali Coastal Current,24 148 385.92
+1984,32,Arabian Sea,146 056 992.22
+1984,33,Red Sea,20 837 175.41
+1984,34,Bay of Bengal,91 951 605.54
+1984,35,Gulf of Thailand,27 835 645.22
+1984,36,South China Sea,98 132 127.29
+1984,37,Sulu-Celebes Sea,240 145 428.43
+1984,38,Indonesian Sea,119 687 303.02
+1984,39,North Australian Shelf,5 637 723.32
+1984,40,Northeast Australian Shelf,15 589 611.48
+1984,41,East Central Australian Shelf,2 734 730.28
+1984,42,Southeast Australian Shelf,25 503 991.27
+1984,43,Southwest Australian Shelf,19 309 160.80
+1984,44,West Central Australian Shelf,1 939 102.52
+1984,45,Northwest Australian Shelf,10 923 169.00
+1984,46,New Zealand Shelf,20 215 088.83
+1984,47,East China Sea,59 114 152.42
+1984,48,Yellow Sea,30 265 777.38
+1984,49,Kuroshio Current,107 366 191.28
+1984,50,Sea of Japan,63 281 507.69
+1984,51,Oyashio Current,6 627 237.25
+1984,52,Okhotsk Sea,25 721 103.81
+1984,53,West Bering Sea,2 030 582.06
+1984,54,Nrothern Bering - Chukchi Sea,12 260 541.95
+1984,59,Greenland Sea,34 189 542.29
+1984,61,Antarctic,2 536 525.06
+1984,62,Black Sea,37 604 268.99
+1984,65,Aleutian,6 523 035.65
+1985,1,East Bering Sea,37 214 630.94
+1985,2,Gulf of Alaska,183 637 977.87
+1985,3,California Current,62 573 789.03
+1985,4,Gulf of California,8 398 588.58
+1985,5,Gulf of Mexico,82 966 499.39
+1985,6,Southeast U.S. Continental Shelf,15 264 048.90
+1985,7,Northeast U.S. Continental Shelf,153 243 918.27
+1985,8,Scotian Shelf,52 949 665.98
+1985,9,Newfoundland-Labrador Shelf,72 843 935.46
+1985,10,Insular Pacific-Hawaiian,24 401 960.10
+1985,11,Pacific Central-American Coastal,75 066 342.18
+1985,12,Caribbean Sea,99 669 682.49
+1985,13,Humboldt Current,64 240 957.69
+1985,14,Patagonian Shelf,23 361 313.34
+1985,15,South Brazil Shelf,28 283 094.42
+1985,16,East Brazil Shelf,46 315 370.93
+1985,17,North Brazil Shelf,26 093 894.63
+1985,18,Canadian Eastern Arctic -West Greenland,49 055 679.05
+1985,19,Iceland Shelf/Sea,16 413.17
+1985,20,Barents Sea,56 827 708.90
+1985,21,Norwegian Sea,28 101 023.61
+1985,22,North Sea,357 159 546.05
+1985,23,Baltic Sea,176 892 559.87
+1985,24,Celtic-Biscay Shelf,193 261 272.20
+1985,25,Iberian Coastal,42 157 538.67
+1985,26,Mediterranean Sea,267 369 390.95
+1985,27,Canary Current,41 592 152.84
+1985,28,Guinea Current,129 506 723.24
+1985,29,Benguela Current,58 499 787.70
+1985,30,Agulhas Current,75 340 533.91
+1985,31,Somali Coastal Current,28 351 257.59
+1985,32,Arabian Sea,145 042 660.29
+1985,33,Red Sea,19 096 033.01
+1985,34,Bay of Bengal,86 093 078.35
+1985,35,Gulf of Thailand,26 389 857.73
+1985,36,South China Sea,92 036 071.57
+1985,37,Sulu-Celebes Sea,207 661 837.40
+1985,38,Indonesian Sea,111 662 633.17
+1985,39,North Australian Shelf,3 863 730.48
+1985,40,Northeast Australian Shelf,15 276 823.02
+1985,41,East Central Australian Shelf,2 474 514.47
+1985,42,Southeast Australian Shelf,23 143 990.93
+1985,43,Southwest Australian Shelf,17 947 063.79
+1985,44,West Central Australian Shelf,1 852 887.05
+1985,45,Northwest Australian Shelf,10 087 594.96
+1985,46,New Zealand Shelf,16 818 584.02
+1985,47,East China Sea,54 835 280.98
+1985,48,Yellow Sea,27 995 665.37
+1985,49,Kuroshio Current,104 981 725.42
+1985,50,Sea of Japan,57 632 177.73
+1985,51,Oyashio Current,3 319 419.35
+1985,52,Okhotsk Sea,21 107 871.17
+1985,53,West Bering Sea,1 779 323.29
+1985,54,Nrothern Bering - Chukchi Sea,11 372 134.98
+1985,59,Greenland Sea,83 791 728.90
+1985,61,Antarctic,3 738 724.16
+1985,62,Black Sea,21 319 641.20
+1985,65,Aleutian,5 673 076.55
+1986,1,East Bering Sea,28 521 265.24
+1986,2,Gulf of Alaska,187 585 710.08
+1986,3,California Current,64 748 750.91
+1986,4,Gulf of California,8 613 396.19
+1986,5,Gulf of Mexico,77 939 838.41
+1986,6,Southeast U.S. Continental Shelf,15 171 220.40
+1986,7,Northeast U.S. Continental Shelf,165 019 977.38
+1986,8,Scotian Shelf,56 128 162.87
+1986,9,Newfoundland-Labrador Shelf,84 279 212.87
+1986,10,Insular Pacific-Hawaiian,25 228 221.37
+1986,11,Pacific Central-American Coastal,77 907 722.67
+1986,12,Caribbean Sea,84 175 369.85
+1986,13,Humboldt Current,69 524 071.50
+1986,14,Patagonian Shelf,23 777 235.83
+1986,15,South Brazil Shelf,31 375 045.60
+1986,16,East Brazil Shelf,54 696 774.03
+1986,17,North Brazil Shelf,25 465 650.30
+1986,18,Canadian Eastern Arctic -West Greenland,65 067 840.63
+1986,19,Iceland Shelf/Sea,19 385.79
+1986,20,Barents Sea,54 571 571.62
+1986,21,Norwegian Sea,3 087 697.51
+1986,22,North Sea,258 535 619.53
+1986,23,Baltic Sea,176 328 676.51
+1986,24,Celtic-Biscay Shelf,321 934 276.83
+1986,25,Iberian Coastal,58 414 069.16
+1986,26,Mediterranean Sea,297 263 208.98
+1986,27,Canary Current,43 730 653.10
+1986,28,Guinea Current,138 468 585.63
+1986,29,Benguela Current,58 722 853.28
+1986,30,Agulhas Current,73 038 149.38
+1986,31,Somali Coastal Current,21 807 684.04
+1986,32,Arabian Sea,160 798 249.88
+1986,33,Red Sea,20 740 535.28
+1986,34,Bay of Bengal,121 326 419.95
+1986,35,Gulf of Thailand,21 053 074.78
+1986,36,South China Sea,107 757 303.28
+1986,37,Sulu-Celebes Sea,221 010 481.22
+1986,38,Indonesian Sea,126 816 822.13
+1986,39,North Australian Shelf,3 420 990.29
+1986,40,Northeast Australian Shelf,13 604 934.83
+1986,41,East Central Australian Shelf,2 659 455.94
+1986,42,Southeast Australian Shelf,25 582 933.69
+1986,43,Southwest Australian Shelf,20 029 276.03
+1986,44,West Central Australian Shelf,2 090 231.36
+1986,45,Northwest Australian Shelf,11 022 684.98
+1986,46,New Zealand Shelf,23 575 966.43
+1986,47,East China Sea,59 653 757.49
+1986,48,Yellow Sea,30 683 076.53
+1986,49,Kuroshio Current,104 168 677.27
+1986,50,Sea of Japan,61 417 795.63
+1986,51,Oyashio Current,3 498 692.89
+1986,52,Okhotsk Sea,20 544 955.56
+1986,53,West Bering Sea,2 276 067.20
+1986,54,Nrothern Bering - Chukchi Sea,10 506 155.65
+1986,59,Greenland Sea,73 834 322.65
+1986,61,Antarctic,2 513 065.83
+1986,62,Black Sea,34 256 013.87
+1986,65,Aleutian,5 253 195.96
+1987,1,East Bering Sea,28 121 045.47
+1987,2,Gulf of Alaska,208 058 867.11
+1987,3,California Current,75 066 198.22
+1987,4,Gulf of California,10 008 295.84
+1987,5,Gulf of Mexico,86 555 097.07
+1987,6,Southeast U.S. Continental Shelf,25 866 082.54
+1987,7,Northeast U.S. Continental Shelf,172 456 791.45
+1987,8,Scotian Shelf,57 893 233.43
+1987,9,Newfoundland-Labrador Shelf,83 482 585.50
+1987,10,Insular Pacific-Hawaiian,28 391 611.97
+1987,11,Pacific Central-American Coastal,80 395 140.11
+1987,12,Caribbean Sea,101 931 341.07
+1987,13,Humboldt Current,78 208 639.10
+1987,14,Patagonian Shelf,24 710 354.53
+1987,15,South Brazil Shelf,32 486 214.27
+1987,16,East Brazil Shelf,59 262 076.73
+1987,17,North Brazil Shelf,28 581 435.24
+1987,18,Canadian Eastern Arctic -West Greenland,52 183 717.36
+1987,19,Iceland Shelf/Sea,17 234.73
+1987,20,Barents Sea,59 487 987.76
+1987,21,Norwegian Sea,3 050 754.97
+1987,22,North Sea,271 299 345.05
+1987,23,Baltic Sea,176 814 165.93
+1987,24,Celtic-Biscay Shelf,383 355 674.80
+1987,25,Iberian Coastal,45 066 612.80
+1987,26,Mediterranean Sea,291 085 206.81
+1987,27,Canary Current,42 254 661.43
+1987,28,Guinea Current,146 841 744.20
+1987,29,Benguela Current,71 025 469.54
+1987,30,Agulhas Current,72 123 211.73
+1987,31,Somali Coastal Current,21 307 333.38
+1987,32,Arabian Sea,165 014 565.37
+1987,33,Red Sea,21 326 168.00
+1987,34,Bay of Bengal,92 427 767.20
+1987,35,Gulf of Thailand,17 785 656.46
+1987,36,South China Sea,118 719 712.14
+1987,37,Sulu-Celebes Sea,243 224 307.76
+1987,38,Indonesian Sea,118 444 200.70
+1987,39,North Australian Shelf,3 648 098.74
+1987,40,Northeast Australian Shelf,13 371 429.85
+1987,41,East Central Australian Shelf,2 584 795.85
+1987,42,Southeast Australian Shelf,26 187 038.12
+1987,43,Southwest Australian Shelf,20 011 259.45
+1987,44,West Central Australian Shelf,2 323 987.48
+1987,45,Northwest Australian Shelf,11 366 694.99
+1987,46,New Zealand Shelf,21 578 785.02
+1987,47,East China Sea,59 106 381.43
+1987,48,Yellow Sea,29 642 908.91
+1987,49,Kuroshio Current,108 196 158.02
+1987,50,Sea of Japan,62 015 632.83
+1987,51,Oyashio Current,4 546 269.03
+1987,52,Okhotsk Sea,23 908 507.72
+1987,53,West Bering Sea,2 419 205.40
+1987,54,Nrothern Bering - Chukchi Sea,11 839 629.05
+1987,59,Greenland Sea,86 907 714.05
+1987,61,Antarctic,2 688 907.12
+1987,62,Black Sea,26 835 161.80
+1987,65,Aleutian,6 203 140.90
+1988,1,East Bering Sea,26 255 525.06
+1988,2,Gulf of Alaska,213 137 390.64
+1988,3,California Current,76 287 665.16
+1988,4,Gulf of California,10 254 249.66
+1988,5,Gulf of Mexico,87 357 521.47
+1988,6,Southeast U.S. Continental Shelf,25 697 783.76
+1988,7,Northeast U.S. Continental Shelf,163 039 769.43
+1988,8,Scotian Shelf,58 356 391.82
+1988,9,Newfoundland-Labrador Shelf,102 002 593.73
+1988,10,Insular Pacific-Hawaiian,28 611 794.27
+1988,11,Pacific Central-American Coastal,76 748 440.53
+1988,12,Caribbean Sea,103 683 339.04
+1988,13,Humboldt Current,82 063 072.13
+1988,14,Patagonian Shelf,26 677 607.96
+1988,15,South Brazil Shelf,30 534 815.19
+1988,16,East Brazil Shelf,54 481 728.20
+1988,17,North Brazil Shelf,27 262 247.96
+1988,18,Canadian Eastern Arctic -West Greenland,32 229 054.12
+1988,19,Iceland Shelf/Sea,3 077 843.78
+1988,20,Barents Sea,63 802 908.45
+1988,21,Norwegian Sea,3 027 470.77
+1988,22,North Sea,306 345 814.80
+1988,23,Baltic Sea,187 760 736.32
+1988,24,Celtic-Biscay Shelf,467 171 472.47
+1988,25,Iberian Coastal,40 973 247.13
+1988,26,Mediterranean Sea,250 899 026.21
+1988,27,Canary Current,62 113 171.23
+1988,28,Guinea Current,127 435 635.20
+1988,29,Benguela Current,76 582 443.70
+1988,30,Agulhas Current,77 835 826.35
+1988,31,Somali Coastal Current,27 494 230.21
+1988,32,Arabian Sea,177 868 526.88
+1988,33,Red Sea,24 491 792.65
+1988,34,Bay of Bengal,115 598 977.71
+1988,35,Gulf of Thailand,24 765 239.01
+1988,36,South China Sea,104 114 747.09
+1988,37,Sulu-Celebes Sea,250 276 685.21
+1988,38,Indonesian Sea,137 560 072.18
+1988,39,North Australian Shelf,3 712 717.09
+1988,40,Northeast Australian Shelf,14 661 949.08
+1988,41,East Central Australian Shelf,3 065 529.37
+1988,42,Southeast Australian Shelf,28 158 129.70
+1988,43,Southwest Australian Shelf,20 978 794.26
+1988,44,West Central Australian Shelf,2 055 954.63
+1988,45,Northwest Australian Shelf,11 558 401.28
+1988,46,New Zealand Shelf,25 379 703.95
+1988,47,East China Sea,61 615 991.81
+1988,48,Yellow Sea,26 826 473.64
+1988,49,Kuroshio Current,108 489 667.90
+1988,50,Sea of Japan,64 941 412.02
+1988,51,Oyashio Current,6 799 827.83
+1988,52,Okhotsk Sea,26 792 222.54
+1988,53,West Bering Sea,2 047 060.06
+1988,54,Nrothern Bering - Chukchi Sea,12 827 401.19
+1988,59,Greenland Sea,50 698 197.48
+1988,61,Antarctic,2 430 496.62
+1988,62,Black Sea,37 121 770.74
+1988,65,Aleutian,6 222 752.59
+1989,1,East Bering Sea,25 238 320.03
+1989,2,Gulf of Alaska,227 446 633.57
+1989,3,California Current,79 877 358.40
+1989,4,Gulf of California,10 871 002.03
+1989,5,Gulf of Mexico,94 431 154.89
+1989,6,Southeast U.S. Continental Shelf,15 842 894.39
+1989,7,Northeast U.S. Continental Shelf,179 824 546.51
+1989,8,Scotian Shelf,90 173 720.46
+1989,9,Newfoundland-Labrador Shelf,113 281 402.65
+1989,10,Insular Pacific-Hawaiian,29 805 510.56
+1989,11,Pacific Central-American Coastal,79 666 660.03
+1989,12,Caribbean Sea,119 686 486.21
+1989,13,Humboldt Current,77 138 967.15
+1989,14,Patagonian Shelf,31 390 861.09
+1989,15,South Brazil Shelf,33 418 227.68
+1989,16,East Brazil Shelf,64 974 177.73
+1989,17,North Brazil Shelf,30 599 186.60
+1989,18,Canadian Eastern Arctic -West Greenland,33 048 767.91
+1989,19,Iceland Shelf/Sea,7 555 161.78
+1989,20,Barents Sea,70 901 214.08
+1989,21,Norwegian Sea,33 742 180.20
+1989,22,North Sea,404 983 962.21
+1989,23,Baltic Sea,173 839 319.77
+1989,24,Celtic-Biscay Shelf,246 871 769.04
+1989,25,Iberian Coastal,51 966 852.87
+1989,26,Mediterranean Sea,297 633 204.60
+1989,27,Canary Current,47 669 228.86
+1989,28,Guinea Current,152 286 292.91
+1989,29,Benguela Current,61 711 163.77
+1989,30,Agulhas Current,82 968 511.17
+1989,31,Somali Coastal Current,26 844 114.58
+1989,32,Arabian Sea,186 928 996.15
+1989,33,Red Sea,22 501 283.97
+1989,34,Bay of Bengal,153 115 579.16
+1989,35,Gulf of Thailand,25 728 429.97
+1989,36,South China Sea,107 724 090.17
+1989,37,Sulu-Celebes Sea,284 664 392.97
+1989,38,Indonesian Sea,142 572 446.42
+1989,39,North Australian Shelf,5 354 664.10
+1989,40,Northeast Australian Shelf,18 461 078.58
+1989,41,East Central Australian Shelf,2 293 539.91
+1989,42,Southeast Australian Shelf,35 821 751.22
+1989,43,Southwest Australian Shelf,25 746 540.87
+1989,44,West Central Australian Shelf,3 107 302.01
+1989,45,Northwest Australian Shelf,14 609 746.21
+1989,46,New Zealand Shelf,21 749 096.58
+1989,47,East China Sea,65 991 598.20
+1989,48,Yellow Sea,29 029 083.84
+1989,49,Kuroshio Current,106 530 113.16
+1989,50,Sea of Japan,65 627 665.30
+1989,51,Oyashio Current,6 100 797.83
+1989,52,Okhotsk Sea,27 919 324.35
+1989,53,West Bering Sea,2 317 264.44
+1989,54,Nrothern Bering - Chukchi Sea,13 621 298.17
+1989,59,Greenland Sea,33 827 672.01
+1989,61,Antarctic,4 428 239.53
+1989,62,Black Sea,49 392 553.25
+1989,65,Aleutian,6 624 074.01
+1990,1,East Bering Sea,31 682 149.40
+1990,2,Gulf of Alaska,274 114 754.34
+1990,3,California Current,90 202 774.24
+1990,4,Gulf of California,11 396 864.13
+1990,5,Gulf of Mexico,121 104 777.11
+1990,6,Southeast U.S. Continental Shelf,19 375 693.34
+1990,7,Northeast U.S. Continental Shelf,221 979 424.97
+1990,8,Scotian Shelf,99 818 059.46
+1990,9,Newfoundland-Labrador Shelf,115 691 322.30
+1990,10,Insular Pacific-Hawaiian,37 267 245.35
+1990,11,Pacific Central-American Coastal,91 238 754.32
+1990,12,Caribbean Sea,184 627 491.30
+1990,13,Humboldt Current,87 583 837.50
+1990,14,Patagonian Shelf,32 829 064.30
+1990,15,South Brazil Shelf,35 898 933.78
+1990,16,East Brazil Shelf,66 421 933.27
+1990,17,North Brazil Shelf,44 433 125.98
+1990,18,Canadian Eastern Arctic -West Greenland,35 606 929.35
+1990,19,Iceland Shelf/Sea,8 617 501.30
+1990,20,Barents Sea,82 071 371.89
+1990,21,Norwegian Sea,55 133 671.30
+1990,22,North Sea,392 694 411.06
+1990,23,Baltic Sea,198 804 903.97
+1990,24,Celtic-Biscay Shelf,294 017 766.51
+1990,25,Iberian Coastal,60 327 302.07
+1990,26,Mediterranean Sea,358 531 473.77
+1990,27,Canary Current,72 024 199.20
+1990,28,Guinea Current,160 942 068.18
+1990,29,Benguela Current,83 718 584.48
+1990,30,Agulhas Current,97 023 863.73
+1990,31,Somali Coastal Current,28 011 480.10
+1990,32,Arabian Sea,217 808 631.23
+1990,33,Red Sea,26 402 705.69
+1990,34,Bay of Bengal,145 530 983.11
+1990,35,Gulf of Thailand,30 220 037.44
+1990,36,South China Sea,132 387 262.80
+1990,37,Sulu-Celebes Sea,364 417 575.63
+1990,38,Indonesian Sea,172 927 990.83
+1990,39,North Australian Shelf,6 118 044.12
+1990,40,Northeast Australian Shelf,22 102 838.76
+1990,41,East Central Australian Shelf,2 811 564.03
+1990,42,Southeast Australian Shelf,45 281 181.18
+1990,43,Southwest Australian Shelf,31 011 741.89
+1990,44,West Central Australian Shelf,3 751 450.46
+1990,45,Northwest Australian Shelf,17 526 469.19
+1990,46,New Zealand Shelf,45 555 990.33
+1990,47,East China Sea,78 468 665.50
+1990,48,Yellow Sea,34 267 509.29
+1990,49,Kuroshio Current,122 246 377.87
+1990,50,Sea of Japan,78 641 830.22
+1990,51,Oyashio Current,6 439 671.75
+1990,52,Okhotsk Sea,33 573 091.05
+1990,53,West Bering Sea,2 627 488.77
+1990,54,Nrothern Bering - Chukchi Sea,16 422 233.54
+1990,59,Greenland Sea,33 776 025.39
+1990,61,Antarctic,3 761 540.07
+1990,62,Black Sea,46 987 465.46
+1990,65,Aleutian,8 419 471.29
+1991,1,East Bering Sea,32 965 954.59
+1991,2,Gulf of Alaska,302 052 040.96
+1991,3,California Current,99 376 581.62
+1991,4,Gulf of California,15 108 755.24
+1991,5,Gulf of Mexico,130 187 905.62
+1991,6,Southeast U.S. Continental Shelf,21 618 244.77
+1991,7,Northeast U.S. Continental Shelf,245 613 360.10
+1991,8,Scotian Shelf,104 093 697.99
+1991,9,Newfoundland-Labrador Shelf,136 748 099.82
+1991,10,Insular Pacific-Hawaiian,37 375 911.22
+1991,11,Pacific Central-American Coastal,96 875 825.31
+1991,12,Caribbean Sea,142 292 916.76
+1991,13,Humboldt Current,113 249 964.85
+1991,14,Patagonian Shelf,29 269 948.01
+1991,15,South Brazil Shelf,44 044 072.83
+1991,16,East Brazil Shelf,78 427 582.63
+1991,17,North Brazil Shelf,45 721 410.12
+1991,18,Canadian Eastern Arctic -West Greenland,38 005 764.50
+1991,19,Iceland Shelf/Sea,8 706 840.45
+1991,20,Barents Sea,82 832 443.06
+1991,21,Norwegian Sea,52 658 394.13
+1991,22,North Sea,368 866 151.20
+1991,23,Baltic Sea,213 726 808.62
+1991,24,Celtic-Biscay Shelf,397 184 200.27
+1991,25,Iberian Coastal,60 854 641.32
+1991,26,Mediterranean Sea,437 840 093.23
+1991,27,Canary Current,72 674 956.48
+1991,28,Guinea Current,181 105 826.78
+1991,29,Benguela Current,30 074 308.36
+1991,30,Agulhas Current,99 611 464.30
+1991,31,Somali Coastal Current,29 230 803.79
+1991,32,Arabian Sea,246 000 606.76
+1991,33,Red Sea,28 581 490.96
+1991,34,Bay of Bengal,149 430 116.81
+1991,35,Gulf of Thailand,32 563 530.94
+1991,36,South China Sea,131 284 819.57
+1991,37,Sulu-Celebes Sea,412 200 913.71
+1991,38,Indonesian Sea,188 718 915.95
+1991,39,North Australian Shelf,6 152 780.58
+1991,40,Northeast Australian Shelf,19 556 169.18
+1991,41,East Central Australian Shelf,2 270 378.63
+1991,42,Southeast Australian Shelf,43 260 147.01
+1991,43,Southwest Australian Shelf,27 299 219.80
+1991,44,West Central Australian Shelf,3 338 682.98
+1991,45,Northwest Australian Shelf,16 371 089.31
+1991,46,New Zealand Shelf,35 147 926.11
+1991,47,East China Sea,75 648 807.09
+1991,48,Yellow Sea,32 869 302.88
+1991,49,Kuroshio Current,133 080 754.49
+1991,50,Sea of Japan,80 096 673.66
+1991,51,Oyashio Current,7 717 218.34
+1991,52,Okhotsk Sea,29 680 850.29
+1991,53,West Bering Sea,2 734 461.71
+1991,54,Nrothern Bering - Chukchi Sea,17 779 341.86
+1991,59,Greenland Sea,36 779 404.37
+1991,61,Antarctic,2 917 516.60
+1991,62,Black Sea,95 647 320.37
+1991,65,Aleutian,8 990 935.92
+1992,1,East Bering Sea,33 044 383.81
+1992,2,Gulf of Alaska,293 765 760.66
+1992,3,California Current,90 163 165.04
+1992,4,Gulf of California,11 302 243.35
+1992,5,Gulf of Mexico,126 652 869.50
+1992,6,Southeast U.S. Continental Shelf,26 679 411.43
+1992,7,Northeast U.S. Continental Shelf,235 634 147.69
+1992,8,Scotian Shelf,75 945 892.00
+1992,9,Newfoundland-Labrador Shelf,133 609 827.40
+1992,10,Insular Pacific-Hawaiian,38 378 174.78
+1992,11,Pacific Central-American Coastal,92 975 307.42
+1992,12,Caribbean Sea,130 415 209.82
+1992,13,Humboldt Current,112 787 496.25
+1992,14,Patagonian Shelf,34 711 348.01
+1992,15,South Brazil Shelf,42 096 138.94
+1992,16,East Brazil Shelf,76 706 175.29
+1992,17,North Brazil Shelf,44 460 527.24
+1992,18,Canadian Eastern Arctic -West Greenland,66 920 536.06
+1992,19,Iceland Shelf/Sea,10 244 141.24
+1992,20,Barents Sea,94 975 875.10
+1992,21,Norwegian Sea,32 005 722.19
+1992,22,North Sea,502 472 977.01
+1992,23,Baltic Sea,235 124 293.89
+1992,24,Celtic-Biscay Shelf,404 848 497.83
+1992,25,Iberian Coastal,71 597 685.64
+1992,26,Mediterranean Sea,391 105 564.81
+1992,27,Canary Current,73 842 604.46
+1992,28,Guinea Current,197 088 952.24
+1992,29,Benguela Current,25 470 061.71
+1992,30,Agulhas Current,108 025 979.59
+1992,31,Somali Coastal Current,30 804 994.53
+1992,32,Arabian Sea,249 656 588.55
+1992,33,Red Sea,29 310 920.17
+1992,34,Bay of Bengal,146 818 967.69
+1992,35,Gulf of Thailand,37 797 902.78
+1992,36,South China Sea,142 745 209.73
+1992,37,Sulu-Celebes Sea,376 131 624.89
+1992,38,Indonesian Sea,203 002 809.01
+1992,39,North Australian Shelf,5 883 840.71
+1992,40,Northeast Australian Shelf,21 086 585.92
+1992,41,East Central Australian Shelf,4 146 733.05
+1992,42,Southeast Australian Shelf,51 553 850.08
+1992,43,Southwest Australian Shelf,28 895 634.27
+1992,44,West Central Australian Shelf,3 063 252.57
+1992,45,Northwest Australian Shelf,16 645 557.46
+1992,46,New Zealand Shelf,29 476 025.32
+1992,47,East China Sea,80 581 065.18
+1992,48,Yellow Sea,31 565 774.19
+1992,49,Kuroshio Current,138 889 066.44
+1992,50,Sea of Japan,81 622 771.96
+1992,51,Oyashio Current,6 403 949.75
+1992,52,Okhotsk Sea,29 151 507.05
+1992,53,West Bering Sea,3 633 094.13
+1992,54,Nrothern Bering - Chukchi Sea,18 573 073.57
+1992,59,Greenland Sea,16 411 443.48
+1992,60,Faroe Plateau,13 218 909.26
+1992,61,Antarctic,2 557 732.98
+1992,62,Black Sea,101 176 386.76
+1992,65,Aleutian,8 876 934.68
+1993,1,East Bering Sea,41 370 978.25
+1993,2,Gulf of Alaska,314 694 866.57
+1993,3,California Current,94 752 644.78
+1993,4,Gulf of California,12 749 099.58
+1993,5,Gulf of Mexico,137 466 605.54
+1993,6,Southeast U.S. Continental Shelf,27 103 333.47
+1993,7,Northeast U.S. Continental Shelf,269 974 019.29
+1993,8,Scotian Shelf,91 752 280.81
+1993,9,Newfoundland-Labrador Shelf,138 113 732.87
+1993,10,Insular Pacific-Hawaiian,39 736 372.02
+1993,11,Pacific Central-American Coastal,85 871 242.35
+1993,12,Caribbean Sea,134 174 592.54
+1993,13,Humboldt Current,99 560 053.84
+1993,14,Patagonian Shelf,32 595 823.23
+1993,15,South Brazil Shelf,38 307 357.88
+1993,16,East Brazil Shelf,77 062 179.16
+1993,17,North Brazil Shelf,46 321 601.96
+1993,18,Canadian Eastern Arctic -West Greenland,63 938 098.52
+1993,19,Iceland Shelf/Sea,3 023 861.03
+1993,20,Barents Sea,101 291 570.23
+1993,21,Norwegian Sea,61 728 008.27
+1993,22,North Sea,317 485 756.25
+1993,23,Baltic Sea,282 979 892.51
+1993,24,Celtic-Biscay Shelf,454 111 872.68
+1993,25,Iberian Coastal,69 842 261.23
+1993,26,Mediterranean Sea,425 406 617.75
+1993,27,Canary Current,72 716 950.54
+1993,28,Guinea Current,214 696 320.14
+1993,29,Benguela Current,19 529 601.92
+1993,30,Agulhas Current,112 046 455.38
+1993,31,Somali Coastal Current,33 510 028.65
+1993,32,Arabian Sea,278 941 332.58
+1993,33,Red Sea,30 671 046.36
+1993,34,Bay of Bengal,161 936 360.34
+1993,35,Gulf of Thailand,36 117 210.75
+1993,36,South China Sea,163 635 516.14
+1993,37,Sulu-Celebes Sea,410 092 407.56
+1993,38,Indonesian Sea,210 548 803.95
+1993,39,North Australian Shelf,5 737 889.83
+1993,40,Northeast Australian Shelf,22 150 983.45
+1993,41,East Central Australian Shelf,15 356 309.61
+1993,42,Southeast Australian Shelf,94 373 463.11
+1993,43,Southwest Australian Shelf,29 526 519.71
+1993,44,West Central Australian Shelf,2 396 701.59
+1993,45,Northwest Australian Shelf,15 865 775.44
+1993,46,New Zealand Shelf,27 750 930.23
+1993,47,East China Sea,79 447 462.73
+1993,48,Yellow Sea,21 409 167.17
+1993,49,Kuroshio Current,126 876 677.91
+1993,50,Sea of Japan,82 948 904.27
+1993,51,Oyashio Current,7 233 296.71
+1993,52,Okhotsk Sea,30 625 306.79
+1993,53,West Bering Sea,4 303 236.60
+1993,54,Nrothern Bering - Chukchi Sea,19 628 678.48
+1993,58,Kara Sea,0.03
+1993,59,Greenland Sea,49 903 916.72
+1993,60,Faroe Plateau,57 389.69
+1993,61,Antarctic,1 484 614.08
+1993,62,Black Sea,99 962 829.33
+1993,65,Aleutian,9 321 176.11
+1994,1,East Bering Sea,37 849 753.81
+1994,2,Gulf of Alaska,302 254 381.67
+1994,3,California Current,104 291 530.41
+1994,4,Gulf of California,11 328 938.24
+1994,5,Gulf of Mexico,146 253 584.62
+1994,6,Southeast U.S. Continental Shelf,24 606 052.83
+1994,7,Northeast U.S. Continental Shelf,248 949 057.00
+1994,8,Scotian Shelf,129 410 946.10
+1994,9,Newfoundland-Labrador Shelf,122 878 611.25
+1994,10,Insular Pacific-Hawaiian,42 837 362.91
+1994,11,Pacific Central-American Coastal,127 047 502.38
+1994,12,Caribbean Sea,144 783 198.18
+1994,13,Humboldt Current,107 082 014.78
+1994,14,Patagonian Shelf,36 617 915.47
+1994,15,South Brazil Shelf,44 108 972.62
+1994,16,East Brazil Shelf,83 187 912.13
+1994,17,North Brazil Shelf,47 570 515.60
+1994,18,Canadian Eastern Arctic -West Greenland,63 980 797.79
+1994,19,Iceland Shelf/Sea,3 454 610.53
+1994,20,Barents Sea,104 139 507.56
+1994,21,Norwegian Sea,49 016 533.18
+1994,22,North Sea,406 996 720.28
+1994,23,Baltic Sea,243 177 935.82
+1994,24,Celtic-Biscay Shelf,442 961 255.39
+1994,25,Iberian Coastal,79 825 496.55
+1994,26,Mediterranean Sea,433 218 263.56
+1994,27,Canary Current,79 949 162.90
+1994,28,Guinea Current,228 107 627.00
+1994,29,Benguela Current,42 616 392.75
+1994,30,Agulhas Current,122 377 956.91
+1994,31,Somali Coastal Current,32 382 658.17
+1994,32,Arabian Sea,270 236 259.25
+1994,33,Red Sea,33 172 486.03
+1994,34,Bay of Bengal,164 033 667.36
+1994,35,Gulf of Thailand,39 666 145.17
+1994,36,South China Sea,162 968 057.15
+1994,37,Sulu-Celebes Sea,477 104 114.08
+1994,38,Indonesian Sea,218 974 816.95
+1994,39,North Australian Shelf,5 161 522.60
+1994,40,Northeast Australian Shelf,24 079 102.45
+1994,41,East Central Australian Shelf,6 120 918.21
+1994,42,Southeast Australian Shelf,46 431 324.01
+1994,43,Southwest Australian Shelf,28 078 285.75
+1994,44,West Central Australian Shelf,1 820 425.89
+1994,45,Northwest Australian Shelf,14 270 248.46
+1994,46,New Zealand Shelf,31 981 569.72
+1994,47,East China Sea,79 104 109.59
+1994,48,Yellow Sea,20 161 825.08
+1994,49,Kuroshio Current,128 593 748.18
+1994,50,Sea of Japan,82 535 155.01
+1994,51,Oyashio Current,8 301 085.61
+1994,52,Okhotsk Sea,33 941 027.97
+1994,53,West Bering Sea,3 655 774.60
+1994,54,Nrothern Bering - Chukchi Sea,19 642 635.64
+1994,58,Kara Sea,0.00
+1994,59,Greenland Sea,52 240 750.66
+1994,60,Faroe Plateau,50 919.14
+1994,61,Antarctic,1 317 442.72
+1994,62,Black Sea,186 645 144.22
+1994,65,Aleutian,9 911 064.61
+1995,1,East Bering Sea,36 959 243.29
+1995,2,Gulf of Alaska,277 951 930.37
+1995,3,California Current,95 019 331.36
+1995,4,Gulf of California,14 017 062.09
+1995,5,Gulf of Mexico,143 061 413.86
+1995,6,Southeast U.S. Continental Shelf,23 809 902.31
+1995,7,Northeast U.S. Continental Shelf,193 293 277.37
+1995,8,Scotian Shelf,115 299 091.15
+1995,9,Newfoundland-Labrador Shelf,115 346 154.83
+1995,10,Insular Pacific-Hawaiian,40 039 031.74
+1995,11,Pacific Central-American Coastal,120 277 491.24
+1995,12,Caribbean Sea,136 158 165.25
+1995,13,Humboldt Current,103 095 472.02
+1995,14,Patagonian Shelf,51 645 653.52
+1995,15,South Brazil Shelf,40 354 338.39
+1995,16,East Brazil Shelf,77 669 213.46
+1995,17,North Brazil Shelf,43 654 096.84
+1995,18,Canadian Eastern Arctic -West Greenland,64 642 245.09
+1995,19,Iceland Shelf/Sea,3 086 603.15
+1995,20,Barents Sea,114 071 274.27
+1995,21,Norwegian Sea,40 608 961.32
+1995,22,North Sea,396 187 835.94
+1995,23,Baltic Sea,261 270 604.65
+1995,24,Celtic-Biscay Shelf,485 251 895.69
+1995,25,Iberian Coastal,76 271 237.74
+1995,26,Mediterranean Sea,463 010 645.49
+1995,27,Canary Current,71 120 667.36
+1995,28,Guinea Current,249 057 859.72
+1995,29,Benguela Current,75 358 506.46
+1995,30,Agulhas Current,110 085 057.78
+1995,31,Somali Coastal Current,28 857 558.22
+1995,32,Arabian Sea,255 848 489.71
+1995,33,Red Sea,30 103 560.68
+1995,34,Bay of Bengal,181 663 829.76
+1995,35,Gulf of Thailand,35 421 021.95
+1995,36,South China Sea,161 623 188.39
+1995,37,Sulu-Celebes Sea,510 896 343.03
+1995,38,Indonesian Sea,228 668 050.75
+1995,39,North Australian Shelf,6 586 762.24
+1995,40,Northeast Australian Shelf,25 417 638.51
+1995,41,East Central Australian Shelf,8 710 352.50
+1995,42,Southeast Australian Shelf,52 082 304.88
+1995,43,Southwest Australian Shelf,37 247 161.64
+1995,44,West Central Australian Shelf,2 409 512.94
+1995,45,Northwest Australian Shelf,18 662 768.59
+1995,46,New Zealand Shelf,29 035 910.61
+1995,47,East China Sea,78 989 240.80
+1995,48,Yellow Sea,19 744 020.96
+1995,49,Kuroshio Current,120 871 087.86
+1995,50,Sea of Japan,76 183 092.22
+1995,51,Oyashio Current,6 991 518.56
+1995,52,Okhotsk Sea,30 700 646.39
+1995,53,West Bering Sea,3 036 981.95
+1995,54,Nrothern Bering - Chukchi Sea,17 577 420.67
+1995,58,Kara Sea,0.02
+1995,59,Greenland Sea,57 360 256.64
+1995,60,Faroe Plateau,29 921.00
+1995,61,Antarctic,1 097 114.40
+1995,62,Black Sea,169 952 858.22
+1995,65,Aleutian,8 325 001.43
+1996,1,East Bering Sea,29 363 604.13
+1996,2,Gulf of Alaska,286 557 158.04
+1996,3,California Current,102 699 889.27
+1996,4,Gulf of California,14 063 634.88
+1996,5,Gulf of Mexico,160 492 153.12
+1996,6,Southeast U.S. Continental Shelf,26 736 278.63
+1996,7,Northeast U.S. Continental Shelf,235 242 386.25
+1996,8,Scotian Shelf,107 595 204.56
+1996,9,Newfoundland-Labrador Shelf,128 233 215.54
+1996,10,Insular Pacific-Hawaiian,42 224 752.55
+1996,11,Pacific Central-American Coastal,102 033 120.34
+1996,12,Caribbean Sea,171 061 949.39
+1996,13,Humboldt Current,104 633 424.82
+1996,14,Patagonian Shelf,63 292 607.07
+1996,15,South Brazil Shelf,48 917 849.10
+1996,16,East Brazil Shelf,93 933 768.55
+1996,17,North Brazil Shelf,50 232 646.04
+1996,18,Canadian Eastern Arctic -West Greenland,66 953 413.57
+1996,19,Iceland Shelf/Sea,3 061 617.03
+1996,20,Barents Sea,114 369 184.97
+1996,21,Norwegian Sea,50 912 794.73
+1996,22,North Sea,339 144 189.00
+1996,23,Baltic Sea,279 960 119.79
+1996,24,Celtic-Biscay Shelf,563 645 271.11
+1996,25,Iberian Coastal,101 626 331.38
+1996,26,Mediterranean Sea,441 690 152.71
+1996,27,Canary Current,67 239 953.98
+1996,28,Guinea Current,282 911 527.74
+1996,29,Benguela Current,26 261 618.88
+1996,30,Agulhas Current,134 676 981.80
+1996,31,Somali Coastal Current,41 247 480.20
+1996,32,Arabian Sea,286 164 485.00
+1996,33,Red Sea,33 131 331.97
+1996,34,Bay of Bengal,1 356 883 148.01
+1996,35,Gulf of Thailand,39 145 847.43
+1996,36,South China Sea,153 085 348.73
+1996,37,Sulu-Celebes Sea,511 064 009.19
+1996,38,Indonesian Sea,216 814 101.41
+1996,39,North Australian Shelf,5 301 778.41
+1996,40,Northeast Australian Shelf,21 107 573.55
+1996,41,East Central Australian Shelf,6 607 065.90
+1996,42,Southeast Australian Shelf,43 007 472.95
+1996,43,Southwest Australian Shelf,30 395 243.81
+1996,44,West Central Australian Shelf,2 133 997.36
+1996,45,Northwest Australian Shelf,14 851 794.66
+1996,46,New Zealand Shelf,31 219 380.38
+1996,47,East China Sea,85 862 489.96
+1996,48,Yellow Sea,22 287 215.39
+1996,49,Kuroshio Current,123 699 712.93
+1996,50,Sea of Japan,79 713 340.17
+1996,51,Oyashio Current,6 664 881.99
+1996,52,Okhotsk Sea,31 336 454.96
+1996,53,West Bering Sea,3 205 942.79
+1996,54,Nrothern Bering - Chukchi Sea,18 610 476.80
+1996,59,Greenland Sea,58 701 656.63
+1996,60,Faroe Plateau,29 136.47
+1996,61,Antarctic,3 359 990.14
+1996,62,Black Sea,199 894 747.05
+1996,65,Aleutian,10 059 947.97
+1997,1,East Bering Sea,35 693 691.78
+1997,2,Gulf of Alaska,237 750 570.38
+1997,3,California Current,120 062 333.82
+1997,4,Gulf of California,10 733 042.86
+1997,5,Gulf of Mexico,137 376 191.05
+1997,6,Southeast U.S. Continental Shelf,23 418 331.64
+1997,7,Northeast U.S. Continental Shelf,259 401 062.43
+1997,8,Scotian Shelf,134 010 280.45
+1997,9,Newfoundland-Labrador Shelf,106 889 566.10
+1997,10,Insular Pacific-Hawaiian,44 551 231.97
+1997,11,Pacific Central-American Coastal,89 455 320.12
+1997,12,Caribbean Sea,141 084 036.09
+1997,13,Humboldt Current,107 459 388.96
+1997,14,Patagonian Shelf,67 215 749.19
+1997,15,South Brazil Shelf,48 964 890.61
+1997,16,East Brazil Shelf,91 129 413.12
+1997,17,North Brazil Shelf,50 194 730.90
+1997,18,Canadian Eastern Arctic -West Greenland,67 789 212.69
+1997,19,Iceland Shelf/Sea,3 352 633.23
+1997,20,Barents Sea,120 977 693.78
+1997,21,Norwegian Sea,44 807 628.77
+1997,22,North Sea,375 441 080.77
+1997,23,Baltic Sea,292 736 610.47
+1997,24,Celtic-Biscay Shelf,547 307 029.92
+1997,25,Iberian Coastal,91 301 822.46
+1997,26,Mediterranean Sea,447 521 517.77
+1997,27,Canary Current,80 984 910.02
+1997,28,Guinea Current,283 388 261.70
+1997,29,Benguela Current,27 163 670.01
+1997,30,Agulhas Current,128 688 129.16
+1997,31,Somali Coastal Current,38 403 841.72
+1997,32,Arabian Sea,258 098 367.56
+1997,33,Red Sea,32 812 703.12
+1997,34,Bay of Bengal,1 435 818 734.32
+1997,35,Gulf of Thailand,44 408 378.90
+1997,36,South China Sea,171 751 123.03
+1997,37,Sulu-Celebes Sea,734 778 014.26
+1997,38,Indonesian Sea,392 044 505.88
+1997,39,North Australian Shelf,5 500 176.72
+1997,40,Northeast Australian Shelf,22 922 574.11
+1997,41,East Central Australian Shelf,4 716 886.06
+1997,42,Southeast Australian Shelf,50 562 957.86
+1997,43,Southwest Australian Shelf,34 021 941.94
+1997,44,West Central Australian Shelf,2 761 861.12
+1997,45,Northwest Australian Shelf,16 593 585.34
+1997,46,New Zealand Shelf,30 214 418.73
+1997,47,East China Sea,92 484 621.04
+1997,48,Yellow Sea,24 768 828.86
+1997,49,Kuroshio Current,129 699 754.17
+1997,50,Sea of Japan,90 361 967.36
+1997,51,Oyashio Current,8 688 456.85
+1997,52,Okhotsk Sea,30 019 212.78
+1997,53,West Bering Sea,3 389 046.35
+1997,54,Nrothern Bering - Chukchi Sea,19 725 039.20
+1997,59,Greenland Sea,63 346 806.87
+1997,60,Faroe Plateau,11 790.24
+1997,61,Antarctic,3 101 134.39
+1997,62,Black Sea,172 838 981.75
+1997,65,Aleutian,9 283 872.81
+1998,1,East Bering Sea,43 534 760.94
+1998,2,Gulf of Alaska,288 969 633.59
+1998,3,California Current,135 253 270.80
+1998,4,Gulf of California,16 226 611.51
+1998,5,Gulf of Mexico,147 720 931.00
+1998,6,Southeast U.S. Continental Shelf,22 319 474.33
+1998,7,Northeast U.S. Continental Shelf,289 133 423.14
+1998,8,Scotian Shelf,213 293 785.66
+1998,9,Newfoundland-Labrador Shelf,77 434 954.07
+1998,10,Insular Pacific-Hawaiian,48 429 563.19
+1998,11,Pacific Central-American Coastal,99 667 268.23
+1998,12,Caribbean Sea,179 264 589.73
+1998,13,Humboldt Current,112 978 464.92
+1998,14,Patagonian Shelf,68 962 070.74
+1998,15,South Brazil Shelf,57 169 367.98
+1998,16,East Brazil Shelf,103 688 315.93
+1998,17,North Brazil Shelf,55 647 327.58
+1998,18,Canadian Eastern Arctic -West Greenland,77 364 766.31
+1998,19,Iceland Shelf/Sea,77 621.74
+1998,20,Barents Sea,99 916 828.78
+1998,21,Norwegian Sea,56 740 357.12
+1998,22,North Sea,389 561 737.41
+1998,23,Baltic Sea,304 322 475.49
+1998,24,Celtic-Biscay Shelf,586 896 580.10
+1998,25,Iberian Coastal,109 648 175.76
+1998,26,Mediterranean Sea,467 155 991.62
+1998,27,Canary Current,92 030 230.69
+1998,28,Guinea Current,323 034 355.30
+1998,29,Benguela Current,10 906 500.33
+1998,30,Agulhas Current,154 115 247.20
+1998,31,Somali Coastal Current,45 631 892.93
+1998,32,Arabian Sea,286 543 938.38
+1998,33,Red Sea,36 371 623.97
+1998,34,Bay of Bengal,1 258 484 960.72
+1998,35,Gulf of Thailand,46 952 171.08
+1998,36,South China Sea,163 991 494.30
+1998,37,Sulu-Celebes Sea,760 798 174.38
+1998,38,Indonesian Sea,496 376 006.16
+1998,39,North Australian Shelf,5 974 561.34
+1998,40,Northeast Australian Shelf,22 866 030.66
+1998,41,East Central Australian Shelf,3 530 974.23
+1998,42,Southeast Australian Shelf,54 076 664.89
+1998,43,Southwest Australian Shelf,34 483 191.65
+1998,44,West Central Australian Shelf,2 778 983.11
+1998,45,Northwest Australian Shelf,16 556 941.92
+1998,46,New Zealand Shelf,39 691 207.33
+1998,47,East China Sea,98 892 861.79
+1998,48,Yellow Sea,35 882 849.61
+1998,49,Kuroshio Current,175 803 148.83
+1998,50,Sea of Japan,101 428 693.51
+1998,51,Oyashio Current,11 127 871.70
+1998,52,Okhotsk Sea,34 192 812.59
+1998,53,West Bering Sea,4 376 461.74
+1998,54,Nrothern Bering - Chukchi Sea,23 681 005.11
+1998,59,Greenland Sea,65 966 690.02
+1998,60,Faroe Plateau,155 982.13
+1998,61,Antarctic,3 759 800.71
+1998,62,Black Sea,170 280 089.11
+1998,65,Aleutian,11 346 511.09
+1999,1,East Bering Sea,43 059 086.25
+1999,2,Gulf of Alaska,268 055 516.71
+1999,3,California Current,135 145 003.36
+1999,4,Gulf of California,14 527 816.85
+1999,5,Gulf of Mexico,141 475 974.09
+1999,6,Southeast U.S. Continental Shelf,20 957 944.41
+1999,7,Northeast U.S. Continental Shelf,285 644 868.25
+1999,8,Scotian Shelf,221 887 164.29
+1999,9,Newfoundland-Labrador Shelf,88 923 465.34
+1999,10,Insular Pacific-Hawaiian,49 895 439.05
+1999,11,Pacific Central-American Coastal,102 473 869.46
+1999,12,Caribbean Sea,170 625 271.70
+1999,13,Humboldt Current,132 797 455.44
+1999,14,Patagonian Shelf,72 717 598.43
+1999,15,South Brazil Shelf,51 608 012.29
+1999,16,East Brazil Shelf,103 166 323.38
+1999,17,North Brazil Shelf,59 717 014.31
+1999,18,Canadian Eastern Arctic -West Greenland,77 836 717.24
+1999,19,Iceland Shelf/Sea,4 238 829.91
+1999,20,Barents Sea,144 450 415.69
+1999,21,Norwegian Sea,65 811 273.36
+1999,22,North Sea,493 976 973.58
+1999,23,Baltic Sea,362 328 478.95
+1999,24,Celtic-Biscay Shelf,567 572 751.02
+1999,25,Iberian Coastal,92 939 272.43
+1999,26,Mediterranean Sea,571 971 573.54
+1999,27,Canary Current,121 078 548.84
+1999,28,Guinea Current,277 927 648.25
+1999,29,Benguela Current,19 047 586.62
+1999,30,Agulhas Current,161 496 185.19
+1999,31,Somali Coastal Current,44 108 004.05
+1999,32,Arabian Sea,311 876 411.91
+1999,33,Red Sea,43 872 463.27
+1999,34,Bay of Bengal,1 155 748 454.57
+1999,35,Gulf of Thailand,205 706 505.79
+1999,36,South China Sea,272 618 088.12
+1999,37,Sulu-Celebes Sea,666 016 736.65
+1999,38,Indonesian Sea,435 371 022.04
+1999,39,North Australian Shelf,9 170 233.57
+1999,40,Northeast Australian Shelf,22 223 657.19
+1999,41,East Central Australian Shelf,3 884 970.73
+1999,42,Southeast Australian Shelf,66 384 815.02
+1999,43,Southwest Australian Shelf,33 385 852.60
+1999,44,West Central Australian Shelf,2 916 327.55
+1999,45,Northwest Australian Shelf,17 053 455.53
+1999,46,New Zealand Shelf,34 136 200.88
+1999,47,East China Sea,99 008 998.42
+1999,48,Yellow Sea,35 216 308.55
+1999,49,Kuroshio Current,178 405 390.78
+1999,50,Sea of Japan,100 482 946.27
+1999,51,Oyashio Current,10 176 857.06
+1999,52,Okhotsk Sea,31 069 609.30
+1999,53,West Bering Sea,3 955 043.45
+1999,54,Nrothern Bering - Chukchi Sea,22 535 587.43
+1999,59,Greenland Sea,68 631 608.36
+1999,60,Faroe Plateau,4 740 992.07
+1999,61,Antarctic,2 429 839.47
+1999,62,Black Sea,178 835 124.36
+1999,65,Aleutian,11 215 166.40
+2000,1,East Bering Sea,41 137 224.14
+2000,2,Gulf of Alaska,262 834 982.00
+2000,3,California Current,131 828 543.28
+2000,4,Gulf of California,13 826 387.39
+2000,5,Gulf of Mexico,151 867 208.54
+2000,6,Southeast U.S. Continental Shelf,20 633 535.39
+2000,7,Northeast U.S. Continental Shelf,287 198 761.65
+2000,8,Scotian Shelf,158 374 603.92
+2000,9,Newfoundland-Labrador Shelf,65 819 969.15
+2000,10,Insular Pacific-Hawaiian,49 268 129.62
+2000,11,Pacific Central-American Coastal,115 777 373.47
+2000,12,Caribbean Sea,197 698 680.39
+2000,13,Humboldt Current,132 022 088.21
+2000,14,Patagonian Shelf,84 729 244.24
+2000,15,South Brazil Shelf,59 944 935.78
+2000,16,East Brazil Shelf,71 038 996.78
+2000,17,North Brazil Shelf,66 853 861.79
+2000,18,Canadian Eastern Arctic -West Greenland,79 034 018.30
+2000,19,Iceland Shelf/Sea,81 806.95
+2000,20,Barents Sea,122 324 695.21
+2000,21,Norwegian Sea,59 374 855.09
+2000,22,North Sea,458 277 987.69
+2000,23,Baltic Sea,339 348 788.94
+2000,24,Celtic-Biscay Shelf,589 742 398.81
+2000,25,Iberian Coastal,152 644 442.81
+2000,26,Mediterranean Sea,497 394 054.28
+2000,27,Canary Current,113 697 816.60
+2000,28,Guinea Current,259 412 327.72
+2000,29,Benguela Current,23 410 306.72
+2000,30,Agulhas Current,168 958 558.35
+2000,31,Somali Coastal Current,48 341 869.05
+2000,32,Arabian Sea,339 450 249.70
+2000,33,Red Sea,50 470 201.45
+2000,34,Bay of Bengal,1 088 741 836.62
+2000,35,Gulf of Thailand,77 534 594.74
+2000,36,South China Sea,129 066 942.20
+2000,37,Sulu-Celebes Sea,778 832 686.69
+2000,38,Indonesian Sea,599 393 079.16
+2000,39,North Australian Shelf,7 406 872.78
+2000,40,Northeast Australian Shelf,22 632 340.36
+2000,41,East Central Australian Shelf,3 985 392.19
+2000,42,Southeast Australian Shelf,59 672 907.06
+2000,43,Southwest Australian Shelf,33 471 868.58
+2000,44,West Central Australian Shelf,2 529 430.19
+2000,45,Northwest Australian Shelf,16 985 193.18
+2000,46,New Zealand Shelf,32 142 683.97
+2000,47,East China Sea,100 380 406.86
+2000,48,Yellow Sea,36 907 203.28
+2000,49,Kuroshio Current,170 873 336.28
+2000,50,Sea of Japan,92 154 095.03
+2000,51,Oyashio Current,12 224 558.01
+2000,52,Okhotsk Sea,30 357 575.91
+2000,53,West Bering Sea,3 583 654.88
+2000,54,Nrothern Bering - Chukchi Sea,21 898 954.70
+2000,58,Kara Sea,977.73
+2000,59,Greenland Sea,69 888 852.92
+2000,60,Faroe Plateau,41 557.99
+2000,61,Antarctic,3 789 142.62
+2000,62,Black Sea,233 356 316.09
+2000,65,Aleutian,10 793 114.65
+2001,1,East Bering Sea,46 835 522.59
+2001,2,Gulf of Alaska,281 030 257.91
+2001,3,California Current,171 113 991.27
+2001,4,Gulf of California,20 575 226.87
+2001,5,Gulf of Mexico,175 929 491.99
+2001,6,Southeast U.S. Continental Shelf,25 739 538.38
+2001,7,Northeast U.S. Continental Shelf,330 373 367.15
+2001,8,Scotian Shelf,188 487 434.13
+2001,9,Newfoundland-Labrador Shelf,82 520 925.62
+2001,10,Insular Pacific-Hawaiian,58 912 144.71
+2001,11,Pacific Central-American Coastal,145 278 185.16
+2001,12,Caribbean Sea,193 221 847.64
+2001,13,Humboldt Current,147 572 713.72
+2001,14,Patagonian Shelf,84 063 972.20
+2001,15,South Brazil Shelf,71 653 660.99
+2001,16,East Brazil Shelf,78 674 723.22
+2001,17,North Brazil Shelf,70 020 359.88
+2001,18,Canadian Eastern Arctic -West Greenland,89 916 774.21
+2001,19,Iceland Shelf/Sea,101 027.10
+2001,20,Barents Sea,142 330 150.13
+2001,21,Norwegian Sea,60 055 585.62
+2001,22,North Sea,395 221 587.86
+2001,23,Baltic Sea,401 058 787.65
+2001,24,Celtic-Biscay Shelf,730 519 160.05
+2001,25,Iberian Coastal,144 363 422.91
+2001,26,Mediterranean Sea,582 093 261.98
+2001,27,Canary Current,104 145 946.62
+2001,28,Guinea Current,314 962 138.04
+2001,29,Benguela Current,65 127 246.77
+2001,30,Agulhas Current,197 620 455.88
+2001,31,Somali Coastal Current,58 272 045.35
+2001,32,Arabian Sea,406 814 414.10
+2001,33,Red Sea,65 001 631.95
+2001,34,Bay of Bengal,1 394 602 879.13
+2001,35,Gulf of Thailand,34 874 298.39
+2001,36,South China Sea,176 859 654.40
+2001,37,Sulu-Celebes Sea,687 969 383.96
+2001,38,Indonesian Sea,510 005 645.13
+2001,39,North Australian Shelf,8 074 139.20
+2001,40,Northeast Australian Shelf,26 111 033.48
+2001,41,East Central Australian Shelf,2 750 012.17
+2001,42,Southeast Australian Shelf,52 179 509.29
+2001,43,Southwest Australian Shelf,38 243 731.46
+2001,44,West Central Australian Shelf,3 871 483.54
+2001,45,Northwest Australian Shelf,19 255 650.70
+2001,46,New Zealand Shelf,35 100 805.13
+2001,47,East China Sea,107 567 832.97
+2001,48,Yellow Sea,42 067 930.55
+2001,49,Kuroshio Current,197 947 596.97
+2001,50,Sea of Japan,112 906 826.48
+2001,51,Oyashio Current,11 949 239.75
+2001,52,Okhotsk Sea,34 442 906.67
+2001,53,West Bering Sea,5 213 626.67
+2001,54,Nrothern Bering - Chukchi Sea,25 000 768.32
+2001,58,Kara Sea,1 160.92
+2001,59,Greenland Sea,75 504 334.74
+2001,60,Faroe Plateau,98 387.06
+2001,61,Antarctic,2 910 318.63
+2001,62,Black Sea,232 026 379.24
+2001,65,Aleutian,12 416 482.15
+2002,1,East Bering Sea,43 454 663.62
+2002,2,Gulf of Alaska,260 507 920.86
+2002,3,California Current,153 076 734.94
+2002,4,Gulf of California,17 929 964.50
+2002,5,Gulf of Mexico,172 304 543.97
+2002,6,Southeast U.S. Continental Shelf,26 788 733.48
+2002,7,Northeast U.S. Continental Shelf,300 386 136.78
+2002,8,Scotian Shelf,193 226 855.59
+2002,9,Newfoundland-Labrador Shelf,82 066 817.99
+2002,10,Insular Pacific-Hawaiian,53 407 145.22
+2002,11,Pacific Central-American Coastal,121 849 373.58
+2002,12,Caribbean Sea,178 102 691.58
+2002,13,Humboldt Current,144 497 501.36
+2002,14,Patagonian Shelf,87 798 459.81
+2002,15,South Brazil Shelf,68 401 350.01
+2002,16,East Brazil Shelf,68 685 059.79
+2002,17,North Brazil Shelf,70 477 175.99
+2002,18,Canadian Eastern Arctic -West Greenland,85 871 014.52
+2002,19,Iceland Shelf/Sea,840 012.51
+2002,20,Barents Sea,132 609 840.51
+2002,21,Norwegian Sea,51 530 890.96
+2002,22,North Sea,364 752 588.24
+2002,23,Baltic Sea,345 746 624.12
+2002,24,Celtic-Biscay Shelf,788 717 348.82
+2002,25,Iberian Coastal,135 723 099.00
+2002,26,Mediterranean Sea,542 519 208.61
+2002,27,Canary Current,95 557 998.26
+2002,28,Guinea Current,312 618 787.56
+2002,29,Benguela Current,75 566 104.76
+2002,30,Agulhas Current,196 918 654.49
+2002,31,Somali Coastal Current,66 364 186.78
+2002,32,Arabian Sea,409 022 999.36
+2002,33,Red Sea,59 562 575.67
+2002,34,Bay of Bengal,1 365 901 980.03
+2002,35,Gulf of Thailand,113 278 116.44
+2002,36,South China Sea,196 351 549.33
+2002,37,Sulu-Celebes Sea,779 499 242.19
+2002,38,Indonesian Sea,576 960 221.58
+2002,39,North Australian Shelf,7 660 182.75
+2002,40,Northeast Australian Shelf,24 448 505.11
+2002,41,East Central Australian Shelf,3 128 481.85
+2002,42,Southeast Australian Shelf,49 925 332.89
+2002,43,Southwest Australian Shelf,36 305 239.38
+2002,44,West Central Australian Shelf,3 718 126.24
+2002,45,Northwest Australian Shelf,18 757 860.88
+2002,46,New Zealand Shelf,36 955 674.26
+2002,47,East China Sea,104 233 246.19
+2002,48,Yellow Sea,39 691 305.14
+2002,49,Kuroshio Current,177 528 198.41
+2002,50,Sea of Japan,112 016 983.48
+2002,51,Oyashio Current,9 414 921.96
+2002,52,Okhotsk Sea,41 397 485.40
+2002,53,West Bering Sea,4 275 430.57
+2002,54,Nrothern Bering - Chukchi Sea,22 136 541.38
+2002,58,Kara Sea,884.91
+2002,59,Greenland Sea,75 848 401.32
+2002,61,Antarctic,1 322 124.93
+2002,62,Black Sea,171 238 462.90
+2002,64,Central Arctic Ocean,10 359.78
+2002,65,Aleutian,11 254 364.58
+2002,66,Canadian High Arctic - North Greenland,3 050.10
+2003,1,East Bering Sea,44 145 016.46
+2003,2,Gulf of Alaska,259 045 667.30
+2003,3,California Current,152 727 348.22
+2003,4,Gulf of California,18 011 660.54
+2003,5,Gulf of Mexico,193 036 272.73
+2003,6,Southeast U.S. Continental Shelf,26 809 400.51
+2003,7,Northeast U.S. Continental Shelf,322 014 956.38
+2003,8,Scotian Shelf,224 348 177.57
+2003,9,Newfoundland-Labrador Shelf,104 748 079.22
+2003,10,Insular Pacific-Hawaiian,54 720 381.70
+2003,11,Pacific Central-American Coastal,134 030 825.34
+2003,12,Caribbean Sea,186 298 210.63
+2003,13,Humboldt Current,167 529 456.99
+2003,14,Patagonian Shelf,102 559 349.51
+2003,15,South Brazil Shelf,77 219 078.14
+2003,16,East Brazil Shelf,79 557 903.09
+2003,17,North Brazil Shelf,70 872 317.08
+2003,18,Canadian Eastern Arctic -West Greenland,82 847 617.69
+2003,19,Iceland Shelf/Sea,111 315.31
+2003,20,Barents Sea,137 927 450.61
+2003,21,Norwegian Sea,60 717 326.23
+2003,22,North Sea,322 669 014.20
+2003,23,Baltic Sea,310 826 355.60
+2003,24,Celtic-Biscay Shelf,849 998 439.15
+2003,25,Iberian Coastal,105 980 692.60
+2003,26,Mediterranean Sea,559 863 648.47
+2003,27,Canary Current,119 059 022.10
+2003,28,Guinea Current,303 592 359.99
+2003,29,Benguela Current,25 491 923.81
+2003,30,Agulhas Current,182 559 677.69
+2003,31,Somali Coastal Current,72 421 621.26
+2003,32,Arabian Sea,430 579 637.72
+2003,33,Red Sea,61 503 349.39
+2003,34,Bay of Bengal,1 565 537 833.84
+2003,35,Gulf of Thailand,111 835 577.07
+2003,36,South China Sea,202 068 240.38
+2003,37,Sulu-Celebes Sea,932 779 803.69
+2003,38,Indonesian Sea,590 508 518.46
+2003,39,North Australian Shelf,6 292 585.96
+2003,40,Northeast Australian Shelf,20 455 754.96
+2003,41,East Central Australian Shelf,3 704 120.74
+2003,42,Southeast Australian Shelf,36 130 574.53
+2003,43,Southwest Australian Shelf,26 345 818.94
+2003,44,West Central Australian Shelf,2 038 625.87
+2003,45,Northwest Australian Shelf,14 285 692.15
+2003,46,New Zealand Shelf,29 214 937.56
+2003,47,East China Sea,102 945 677.14
+2003,48,Yellow Sea,41 847 177.61
+2003,49,Kuroshio Current,175 370 044.35
+2003,50,Sea of Japan,107 127 319.85
+2003,51,Oyashio Current,9 001 758.23
+2003,52,Okhotsk Sea,41 233 533.46
+2003,53,West Bering Sea,4 169 212.38
+2003,54,Nrothern Bering - Chukchi Sea,22 839 158.90
+2003,59,Greenland Sea,76 766 065.68
+2003,60,Faroe Plateau,4 336.88
+2003,61,Antarctic,3 931 914.76
+2003,62,Black Sea,167 231 100.02
+2003,63,Hudson Bay Complex,1.68
+2003,65,Aleutian,11 357 598.71
+2004,1,East Bering Sea,48 440 634.05
+2004,2,Gulf of Alaska,282 119 059.00
+2004,3,California Current,161 892 884.79
+2004,4,Gulf of California,17 413 473.61
+2004,5,Gulf of Mexico,188 423 401.73
+2004,6,Southeast U.S. Continental Shelf,25 479 010.33
+2004,7,Northeast U.S. Continental Shelf,298 423 659.07
+2004,8,Scotian Shelf,256 907 589.97
+2004,9,Newfoundland-Labrador Shelf,120 520 919.59
+2004,10,Insular Pacific-Hawaiian,55 749 867.90
+2004,11,Pacific Central-American Coastal,136 934 029.53
+2004,12,Caribbean Sea,212 722 580.59
+2004,13,Humboldt Current,176 794 566.74
+2004,14,Patagonian Shelf,94 701 607.83
+2004,15,South Brazil Shelf,63 290 819.96
+2004,16,East Brazil Shelf,75 214 546.39
+2004,17,North Brazil Shelf,66 546 676.14
+2004,18,Canadian Eastern Arctic -West Greenland,97 217 863.92
+2004,19,Iceland Shelf/Sea,110 176.45
+2004,20,Barents Sea,135 878 724.42
+2004,21,Norwegian Sea,54 582 601.15
+2004,22,North Sea,412 613 010.83
+2004,23,Baltic Sea,453 286 110.73
+2004,24,Celtic-Biscay Shelf,756 961 504.00
+2004,25,Iberian Coastal,137 286 046.06
+2004,26,Mediterranean Sea,559 700 746.33
+2004,27,Canary Current,99 952 801.35
+2004,28,Guinea Current,348 270 363.48
+2004,29,Benguela Current,81 550 285.51
+2004,30,Agulhas Current,151 868 821.41
+2004,31,Somali Coastal Current,63 475 548.17
+2004,32,Arabian Sea,380 279 999.65
+2004,33,Red Sea,55 899 634.70
+2004,34,Bay of Bengal,1 428 412 409.98
+2004,35,Gulf of Thailand,122 469 739.70
+2004,36,South China Sea,204 569 056.05
+2004,37,Sulu-Celebes Sea,856 539 295.17
+2004,38,Indonesian Sea,603 387 689.58
+2004,39,North Australian Shelf,7 544 558.98
+2004,40,Northeast Australian Shelf,18 527 719.29
+2004,41,East Central Australian Shelf,540 701.66
+2004,42,Southeast Australian Shelf,44 244 461.51
+2004,43,Southwest Australian Shelf,34 761 977.78
+2004,44,West Central Australian Shelf,2 583 972.05
+2004,45,Northwest Australian Shelf,17 936 475.14
+2004,46,New Zealand Shelf,41 077 197.86
+2004,47,East China Sea,105 734 365.52
+2004,48,Yellow Sea,52 979 115.28
+2004,49,Kuroshio Current,185 075 624.67
+2004,50,Sea of Japan,131 759 510.90
+2004,51,Oyashio Current,9 636 414.19
+2004,52,Okhotsk Sea,48 601 295.60
+2004,53,West Bering Sea,10 552 765.84
+2004,54,Nrothern Bering - Chukchi Sea,26 947 520.79
+2004,59,Greenland Sea,94 441 481.24
+2004,60,Faroe Plateau,380.89
+2004,61,Antarctic,4 916 761.15
+2004,62,Black Sea,203 762 654.53
+2004,65,Aleutian,8 371 523.55
+2005,1,East Bering Sea,55 899 597.50
+2005,2,Gulf of Alaska,307 138 645.43
+2005,3,California Current,215 862 811.89
+2005,4,Gulf of California,20 736 905.73
+2005,5,Gulf of Mexico,208 397 469.74
+2005,6,Southeast U.S. Continental Shelf,27 450 168.30
+2005,7,Northeast U.S. Continental Shelf,359 689 286.96
+2005,8,Scotian Shelf,271 293 439.39
+2005,9,Newfoundland-Labrador Shelf,143 697 152.07
+2005,10,Insular Pacific-Hawaiian,66 521 985.50
+2005,11,Pacific Central-American Coastal,141 381 612.00
+2005,12,Caribbean Sea,239 197 884.93
+2005,13,Humboldt Current,155 235 730.76
+2005,14,Patagonian Shelf,72 541 280.17
+2005,15,South Brazil Shelf,62 509 055.57
+2005,16,East Brazil Shelf,75 834 023.36
+2005,17,North Brazil Shelf,77 560 986.16
+2005,18,Canadian Eastern Arctic -West Greenland,124 367 963.97
+2005,19,Iceland Shelf/Sea,185 158.61
+2005,20,Barents Sea,154 355 484.98
+2005,21,Norwegian Sea,99 696 038.22
+2005,22,North Sea,538 467 079.79
+2005,23,Baltic Sea,466 616 795.16
+2005,24,Celtic-Biscay Shelf,737 927 146.86
+2005,25,Iberian Coastal,82 182 617.52
+2005,26,Mediterranean Sea,579 114 302.42
+2005,27,Canary Current,162 727 307.01
+2005,28,Guinea Current,353 724 315.55
+2005,29,Benguela Current,21 363 158.33
+2005,30,Agulhas Current,161 045 026.46
+2005,31,Somali Coastal Current,57 289 666.46
+2005,32,Arabian Sea,398 086 205.36
+2005,33,Red Sea,58 506 283.12
+2005,34,Bay of Bengal,1 475 214 384.14
+2005,35,Gulf of Thailand,128 316 205.09
+2005,36,South China Sea,251 798 290.59
+2005,37,Sulu-Celebes Sea,980 903 682.44
+2005,38,Indonesian Sea,745 574 358.81
+2005,39,North Australian Shelf,8 769 242.27
+2005,40,Northeast Australian Shelf,22 161 046.58
+2005,41,East Central Australian Shelf,2 486 184.63
+2005,42,Southeast Australian Shelf,45 198 399.76
+2005,43,Southwest Australian Shelf,34 391 856.36
+2005,44,West Central Australian Shelf,2 581 054.57
+2005,45,Northwest Australian Shelf,18 252 094.19
+2005,46,New Zealand Shelf,46 980 982.86
+2005,47,East China Sea,125 297 731.93
+2005,48,Yellow Sea,53 860 828.07
+2005,49,Kuroshio Current,214 976 693.13
+2005,50,Sea of Japan,144 625 280.64
+2005,51,Oyashio Current,14 663 000.04
+2005,52,Okhotsk Sea,55 438 394.75
+2005,53,West Bering Sea,13 180 085.28
+2005,54,Nrothern Bering - Chukchi Sea,30 441 362.69
+2005,59,Greenland Sea,117 348 461.24
+2005,60,Faroe Plateau,530.53
+2005,61,Antarctic,3 437 033.04
+2005,62,Black Sea,198 593 920.32
+2005,65,Aleutian,9 058 255.75
+2006,1,East Bering Sea,54 962 916.68
+2006,2,Gulf of Alaska,294 013 179.40
+2006,3,California Current,218 415 563.23
+2006,4,Gulf of California,21 332 559.53
+2006,5,Gulf of Mexico,202 771 021.63
+2006,6,Southeast U.S. Continental Shelf,26 582 474.16
+2006,7,Northeast U.S. Continental Shelf,381 973 588.97
+2006,8,Scotian Shelf,263 058 220.33
+2006,9,Newfoundland-Labrador Shelf,129 398 447.91
+2006,10,Insular Pacific-Hawaiian,65 302 369.54
+2006,11,Pacific Central-American Coastal,136 019 059.73
+2006,12,Caribbean Sea,221 334 319.57
+2006,13,Humboldt Current,153 219 134.43
+2006,14,Patagonian Shelf,84 618 770.01
+2006,15,South Brazil Shelf,62 819 801.94
+2006,16,East Brazil Shelf,78 595 552.56
+2006,17,North Brazil Shelf,71 030 476.51
+2006,18,Canadian Eastern Arctic -West Greenland,114 774 091.82
+2006,19,Iceland Shelf/Sea,124 202.96
+2006,20,Barents Sea,191 894 372.79
+2006,21,Norwegian Sea,89 934 536.78
+2006,22,North Sea,383 484 240.51
+2006,23,Baltic Sea,484 763 460.49
+2006,24,Celtic-Biscay Shelf,881 921 897.56
+2006,25,Iberian Coastal,63 216 430.99
+2006,26,Mediterranean Sea,961 261 072.49
+2006,27,Canary Current,104 680 064.66
+2006,28,Guinea Current,310 530 390.13
+2006,29,Benguela Current,16 399 472.93
+2006,30,Agulhas Current,201 891 998.63
+2006,31,Somali Coastal Current,63 971 067.59
+2006,32,Arabian Sea,412 821 906.47
+2006,33,Red Sea,70 589 417.44
+2006,34,Bay of Bengal,1 424 231 424.51
+2006,35,Gulf of Thailand,125 854 230.10
+2006,36,South China Sea,247 023 533.81
+2006,37,Sulu-Celebes Sea,940 069 001.82
+2006,38,Indonesian Sea,727 176 268.29
+2006,39,North Australian Shelf,7 924 294.26
+2006,40,Northeast Australian Shelf,19 046 819.76
+2006,41,East Central Australian Shelf,2 543 861.10
+2006,42,Southeast Australian Shelf,43 963 009.02
+2006,43,Southwest Australian Shelf,33 176 318.45
+2006,44,West Central Australian Shelf,2 523 542.16
+2006,45,Northwest Australian Shelf,17 457 492.92
+2006,46,New Zealand Shelf,44 725 789.24
+2006,47,East China Sea,135 458 496.31
+2006,48,Yellow Sea,51 962 904.82
+2006,49,Kuroshio Current,212 526 372.14
+2006,50,Sea of Japan,124 193 821.88
+2006,51,Oyashio Current,12 460 204.50
+2006,52,Okhotsk Sea,52 617 263.83
+2006,53,West Bering Sea,11 642 408.58
+2006,54,Nrothern Bering - Chukchi Sea,29 164 686.18
+2006,58,Kara Sea,40.96
+2006,59,Greenland Sea,100 214 491.70
+2006,61,Antarctic,6 025 127.66
+2006,62,Black Sea,270 448 091.63
+2006,63,Hudson Bay Complex,39.59
+2006,65,Aleutian,9 240 246.74
