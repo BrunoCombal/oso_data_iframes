@@ -35,10 +35,10 @@ if($templateCache == true){
     <script type="text/javascript">
       $(document).ready(function() {
   
-         var thisLMECode = THISLMECODETOREPLACE;
+         var thisLMECode = "18";
         var addedLMECode = -1;
 		var plotCounter = -1;
-		var outdata = '../'+THISLMEOUTDATA+'/';
+		var outdata = '../'+"data"+'/';
 		var maxAllowedLMEs = 3;
 		
 		Highcharts.SVGRenderer.prototype.symbols.cross = function (x, y, w, h) {
@@ -86,7 +86,7 @@ if($templateCache == true){
                     }
              },
 			legend:{align:'center', layout:'horizontal', width:460, itemStyle:{'font-weight': 'normal', 'max-width':'125'}, x:20},
-             title: { text: 'CHARTTITLETOREPLACE', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
+             title: { text: 'Chlorophyll-a (Canadian Eastern Arctic West Greenland)', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
              xAxis: { type: 'datetime', dateTimeLabelFormats: { year: '%Y'}, title:{enabled:true, text:'Years'}},
              yAxis: { title: { text: 'mg.m<sup>-3</sup>' , useHTML:true}, floor:0 },
              series: [],
