@@ -204,8 +204,8 @@ if($templateCache == true){
 	    </li>-->
 	<li><h3><span>Socio-economics</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('population');">Total population</span></li>
-	    <li><span onclick="showLayer('ruralpopulation')">Rural population</span></li>
+	    <li><span onclick="showLayer('population');">Population density</span></li>
+	    <li><span onclick="showLayer('hdi')">HDI</span></li>
 	    <li><span onclick="showLayer('urbanpopulation')">Urban population</span></li>
 	  </ul>
 	</li>
@@ -353,16 +353,16 @@ if($templateCache == true){
     // Socio eco: population
     var population = new OpenLayers.Layer.WMS(
     "Population",
-   "http://onesharedocean.org/geoserver/lmes/wms",
-    {layers:"lmes:population_LME66", styles:'lmes_population', transparent:true, format:'image/png'},
+    "http://onesharedocean.org/geoserver/lmes/wms",
+    {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_popdensity', transparent:true, format:'image/png'},
     {layerId:'population', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
     
-    var ruralpopulation = new OpenLayers.Layer.WMS(
-    "Rural population",
+    var hdi = new OpenLayers.Layer.WMS(
+    "HDI",
     "http://onesharedocean.org/geoserver/lmes/wms",
-    {layers:"lmes:population_LME66", styles:'lmes_ruralpopulation', transparent:true, format:'image/png'},
-    {layerId:'ruralpopulation', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+    {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_hdi', transparent:true, format:'image/png'},
+    {layerId:'hdi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
     
     var urbanpopulation = new OpenLayers.Layer.WMS(
@@ -410,7 +410,7 @@ if($templateCache == true){
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep_p', transparent:true, format:'image/png'},
     {layerId:'icep_p', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
-
+-->
     var plasticsModelMicroCount = new OpenLayers.Layer.WMS(
     "Micro plastics",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
@@ -484,7 +484,7 @@ if($templateCache == true){
     areas,
     cumulImpact,
     population,
-    ruralpopulation,
+    hdi,
     urbanpopulation,
     icep, ld_din, merged_ind,
     plasticsModelMicroCount, plasticsModelMacroWeight,
