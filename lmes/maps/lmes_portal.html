@@ -206,7 +206,8 @@ if($templateCache == true){
 	  <ul>
 	    <li><span onclick="showLayer('population');">Population density</span></li>
 	    <li><span onclick="showLayer('hdi')">HDI</span></li>
-	    <li><span onclick="showLayer('urbanpopulation')">Urban population</span></li>
+	    <li><span onclick="showLayer('nldi')">NLDI</span></li>
+	    <li><span onclick="showLayer('overfishing')">Overfishing</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>Governance</span></h3>
@@ -360,18 +361,29 @@ if($templateCache == true){
     
     var hdi = new OpenLayers.Layer.WMS(
     "HDI",
-    "http://onesharedocean.org/geoserver/lmes/wms",
+    //"http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
     {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_hdi', transparent:true, format:'image/png'},
     {layerId:'hdi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
     
-    var urbanpopulation = new OpenLayers.Layer.WMS(
-    "Urban population",
-    "http://onesharedocean.org/geoserver/lmes/wms",
-    {layers:"lmes:population_LME66", styles:'lmes_urbanpopulation', transparent:true, format:'image/png'},
-    {layerId:'urbanpopulation', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    var nldi = new OpenLayers.Layer.WMS(
+    "NLDI",
+    // "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_nldi', transparent:true, format:'image/png'},
+    {layerId:'nldi', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
     
+    var overfishing = new OpenLayers.Layer.WMS(
+    "Overfishing",
+    "http://onesharedocean.org/geoserver/lmes/wms",
+//    GWCLMES,
+    {layers:"lmes:lmes_fishing_revenues_indicators", styles:'lmes_socioeco_overfishing', transparent:true, format:'image/png'},
+    {layerId:'overfishing', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    // icep
     var icep = new OpenLayers.Layer.WMS(
     "ICEP",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
@@ -483,9 +495,7 @@ if($templateCache == true){
     mangroves,
     areas,
     cumulImpact,
-    population,
-    hdi,
-    urbanpopulation,
+    population, hdi, nldi, overfishing,
     icep, ld_din, merged_ind,
     plasticsModelMicroCount, plasticsModelMacroWeight,
     governance_int, governance_engt, governance_compl,
