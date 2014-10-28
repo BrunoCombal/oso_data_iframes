@@ -76,9 +76,14 @@ if($templateCache == true){
 		position:relative;
 		top:1px;
 	}
+	.column-left{ position:absolute; left: 0px; width: 750px;}
+	.column-right{position:absolute; left:770px; }
 </style>
 
 <script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery('.main').height(Math.max(jQuery('.column-left').height(),jQuery('.column‌​-right').height())); 
+});
   
   $(function() {
 		var comboText = "Search for an LME or click on the map";
@@ -153,11 +158,12 @@ if($templateCache == true){
       <div id="results" class="ui-front autocomplete; "></div>
     </div>
     
-    <div style="float:left">
+    <div class="main">
+	<div class="column-left">
       <div id="mapOL" style="width:750px; height:375px;"></div>
       <div id="legOL" style="clear:both; width:750px"></div>
     </div>
-    
+    <div class="column-right">
     <div id="accordion">
       <ul>
 	<li><h3 style="margin-top: 6px;"><span onclick="showLayer('lmes');">LMEs</span></h3>
@@ -176,8 +182,14 @@ if($templateCache == true){
 	<li><h3 style="padding-left:12px!important;"><span>Nutrients</span></h3>
 	  <ul>
 	    <li><span onclick="showLayer('icep');">ICEP</span></li>
+	    <li><span onclick="showLayer('icep2030');">ICEP (2030)</span></li>
+	    <li><span onclick="showLayer('icep2050');">ICEP (2050)</span></li>
 	    <li><span onclick="showLayer('ld_din');">DIN loading</span></li>
+	    <li><span onclick="showLayer('ld_din2030');">DIN loading (2030)</span></li>
+	    <li><span onclick="showLayer('ld_din2050');">DIN loading (2050)</span></li>
 	    <li><span onclick="showLayer('merged_ind');">Merged indicator</span></li>
+	    <li><span onclick="showLayer('merged_ind2030');">Merged indicator (2030)</span></li>
+	    <li><span onclick="showLayer('merged_ind2050');">Merged indicator (2050)</span></li>
 	  </ul>
 	</li>
 	<li><h3 style="padding-left:12px!important; ">Plastics</h3>
@@ -236,6 +248,8 @@ if($templateCache == true){
 
       </ul>	
     </div>
+	</div>
+	</div>
     
   </body>	
   <script>
@@ -392,6 +406,20 @@ if($templateCache == true){
     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
+    var icep2030 = new OpenLayers.Layer.WMS(
+    "ICEP 2030",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
+    {layerId:'icep2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var icep2050 = new OpenLayers.Layer.WMS(
+    "ICEP 2050",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
+    {layerId:'icep2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
     var ld_din = new OpenLayers.Layer.WMS(
     "ld_din",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
@@ -400,12 +428,44 @@ if($templateCache == true){
     {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
+    var ld_din2030 = new OpenLayers.Layer.WMS(
+    "ld_din",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
+    {layerId:'ld_din2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var ld_din2050 = new OpenLayers.Layer.WMS(
+    "ld_din",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
+    {layerId:'ld_din2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
     var merged_ind = new OpenLayers.Layer.WMS(
     "Merged indicator",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
     {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
     {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var merged_ind2030 = new OpenLayers.Layer.WMS(
+    "Merged indicator",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
+    {layerId:'merged_ind2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var merged_ind2050 = new OpenLayers.Layer.WMS(
+    "Merged indicator",
+//    "http://onesharedocean.org/geoserver/lmes/wms",
+    GWCLMES,
+    {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
+    {layerId:'merged_ind2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
 <!--
@@ -496,7 +556,7 @@ if($templateCache == true){
     areas,
     cumulImpact,
     population, hdi, nldi, overfishing,
-    icep, ld_din, merged_ind,
+    icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
     plasticsModelMicroCount, plasticsModelMacroWeight,
     governance_int, governance_engt, governance_compl,
     pops_ddt, pops_hch, pops_pcb
@@ -554,7 +614,7 @@ if($templateCache == true){
     $("#accordion ul ul").slideUp(400, function(){
     var iFrame = parent.document.getElementById("iFrame");
     if($('#accordion').height() < iFrame.height-100){
-				  iFrame.height = 800;
+				  iFrame.height = 600;
 				  }
 				  });
 				  //slide down the link list below the h3 clicked - only if its closed
