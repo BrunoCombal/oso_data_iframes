@@ -1,0 +1,487 @@
+<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.7/themes/smoothness/jquery-ui.css" />-->
+<link rel="stylesheet" href="/misc/ui/jquery.ui.autocomplete.css" />
+<style>
+      .ui-autocomplete{max-height:100px, overflow-y:auto;overflow-x:hidden;}
+      html .ui-autocomplete{height:400px} /* IE6 does not support max-height */
+      .ui-widget{font-size:12px;}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.8.7/jquery-ui.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+
+	jQuery(".accordionData .categoryData").click(function(){
+		if(jQuery(this).parents('legend').siblings().is(":visible"))
+		{
+			jQuery(this).parents('legend').siblings().slideUp();
+			jQuery(this).addClass('up');
+			jQuery(this).removeClass('down');
+		} else {
+			jQuery(this).parents('legend').siblings().slideDown();
+			jQuery(this).addClass('down');
+			jQuery(this).removeClass('up');
+		}
+	});
+	
+	jQuery(".accordionData .itemData").click(function(){
+	
+		if(!jQuery(this).parents('.fsItem').find('.bodyData').is(':visible')){
+			jQuery(this).removeClass('up');
+			jQuery(this).addClass('down');
+			jQuery(this).parents('.fsItem').find('.summaryNoDG').slideDown();
+			jQuery(this).parents('.fsItem').find('.bodyData').slideDown();
+			if ( jQuery(this).parents('.fsItem').find('.bodyData').children('p').html() == '' ){
+				var uuid = jQuery(this).attr('name');
+                if(uuid != undefined){
+					jQuery(this).parents('.fsItem').find('.bodyData').children('p').load('http://onesharedocean.org/iframes/common/data/services/parser.php?uuid='+uuid, function(){
+						unscrambleEmails();
+					});
+				}
+			}
+			jQuery(this).parents('.fsItem').find(".readMore").html("| hide details |");
+		} else {
+			jQuery(this).removeClass('down');
+			jQuery(this).addClass('up');
+			jQuery(this).parents('.fsItem').find('.bodyData').slideUp();
+			jQuery(this).parents('.fsItem').find('.summaryNoDG').slideUp();
+			jQuery(this).parents('.fsItem').find(".readMore").html("| show details |");
+		}
+	});
+	
+	jQuery(".readMore").click(function(){
+           jQuery(this).parents('.fsItem').find('.itemData').click();
+       })
+		jQuery(".readMore").html("| show details |");
+		jQuery('.viewData, .googleearthData, .downloadData').css('text-decoration', 'none');
+		jQuery('.viewData').html("| view data |");
+		jQuery('.googleearthData').html("| google earth |");
+		jQuery('.googleearthData').attr('title', 'download a KMZ file to your computer, it opens in Google Earth');
+		jQuery('.viewData').attr('title', 'click to display a map');
+		jQuery('.viewData').attr('target', '_blank');
+		jQuery('.downloadData').html("| download data |");
+		jQuery('.mainUl').each(function(){
+			jQuery(this).first().css('margin-top', '10px');
+			jQuery(this).last().css('margin-top', '10px');
+		});
+		jQuery('.downloadData').click(function(c){
+		//console.log(c); //If we want to implement analytics for downloads
+		
+		
+
+               });
+	
+	
+	//When coming from a referenced page with a given bookmark move to it and show it's contents
+	var hash = document.location.hash;
+
+	if ( hash != "" ) {
+		var anchor = jQuery('a[name=\''+hash.substring(1, hash.length)+'\']');		
+		anchor = anchor[0];
+		
+
+		jQuery(anchor).parents('.collapsible').find('.categoryData').click();
+		jQuery(anchor).siblings('.fsItem').find('.itemData').click();
+		//console.log(jQuery(anchor).siblings('.fsItem').find('.itemData'));
+		jQuery('html, body').animate({
+				scrollTop: jQuery(anchor).siblings('.fsItem').find('.itemData').offset().top
+			}, 1000);
+	}
+	
+	jQuery('.numberNodes').each(function(){
+		jQuery(this).parents('.collapsible').find('.categoryData').html(jQuery(this).parents('.collapsible').find('.categoryData').html()+' ('+jQuery(this).attr('ref')+')');
+	});
+	
+	function unscrambleEmails(){
+		var a = jQuery('.email').each(function(){
+			var b = jQuery(this).html();
+			jQuery(this).html(b.replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));
+			jQuery(this).removeClass('email');
+		});
+				
+	}
+	unscrambleEmails();
+	
+	var searchTags = [];
+	var searchIDs = [];
+	jQuery('.fsItem .itemData').not('.center').each(function(){
+		var div = document.createElement("div");
+		div.innerHTML = jQuery(this).html();
+		div.id="tempDiv";
+		var text = div.textContent || div.innerText || "";
+		if(searchTags.indexOf(text)==-1){
+			searchIDs.push(jQuery(this).parents('li').attr('id'));
+			searchTags.push(text);
+		}
+		jQuery('#tempDiv').remove();
+	});
+	
+	var comboText = "Search available datasets";
+	jQuery( "#resetSearch" ).css('color', '#c0c0c0');
+	jQuery("#resetSearch")
+		.click(function(){
+			//location.reload();
+			jQuery('#mainResults').slideDown(400,function(){
+				jQuery('#searchUL>li').each(function(){
+					if(jQuery(this).find('.itemData').hasClass('down')){
+						jQuery(this).find('.itemData').click();
+					}
+					jQuery(this).insertBefore(jQuery('#'+jQuery(this).attr('tempid')));
+					jQuery('#'+jQuery(this).attr('tempid')).remove();
+					jQuery( "#tags" ).css('color', '#c0c0c0');
+					jQuery( "#tags" ).attr('value', comboText);
+					jQuery('#resetSearch').attr('disabled', true);
+					jQuery( "#resetSearch" ).css('color', '#c0c0c0');
+				});
+			});
+			
+	});
+	jQuery( "#tags" ).css('color', '#c0c0c0');
+	jQuery("#tags")
+		.click(function(){
+			this.value = "";
+			jQuery( "#tags" ).css('color', '#000000');
+		})
+		.blur(function(){
+			if(this.value ==""){
+				jQuery( "#tags" ).css('color', '#c0c0c0');
+				jQuery('#resetSearch').attr('disabled', true);
+				this.value = comboText;
+			}
+		})
+		.autocomplete({
+			source: searchTags,
+			open: function(e, ui) {
+				var list = '';
+				var results = jQuery('.ui-autocomplete.ui-widget-content a');
+				results.each(function() {
+					list += jQuery(this).html() + '<br />';
+				});
+				jQuery('#results').html(list);
+			},
+			select: function(e, ui) {
+				var li = document.createElement("li");
+				var id = makeid();
+				jQuery(li).attr('id', id);
+				jQuery(li).css('display:none');
+				var el = jQuery('#'+searchIDs[searchTags.indexOf(ui.item.value)]);
+				el.attr('tempId', id);
+				jQuery(li).insertAfter(el);
+				jQuery('#searchUL>li').each(function(){
+					if(jQuery(this).find('.itemData').hasClass('down')){
+						jQuery(this).find('.itemData').click();
+					}
+				});
+				jQuery('#searchUL').append(el);
+				el.find('.itemData').click();
+				jQuery('#searchResults').slideDown(400,function(){
+					jQuery('#mainResults').slideUp();
+				});
+				jQuery('#resetSearch').attr('disabled', false);
+				jQuery( "#resetSearch" ).css('color', '#000000');
+				
+				
+				
+			}
+		});
+		jQuery('#ooTotal').html(jQuery('#ooTotal_temp').html());
+		jQuery('#lmesTotal').html(jQuery('#lmesTotal_temp').html());
+	
+});
+
+function makeid()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+</script>
+<div class="ui-widget" style="margin:auto auto; width:440px;">
+	<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; display:inline;" value="Search available datasets"/>
+	<input id="resetSearch" type="button" value="Reset" disabled="disabled" style="display:inline;"></input>
+	<div id="#results" class="ui-front autocomplete" style="z-index:999 !important" ></div>
+	
+	</div>
+<div id="mainResults">
+<?php $nodata = "NO DATA"; ?>
+<?php
+	$counterID = 0;
+?>
+
+
+<span class="summarySection">Data are provided “as is”, without warranty of any kind.<br/>To contact the data originator, please see the contact point list attached to each dataset (click on <span style="font-variant: small-caps; font-weight: bold">| show details |</span> under a dataset name).</span>
+<div class="accordionData">
+
+<span class="titleSection">Open Ocean</span>
+<span class="summarySection">See individual data contact point list to contact the data originator.<br/>For general purpose, the contact point at IOC-UNESCO is Albert Fischer, <span class="email"><?php echo utf8_encode(str_rot13('<a href="mailto://'.'a.fischer@unesco.org'.'">'.'a.fischer@unesco.org'.'</a>')); ?></span>.<br/>This section features a total of <span id="ooTotal" style="font-weight:bold"></span> unique datasets.</span>
+
+<div>
+<?php 
+function cmp($a, $b) {
+    return strcmp($a->title, $b->title);
+}
+
+$nodes = node_load_multiple(array(), array('type' => 'open_ocean_indicator_description'));
+//ksort($nodes);
+usort($nodes, "cmp");
+$categoriesList = array();
+$categoriesList_temp = array();
+foreach ($nodes as $node) { 
+	if ($node->status == 1) {
+		$categories = $node->field_category_oo['und'][0]['value'];
+		$nodeCats = explode(';',$categories);
+		foreach($nodeCats as $cat){
+			if(!in_array(trim(strtolower(str_replace(' ','',$cat))), $categoriesList_temp)){
+				array_push($categoriesList_temp, trim(strtolower(str_replace(' ','',$cat))));
+				array_push($categoriesList, $cat);
+				//var_dump($node->title);
+			}
+		}
+	}
+}
+//var_dump($categoriesList_temp);
+//echo "<br/>";
+//var_dump$categoriesList);
+array_multisort($categoriesList, $categoriesList_temp);
+?>
+<span id="ooTotal_temp" style="display:none"><?php echo count($nodes); ?></span>
+<?php
+$tempOrder = array();
+foreach ($nodes as $node) {
+	if(isset($node->field_data_group['und'])){
+		$group = $node->field_data_group['und'][0]['value'];
+		array_push($tempOrder, array($group, $node));
+	} else {
+		array_push($tempOrder, array($node->title, $node));
+	}
+}
+sort($tempOrder);
+
+for($i=0;$i<count($categoriesList_temp);$i++) {
+	echo "<div>";
+	echo "<fieldset class='collapsible'><legend><span class='categoryData fieldset-legend up'>".$categoriesList[$i]."</span></legend>";
+	echo "<div style='display:none'>";
+	echo "<ul class='mainUl'>";
+	$datagroup = '';
+	$datagroupflag=false;
+	$lastnodeingroup=false;
+	$numberNodes = 0;
+	foreach ($tempOrder as $node) { 
+		$node = $node[1];
+		if ($node->status == 1) {
+			$categories = trim(strtolower(str_replace(' ','',$node->field_category_oo['und'][0]['value'])));
+			$nodeCats = explode(';',$categories);
+			if(in_array($categoriesList_temp[$i], $nodeCats)){
+				//echo "--> ".$node->title."<br/>";
+				$numberNodes++;
+				
+				?>
+				<?php 
+				if(isset($node->field_data_group['und'])){
+					$lastnodeingroup=true;
+					if(($datagroupflag == false) || ($datagroup != $node->field_data_group['und'][0]['value'])){
+						if($datagroupflag == true){
+							echo '<li>&nbsp;</li>';
+						}
+						echo '<li><fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend center">'.$node->field_data_group['und'][0]['value'].'</span></legend></fieldset></li>';
+						$datagroupflag = true;
+					}
+					$datagroup = $node->field_data_group['und'][0]['value'];
+				} else {
+					$datagroup = '';
+					$datagroupflag=false;
+				}
+				?>
+				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node->nid; ?>"></a>
+			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node->field_xml_metadata_path['und'])){echo 'name="'.urlencode(utf8_encode($node->field_xml_metadata_path['und'][0]['value'])).'"';} ?>><?php echo $node->title; ?></span>
+			
+
+			<span class="itemBtns">
+				<span class="readMore"></span>
+				<?php if(isset($node->field_view['und'])){ ?><a href="<?php if(isset($node->field_view['und'])){echo $node->field_view['und'][0]['value'];} ?>" class="viewData"></a><?php } ?>
+				<?php if(isset($node->field_google_earth['und'])){ ?><a href="<?php if(isset($node->field_google_earth['und'])){echo $node->field_google_earth['und'][0]['value'];} ?>" class="googleearthData"></a><?php } ?>
+				<?php if(isset($node->field_package_path['und'])){ ?><a title="Download dataset from <?php echo $node->title; ?>" href="<?php if(isset($node->field_package_path['und'])){echo $node->field_package_path['und'][0]['value'];} ?>" class="downloadData"></a><?php } ?>
+			</span>
+			</legend>
+			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node->field_definition_oo['und'])){echo $node->field_definition_oo['und'][0]['value'];}else{echo $nodata;} ?></div>
+			<?php
+				if(!isset($node->field_data_group['und'])){
+					$lastnodeingroup=false;
+				}
+			?>
+			
+			
+			<div class="clearfix"></div>
+			<div class="bodyData">
+				<div class="idData">
+<ul class="xml">
+ <li>
+  <div class="fset"><span class="lgend">Indicator Description</span>
+   <ul>
+	<?php $field = field_view_field('node', $node, 'field_category_oo', array('label' => 'hidden')); if(!empty($field)){	?><li class="divValue"><span class="title">Themes</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_definition_oo', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Definition</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_relevance', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Relevance</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_methodology', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Methodology</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_data_sources_oo', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Data sources</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_partners', array('label' => 'hidden')); if(!empty($field)){ ?>
+	<li><span class="title">Partners</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    
+   </ul>
+  </div>
+ </li>
+ </div>
+  <p></p>
+  </div>
+  </fieldset>
+</li>			<?php
+				
+				
+			}
+		}
+	}
+	echo "</ul>";
+	echo "<span class='numberNodes' ref='".$numberNodes."'></span>";
+	echo "</div>";
+	echo "</fieldset></div>";
+} //end Open Ocean
+?>
+	</div>
+</div>
+<div class="accordionData" style="padding-top:10px">
+<span class="titleSection">Large Marine Ecosystems</span>
+<span class="summarySection">See individual data contact point list to contact the data originator.<br/>For General purpose, the contact point at IOC-UNESCO is Julian Barbière, <span class="email"><?php echo utf8_encode(str_rot13('<a href="mailto://'.'j.barbiere@unesco.org'.'">'.'j.barbiere@unesco.org'.'</a>')); ?></span><br/>This section features a total of <span id="lmesTotal" style="font-weight:bold"></span> unique datasets.</span>
+<?php 
+$nodes = node_load_multiple(array(), array('type' => 'lmes_indicator_description'));
+//ksort($nodes);
+usort($nodes, "cmp");
+$categoriesList = array();
+$categoriesList_temp = array();
+foreach ($nodes as $node) { 
+	if ($node->status == 1) {
+		if($node->field_category){
+			$categories = $node->field_category['und'][0]['value'];
+			$nodeCats = explode(';',$categories);
+			foreach($nodeCats as $cat){
+				if(!in_array(trim(strtolower(str_replace(' ','',$cat))), $categoriesList_temp)){
+					array_push($categoriesList_temp, trim(strtolower(str_replace(' ','',$cat))));
+					array_push($categoriesList, $cat);
+					//var_dump($node->title);
+				}
+			}
+		}
+	}
+}
+array_multisort($categoriesList, $categoriesList_temp);
+?>
+<span id="lmesTotal_temp" style="display:none"><?php echo count($nodes); ?></span>
+<?php
+$tempOrder = array();
+foreach ($nodes as $node) {
+	if(isset($node->field_data_group['und'])){
+		$group = $node->field_data_group['und'][0]['value'];
+		array_push($tempOrder, array($group, $node));
+	} else {
+		array_push($tempOrder, array($node->title, $node));
+	}
+}
+sort($tempOrder);
+
+	
+//var_dump($categoriesList_temp);
+//echo "<br/>";
+//var_dump($categoriesList);
+for($i=0;$i<count($categoriesList_temp);$i++) {
+	echo "<div>";
+	echo "<fieldset class='collapsible'><legend><span class='categoryData fieldset-legend up'>".$categoriesList[$i]."</span></legend>";
+	echo "<div style='display:none'>";
+	echo "<ul class='mainUl'>";
+	$datagroup = '';
+	$datagroupflag=false;
+	$lastnodeingroup=false;
+	$numberNodes = 0;
+	foreach ($tempOrder as $node) { 
+		$node = $node[1];
+		if ($node->status == 1) {
+			if($node->field_category){
+				$categories = trim(strtolower(str_replace(' ','',$node->field_category['und'][0]['value'])));
+				$nodeCats = explode(';',$categories);
+				if(in_array($categoriesList_temp[$i], $nodeCats)){
+					//echo "--> ".$node->title."<br/>";
+					$numberNodes++;
+					?>
+					<?php 
+				if(isset($node->field_data_group['und'])){
+					$lastnodeingroup=true;
+					$datagroup = $node->field_data_group['und'][0]['value'];
+					if($datagroupflag == false){
+						echo '<li><fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend center">'.$datagroup.'</span></legend></fieldset></li>';
+						$datagroupflag = true;
+					}
+				} else {
+					$datagroup = '';
+					$datagroupflag=false;
+				}
+				?>
+				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node->nid; ?>"></a>
+			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node->field_xml_metadata_path['und'])){echo 'name="'.urlencode(utf8_encode($node->field_xml_metadata_path['und'][0]['value'])).'"';} ?>><?php echo $node->title; ?></span>
+			
+
+			<span class="itemBtns">
+				<span class="readMore"></span>
+				<?php if(isset($node->field_view['und'])){ ?><a href="<?php if(isset($node->field_view['und'])){echo $node->field_view['und'][0]['value'];} ?>" class="viewData"></a><?php } ?>
+				<?php if(isset($node->field_google_earth['und'])){ ?><a href="<?php if(isset($node->field_google_earth['und'])){echo $node->field_google_earth['und'][0]['value'];} ?>" class="googleearthData"></a><?php } ?>
+				<?php if(isset($node->field_package_path['und'])){ ?><a title="Download dataset from <?php echo $node->title; ?>" href="<?php if(isset($node->field_package_path['und'])){echo $node->field_package_path['und'][0]['value'];} ?>" class="downloadData"></a><?php } ?>
+			</span>
+			</legend>
+			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node->field_definition['und'])){echo $node->field_definition['und'][0]['value'];}else{echo $nodata;} ?></div>
+			
+			
+			<div class="clearfix"></div>
+			<div class="bodyData">
+				<div class="idData">
+<ul class="xml">
+ <li>
+  <div class="fset"><span class="lgend">Indicator Description</span>
+   <ul>
+	<?php $field = field_view_field('node', $node, 'field_category', array('label' => 'hidden')); if(!empty($field)){	?> <li class="divValue"><span class="title">Module</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_category2', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Category</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_definition', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Definition</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_unit', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Unit</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_rationale_for_inclusion', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Rationale for inclusion</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_interlinkages_with_other_t', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Interlinkages with other transboundary water systems</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_measurement_methods_and_ca', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Measurement methods and calculation</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_scale', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Scale</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_data_sources', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Data sources</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_agencies_contacts', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Agencies &amp; contacts</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_references', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">References</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+
+	</ul>
+  </div>
+ </li>
+ </div>
+  <p></p>
+  </div>
+  </fieldset>
+</li>
+				
+<?php
+				}
+			}
+		}
+	}
+	echo "</ul>";
+	echo "<span class='numberNodes' ref='".$numberNodes."'></span>";
+	echo "</div>";
+	echo "</fieldset></div>";
+} //end LMEs
+?>
+</div>
+<div style="height:20px;">&nbsp;</div>
+</div>
+<div id="searchResults" style="display:none">
+<div class="accordionData">
+<ul id="searchUL"></ul>
+</div>
+</div>

@@ -1,0 +1,230 @@
+<?php
+//var_dump(menu_get_names());
+//echo '<br/>';
+//print_r(menu_build_tree('menu-oo-chapters-menu'));
+//echo '<br/>';
+$tree = menu_build_tree('menu-common-menu', Array());
+//echo drupal_get_path_alias('node/29000');
+?>
+<script>
+jQuery(document).ready(function(){
+	jQuery('.main').height(Math.max(jQuery('.column-left').height(),jQuery('.column-right').height(),jQuery('.column-center').height()));
+	jQuery('#global').insertBefore(jQuery('#fs'));
+	jQuery('#inter').insertBefore(jQuery('#fs'));
+	jQuery('a').css('text-decoration', 'none');
+	jQuery('a').css('color', '#444');
+});
+</script>
+<style>
+.column-left{ position:absolute; left: 0px; width: 30%;}
+.column-right{position:absolute; left:68%; width: 32%; padding-top:86px}
+.column-center{ position:absolute; left:30%; width: 38%;}
+.main ul{list-style-type: none;padding:0; margin:0}
+.top{width:500px; margin: auto auto;}
+.top ul {overflow:hidden;}
+.horiz { display:inline; float:left; width:33.33%;}
+.head{text-align: center;font-weight: bold;}
+.subhead{text-align:left; font-weight:normal}
+.subsubhead{text-align:left; padding-left:20px; font-weight:normal}
+</style>
+<?php
+$treeOO = Array();
+$treeLMEs1 = Array();
+$treeLMEs2 = Array();
+?>
+<div class="top">
+	<ul>
+		<?php
+			foreach($tree as $k => $v){
+				if(($v['link']['link_title'] != 'Open Ocean') && ($v['link']['link_title'] != 'LMEs')){
+				?>
+					<li class="horiz">
+						<a href="<?php echo drupal_get_path_alias($v['link']['link_path']); ?>"><?php echo $v['link']['link_title']; ?></a>
+					</li>
+				<?php
+				} elseif($v['link']['link_title'] == 'Open Ocean'){
+					$treeOO[] = $v;
+				} elseif($v['link']['link_title'] == 'LMEs'){
+					$treeLMEs1[] = $v;
+				}
+			}
+			$tree = menu_build_tree('menu-footer-common-menu', Array());
+			foreach($tree as $k => $v){
+				if($v['link']['hidden'] == 0){
+				?>
+					<li  class="horiz">
+						<a href="/<?php echo drupal_get_path_alias($v['link']['link_path']); ?>"><?php echo $v['link']['link_title']; ?></a>
+					</li>
+				<?php
+				}
+			}
+		?>
+		</ul>
+	</div>
+<div class="main">
+	<div class="column-left">
+		<ul>
+		<?php
+			foreach($treeOO as $k => $v){
+				if($v['link']['link_title'] == 'Open Ocean'){
+				?>
+					<li class="head">
+						<a href="/<?php echo drupal_get_path_alias($v['link']['link_path']); ?>"><?php echo $v['link']['link_title']; ?></a>
+						<ul>
+				<?php
+						$subtree = menu_build_tree('menu-oo-chapters-menu', Array());
+						foreach($subtree as $k1 => $v1){
+							if($v1['link']['hidden'] == 0){
+								?>
+								<li class="subhead">
+									<a href="/<?php echo drupal_get_path_alias($v1['link']['link_path']); ?>"><?php echo $v1['link']['link_title']; ?></a>
+									<?php
+									switch($v1['link']['link_title']){
+										case 'Climate & future impacts':
+										case 'Ecosystems':
+										case 'Fisheries':
+										case 'Pollution':
+										//cae 'Integrated assessment':
+										case 'Governance':
+										case 'Indicators/EOVs':
+											$subtree2 = $v1['below'];
+						
+										break;
+										default:
+										$subtree2 = false;
+										break;
+									}
+									if($subtree2 != false){
+									?>
+									<ul>
+									<?php
+										foreach($subtree2 as $k2 => $v2){
+											if($v2['link']['hidden'] == 0){
+											?>
+												<li class="subsubhead">
+													<a href="/<?php echo drupal_get_path_alias($v2['link']['link_path']); ?>"><?php echo $v2['link']['link_title']; ?></a>
+												</li>
+											<?php
+											}
+										}
+										?>
+										</ul>
+									<?php
+									}
+								?>
+								</li>
+								<?php
+							}
+						}
+						?>
+						</ul>
+					</li>
+				<?php
+				}
+			}
+				?>
+		</ul>
+	</div>
+	<?php
+		$lmes = Array();
+		$lmeslinks = Array();										
+	?>
+	<div class="column-center">
+		<ul>
+		<?php
+			foreach($treeLMEs1 as $k => $v){
+				if($v['link']['link_title'] == 'LMEs'){
+				?>
+					<li class="head" style="text-align:right; padding-right:5%;">
+						<a href="/<?php echo drupal_get_path_alias($v['link']['link_path']); ?>">Large Marine Ecosystems</a>
+						<ul>
+							<li class="subhead">
+								<a href="/node/<?php echo drupal_get_path_alias(244); ?>">Introduction to Large Marine Ecosystems</a>
+							</li>
+							<li class="subhead">
+								<a href="/node/<?php echo drupal_get_path_alias(232); ?>">Global Comparative Assessment</a>
+							</li>
+							<li class="subhead">
+								<a href="/node/<?php echo drupal_get_path_alias(242); ?>">Western Pacific Warm Pool</a>
+							</li>
+						<?php
+						$subtree = menu_build_tree('menu-lmes-nav-menu', Array());
+						foreach($subtree as $k1 => $v1){
+							if($v1['link']['hidden'] == 0){
+								$altName = "";
+								switch($v1['link']['link_title']){
+									case 'Inter-comparison':
+										$id = 'inter';
+										break;
+									case 'Global view':
+										$id = 'global';
+										break;
+									case 'Factsheets':
+										$id = 'fs';
+										$altName = "LMEs global view";
+										break;
+								}
+								?>
+								<li class="subhead" id="<?php echo $id; ?>">
+									<a href="/<?php echo drupal_get_path_alias($v1['link']['link_path']); ?>"><?php if(!empty($altName)){echo $altName;}else{echo $v1['link']['link_title'];} ?></a>
+									<?php
+									switch($v1['link']['link_title']){
+										case 'Factsheets':
+											$subtree2 = menu_build_tree('menu-lmes-factsheets-selector-me', Array());
+										break;
+										default:
+										$subtree2 = false;
+										break;
+									}
+									if($subtree2 != false){
+									?>
+									<ul>
+									<?php
+										foreach($subtree2 as $k2 => $v2){
+											if($v2['link']['hidden'] == 0){
+												array_push($lmes, $v2['link']['link_title']);
+												array_push($lmeslinks, $v2['link']['link_path']);
+											}
+										}
+										array_multisort($lmes, $lmeslinks);
+										for($i=0;$i<33;$i++)
+										{
+											?>
+											<li class="subsubhead">
+												<a href="/<?php echo drupal_get_path_alias($lmeslinks[$i]); ?>"><?php echo $lmes[$i]; ?></a>
+											</li>
+										<?php
+										}
+										?>
+									</ul>
+									<?php
+									}
+								?>
+								</li>
+								<?php
+							}
+						}
+						?>
+						</ul>
+					</li>
+				<?php
+				}
+			}
+		?>
+		</ul>
+	</div>
+	<div class="column-right">
+		<ul>
+			<?php
+			for($i=33;$i<66;$i++)
+			{
+			?>
+				<li>
+					<a href="/<?php echo drupal_get_path_alias($lmeslinks[$i]); ?>"><?php echo $lmes[$i]; ?></a>
+				</li>
+			<?php
+			}
+		?>
+		</ul>
+	</div>
+</div>
