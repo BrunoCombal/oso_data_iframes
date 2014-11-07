@@ -21,8 +21,9 @@
     var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
     var minResolution=360/WIDTHTOREPLACE;
     var maxResolution=5/WIDTHTOREPLACE;
-    var options = { minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
-    //resolutions:resolutions,
+    var resolutions=[1.2, 0.6, 0.3, 0.15, 0.075, 0.0375, 0.01875, 0.009375, 0.0046875];
+    var options = { //minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
+    resolutions:resolutions,
     maxExtent:defaultExtent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
     var map = new OpenLayers.Map("map-id", options);
 
@@ -34,27 +35,29 @@
     var GRLGWC='http://onesharedocean.org/geoserver/general/wms'; // 'http://onesharedocean.org/geoserver/general/gwc/service/wms';
 
     var lmes=new OpenLayers.Layer.WMS(
-		"LMEs", OCEANGWC,
+		"LMEs", "http://onesharedocean.org/geoserver/gwc/service/wms",
 		{layers:'ocean:LME66', transparent:true, styles:'lmes_grey_noname'},
-		{singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:WDL}
+		{isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:WDL, tiled:true, tileSize:new OpenLayers.Size(300, 200), tileOrigin:TORG}
 		);
 
     var lmesName=new OpenLayers.Layer.WMS(
-		"LMEs", OCEANGWC,
+		"LMEs", "http://onesharedocean.org/geoserver/gwc/service/wms",
 		{layers:'ocean:LME66', transparent:true, styles:'lmes_names_id_noshape'},
-		{singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:WDL}
+		{isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:WDL, tiled:true, tileSize:new OpenLayers.Size(3\
+00, 200), tileOrigin:TORG}}
 		);
 		
     var countries = new OpenLayers.Layer.WMS(
-		"Countries", GRLGWC,
-		{layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname', bgcolor:'0xDCF0FA'},
-		{transparent:true, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG}
+		"Countries", "http://onesharedocean.org/geoserver/gwc/service/wms",
+		{layers:'general:G2014_2013_0',//'general:world_epsg4326',
+                 transparent:true, styles:'countries_lightyellow_noname', bgcolor:'0xDCF0FA'},
+		{transparent:true, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:WDL, tiled:true, tileSize:new OpenLayers.Size(300, 200), tileOrigin:TORG}
 		)
 
     var countriesNames = new OpenLayers.Layer.WMS(
-		"Countries", GRLGWC,
-		{layers:'general:world_epsg4326', transparent:true, styles:'countries_names_noshape'},
-		{transparent:true, visibility:true, opacity:1, wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG}
+		"Countries", "http://onesharedocean.org/geoserver/gwc/service/wms",
+		{layers:'general:G2014_2013_0', transparent:true, styles:'gaul_noshape_names'},
+		{transparent:true, visibility:true, opacity:1, wrapDateLine:WDL, tiled:true, tileSize:new OpenLayers.Size(300, 200), tileOrigin:TORG}
 		)
 
     map.addLayers([lmes, countries, countriesNames, lmesName]);
