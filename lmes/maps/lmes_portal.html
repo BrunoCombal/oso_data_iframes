@@ -170,10 +170,11 @@ jQuery(document).ready(function(){
 	</li>
 	<li><h3><span>Productivity</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('chla');">Chlorophyll-A</span></li>
-	    <li><span onclick="showLayer('pp_mean');" >Primary productivity (Mean)</span></li>
-	    <li><span onclick="showLayer('pp_trend');" >Primary productivity (Trend)</span></li>
-	    <li><span onclick="showLayer('sst_net_change');">SST net change</span></li>
+	    <li><span onclick="showLayer('chla',this);">Chlorophyll-A</span></li>
+	    <li><span onclick="showLayer('chlachange',this);">Chlorophyll-A<br/>(% change)</span></li>
+	    <li><span onclick="showLayer('pp_mean',this);" >Primary productivity</span></li>
+	    <li><span onclick="showLayer('pp_trend',this);" >Primary productivity<br/>(% change)</span></li>
+	    <li><span onclick="showLayer('sst_net_change',this);">SST net change</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>Fish &amp; Fisheries</span></h3>
@@ -181,57 +182,58 @@ jQuery(document).ready(function(){
 	<li><h3><span>Pollution</span></h3></li>
 	<li><h3 style="padding-left:12px!important;"><span>Nutrients</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('icep');">ICEP</span></li>
-	    <li><span onclick="showLayer('icep2030');">ICEP (2030)</span></li>
-	    <li><span onclick="showLayer('icep2050');">ICEP (2050)</span></li>
-	    <li><span onclick="showLayer('ld_din');">DIN loading</span></li>
-	    <li><span onclick="showLayer('ld_din2030');">DIN loading (2030)</span></li>
-	    <li><span onclick="showLayer('ld_din2050');">DIN loading (2050)</span></li>
-	    <li><span onclick="showLayer('merged_ind');">Merged indicator</span></li>
-	    <li><span onclick="showLayer('merged_ind2030');">Merged indicator (2030)</span></li>
-	    <li><span onclick="showLayer('merged_ind2050');">Merged indicator (2050)</span></li>
+	    <li><span onclick="showLayer('icep',this);">ICEP</span></li>
+	    <li><span onclick="showLayer('icep2030',this);">ICEP (2030)</span></li>
+	    <li><span onclick="showLayer('icep2050',this);">ICEP (2050)</span></li>
+	    <li><span onclick="showLayer('ld_din',this);">DIN loading</span></li>
+	    <li><span onclick="showLayer('ld_din2030',this);">DIN loading (2030)</span></li>
+	    <li><span onclick="showLayer('ld_din2050',this);">DIN loading (2050)</span></li>
+	    <li><span onclick="showLayer('merged_ind',this);">Merged indicator</span></li>
+	    <li><span onclick="showLayer('merged_ind2030',this);">Merged indicator (2030)</span></li>
+	    <li><span onclick="showLayer('merged_ind2050',this);">Merged indicator (2050)</span></li>
 	  </ul>
 	</li>
 	<li><h3 style="padding-left:12px!important; ">Plastics</h3>
 	  <ul>
-	    <li><span onclick="showLayer('plasticsmicro');">Micro Plastics</span></li>
-	    <li><span onclick="showLayer('plasticsmacro');">Macro Plastics</span></li>
+	    <li><span onclick="showLayer('plasticsmicro',this);">Micro Plastics</span></li>
+	    <li><span onclick="showLayer('plasticsmacro',this);">Macro Plastics</span></li>
 	  </ul>
 	</li>
 	<li><h3 style="padding-left:12px!important; ">POPs</h3>
 	  <ul>
-	    <li><span onclick="showLayer('pops_ddt');">DDT score</span></li>
-	    <li><span onclick="showLayer('pops_hch');">HCHs score</span></li>
-	    <li><span onclick="showLayer('pops_pcb');">PCBs score</span></li>
+	    <li><span onclick="showLayer('pops_ddt',this);">DDT score</span></li>
+	    <li><span onclick="showLayer('pops_hch',this);">HCHs score</span></li>
+	    <li><span onclick="showLayer('pops_pcb',this);">PCBs score</span></li>
 	  </ul>
 	</li>
 	<li><h3 style="padding-left:12px!important;"><span>Ecosystem health</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('coral');">Coral reefs</span></li>
-	    <li><span onclick="showLayer('mangroves');">Mangroves</span></li>
-	    <li><span onclick="showLayer('cumulImpact');">Cumulative Impact</span></li>
+	    <li><span onclick="showLayer('coral',this);">Coral reefs</span></li>
+	    <li><span onclick="showLayer('mangroves',this);">Mangroves</span></li>
+	    <li><span onclick="showLayer('cumulImpact',this);">Cumulative Impact</span></li>
 	  </ul>
 	</li>
 	<!--</ul>
 	    </li>-->
 	<li><h3><span>Socio-economics</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('population');">Population density</span></li>
-	    <li><span onclick="showLayer('hdi')">HDI</span></li>
-	    <li><span onclick="showLayer('nldi')">NLDI</span></li>
-	    <li><span onclick="showLayer('overfishing')">Overfishing</span></li>
+	    <li><span onclick="showLayer('ohi',this);">Ocean Health Index</span></li>
+	    <li><span onclick="showLayer('population',this);">Population density</span></li>
+	    <li><span onclick="showLayer('hdi',this)">HDI</span></li>
+	    <li><span onclick="showLayer('nldi',this)">NLDI</span></li>
+	    <li><span onclick="showLayer('overfishing',this)">Overfishing</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>Governance</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('govInt');">Integration</span></li>
-	    <li><span onclick="showLayer('govEng');">Engagement</span></li>
-	    <li><span onclick="showLayer('govCompl');">Completeness</span></li>
+	    <li><span onclick="showLayer('govInt',this);">Integration</span></li>
+	    <li><span onclick="showLayer('govEng',this);">Engagement</span></li>
+	    <li><span onclick="showLayer('govCompl',this);">Completeness</span></li>
 	  </ul>
 	</li>
 	<li><h3><span>General information</span></h3>
 	  <ul>
-	    <li><span onclick="showLayer('areas');">LMEs Area</span></li>
+	    <li><span onclick="showLayer('areas',this);">LMEs Area</span></li>
 	  </ul>
 	</li>
 	<li style="background:#ffffff;height:20px;border:0px;margin:-5px">
@@ -300,23 +302,34 @@ jQuery(document).ready(function(){
     //Primary productivity
     var chla=new OpenLayers.Layer.WMS(
     "Chlorophyll-A",
+    //"http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_chla_longterm",  transparent:true, styles:'lmes_chla_mean', format:'image/png'},
+    {layers:"lmes:lmes_chl_pp_and_trends", //"lmes:lmes_chla_longterm", styles:'lmes_chla_mean'
+     transparent:true, styles:'lmes_chla', format:'image/png'},
     {layerId:'chla', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+    var chlachange=new OpenLayers.Layer.WMS(
+    "Chlorophyll-A change",
+    GWCLMES,
+    {layers:"lmes:lmes_chl_pp_and_trends", styles:"lmes_chla_change", transparent:true, format:'image/png'},
+    {layerId:'chlachange', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var pp_mean=new OpenLayers.Layer.WMS(
     "PP_MEAN",
+    //"http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_ppd_longterm_mean",  transparent:true, styles:'lmes_ppd_mean', format:'image/png'},
+    {layers:"lmes:lmes_chl_pp_and_trends", transparent:true, styles:'lmes_ppy',format:'image/png'},
     {layerId:'pp_mean', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
 
     var pp_trend=new OpenLayers.Layer.WMS(
     "PP_TREND",
-//    "http://onesharedocean.org/geoserver/lmes/wms",
+    //"http://onesharedocean.org/geoserver/lmes/wms",
     GWCLMES,
-    {layers:"lmes:lmes_ppd_longterm_trend",  transparent:true, styles:'lmes_ppd_trend', format:'image/png'},
+    {layers:"lmes:lmes_chl_pp_and_trends", 
+    transparent:true, styles:'lmes_ppy_change', format:'image/png'},
     {layerId:'pp_trend', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
     
@@ -365,6 +378,14 @@ jQuery(document).ready(function(){
     {layerId:'cumulImpact', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
     
+    // Socio eco: ohi
+    var ohi = new OpenLayers.Layer.WMS(
+    "OHI",
+    "http://onesharedocean.org/geoserver/lmes/wms",
+    {layers:"lmes:lmes_ohi", styles:'lmes_ohi', transparent:true, format:'image/png'},
+    {layerId:'ohi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
     // Socio eco: population
     var population = new OpenLayers.Layer.WMS(
     "Population",
@@ -547,22 +568,22 @@ jQuery(document).ready(function(){
     map.addLayers([
     worldtop, //always in first position
     lmes,
-    chla,
-    pp_mean,
-    pp_trend,
+    chla, chlachange, pp_mean, pp_trend,
     sst_net_change,
     coral,
     mangroves,
     areas,
     cumulImpact,
-    population, hdi, nldi, overfishing,
+    ohi, population, hdi, nldi, overfishing,
     icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
     plasticsModelMicroCount, plasticsModelMacroWeight,
     governance_int, governance_engt, governance_compl,
     pops_ddt, pops_hch, pops_pcb
     ]);
     
-    function showLayer(menuItem){
+    function showLayer(menuItem,el){
+		$('li span').removeClass('selected');
+		$(el).addClass('selected');
     for(var i=1; i<map.getNumLayers();i++){
 		     var layerId = map.layers[i].layerId;
 		     if(layerId == menuItem){
