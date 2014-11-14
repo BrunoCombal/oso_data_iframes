@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-Equiv="Cache-Control" content="no-cache"/>
-    <meta http-Equiv="Pragma" Content="no-cache"/>
-    <meta http-Equiv="Expires" content="0"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
     <title></title>
     <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
@@ -17,17 +17,15 @@
       font-weight: normal;
       }
       .olControlLayerSwitcher .layersDiv{
-      background-color:#c0c0c0 !important;
+      background-color:#C0C0C0 !important;
       margin: 0.5em !important;
-      width:12em;
+      width: 12em;
       padding-top:0;
       }
-     #infoArrangement, #infoGeneral{
-	  margin:0px;
-	  padding:0;
-	  font-size:12px !important;
-	  font-weight:normal;
-	  font-family:sans-serif !important;
+      #infoArrangement, #infoGeneral{
+      font-size:12px !important;
+      font-weight:normal!important;
+      font-family:sans-serif !important;
       }
     </style>
 
@@ -41,13 +39,12 @@
     
     <script>
       var thisServer=window.location.hostname;
-
-      var extent = new OpenLayers.Bounds(-180,-90,180,90);
+      var extent = new OpenLayers.Bounds(120,25,190,65);
       var minResolution=360/700.0;
-      var maxResolution=0.5/700.0;
-      var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
-      var graticule =  new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif", fontColor:"#000000", fontSize:"12px"}});
-      var options = {minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:8,
+      var maxResolution=10/700.0;
+      var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher'),'ascending':false});
+      var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
+      var options = { maxExtent:new OpenLayers.Bounds(-180,-90,180,90), minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:6,
       controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
       
       var map = new OpenLayers.Map("map-id", options);
@@ -57,94 +54,69 @@
       "Countries (background)",
       "http://onesharedocean.org/geoserver/general/wms",
       {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
-      {singleTile:true, isBaseLayer:true, visibility:true}
+      {tiled:true, isBaseLayer:true, visibility:true, wrapDateLine:true}
       );
       
       var worldtop=new OpenLayers.Layer.WMS(
       "Countries",
       "http://onesharedocean.org/geoserver/general/wms",
       {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
-      {tiled:true, isBaseLayer:false, visibility:true, opacity:1}
+      {tiled:true, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:true}
       );
 
       var lmes = new OpenLayers.Layer.WMS(
       "LMEs & PWP",
       "http://onesharedocean.org/geoserver/wms",
-      {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
-      {tiled:true, isBaseLayer:false, opacity:1, visibility:false}
+      {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+      {tiled:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
       );
 
       var eez = new OpenLayers.Layer.WMS(
       "EEZ",
-      "http://onesharedocean.org/geoserver/wms",
-      {layers:"ocean:OBIS_eezs", transparent:true, styles:"eez_nofill_contour_orange_labels"},
-      {tiled:true, isBaseLayer:false, opacity:1, visibility:false}
+      "http://onesharedocean.org/geoserver/ocean/wms",
+      {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+      {tiled:true, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
       );
 
-      var ccsbt = new OpenLayers.Layer.WMS(
-        "CCSBT",
-        "http://onesharedocean.org/geoserver/arrangements/wms",
-        {layers:"arrangements:RFB_CCSBT", transparent:true, styles:'crfm_wca'},
-        {singleTile:true, visibility:true, opacity:1}
+      var npafc=new OpenLayers.Layer.WMS(
+      "NPAFC",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_NPAFC", transparent:true, styles:'blue_0025ee_transparent'},
+      {tiled:true, visibility:true, opacity:1, wrapDateLine:true}
+      );
+      
+      var pices=new OpenLayers.Layer.WMS(
+      "PICES",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_PICES", transparent:true, styles:'green_00cc68_transparent'},
+      {tiled:true, visibility:true, opacity:1, wrapDateLine:true}
+      );
+       
+      var wcpfc=new OpenLayers.Layer.WMS(
+      "WCPFC",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_WCPFC", transparent:true, styles:'orange_ff7c00_transparent'},
+      {tiled:true, visibility:true, opacity:1, wrapDateLine:true}
       );
 
-      var cpps=new OpenLayers.Layer.WMS(
-        "CPPS",
-        "http://onesharedocean.org/geoserver/arrangements/wms",
-        {layers:"arrangements:RFB_CPPS", transparent:true, styles:'iccat_wca'},
-        {singleTile:true, visibility:true, opacity:1}
-      );
-
-      var iattc=new OpenLayers.Layer.WMS(
-      "IATTC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_IATTC", transparent:true, styles:'nammco_wca'},
+<!--
+      var nowpap=new OpenLayers.Layer.WMS(
+      "NOWPAP",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_NOWPAP", transparent:true, styles:''},
       {singleTile:true, visibility:true, opacity:1}
       );
-
-      var oldepesca=new OpenLayers.Layer.WMS(
-      "OLDEPESCA",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_OLDEPESCA", transparent:true, styles:'oldepesca_wca'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-
-      var ospesca=new OpenLayers.Layer.WMS(
-      "OSPESCA",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_OSPESCA", transparent:true, styles:'ospesca_wca'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-
-      var sprfmo=new OpenLayers.Layer.WMS(
-      "SPRFMO",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_SPRFMO", transparent:true, styles:'wecafc_wca'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-
-      var lima=new OpenLayers.Layer.WMS(
-      "Lima",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:Lima", transparent:true, styles:'cartagena_wca'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-
-      map.addLayers([worldtop, cpps, iattc, oldepesca, ospesca, ccsbt, sprfmo, lima, lmes, eez, world]);
+-->
+      map.addLayers([worldtop, npafc, pices, wcpfc, lmes, eez, world]);
       map.setLayerIndex(world, 0);
-      map.setLayerIndex(cpps, 1);
-      map.setLayerIndex(iattc, 2);
-      map.setLayerIndex(oldepesca, 3);
-      map.setLayerIndex(ospesca, 4);
-      map.setLayerIndex(sprfmo, 5);
-      map.setLayerIndex(ccsbt, 6);
-      map.setLayerIndex(lima, 7);
-      map.setLayerIndex(worldtop, 8);
-      map.setLayerIndex(lmes, 9);
-      map.setLayerIndex(eez, 10);
-      map.zoomToExtent([-180,-65,-70,5]);
+      map.setLayerIndex(npafc, 1);
+      map.setLayerIndex(pices, 2);
+      map.setLayerIndex(wcpfc, 3);
+      map.setLayerIndex(worldtop, 4);
+      map.setLayerIndex(lmes, 5);
+      map.setLayerIndex(eez, 6);
+      map.zoomToExtent(extent);
 	    
-		
       var infoGnrl = new OpenLayers.Control.WMSGetFeatureInfo({
 	       url:'http://onesharedocean.org/geoserver/ocean/wms',
 	       title:'identify feature by clicking',
@@ -194,6 +166,7 @@
 	  infoGnrl.activate();
 	  map.addControl(infoArrangement);
 	  infoArrangement.activate();
+		
     </script>
   </body>
   

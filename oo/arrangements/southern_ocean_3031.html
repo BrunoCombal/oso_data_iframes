@@ -114,16 +114,24 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      map.addLayers([worldtop, ccamlr, iccat, wcpfc, ccas, ats, lmes, eez, world]);
+      var ccsbt = new OpenLayers.Layer.WMS(
+        "CCSBT",
+        "http://onesharedocean.org/geoserver/arrangements/wms",
+        {layers:"arrangements:RFB_CCSBT", transparent:true, styles:'yellow_ffe200_transparent'},
+        {tiled:false, visibility:true, opacity:1}
+      );
+
+      map.addLayers([worldtop, ccamlr, iccat, wcpfc, ccas, ats,ccsbt, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(ccamlr, 1);
       map.setLayerIndex(iccat, 2);
       map.setLayerIndex(wcpfc, 3);
       map.setLayerIndex(ccas, 4);
       map.setLayerIndex(ats, 5);
-      map.setLayerIndex(worldtop, 6);
-      map.setLayerIndex(lmes, 7);
-      map.setLayerIndex(eez, 8);
+      map.setLayerIndex(ccsbt, 6);
+      map.setLayerIndex(worldtop, 7);
+      map.setLayerIndex(lmes, 8);
+      map.setLayerIndex(eez, 9);
       map.zoomToExtent(extent);
 	    
 			  var infoGnrl = new OpenLayers.Control.WMSGetFeatureInfo({

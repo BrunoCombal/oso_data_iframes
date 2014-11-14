@@ -46,7 +46,7 @@
       var maxResolution=10/700.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
 
-      var graticule=new OpenLayers.Control.Graticule({numPoints: 2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+      var graticule=new OpenLayers.Control.Graticule({numPoints: 2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
 
       var options = {minResolution:minResolution, maxResolution:maxResolution,
       controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
@@ -57,7 +57,7 @@
       var world=new OpenLayers.Layer.WMS(
       "Countries (background)",
       "http://onesharedocean.org/geoserver/general/wms",
-      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
       {wrapDateLine:true, singleTile:true, isBaseLayer:true, visibility:true}
       );
 
@@ -78,7 +78,7 @@
       var worldtop=new OpenLayers.Layer.WMS(
       "Countries",
       "http://onesharedocean.org/geoserver/general/wms",
-      {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
+      {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
       {wrapDateLine:true, singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 

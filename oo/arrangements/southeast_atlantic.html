@@ -22,18 +22,18 @@
       width:12em;
       padding-top:0;
       }
-	  #infoArrangement, #infoGeneral{
+      #infoArrangement, #infoGeneral{
 	  font-size:12px !important;
 	  font-weight:normal;
 	  font-family:sans-serif !important;
-	  }
+      }
     </style>
 
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
-	<div id="infoArrangement">&nbsp;</div>
-	<div id="infoGeneral">&nbsp;</div>
+    <div id="infoArrangement">&nbsp;</div>
+    <div id="infoGeneral">&nbsp;</div>
     <div id="map-id" ></div>
     <div id="layerswitcher" class="olControlLayerSwitcher"></div>
     
@@ -44,7 +44,7 @@
       var minResolution=360/400.0;
       var maxResolution=5/400.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher'),'ascending':false});
-      var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+      var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
       var options = {minResolution:minResolution, maxResolution:maxResolution,
       controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
       
@@ -53,21 +53,21 @@
 
       var world=new OpenLayers.Layer.WMS(
       "Countries (background)",
-      "http://"+thisServer+"/geoserver/general/wms",
-      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      "http://onesharedocean.org/geoserver/general/wms",
+      {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
       {singleTile:true, isBaseLayer:true, visibility:true}
       );
       
       var worldtop=new OpenLayers.Layer.WMS(
       "Countries",
-      "http://"+thisServer+"/geoserver/general/wms",
-      {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
+      "http://onesharedocean.org/geoserver/general/wms",
+      {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
       var lmes=new OpenLayers.Layer.WMS(
       "LMEs",
-      "http://"+thisServer+"/geoserver/ocean/wms",
+      "http://onesharedocean.org/geoserver/ocean/wms",
       {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
       {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
       );
@@ -81,54 +81,68 @@
 
       var iccat=new OpenLayers.Layer.WMS(
       "ICCAT",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_ICCAT", transparent:true, styles:'iccat_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
       
       var ccsbt=new OpenLayers.Layer.WMS(
       "CCSBT",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_CCSBT", transparent:true, styles:'blue_0025ee_transparent'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
       var cecaf=new OpenLayers.Layer.WMS(
       "CECAF",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_CECAF", transparent:true, styles:'lime_dff400_transparent'},
       {singleTile:true, visibility:true, opacity:1}
       );
        
       var comhafat=new OpenLayers.Layer.WMS(
       "COMHAFAT",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_COMHAFAT", transparent:true, styles:'orange_ff7c00_transparent'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
       var corep=new OpenLayers.Layer.WMS(
       "COREP",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_COREP", transparent:true, styles:'purple_ee00e7_transparent'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
       var srfc=new OpenLayers.Layer.WMS(
       "SRFC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:RFB_SRFC", transparent:true, styles:'violet_5c00ee_transparent'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
       var abidjan=new OpenLayers.Layer.WMS(
       "Abidjan",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
       {layers:"arrangements:Abidjan", transparent:true, styles:'abidjan_southeast_atlantic'},
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      map.addLayers([worldtop, ccsbt, cecaf, comhafat, corep, iccat, srfc, lmes, abidjan, eez, world]);
+      var seafo = new OpenLayers.Layer.WMS(
+      "SEAFO",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_SEAFO", transparent:true, styles:'red_ff0038_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      var fcwc = new OpenLayers.Layer.WMS(
+      "FCWC",
+      "http://onesharedocean.org/geoserver/arrangements/wms",
+      {layers:"arrangements:RFB_FCWC", transparent:true, styles:'orange_ffaf00_transparent'},
+      {singleTile:true, visibility:true, opacity:1}
+      );
+
+      map.addLayers([worldtop, ccsbt, cecaf, comhafat, corep, iccat, srfc, lmes, abidjan, seafo, fcwc, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(iccat, 1);
       map.setLayerIndex(comhafat, 2);
@@ -137,9 +151,11 @@
       map.setLayerIndex(abidjan, 5);
       map.setLayerIndex(srfc, 6);
       map.setLayerIndex(corep, 7);
-      map.setLayerIndex(worldtop, 8);
-      map.setLayerIndex(lmes, 9);
-      map.setLayerIndex(eez, 10);
+      map.setLayerIndex(seafo, 8);
+      map.setLayerIndex(fcwc, 9);
+      map.setLayerIndex(worldtop, 10);
+      map.setLayerIndex(lmes, 11);
+      map.setLayerIndex(eez, 12);
       map.zoomToExtent([-70,-70,35,35]);
 	  
 	  	  var infoGnrl = new OpenLayers.Control.WMSGetFeatureInfo({

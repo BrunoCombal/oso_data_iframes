@@ -22,18 +22,18 @@
       width:12em;
       padding-top:0;
       }
-	  #infoArrangement, #infoGeneral{
+      #infoArrangement, #infoGeneral{
 	  font-size:12px !important;
 	  font-weight:normal;
 	  font-family:sans-serif !important;
-	  }
+      }
     </style>
 
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
-	<div id="infoArrangement">&nbsp;</div>
-	<div id="infoGeneral">&nbsp;</div>
+    <div id="infoArrangement">&nbsp;</div>
+    <div id="infoGeneral">&nbsp;</div>
     <div id="map-id" ></div>
     <div id="layerswitcher" class="olControlLayerSwitcher"></div>
     
@@ -44,8 +44,8 @@
       var minResolution=360/800.0;
       var maxResolution=0.5/800.0;
       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
-      var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
-      var options = {minResolution:minResolution, maxResolution:maxResolution,
+      var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
+      var options = {minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:18,
       controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
       
       var map = new OpenLayers.Map("map-id", options);
@@ -54,14 +54,14 @@
       var world=new OpenLayers.Layer.WMS(
       "Countries (background)",
       "http://"+thisServer+"/geoserver/general/wms",
-      {layers:"general:world_epsg4326", styles:'world_epsg4326_top', format:'image/png'},
+      {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
       {singleTile:true, isBaseLayer:true, visibility:true}
       );
       
       var worldtop=new OpenLayers.Layer.WMS(
       "Countries",
       "http://"+thisServer+"/geoserver/general/wms",
-      {layers:"general:world_epsg4326", transparent:true,styles:'world_epsg4326_top', format:'image/png'},
+      {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
       {singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
       );
 
