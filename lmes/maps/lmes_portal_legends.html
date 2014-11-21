@@ -1,46 +1,3 @@
-<style>
-.legendOL {
-	display:none;
-	clear:both;
-}
-.legendOL span{
-	font-family:sans-serif;
-}
-.legendOL ul{
-	padding:0;
-	margin:0;
-}
-.legendOL ul li{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 10px 0;
-	font-size:11px;
-	float:left;
-	line-height:11px;
-	width: 125px;
-	font-family:sans-serif;
-}
-.legendOL ul li span{
-	border:solid 1px #c0c0c0;
-	margin:0 6px 0 0;
-	font-size:12px;
-}
-
-
-#leg-areas ul li{
-   width:175px;
-}
-#leg-population ul li{
-   width:120px;
-}
-#leg-hdi ul li{
-   width:110px;
-}
-#leg-urbanpopulation ul li{
-   width:190px;
-}
-
-</style>
 <div id="leg-chla" class="legendOL" rel="LMES_data_chla">
   <span>Long term mean Chlorophyll-A concentration (mg.m<sup>-3</sup>)<br/><small>Source: J.E. O'Reilly <a href="http://onesharedocean.org/?q=node/27" target="_top">get data and metainformation</a></small></span><br /><br />
   <ul>
@@ -60,12 +17,23 @@
     <li><span style="background-color:rgb(220, 179, 36);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-20% &ndash; -10%</li>
     <li><span style="background-color:rgb(220, 216, 36);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-10% &ndash; -5%</li>
   </ul>
-<div style="clear:both"></div>
+  <div style="clear:both"></div>
   <ul>
     <li><span style="background-color:rgb(220, 224, 183);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-5% &ndash; 5%</li>
     <li><span style="background-color:rgb(167,204,33);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5% &ndash; 10%</li>
     <li><span style="background-color:rgb(30, 169, 186);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>10% &ndash; 20%</li>
     <li><span style="background-color:rgb(45,30,183);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&gt; 20%</li>
+  </ul>
+</div>
+
+<div id="leg-pp_group" class="legendOL" rel="LMES_data_pp_group">
+  <span>Primary productivity group, from 1 to 5<br/><small>Source: J.E. O'Reilly <a href="http://onesharedocean.org/?q=node/27" target="_top">get data and metainformation</a></small></span><br /><br />
+  <ul>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>3</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>4</li>
+    <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5</li>
   </ul>
 </div>
 
@@ -88,7 +56,7 @@
     <li><span style="background-color:rgb(220, 179, 36);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-20% &ndash; -10%</li>
     <li><span style="background-color:rgb(220, 216, 36);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-10% &ndash; -5%</li>
   </ul>
-<div style="clear:both"></div>
+  <div style="clear:both"></div>
   <ul>
     <li><span style="background-color:rgb(220, 224, 183);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-5% &ndash; 5%</li>
     <li><span style="background-color:rgb(167,204,33);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5% &ndash; 10%</li>
@@ -255,20 +223,20 @@
 <div id="leg-plasticsmacro" class="legendOL" ref="lmes_plasticsmacro">
   <span>Macro plastics, weight density (g.km<sup>-2</sup>)<br/>
     Mass of floating macro-plastics &ndash; estimated from model simulations, using 3 proxy sources (shipping density, coastal population density and area of urban impervious catchment.</small>
-<br/>Source: L. Lebreton.<br/><a href="http://onesharedocean.org/?q=node/27#243" target="_top">get data and metainformation</a></small></span><br /><br />
-<ul style="width:100%">
-  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 1: &lt; 25</li>
-  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 2: 25 &ndash; 146</li>
-  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 3: 146 &ndash; 425</li>
-  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 4: 425 &ndash; 900</li>
-  <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 5: 900 &ndash; 6,100</li>
-</ul>
+    <br/>Source: L. Lebreton.<br/><a href="http://onesharedocean.org/?q=node/27#243" target="_top">get data and metainformation</a></small></span><br /><br />
+    <ul style="width:100%">
+      <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 1: &lt; 25</li>
+      <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 2: 25 &ndash; 146</li>
+      <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 3: 146 &ndash; 425</li>
+      <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 4: 425 &ndash; 900</li>
+      <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Risk level 5: 900 &ndash; 6,100</li>
+    </ul>
 </div>
 
 <div id="leg-plasticsmicro" class="legendOL" ref="lmes_plasticsmacro">
   <span>Micro plastics, count density (counts.km<sup>-2</sup>)<br/>
     Number of floating micro-plastics &ndash; estimated from model simulations, using 3 proxy sources (shipping density, coastal population density and area of urban impervious catchment.<small>
-      <br/>Source: L. Lebreton. <br/> <a href="http://onesharedocean.org/?q=node/27#243" target="_top">get data and metainformation</a></small>
+    <br/>Source: L. Lebreton. <br/> <a href="http://onesharedocean.org/?q=node/27#243" target="_top">get data and metainformation</a></small>
   </span>
   <br /><br />
   <ul>
@@ -294,17 +262,26 @@
 <div id="leg-ohi" class="legendOL" ref="lmes_ohi">
   <span>Ocean Health Index (OHI), the higher the lower the risk.<br/>
     <small>Source Ben Halpern. <a href="/?q=data#388" target="_top">Get data and meta-information</a></small></span><br/><br/>
+    Risk level:
+    <ul>
+      <li><span style="background-color:#ECECEC;">&nbsp;&nbsp;&nbsp;&nbsp;</span>No data</li>
+      <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span>Very Low</li>
+      <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span>Low</li>
+      <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium</li>
+      <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span>High</li>
+      <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span>Very High</li>
+    </ul>
 </div>
 
 <div id="leg-population" class="legendOL" ref="lmes_population">
   <span>Density of population (persons per km<sup>2</sup>) living by an LME (below 10 m above the mean sea level and up to 100 km from the shore) in 2010.<br/><small>source: <a href="#" target="_top">Liana Mc Manus</a>. <a href="/?q=data#385" target="_top">Get data and meta-information</a></small></span><br/><br/>
   <ul>
-  <li><span style="background-color:#ECECEC;">&nbsp;&nbsp;&nbsp;&nbsp;</span>No data</li>
-  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0 &ndash; 10</li>
-  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span>10 &ndash; 50</li>
-  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span>50 &ndash; 100</li>
-  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span>100 &ndash; 200</li>
-  <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span>200 &ndash; 700</li>
+    <li><span style="background-color:#ECECEC;">&nbsp;&nbsp;&nbsp;&nbsp;</span>No data</li>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0 &ndash; 10</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span>10 &ndash; 50</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span>50 &ndash; 100</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span>100 &ndash; 200</li>
+    <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span>200 &ndash; 700</li>
   </ul>
 </div>
 
@@ -325,76 +302,76 @@
 </div>
 
 <div id="leg-nldi" class="legendOL" ref="lmes_nldi">
-<span>Night Light Development Index.<br/><small>source: <a href="#" target="_top">Liana Mc Manus</a>. <a href="/?q=data" target="_top">Get data and meta-information</a></small></span><br/><br/>
-<ul>
+  <span>Night Light Development Index.<br/><small>source: <a href="#" target="_top">Liana Mc Manus</a>. <a href="/?q=data" target="_top">Get data and meta-information</a></small></span><br/><br/>
+  <ul>
     <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0.5 &ndash; 0.660</li>
     <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0.660 &ndash; 0.706</li>
     <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0.706 &ndash; 0.800</li>
     <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0.800 &ndash; 0.860</li>
     <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> &gt; 0.860</li>
     <li><span style="background-color:#ECECEC;">&nbsp;&nbsp;&nbsp;&nbsp;</span>No data</li>
-</ul>
+  </ul>
 </div>
 
 <div id="leg-overfishing" class="legendOL" ref="lmes_overfishing">
-<span>Fishing exploitation level based on % of collapsed and overexploitated catch-based stocks<br/><small>source: <a href="#" target="_blank">Liana Mc Manus</a>. <a href="/?q=data" target="_top">Get data and meta-information</a></small></span><br/><br/>
-<ul>
+  <span>Fishing exploitation level based on % of collapsed and overexploitated catch-based stocks<br/><small>source: <a href="#" target="_blank">Liana Mc Manus</a>. <a href="/?q=data" target="_top">Get data and meta-information</a></small></span><br/><br/>
+  <ul>
     <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span>0 &ndash; 10%</li>
     <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span>10% &ndash; 20%</li>
     <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span>20% &ndash; 40%</li>
     <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span>40% &ndash; 50%</li>
     <li><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&gt; 50%</li>
-</ul>
+  </ul>
 </div>
 
 <div id="leg-govEng" class="legendOL" ref="lmes_govEng">
-<span>Governance Engagement Risk: the higher the engagment score (0&ndash;100), the lower the risk<br/><small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
-<ul>
-  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk (80&ndash;100)</li>
-  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk (60&ndash;80)</li>
-  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk(40&ndash;60)</li>
-  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk (20&ndash;40)</li>
-  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very high risk (0&ndash;20)</li>
-</ul>
+  <span>Governance Engagement Risk: the higher the engagment score (0&ndash;100), the lower the risk<br/><small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
+  <ul>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk (80&ndash;100)</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk (60&ndash;80)</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk(40&ndash;60)</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk (20&ndash;40)</li>
+    <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very high risk (0&ndash;20)</li>
+  </ul>
 </div>
 
 <div id="leg-govInt" class="legendOL" ref="lmes_govInt">
-<span>Governance Integration Risk: the higher the score (0.0&ndash;1.0, the lower the risk <small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
-<ul>
-  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk(0.8&ndash;1.0)</li>
-  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk (0.6&ndash;0.8)</li>
-  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk (0.4&ndash;0.6)</li>
-  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk (0.2&ndash;0.4)</li>
-  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very High risk (0.0&ndash;0.2)</li>
-</ul>
+  <span>Governance Integration Risk: the higher the score (0.0&ndash;1.0, the lower the risk <small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
+  <ul>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk(0.8&ndash;1.0)</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk (0.6&ndash;0.8)</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk (0.4&ndash;0.6)</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk (0.2&ndash;0.4)</li>
+    <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very High risk (0.0&ndash;0.2)</li>
+  </ul>
 </div>
 
 <div id="leg-govCompl" class="legendOL" ref="lmes_govCompl">
-<span>Governance Completeness Risk: the higher the score (0&ndash;100), the lower the risk<br/><small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
-<ul>
-  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk (80&ndash;100)</li>
-  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk (60&ndash;80)</li>
-  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk(40&ndash;60)</li>
-  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk (20&ndash;40)</li>
-  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very high risk (0&ndash;20)</li>
-</ul>
+  <span>Governance Completeness Risk: the higher the score (0&ndash;100), the lower the risk<br/><small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
+  <ul>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk (80&ndash;100)</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk (60&ndash;80)</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk(40&ndash;60)</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk (20&ndash;40)</li>
+    <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very high risk (0&ndash;20)</li>
+  </ul>
 </div>
 
 
 <div id="leg-govEngCat" class="legendOL" ref="lmes_govEngCat">
-<span>Governance Engagement Categories: the higher the engagement, the lower the risk <small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
-<ul>
-  <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk</li>
-  <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk</li>
-  <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk</li>
-  <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk</li>
-  <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very high risk</li>
-</ul>
+  <span>Governance Engagement Categories: the higher the engagement, the lower the risk <small>source: Robin Mahon. <a href="http://onesharedocean.org/?q=data#331" target="_top">Get data and meta-information</a></small></span><br/><br/>
+  <ul>
+    <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very low risk</li>
+    <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Low risk</li>
+    <li><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Medium risk</li>
+    <li><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>High risk</li>
+    <li><span style="background-color:#D8232A;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Very high risk</li>
+  </ul>
 </div>
 
 <div id="leg-pops_ddt" class="legendOL" ref="lmes_pops_ddt">
   <span>POPS: DDT score <small>source: Hideshige TAKADA. <a href="http://onesharedocean.org/?q=data#332" target="_top">Get data and meta-information</a></small></span><br/><br/>
-Risk level:
+  Risk level:
   <ul>
     <li><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1: Very low</li>
     <li><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2: Low</li>
@@ -428,3 +405,16 @@ Risk level:
   </ul>
 </div>
 
+<div id="leg-descProductivity" class="legendOL">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<div id="leg-lmes" class="legendOL" style="display:block;">
+  <p>The health of the Large Marine Ecosystems (LMEs) is represented through a series of indicators, grouped by categories: productivity, fish and fisheries, pollution, socio-economics and governance.
+    In addition, some of those indicators are also available for the Western Pacific Warm Pool (WPWP).
+    The LMEs are displayed in green on the above map, and the WPWP is displayed in blue.</p>
+
+  <p>You can display those indicators by selecting them in one of the categories in the right hand side menu. Click on a category to list the available indicator, then click on the indicator to display it. This view let you see a global view of an indicator.</p>
+
+  <p>To get more information about a specific LME, you can click on an LME on the map to select it, then click on the “read the LME factsheet” button that appears on top of the map. Alternatively, you can search for an LME by typing either its code number (from 1 to 66) or a part of its name in the search box. You can also click on the “Choose an LME” button that will display the complete list of LMEs.</p>
+</div>
