@@ -172,7 +172,8 @@ jQuery(document).ready(function(){
 	  <ul>
 	    <li><span onclick="showLayer('chla',this);">Chlorophyll-A</span></li>
 	    <li><span onclick="showLayer('chlachange',this);">Chlorophyll-A<br/>(% change)</span></li>
-	    <li><span onclick="showLayer('pp_mean',this);" >Primary productivity</span></li>
+	    <li><span onclick="showLayer('pp_group', this)">Primary productivity group</span></li>
+<!--	    <li><span onclick="showLayer('pp_mean',this);" >Primary productivity</span></li> -->
 	    <li><span onclick="showLayer('pp_trend',this);" >Primary productivity<br/>(% change)</span></li>
 	    <li><span onclick="showLayer('sst_net_change',this);">SST net change</span></li>
 	  </ul>
@@ -316,6 +317,14 @@ jQuery(document).ready(function(){
     {layerId:'chlachange', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
 
+    var pp_group=new OpenLayers.Layer.WMS(
+    "PP_Level",
+    GWCLMES,
+    {layers:"lmes:lmes_chl_pp_and_trends", transparent:true, styles:'lmes_ppd_group',format:'image/png'},
+    {layerId:'pp_group', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+    );
+
+/*
     var pp_mean=new OpenLayers.Layer.WMS(
     "PP_MEAN",
     //"http://onesharedocean.org/geoserver/lmes/wms",
@@ -323,7 +332,7 @@ jQuery(document).ready(function(){
     {layers:"lmes:lmes_chl_pp_and_trends", transparent:true, styles:'lmes_ppy',format:'image/png'},
     {layerId:'pp_mean', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
     );
-
+*/
     var pp_trend=new OpenLayers.Layer.WMS(
     "PP_TREND",
     //"http://onesharedocean.org/geoserver/lmes/wms",
@@ -489,8 +498,8 @@ jQuery(document).ready(function(){
     {layerId:'merged_ind2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
     );
 
-<!--
-    var icepn = new OpenLayers.Layer.WMS(
+/*
+   var icepn = new OpenLayers.Layer.WMS(
     "ICEP N",
     "http://onesharedocean.org/geoserver/lmes/wms",
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep_n', transparent:true, format:'image/png'},
@@ -503,7 +512,7 @@ jQuery(document).ready(function(){
     {layers:"lmes:nutrients_icep_LMES66", styles:'lmes_nutrients_icep_p', transparent:true, format:'image/png'},
     {layerId:'icep_p', singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
     );
--->
+*/
     var plasticsModelMicroCount = new OpenLayers.Layer.WMS(
     "Micro plastics",
 //    "http://onesharedocean.org/geoserver/lmes/wms",
@@ -566,9 +575,9 @@ jQuery(document).ready(function(){
 
     //Add layers to map objects
     map.addLayers([
-    worldtop, //always in first position
+    worldtop,
     lmes,
-    chla, chlachange, pp_mean, pp_trend,
+    chla, chlachange, pp_group, pp_mean, pp_trend,
     sst_net_change,
     coral,
     mangroves,
