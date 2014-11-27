@@ -43,6 +43,15 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
    jQuery("#cumulDetail").html("FAO Fishing Area: "+codeMapping[areaCode]+" ("+areaCode+")"+'<br/>'+text);
  };
 
+ function displayDataFromName(Name) {
+   thisData = dataCumul[Name];
+   text='<br/>';
+   for (ii=0; ii< thisData.length; ii++) {
+     text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
+   }
+   jQuery("#cumulDetail").html("FAO Fishing Area: "+Name+" ("+reverseMapping[Name]+")"+'<br/>'+text);
+ };
+
  var dataCumul={};
  var dataCumulHeader=[];
  var cumul={name:'Cumulative Index', data:[], type:'column'};
@@ -54,6 +63,16 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
                   61:'Pacific, Northwest',
                   67:'Pacific, Northeast', 71:'Pacific, Western Central', 77:'Pacific, Eastern Central',
                   81:'Pacific, Southwest', 87:'Pacific, Southeast', 88:'Pacific, Antarctic'};
+ 
+ var reverseMapping={'Arctic Sea':18,
+                     'Atlantic, Northwest':21, 'Atlantic, Northeast':27, 'Atlantic, Western-Central':31, 'Atlantic, Eastern Central':34,
+                     'Atlantic, Southwest':41, 'Atlantic, Southeast':47, 'Atlantic, Antarctic':48,
+                     'Mediterranean and Black Sea':37,
+                     'Indian Ocean, Western':51, 'Indian Ocean, Eastern':57, 'Indian Ocean, Antarctic And Southern':58,
+                     'Pacific, Northwest':61,
+                     'Pacific, Northeast':67, 'Pacific, Western Central':71, 'Pacific, Eastern Central':77,
+                     'Pacific, Southwest':81, 'Pacific, Southeast':87, 'Pacific, Antarctic':88
+ };
 
 
  var options=({
@@ -65,6 +84,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
    plotOptions:{series:{shadow:false}, column:{colorByPoint:true}},
    legend:{enabled:false},
    tooltip:{valueDecimals:2, formatter:function(){
+     displayDataFromName(this.key);
      return this.key+'<br/>'+this.y.toFixed(2);
    }},
    xAxis:{categories:[],
