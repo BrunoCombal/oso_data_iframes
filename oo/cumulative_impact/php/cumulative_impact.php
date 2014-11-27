@@ -36,20 +36,20 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
  function displayData(areaCode) {
    thisData = dataCumul[codeMapping[areaCode]];
-   text='<br/>';
-   for (ii=0; ii< thisData.length; ii++) {
+   text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
+   for (ii=1; ii< thisData.length; ii++) {
      text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
    }
-   jQuery("#cumulDetail").html("FAO Fishing Area: "+codeMapping[areaCode]+" ("+areaCode+")"+'<br/>'+text);
+   jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area: "+codeMapping[areaCode]+" ("+areaCode+")</span>"+text);
  };
 
  function displayDataFromName(Name) {
    thisData = dataCumul[Name];
-   text='<br/>';
-   for (ii=0; ii< thisData.length; ii++) {
+   text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
+   for (ii=1; ii< thisData.length; ii++) {
      text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
    }
-   jQuery("#cumulDetail").html("FAO Fishing Area: "+Name+" ("+reverseMapping[Name]+")"+'<br/>'+text);
+   jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area: "+Name+" ("+reverseMapping[Name]+")</span>"+text);
  };
 
  var dataCumul={};
