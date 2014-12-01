@@ -540,7 +540,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
         <li class="l1"><span>Fish &amp; Fisheries</span></li>
         <li class="l1"><span>Pollution</span>
           <ul>
-            <li class="l2"><span>Nutrients</span>
+            <li class="l2 level"><span>Nutrients</span>
               <ul>
                 <li class="l3" rel="icep"><span>ICEP</span></li>
                 <li class="l3" rel="icep2030"><span>ICEP (2030)</span></li>
@@ -553,21 +553,21 @@ include('/data/iframes/common/lmesnav/lmenav.php');
                 <li class="l3" rel="merged_ind2050"><span>Merged indicator (2050)</span></li>
               </ul>
             </li>
-            <li class="l2"><span>Plastics</span>
+            <li class="l2 level"><span>Plastics</span>
               <ul>
                 <li class="l3" rel="plasticsmicro"><span>Micro Plastics</span></li>
                 <li class="l3" rel="plasticsmacro"><span>Macro Plastics</span></li>
               </ul>
             </li>
 
-            <li class="l2"><span>POPs</span>
+            <li class="l2 level"><span>POPs</span>
               <ul>
                 <li class="l3" rel="pops_ddt"><span>DDT score</span></li>
                 <li class="l3" rel="pops_hch"><span>HCHs score</span></li>
                 <li class="l3" rel="pops_pcb"><span>PCBs score</span></li>
               </ul>
             </li>
-            <li class="l2"><span>Ecosystem health</span>
+            <li class="l2 level"><span>Ecosystem health</span>
               <ul>
                 <li class="l3" rel="coral"><span>Coral reefs</span></li>
                 <li class="l3" rel="mangroves"><span>Mangroves</span></li>
