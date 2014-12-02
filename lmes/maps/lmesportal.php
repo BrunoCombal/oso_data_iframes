@@ -600,7 +600,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
         <li class="empty"></li>
         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li>
         <li class="empty"></li>
-        <li class="buttonWP" onclick="window.open('/node/242');">Western Pacific Warm Pool</li>
+        <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
         <li class="empty"></li>
         <li class="buttonGCA">Global Comparative Assessment</li>
       </ul>
