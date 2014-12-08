@@ -88,7 +88,7 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
      optionsHide
    );
    map.addLayer(eez);
-   map.setLayerIndex(lmes, layerIndex);
+   map.setLayerIndex(eez, layerIndex);
    layerIndex += 1;
 
    var worldtop=new OpenLayers.Layer.WMS(
@@ -103,6 +103,11 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    map.zoomToExtent(extent);
 
 
+   // hide the layerswitcher button
+   jQuery('#OpenLayers_Control_MinimizeDiv').css("visibility",'hidden');
+   // hide table header
+   jQuery('div.dataLbl').remove();
+
    //Solves the z-index issue with Drupal overlay: canceled and replaced with fixing superfish z-index to a higher value
    // called after the map is instanciated
    //jQuery('#map-id').find('div').first().css('z-index','-99');
@@ -110,24 +115,19 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
 
 
    jQuery('.dataLayersDiv input').each(function(){
-     //console.log(jQuery(this).attr('name'));
      thisName=jQuery(this).attr('name');
      var result = jQuery.grep(layersList, function(e){return e.name == thisName});
 
-     console.log(result);
-     console.log(result.length);
      var thisData=result[0];
 
-     if ( typeof thisData === 'undefined') {
-       console.log('not defined');
-     } else {
+     if ( typeof thisData != 'undefined') {
        moreLink = document.createElement('a');
        jQuery(moreLink)
                           .attr('href', '/node/'+thisData.node)
                           .html(' (more)');
        jQuery(moreLink).insertAfter(jQuery(this).next());
      }
-     console.log('____');
+
      /*
         for (thisLayer in layersList) {
         if (jQuery(this).attr('name') == layersList[ii]["name"]){
