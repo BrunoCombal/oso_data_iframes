@@ -26,22 +26,22 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    var optionsShow={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:true, wrapDateLine:true};
    var optionsHide={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:false, wrapDateLine:true};
 
-   var layersList=[ {layer:"arrangements:cluster_northeast_atlantic", name:"Northeast Atlantic"},
-		    {layer:"arrangements:cluster_northwest_atlantic",name:"Northwest_atlantic"},
-		    {layer:"arrangements:cluster_western_central_atlantic", name:"Western Central Atlantic"},
-		    {layer:"arrangements:cluster_eastern_central_south_atlantic",name:"Eastern Central and South Atlantic"},
-		    {layer:"arrangements:cluster_northeast_pacific",name:"Northeast Pacific"},
-		    {layer:"arrangements:cluster_southeast_pacific",name:"Southeast Pacific"},
-		    {layer:"arrangements:cluster_northwest_pacific",name:"Northwest Pacific"},
-		    {layer:"arrangements:cluster_pacific_islands", name:"Pacific Islands"},
-		    {layer:"arrangements:cluster_southeast_asia",name:"Southeast Asia"},
-		    {layer:"arrangements:cluster_eastern_indian_ocean",name:"Eastern Indian Ocean"},
-		    {layer:"arrangements:cluster_western_indian_ocean",name:"Western Indian Ocean"},
-		    {layer:"arrangements:cluster_baltic_sea", name:"Baltic Sea"},
-		    {layer:"arrangements:cluster_mediterranean_sea", name:"Mediterranean Sea"},
-		    {layer:"arrangements:cluster_black_sea", name:"Black Sea"},
-		    {layer:"arrangements:cluster_arctic", name:"Arctic Ocean"},
-		    {layer:"arrangements:cluster_southern_ocean", name:"Southern Ocean"}
+   var layersList=[ {layer:"arrangements:cluster_northeast_atlantic", name:"Northeast Atlantic", node:"155"},
+                    {layer:"arrangements:cluster_northwest_atlantic",name:"Northwest Atlantic", node:"154"},
+                    {layer:"arrangements:cluster_western_central_atlantic", name:"Western Central Atlantic", node:"156"},
+                    {layer:"arrangements:cluster_eastern_central_south_atlantic",name:"Eastern Central and South Atlantic", node:'157'},
+                    {layer:"arrangements:cluster_northeast_pacific",name:"Northeast Pacific", node:'158'},
+                    {layer:"arrangements:cluster_southeast_pacific",name:"Southeast Pacific", node:'159'},
+                    {layer:"arrangements:cluster_northwest_pacific",name:"Northwest Pacific", node:'230'},
+                    {layer:"arrangements:cluster_pacific_islands", name:"Pacific Islands", node:'160'},
+                    {layer:"arrangements:cluster_southeast_asia",name:"Southeast Asia", node:'161'},
+                    {layer:"arrangements:cluster_eastern_indian_ocean",name:"Eastern Indian Ocean", node:'162'},
+                    {layer:"arrangements:cluster_western_indian_ocean",name:"Western Indian Ocean", node:'163'},
+                    {layer:"arrangements:cluster_baltic_sea", name:"Baltic Sea", node:'153'},
+                    {layer:"arrangements:cluster_mediterranean_sea", name:"Mediterranean Sea", node:'150'},
+                    {layer:"arrangements:cluster_black_sea", name:"Black Sea", node:'151'},
+                    {layer:"arrangements:cluster_arctic", name:"Arctic Ocean", node:'164'},
+                    {layer:"arrangements:cluster_southern_ocean", name:"Southern Ocean", node:'165'}
    ];
 
    var layerIndex=0
@@ -107,6 +107,40 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    // called after the map is instanciated
    //jQuery('#map-id').find('div').first().css('z-index','-99');
    //jQuery('#map-id').css('z-index','-2500');
+
+
+   jQuery('.dataLayersDiv input').each(function(){
+     //console.log(jQuery(this).attr('name'));
+     thisName=jQuery(this).attr('name');
+     var result = jQuery.grep(layersList, function(e){return e.name == thisName});
+
+     console.log(result);
+     console.log(result.length);
+     var thisData=result[0];
+
+     if ( typeof thisData === 'undefined') {
+       console.log('not defined');
+     } else {
+       moreLink = document.createElement('a');
+       jQuery(moreLink)
+                          .attr('href', '/node/'+thisData.node)
+                          .html(' (more)');
+       jQuery(moreLink).insertAfter(jQuery(this).next());
+     }
+     console.log('____');
+     /*
+        for (thisLayer in layersList) {
+        if (jQuery(this).attr('name') == layersList[ii]["name"]){
+        var moreLink = document.createElement('a');
+        jQuery(moreLink)
+        .attr('href', layersList[ii]["node"])
+        .html(' (more...)');
+
+        jQuery(moreLink).insertAfter(jQuery(this).next());
+        }
+        }
+      */
+   });
  });
 </script>
 
@@ -163,7 +197,7 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    font-size:12px;
    font-weight:normal;
    display:inline;
-   }
+ }
  .layersLegend tr, td{
    font-family:Verdana, sans-serif;
    font-size:12px;
