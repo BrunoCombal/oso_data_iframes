@@ -6,6 +6,14 @@ if($templateCache == true){
 	header('Pragma: no-cache'); // HTTP 1.0.
 	header('Expires: 0'); // Proxies.
 }
+$forPrint = false;
+if($_GET['forPrint']){
+	$forPrint = true;
+}
+$forExport = false;
+if($_GET['forExport']){
+	$forExport = true;
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -31,6 +39,81 @@ if($templateCache == true){
 		font-size: 10px;
 		cursor: pointer;
 	  }
+	  #subLegend{
+		font-family: Verdana;
+		font-size: 12px;
+		width:450px;
+		margin:5px auto 20px auto;
+		/*padding-left:51px;*/
+		position: relative;
+		top:-5px;
+	  }
+	  #subLegend ul{
+		padding:0;
+		nargin:0;
+	}
+	  #subLegend li{
+		list-style-type:none;
+		margin-right:50px;
+		float:left;
+	  }
+	  #subLegend div{
+		display:inline;
+	  }
+	  #legendRanges{
+		width: 600px;
+		clear:both;
+		margin:auto auto;
+		position:relative;
+		top:10px;
+	}
+	#legendRanges ul{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		text-align: left;
+	}
+	#legendRanges ul li{
+		float:left;
+		padding-left:20px;
+		font: 12px Verdana;
+	}
+	.legendText{
+		position: relative;
+		top: 4px;
+	}
+	#legendRanges ul li {
+		/*width:160px;*/
+	}
+	#legendRanges ul li div{
+		float:left;
+		margin-right:10px;
+	}
+	#legendRanges ul li div span{
+		position:relative;
+		top:5px;
+	}
+	.score{
+		border-radius:50%; width:20px; height:20px; padding:0px; background-color:#CBCCCB; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 20px Arial, sans-serif;
+	}
+	.l0{
+		background-color: #CBCCCB;
+	}
+	.l1{
+		background-color: #5FBADD;
+	}
+	.l2{
+		background-color: #78BB4B;
+	}
+	.l3{
+		background-color: #E4E344;
+	}
+	.l4{
+		background-color: #EE9F42;
+	}
+	.l5{
+		background-color: #D8232A;
+	}
     </style>
     <script type="text/javascript">
       $(document).ready(function() {
@@ -40,6 +123,7 @@ if($templateCache == true){
 		var plotCounter = -1;
 		var outdata = '../'+"data"+'/';
 		var maxAllowedLMEs = 3;
+		 var availableTags=[ "01 East Bering Sea", "02 Gulf Of Alaska", "03 California Current", "04 Gulf Of California", "05 Gulf Of Mexico", "06 Southeast U.S. Continental Shelf", "07 Northeast U.S. Continental Shelf", "08 Scotian Shelf", "09 Labrador Newfoundland", "10 Insular Pacific Hawaiian", "11 Pacific Central American Coastal", "12 Caribbean Sea", "13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf", "16 East Brazil Shelf", "17 North Brazil Shelf", "18 Canadian Eastern Arctic West Greenland", "19 Greenland Sea", "20 Barents Sea", "21 Norwegian Sea", "22 North Sea", "23 Baltic Sea", "24 Celtic Biscay Shelf", "25 Iberian Coastal", "26 Mediterranean Sea", "27 Canary Current", "28 Guinea Current", "29 Benguela Current", "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "33 Red Sea", "34 Bay Of Bengal", "35 Gulf Of Thailand", "36 South China Sea", "37 Sulu Celebes Sea", "38 Indonesian Sea", "39 North Australian Shelf", "40 Northeast Australian Shelf", "41 East Central Australian Shelf", "42 Southeast Australian Shelf", "43 South West Australian Shelf", "44 West Central Australian Shelf", "45 Northwest Australian Shelf", "46 New Zealand Shelf", "47 East China Sea", "48 Yellow Sea", "49 Kuroshio Current", "50 Sea Of Japan", "51 Oyashio Current", "52 Sea Of Okhotsk", "53 West Bering Sea", "54 Northern Bering Chukchi Seas", "55 Beaufort Sea", "56 East Siberian Sea", "57 Laptev Sea", "58 Kara Sea", "59 Iceland Shelf And Sea", "60 Faroe Plateau", "61 Antarctica", "62 Black Sea", "63 Hudson Bay Complex", "64 Central Arctic", "65 Aleutian Islands", "66 Canadian High Arctic North Greenland" ];
 		
 		Highcharts.SVGRenderer.prototype.symbols.cross = function (x, y, w, h) {
         return ['M', x, y, 'L', x + w, y + h, 'M', x + w, y, 'L', x, y + h, 'z'];
@@ -58,7 +142,7 @@ if($templateCache == true){
 	}
 	//Define the behaviour of the View Data link according to the host permissions
 	$('#viewData').click(function(){
-		var sourceURL = "http://onesharedocean.org/?q=data#190";
+		var sourceURL = "http://onesharedocean.org/data#190";
 		if(sameHost){
 			window.parent.window.location = sourceURL;
 		} else {
@@ -70,7 +154,7 @@ if($templateCache == true){
 		if (window.frameElement != null) {
 			var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
 			if(iFrame != null){
-				iFrame.style.height = '460px';
+				iFrame.style.height = '550px';
 			}
 		}
 	}
@@ -85,12 +169,17 @@ if($templateCache == true){
                      theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}
                     }
              },
-			legend:{align:'center', layout:'horizontal', width:460, itemStyle:{'font-weight': 'normal', 'max-width':'125'}, x:20},
-             title: { text: 'Chlorophyll-a (Northeast U.S. Continental Shelf)', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
+			legend:{align:'center', layout:'horizontal', width:480, itemStyle:{'font-weight': 'normal', 'max-width':'125'}, x:20},
+             title: { text: 'Chlorophyll-A (Northeast U.S. Continental Shelf)', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
              xAxis: { type: 'datetime', dateTimeLabelFormats: { year: '%Y'}, title:{enabled:true, text:'Years'}},
-             yAxis: { title: { text: 'mg.m<sup>-3</sup>' , useHTML:true}, floor:0 },
+             yAxis: { title: { text: 'Chlorophyll-A content (mg.m<sup>-3</sup>)' , useHTML:true}, floor:0 },
              series: [],
              plotOptions:{series:{animation:false}},
+<?php if((!$forPrint) && (!$forExport)){ ?>
+			 exporting: {buttons: {contextButton:{symbol: 'url(/sites/all/themes/oceanskeleton/images/download_24px.png)', _titleKey:''}}/*, chartOptions: {title: { text: ''}}*/},
+<?php } else { ?>
+			exporting: {buttons: {contextButton: false}},
+<?php } ?>
 			 tooltip:{valueDecimals: 2, useHTML: true, formatter: function() {
 				var start = this.series.legendItem.textStr.indexOf('(')+1;
 				var end = this.series.legendItem.textStr.indexOf(')');
@@ -138,26 +227,33 @@ if($templateCache == true){
              iplot=0;
 
 			 
-     $.each(lines, function(lineNo, line) {
+	$.each(lines, function(lineNo, line) {
 		if (line) { // ignore empty line (else lines are not drawn)
-          var items = line.split(' ');
-		  if (lineNo != 0) {
-			switch (items[0]){
-			case "YM":
-				yearmonthmean_series.data.push( [ Date.UTC(parseInt(items[1]), parseInt(items[2]), 15),  parseFloat(items[3]) ] );
+			var items = line.split(' ');
+			//if (lineNo > 0) {
+				switch (items[0]){
+				case "YM":
+					var temp = null;
+					if(!isNaN(items[3])){
+						temp = parseFloat(items[3]);
+					}
+					yearmonthmean_series.data.push( [ Date.UTC(parseInt(items[1]), parseInt(items[2])-1, 01),  temp ] );
+					break;
+				case "YAVG":
+					yearavg_series.data.push( [ Date.UTC(parseInt(items[1]), 5, 15),  parseFloat(items[2]) ] );
 				break;
-			case "YAVG":
-				yearavg_series.data.push( [ Date.UTC(parseInt(items[1]), 06, 15),  parseFloat(items[2]) ] );
+				case "LTA":
+					longterm_series.data.push( [ Date.UTC(1998, 0, 1), parseFloat(items[1]) ] );
+					longterm_series.data.push( [ Date.UTC(2013, 11, 1), parseFloat(items[1]) ] );
 				break;
-			case "LTA":
-				longterm_series.data.push( [ Date.UTC(1997, 01, 01), parseFloat(items[1]) ] );
-				longterm_series.data.push( [ Date.UTC(2013, 12, 31), parseFloat(items[1]) ] );
+				case 'G':
+					var color = getColor(items[1]);
+					jQuery('#sL'+plotCounter).html('LME '+LMECode+': <div class="score '+color+'">&nbsp;&nbsp;&nbsp;&nbsp;</div>');
 				break;
-			}
-			
+				}
+			//}
 		}
-       }
-	 });
+	});
 	
 	
 	
@@ -165,7 +261,6 @@ if($templateCache == true){
     options.series.push(yearmonthmean_series);
 	options.series.push(yearavg_series);
 	options.series.push(longterm_series);
-	
 	if(chart != false) {
 		chart.destroy();
 	}
@@ -176,9 +271,32 @@ if($templateCache == true){
 	chart.addSeries(yearavg_series);
 	chart.addSeries(longterm_series);
 }
+	
+	});
+	
+	function getColor(item){
+		item = parseFloat(item);
+		if(item == 5){
+			item = 'l5';
+		} else if (item == 4){
+			item = 'l4';
+		} else if (item == 3){
+			item = 'l3';
+		} else if (item == 2){
+			item = 'l2';
+		} else if (item == 1){
+			item = 'l1';
+		} else { //if (item == 'Insufficient data' || item == 'no data'){
+			item = 'l0';
+		}
+		return item;
+	}
   
-  });
 }
+
+
+
+
  var chart = false;
  //end f
  //Init Chart
@@ -205,6 +323,8 @@ if($templateCache == true){
 			$('#resetPlot')
 				.click(function(){
 					plotCounter = -1;
+					jQuery('#sL1').html('');
+					jQuery('#sL2').html('');
 					genChart(thisLMECode);
 					
 					//self.history.go(0);
@@ -267,16 +387,36 @@ if($templateCache == true){
 
 </head>
   <body>
-
+<?php if((!$forPrint) && (!$forExport)){ ?>
       <div class="ui-widget" style="margin:auto; width:500px">
 	<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; float:left;" value="Type LME code or name"/>
 	<div id="#results" class="ui-front autocomplete" style="z-index:999 !important" ></div>
 	<input id="addPlot" type="button" value="add LME" disabled="disabled"></input>
 	<input id="resetPlot" type="button" value="Reset plot" disabled="disabled"></input>
       </div>
-
+<?php } ?>
   
     <div id="container" style="min-width:310px; max-width:600px; height:400px; margin:0 auto"></div>
+	<div id="subLegend" style="clear:both">
+		<ul>
+			<li id="sL0"></li>
+			<li id="sL1"></li>
+			<li id="sL2"></li>
+		</ul>
+	</div>
+	<div id="legendRanges">
+			<ul>
+				<li><span class="legendText">Risk level: </span></li>
+				<li><div class="score l5"></div> <span class="legendText">Very high</span></li>
+				<li><div class="score l4"></span></div> <span class="legendText">High</span></li>
+				<li><div class="score l3"></div> <span class="legendText">Menium</span></li>
+				<li><div class="score l2"></div> <span class="legendText">Low</span></li>
+				<li><div class="score l1"></div> <span class="legendText">Very low</span></li>
+			</ul>
+		</div>
+		<br /><br />
+<?php if(!$forPrint){ ?>			
 	<div style="text-align:right"><span id="viewData">Get data and metainformation</span></div>
+<?php } ?>
     </body>
 </html>

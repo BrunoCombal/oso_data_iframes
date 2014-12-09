@@ -3,9 +3,9 @@
 # author: Bruno Combal
 # date: September 2013
 # purpose: read original data and create well-formated data files and create html template files
-
+mapfile="/data/iframes/lmes/factsheets/lme_code_names.csv"
 out='/data/iframes/lmes/factsheets/chla'
-inDir=$out'/CSVS'
+inDir='/data/public_store/lmes_chla'
 template='chla_template.html'
 temp=''
 outddata='data'$temp
@@ -19,53 +19,65 @@ mkdir -p ${outdata}
 echo "Chlorophyle-A dataset"
 echo "==== Starting process ===="
 echo "Processing individual data files..."
-for f in ${inDir}/*.CSV
+for i in $(seq 1 66) 99;
 do
 	#Create individual data files
-	if [[ $f != *67* ]] && [[ $f != *PPD* ]]; then
-		lme=`awk -F ',' '{if (NR == 2){printf "%02d_%s.csv", $2, $1}}' $f | tr '[:upper:]' '[:lower:]' `
-		name=`awk -F ',' '{if (NR == 2){printf "%s", $1}}' $f | tr '[:upper:]' '[:lower:]' `
-		lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
-		lmeNumber=`awk -F ',' '{if (NR == 2){printf "%02d", $2}}' $f `
-		#if [[ $lmeN != 99 ]]; then
-			outfile=${outdata}/${lmeNumber}_data.csv
-			rm -f ${outfile}
-			awk -F ',' '{print "YM", $3, $4, $5}' $f >> ${outfile}
-			
-			
-			#Append year averages for this LME on the outfile
-			for ((iyear=1998; iyear<2014; iyear++)); do
-				data=($(awk -F ',' -v thisyear=${iyear} '{if ($3==thisyear) {print $5} }' ${f}  | dos2unix ))
-				sum=0
-				for ix in ${data[@]}; do
-					sum=`echo "scale=12; ${sum} + ${ix}" | bc`
-				done
-				avg=`echo "scale=12; ${sum} / ${#data[@]}" | bc`
-				echo "YAVG" ${iyear} ${avg} >> ${outfile}
-			done
-			
-			#Append Longtime average to outfile
-			ltAvg=$(awk -F ',' -v thisLME=${lmeNumber} '{if ($2==thisLME) {printf "LTA %s", $8};}' ${inDir}/'67 REGIONS-CHL-LONG-TERM-MEAN.CSV')
-			echo ${ltAvg} >> ${outfile}
-		#fi
-		
-		# create a new html iframe
-		iframe=${outiframe}/chla_${name}.php
-		cp $out/'bin'/${template} ${iframe}
-		
-		# update information in the html page
-		title=($(echo $name | sed 's/_/\ /g'))
-		
-		perl -i -pe 's/CHARTTITLETOREPLACE/Chlorophyll-a ('"${lmeName}"')/' ${iframe}
-		perl -i -pe 's/THISLMECODETOREPLACE/"'${lmeNumber}'"/' ${iframe}
-		perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
-		
-		
-		echo $lmeNumber" ready!"
-	fi
+	fM=$(find ${inDir} -maxdepth 1 -type f ! -size 0 -name "*-$i-CHL-M*") 
+	fY=$(find ${inDir} -maxdepth 1 -type f ! -size 0 -name "*-$i-CHL-Y*") 
+ 	fL=${inDir}/lmes_chla_ppy_trends.csv
 	
+	lmeNumber=`awk -F ',' '{if (NR == 2){printf "%02d", $2}}' $fM `
+	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+	
+	outfile=${outdata}/${lmeNumber}_data.csv
+	rm -f ${outfile}
+	awk -F ',' '{if (NR > 1){print "YM", $4, $5, $6}}' $fM >> ${outfile}
+	awk -F ',' '{if (NR > 1){print "YAVG", $4, $5}}' $fY >> ${outfile}
+	
+	ltAvg=$(awk -F ',' -v thisLME=${lmeNumber} '{if ($2==thisLME) {printf "LTA %s", $5};}' $fL)
+	echo ${ltAvg} >> ${outfile}
+	
+	g=$(awk -F ',' -v thisLME=${lmeNumber} '{if ($2==thisLME) {printf "G %s", $4};}' $fL)
+	echo ${g} >> ${outfile}
+	
+	# create a new html iframe
+	iframe=${outiframe}/chla_${name}.php
+	cp $out/'bin'/${template} ${iframe}
+		
+	# update information in the html page
+	title=($(echo $name | sed 's/_/\ /g'))		
+	perl -i -pe 's/CHARTTITLETOREPLACE/Chlorophyll-A ('"${lmeName}"')/' ${iframe}
+	perl -i -pe 's/THISLMECODETOREPLACE/"'${lmeNumber}'"/' ${iframe}
+	perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
+		
+	
+	echo $lmeNumber' - '$lmeName
 	
 done
+#Create the array for the search box
+arrayLMEs='var availableTags=['
+f=$outdata/temp
+data=$(ls $outdata | grep -v LME | grep -v 99 | sed 's/_.*//g')
+for lmeNumber in $data
+do
+	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+	echo $lmeNumber','$lmeName >> $f
+done
+
+arrayLMEs="$arrayLMEs $(awk -F ',' '{printf "\"%s %s\",\n", $1, $2}' $f)"
+arrayLMEs=$(echo $arrayLMEs | sed -e 's/\(.*\)./\1/')
+arrayLMEs="$arrayLMEs ];"
+#echo $arrayLMEs
+unlink $f
+
+for f in ${outiframe}/*.php
+do
+	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+ done
+
+
 echo "Chlorophyll-A ... DONE!"
 
 # end of script
