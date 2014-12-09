@@ -119,16 +119,16 @@ $(document).ready(function() {
 	  
 	  
   
-        var thisLMECode = 01;
+        var thisLMECode = THISLMECODETOREPLACE;
         var addedLMECode = -1;
 		var plotCounter = -1;
 		var categoryPlots = [thisLMECode];
-		var outdata = '../'+"data"+'/';
+		var outdata = '../'+THISLMEOUTDATA+'/';
 		var lmesData = [];
 		<?php if($zero){ ?>
 			var title = "DIN Loading Category";
 		<?php } else { ?>
-			var title = "DIN Loading Category (East Bering Sea)";
+			var title = "DIN Loading Category (CHARTTITLETOREPLACE)";
 		<?php } ?>
 		
 	//Check if we have access to parent document (normally not if the iframe is loaded from a different host
@@ -141,7 +141,7 @@ $(document).ready(function() {
 	}
 	//Define the behaviour of the View Data link according to the host permissions
 	$('#viewData').click(function(){
-		var sourceURL = "http://onesharedocean.org/data#241";
+		var sourceURL = "http://onesharedocean.org/?q=data#241";
 		if(sameHost){
 			window.parent.window.location = sourceURL;
 		} else {
@@ -169,44 +169,45 @@ function genColumn(lmeNumber)
   
 	if(lmeNumber.toString().length == 1){lmeNumber="0"+lmeNumber;}
 	var rand = Math.floor(Math.random()*999999999);
-	$.get(outdata+'data.csv'<?php if($sourceCache == true){?>+'?uid='+rand<?php } ?>, function(data) {
+	$.get(outdata+lmeNumber+'_data.csv'<?php if($sourceCache == true){?>+'?uid='+rand<?php } ?>, function(data) {
 		var lines = data.split('\n');
-		
+		 var plotLME={};
+				 iplot=0;
+		var tr = document.createElement('TR');
+		var td1 = document.createElement('TD');
 		$.each(lines, function(lineNo, line) {
 			if (line) { // ignore empty line (else lines are not drawn)
-				var items = line.split(',');
-				<?php if(!$zero){ ?>
-				if(items[1] == lmeNumber){
-				<?php } ?>
-				var lme = {
-						lmeNumber: items[1],
-						lmeName: items[0],
-						din2000: items[2],
-						din2030: items[3],
-						din2050: items[4]
-					};
-				
-				var tr = document.createElement('TR');
-				var td1 = document.createElement('TD');
-				$(td1).html(lme.lmeNumber+' '+lme.lmeName).addClass('lmeName');
+				var items = line.split(' ');
+				var tt = items[0]+" ";
+				jQuery.each(availableTags, function(index, value){
+					if(value.indexOf(tt) != -1){
+						tt = value;
+					}
+				});
+				if($(td1).html() == ""){$(td1).html(tt);}
+				$(td1).addClass('lmeName');
 				var td2 = document.createElement('TD');
-				$(td2).html(lme.din2000).addClass(riskClass(lme.din2000));
-				var td3 = document.createElement('TD');
-				$(td3).html(lme.din2030).addClass(riskClass(lme.din2030));
-				var td4 = document.createElement('TD');
-				$(td4).html(lme.din2050).addClass(riskClass(lme.din2050));
-				
-			$('tbody').append(tr);
-			$(tr).append(td1,td2,td3,td4);
-			
-		if($('tbody').find('tr').length >= 2){
+				$(td2).html(items[2]);
+				$(td2).addClass(riskClass(items[2]));
+				$(td2).addClass('eng');
+			}
+			//$('table').append(tr);
+			if($(td1).parents().length == 0){
+				$(tr).append(td1);
+			}
+			$(tr).append(td2);
+			if(iFrame != null){
+				iFrame.style.height = $('#container').height()+200+'px';
+			}
+		});
+		if($('tbody').find('tr').length >= 1){
 		<?php if(!$zero){ ?>
-			var tdX = document.createElement('TD');
+			var td5 = document.createElement('TD');
 			var img = document.createElement('IMG');
 			$(img).attr('src', '/iframes/lmes/images/delete_gray.png');
 			$(img).addClass('deleteRow');
-			$(tdX).append(img);
-			$(tr).append(tdX);
+			$(td5).append(img);
+			$(tr).append(td5);
 			$(img).click(function(){
 				$(this).parents('tr').remove();
 				plotCounter--;
@@ -225,20 +226,25 @@ function genColumn(lmeNumber)
 			});
 		<?php } ?>
 		}else{
-			var tdX = document.createElement('TD');
-			$(tdX).css('width','16.8');
-			$(tr).append(tdX);
+			var td5 = document.createElement('TD');
+			$(td5).css('width','16.8');
+			$(tr).append(td5);
 		}
-				<?php if(!$zero){ ?>
-				}
-				<?php } ?>
+		<?php if($zero){ ?>
+		if($('tbody').find('tr').last().length > 0){
+			var lastTr = $('tbody').find('tr').last();
+			var lastTd = lastTr.find('.lmeName').first();
+			if(parseInt($(lastTd)[0].innerHTML.substring(0,2)) > parseInt(td1.innerHTML.substring(0,2))){
+				$(tr).insertBefore(lastTr);
+			} else {
+				$(tr).insertAfter(lastTr);
 			}
-		});
-			
-		if(iFrame != null){
-			iFrame.style.height = $('#container').height()+200+'px';
+		} else {
+			$('tbody').append(tr);
 		}
-		
+		<?php } else { ?>
+		$('tbody').append(tr);
+		<?php } ?>
 	});
 	
 	
@@ -294,9 +300,14 @@ function genColumn(lmeNumber)
  
 	    //add the jquery search
 	    $(function() {
-		genColumn(thisLMECode);
-		 var availableTags=[ "01 East Bering Sea", "02 Gulf Of Alaska", "03 California Current", "04 Gulf Of California", "05 Gulf Of Mexico", "06 Southeast U.S. Continental Shelf", "07 Northeast U.S. Continental Shelf", "08 Scotian Shelf", "09 Labrador Newfoundland", "10 Insular Pacific Hawaiian", "11 Pacific Central American Coastal", "12 Caribbean Sea", "13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf", "16 East Brazil Shelf", "17 North Brazil Shelf", "18 Canadian Eastern Arctic West Greenland", "19 Greenland Sea", "20 Barents Sea", "21 Norwegian Sea", "22 North Sea", "23 Baltic Sea", "24 Celtic Biscay Shelf", "25 Iberian Coastal", "26 Mediterranean Sea", "27 Canary Current", "28 Guinea Current", "29 Benguela Current", "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "33 Red Sea", "34 Bay Of Bengal", "35 Gulf Of Thailand", "36 South China Sea", "37 Sulu Celebes Sea", "38 Indonesian Sea", "39 North Australian Shelf", "40 Northeast Australian Shelf", "41 East Central Australian Shelf", "42 Southeast Australian Shelf", "43 South West Australian Shelf", "44 West Central Australian Shelf", "45 Northwest Australian Shelf", "46 New Zealand Shelf", "47 East China Sea", "48 Yellow Sea", "49 Kuroshio Current", "50 Sea Of Japan", "51 Oyashio Current", "52 Sea Of Okhotsk", "53 West Bering Sea", "54 Northern Bering Chukchi Seas", "55 Beaufort Sea", "56 East Siberian Sea", "57 Laptev Sea", "58 Kara Sea", "59 Iceland Shelf And Sea", "60 Faroe Plateau", "62 Black Sea", "63 Hudson Bay Complex", "66 Canadian High Arctic North Greenland" ];
-		<?php if(!$zero){ ?>
+		<?php if($zero){ ?>
+			$.each(availableTags, function(index, value){
+				if(value.substring(0,2) != "99"){
+					genColumn(value.substring(0,2));
+				}
+			});
+		<?php } else { ?>
+			genColumn(thisLMECode);
 			$('#printPlot')
 				.click(function(){
 					var text = '/iframes/lmes/factsheets/nutrients/iframes/printAll.php';
@@ -383,7 +394,7 @@ function genColumn(lmeNumber)
 </head>
 <body>
 	<?php if(!$zero){ ?>
-		<img id="printPlot" src="/sites/all/themes/oceanskeleton/images/download_24px.png" style="position:absolute; cursor:pointer; right:200px; top: 0px" />
+		<img id="printPlot" src="/sites/all/themes/oceanskeleton/images/download_24px.png" style="position:absolute; cursor:pointer; right:200px;" />
 	<?php } ?>
 	<div id="title"></div>
 	<?php if(!$zero){ ?>

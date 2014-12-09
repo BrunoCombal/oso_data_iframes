@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# author: Bruno Combal
+# date: September 2013
+# purpose: read original data and create well-formated data files and create html template files
+
 mapfile="/data/iframes/lmes/factsheets/lme_code_names.csv"
 inDir='/data/public_store/lmes_nutrients'
 inFile2000='/lmes_nutrients_loading_eutrophication_2000.csv'
@@ -11,28 +15,43 @@ out="/data/iframes/lmes/factsheets/nutrients"
 outiframe=$out'/iframes'$temp
 outddata='data'$temp
 outdata=$out/$outddata
-fName='data.csv'
 rm -fr $outdata
 rm -fr $outiframe
 mkdir -p ${outiframe}
 mkdir -p ${outdata}
 
-for ((ii=1; ii<67; ii++)); do
-	data2000=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%02d,%s",$1,$17}}' ${inDir}/${inFile2000} | tr -cd '[[:alnum:]].,')
-	data2030=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%s",$17}}' ${inDir}/${inFile2030} | tr -cd '[[:alnum:]].,')
-	data2050=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%s",$17}}' ${inDir}/${inFile2050} | tr -cd '[[:alnum:]].,')
-	if [ ! "${data2000}" = '' ]; then
-	
-		name=$(awk -F ' ' -v thisLME=${ii} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
-	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
-		echo ${lmeName}','${data2000}','${data2030}','${data2050} >> $outdata/data.csv		
-	fi
+#Generate a temporary file with the time series for all the LMEs
+f=${inDir}/${inFile2000}
+awk -F ',' '{if (NR > 1){printf "%02d %s\n", $1, $17}}' $f | while read lmeNumber idc
+do
+	echo "$lmeNumber 2000 $idc" >> $outdata/temp.csv
+done
+f=${inDir}/${inFile2030}
+awk -F ',' '{if (NR > 1){printf "%02d %s\n", $1, $17}}' $f | while read lmeNumber idc
+do
+	echo "$lmeNumber 2030 $idc" >> $outdata/temp.csv
+done
+f=${inDir}/${inFile2050}
+awk -F ',' '{if (NR > 1){printf "%02d %s\n", $1, $17}}' $f | while read lmeNumber idc
+do
+	echo "$lmeNumber 2050 $idc" >> $outdata/temp.csv
 done
 
-#generate the template files
-f=${outdata}/data.csv
-awk -F ',' '{if (NR > 0){printf "%s\n", $2}}' $f | while read lmeNumber
+#divide the data in individual files per LME
+f=${outdata}/temp.csv
+awk -F ' ' '{if (NR > 0){printf "%02d %s %s\n", $1, $2, $3}}' $f | while read lmeNumber year idc
 do
+	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+
+	echo "$lmeNumber $year $idc"  >> $outdata/${lmeNumber}_data.csv
+done
+rm $outdata/temp.csv
+
+#generate the template files
+for f in ${outdata}/*.csv
+do
+	lmeNumber=$(awk -F ' ' '{if (NR == 1) {printf "%s", $1};}' $f)
 	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
 	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
 	
@@ -46,20 +65,9 @@ do
 	perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
 	
 	
-	echo $lmeNumber' - '$lmeName' ... ready!'
-done
-
-arrayLMEs='var availableTags=['
-f=$outdata/$fName
-arrayLMEs="$arrayLMEs $(awk -F ',' '{printf "\"%02d %s\",\n", $2, $1}' $f)"
-arrayLMEs=$(echo $arrayLMEs | sed -e 's/\(.*\)./\1/')
-arrayLMEs="$arrayLMEs ];"
-#echo $arrayLMEs
-
-for f in ${outiframe}/*.php
-do
-	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+	echo $lmeNumber" ... ready!"
 done
 cp $(find ${outiframe} -name $(ls ${outiframe}/ | head -1)) ${outiframe}/printAll.php
+echo "Nutrients ... DONE!"
 
-echo "nutrients ... DONE!"
+# end of script
