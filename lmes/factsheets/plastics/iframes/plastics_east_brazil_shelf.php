@@ -58,6 +58,33 @@ if($templateCache == true){
     if (Highcharts.VMLRenderer) {
         Highcharts.VMLRenderer.prototype.symbols.cross = Highcharts.SVGRenderer.prototype.symbols.cross;
     }
+		//Check if we have access to parent document (normally not if the iframe is loaded from a different host
+	var sameHost = false;
+	try{
+		parent.document;
+		sameHost = true;
+	}catch(e){
+		iFrame = null;
+	}
+	//Define the behaviour of the View Data link according to the host permissions
+	$('#viewData').click(function(){
+		var sourceURL = "http://onesharedocean.org/data#243";
+		if(sameHost){
+			window.parent.window.location = sourceURL;
+		} else {
+			copyToClipboard(sourceURL);
+		}
+	});
+	//If host allows it, resize the frame from within
+	if(sameHost){
+		if (window.frameElement != null) {
+			var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
+			if(iFrame != null){
+				iFrame.style.height = '500px';
+			}
+		}
+	}
+		
 		
 
 		function genChart() {
@@ -86,6 +113,7 @@ if($templateCache == true){
 					}
 				}
 			 },
+			 exporting: {buttons: {contextButton:{symbol: 'url(/sites/all/themes/oceanskeleton/images/download_24px.png)', _titleKey:''}}/*, chartOptions: {title: { text: ''}}*/},
 			 tooltip:{
 				valueDecimals: 2,
 				useHTML: true,
@@ -127,6 +155,7 @@ if($templateCache == true){
 					}
 				}
 			 },
+			 exporting: {buttons: {contextButton:{symbol: 'url(/sites/all/themes/oceanskeleton/images/download_24px.png)', _titleKey:''}}/*, chartOptions: {title: { text: ''}}*/},
 			 tooltip:{
 				valueDecimals: 2,
 				useHTML: true,
@@ -206,32 +235,7 @@ if($templateCache == true){
  //end f
  //Init Chart
  genChart();
-	//Check if we have access to parent document (normally not if the iframe is loaded from a different host
-	var sameHost = false;
-	try{
-		parent.document;
-		sameHost = true;
-	}catch(e){
-		iFrame = null;
-	}
-	//Define the behaviour of the View Data link according to the host permissions
-	$('#viewData').click(function(){
-		var sourceURL = "http://onesharedocean.org/?q=data#243";
-		if(sameHost){
-			window.parent.window.location = sourceURL;
-		} else {
-			copyToClipboard(sourceURL);
-		}
-	});
-	//If host allows it, resize the frame from within
-	if(sameHost){
-		if (window.frameElement != null) {
-			var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
-			if(iFrame != null){
-				iFrame.style.height = '500px';
-			}
-		}
-	}
+	
  
 	    //add the jquery search
 	    $(function() {
