@@ -5,6 +5,10 @@ if($templateCache == true){
 	header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 	header('Pragma: no-cache'); // HTTP 1.0.
 	header('Expires: 0'); // Proxies.
+	$zero = false;
+}
+if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
+	$zero = true;
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -130,7 +134,11 @@ $(document).ready(function() {
 		var categoryPlots = [thisLMECode];
 		var outdata = '../'+"data"+'/data.csv';
 		var lmesData = [];
-		var title = "POPs (East Brazil Shelf)";
+		<?php if($zero){ ?>
+			var title = "POPs";
+		<?php } else { ?>
+			var title = "POPs (East Brazil Shelf)";
+		<?php } ?>
 		
 		//Check if we have access to parent document (normally not if the iframe is loaded from a different host
 	var sameHost = false;
@@ -142,7 +150,7 @@ $(document).ready(function() {
 	}
 	//Define the behaviour of the View Data link according to the host permissions
 	$('#viewData').click(function(){
-		var sourceURL = "http://onesharedocean.org/?q=data#332";
+		var sourceURL = "http://onesharedocean.org/data#332";
 		if(sameHost){
 			window.parent.window.location = sourceURL;
 		} else {
@@ -175,7 +183,9 @@ function genColumn(lmeNumber)
 		$.each(lines, function(lineNo, line) {
 			if (line) { // ignore empty line (else lines are not drawn)
 				var items = line.split(',');
+				<?php if(!$zero){ ?>
 				if(items[0] == lmeNumber){
+				<?php } ?>
 					var lme = {
 						lmeNumber: items[0],
 						lmeName: items[1],
@@ -221,6 +231,7 @@ function genColumn(lmeNumber)
 					$('table').append(tr);
 					$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
 					if($('tbody').find('tr').length > 1){
+						<?php if(!$zero){ ?>
 						var td9 = document.createElement('TD');
 						var img = document.createElement('IMG');
 						$(img).attr('src', '/iframes/lmes/images/delete_gray.png');
@@ -243,6 +254,7 @@ function genColumn(lmeNumber)
 						$(img).mouseleave(function(){
 							$(this).attr('src', '/iframes/lmes/images/delete_gray.png');
 						});
+						<?php } ?>
 					}else{
 						var td5 = document.createElement('TD');
 						$(td5).css('width','16.8');
@@ -274,8 +286,11 @@ function genColumn(lmeNumber)
 					if(iFrame != null){
 						iFrame.style.height = $('#container').height()+200+'px';
 					}
-					
+				<?php if(!$zero){ ?>
 				}
+				<?php } ?>
+					
+				
 			}
 		});
 		
@@ -304,7 +319,7 @@ function genColumn(lmeNumber)
 	}
 	
  } //end function
- genColumn(thisLMECode);
+ 
  
  function showLegendTooltip(item){
 	var itemText = '';
@@ -355,7 +370,16 @@ function genColumn(lmeNumber)
  
 	    //add the jquery search
 	    $(function() {
-		
+		genColumn(thisLMECode);
+		 var availableTags=[ "02 Gulf Of Alaska", "03 California Current", "05 Gulf Of Mexico", "07 Northeast U.S. Continental Shelf", "10 Insular Pacific Hawaiian", "11 Pacific Central American Coastal", "12 Caribbean Sea", "13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf", "16 East Brazil Shelf", "22 North Sea", "23 Baltic Sea", "24 Celtic Biscay Shelf", "25 Iberian Coastal", "26 Mediterranean Sea", "27 Canary Current", "28 Guinea Current", "29 Benguela Current", "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "34 Bay Of Bengal", "35 Gulf Of Thailand", "36 South China Sea", "37 Sulu Celebes Sea", "38 Indonesian Sea", "40 Northeast Australian Shelf", "41 East Central Australian Shelf", "42 Southeast Australian Shelf", "43 South West Australian Shelf", "44 West Central Australian Shelf", "46 New Zealand Shelf", "47 East China Sea", "48 Yellow Sea", "49 Kuroshio Current", "62 Black Sea" ];
+		<?php if(!$zero){ ?>
+			
+			$('#printPlot')
+				.click(function(){ console.log(123);
+					var text = '/iframes/lmes/factsheets/pops/iframes/printAll.php';
+					window.open(text, '_blank');
+				});
+		<?php } ?>
 
 
 			$('#addPlot')
@@ -428,7 +452,7 @@ function genColumn(lmeNumber)
             });
 	    });
 
- var availableTags=[ "02 Gulf Of Alaska", "03 California Current", "05 Gulf Of Mexico", "07 Northeast U.S. Continental Shelf", "10 Insular Pacific Hawaiian", "11 Pacific Central American Coastal", "12 Caribbean Sea", "13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf", "16 East Brazil Shelf", "22 North Sea", "23 Baltic Sea", "24 Celtic Biscay Shelf", "25 Iberian Coastal", "26 Mediterranean Sea", "27 Canary Current", "28 Guinea Current", "29 Benguela Current", "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "34 Bay Of Bengal", "35 Gulf Of Thailand", "36 South China Sea", "37 Sulu Celebes Sea", "38 Indonesian Sea", "40 Northeast Australian Shelf", "41 East Central Australian Shelf", "42 Southeast Australian Shelf", "43 South West Australian Shelf", "44 West Central Australian Shelf", "46 New Zealand Shelf", "47 East China Sea", "48 Yellow Sea", "49 Kuroshio Current", "62 Black Sea" ];
+
 
 $('#title').html(title);
 		
@@ -438,13 +462,18 @@ $('#title').html(title);
 
 </head>
 <body>
+	<?php if(!$zero){ ?>
+		<img id="printPlot" src="/sites/all/themes/oceanskeleton/images/download_24px.png" style="position:absolute; cursor:pointer; right:200px; top:0px" />
+	<?php } ?>
 	<div id="title"></div>
+	<?php if(!$zero){ ?>
 	<div class="ui-widget" style="margin:auto; width:500px">
 		<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; float:left;" value="Type LME code or name"/>
 		<div id="#results" class="ui-front autocomplete" style="z-index:999 !important" ></div>
 		<input id="addPlot" type="button" value="add LME" disabled="disabled"></input>
 		<input id="resetPlot" type="button" value="Reset" disabled="disabled"></input>
 	</div>
+	<?php } ?>
 	<div id="container" style="width:600px; margin:0 auto">
 		<table cellspacing="0" cellpadding="0">
 			<thead>
@@ -460,7 +489,9 @@ $('#title').html(title);
 					<td class="hch" colspan="2">
 						HCHs
 					</td>
+					<?php if(!$zero){ ?>
 					<td></td>
+					<?php } ?>
 				</tr>
 				<tr>
 					<td>LME</td>
@@ -478,16 +509,18 @@ $('#title').html(title);
 		<div id="legendRanges">
 			<ul>
 				<li><span class="legendText">Risk Level:&nbsp;&nbsp;&nbsp;</span></li>
-				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#5FBADD; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Very High</span></li>
-				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#78BB4B; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">High</span></li>
+				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#D8232A; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Very High</span></li>
+				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#EE9F42; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div><span class="legendText">High</span></li>
 				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#E4E344; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Medium</span></li>
-				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#EE9F42; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Low</span></li>
-				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#D8232A; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Very Low</span></li>
+				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#78BB4B; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Low</span></li>
+				<li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#5FBADD; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Very Low</span></li>
 			</ul>
 		</div>
 		<div style="clear:both; font: 12px Verdana, sans-serif; padding:5px; position:absolute" id="legendTooltip"></div>
 	</div>
 	<br/><br/>
+	<?php if(!$zero){ ?>
 	<div style="text-align:right"><span id="viewData">Get data and metainformation</span></div>
+	<?php } ?>
 </body>
 </html>

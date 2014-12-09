@@ -55,6 +55,7 @@ do
 	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
 done
 
+cp $(find ${outiframe} -name $(ls ${outiframe}/ | head -1)) ${outiframe}/printAll.php
 echo "POPs ... DONE!"
 
 # end of script
