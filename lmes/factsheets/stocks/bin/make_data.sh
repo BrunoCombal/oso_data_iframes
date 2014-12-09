@@ -22,9 +22,9 @@ echo "Fisheries -> Stocks"
 echo "==== Starting process ===="
 echo "Processing individual data files..."
 
-TEMPFILE=/tmp/$$.tmp
-echo 1 > TEMPFILE
-awk -F ' ' '{printf "%s %s\n", $1, $2}' $mapfile | sort -n | while read lmeN lme
+TEMPFILE=/tmp/$RANDOM.tmp
+echo 1 > $TEMPFILE
+awk -F ' ' '{printf "%02d %s\n", $1, $2}' $mapfile | sort -n | while read lmeN lme
 do
 	name=$(echo $lme | tr '[:upper:]' '[:lower:]')
 	lmeName=$(echo $name | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
@@ -75,6 +75,27 @@ unlink $TEMPFILE
 
 
 
+#Create de array for the search box
+arrayLMEs='var availableTags=['
+f=$outdata/temp
+data=$(ls $outdata | grep -v LME | grep -e data.csv | sed 's/_.*//g')
+for lmeNumber in ${data[@]}
+do
+	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+		lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+		echo $lmeNumber','$lmeName >> $f
+done
+
+arrayLMEs="$arrayLMEs $(awk -F ',' '{printf "\"%s %s\",\n", $1, $2}' $f)"
+arrayLMEs=$(echo $arrayLMEs | sed -e 's/\(.*\)./\1/')
+arrayLMEs="$arrayLMEs ];"
+#echo $arrayLMEs
+unlink $f
+
+for f in ${outiframe}/*.php
+do
+	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+done
 
 
 
