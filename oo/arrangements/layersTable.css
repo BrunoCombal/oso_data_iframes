@@ -1,0 +1,38 @@
+.selectable{
+       cursor: pointer;
+     }
+     .disabled, .dis{
+       background-color:gray;
+     }
+     .selected, .sel{
+       background-color:#00cc00 !important;
+     }
+     .hover{
+       background-color:orange !important;
+     }
+     .trdissel{
+       background-color: #ccc;
+     }
+
+     table{
+       margin:auto;
+       font-family:Verdana, sans-serif;
+       font-size:12px;
+     }
+     table td{
+       width: 90px;
+       text-align:right;
+       padding-right: 5px;
+     }
+     
+     table thead td{
+       text-align:center;
+       vertical-align:bottom;
+       background-color:#e2e2e2;
+       font-size:13px;
+     }
+     #tableInfo{
+       padding:10px 70px 0px 70px;
+       text-align:left;
+	   text-align:justify;
+     }
