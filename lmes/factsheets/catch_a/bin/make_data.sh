@@ -53,6 +53,29 @@ do
 		echo $lmeNumber '... ready!'
 	fi
 done
+
+#Create de array for the search box
+arrayLMEs='var availableTags=['
+f=$outdata/temp
+data=$(ls $outdata | grep -v LME | sed 's/_.*//g')
+for lmeNumber in ${data[@]}
+do
+	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+		lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+		echo $lmeNumber','$lmeName >> $f
+done
+
+arrayLMEs="$arrayLMEs $(awk -F ',' '{printf "\"%s %s\",\n", $1, $2}' $f)"
+arrayLMEs=$(echo $arrayLMEs | sed -e 's/\(.*\)./\1/')
+arrayLMEs="$arrayLMEs ];"
+#echo $arrayLMEs
+unlink $f
+
+for f in ${outiframe}/*.php
+do
+	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+done
+
 echo "Annual Catch .... DONE!"
 
 # end of script

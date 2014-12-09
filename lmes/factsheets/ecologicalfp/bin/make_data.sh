@@ -25,7 +25,7 @@ echo "Processing individual data files..."
 
 #Creation of the data files
 f=$outdata/$inFile
-awk -F ';' '{if (NR > 1){printf "%0d_data.csv %s %s %s\n", $2, $2, $1, $3}}' $f | sort -n | while read fName lmeN year catchbtm
+awk -F ';' '{if (NR > 1){printf "%02d_data.csv %s %s %s\n", $2, $2, $1, $3}}' $f | sort -n | while read fName lmeN year catchbtm
 do
 	echo $lmeN','$year','$catchbtm >> $outdata/$fName
 done
@@ -53,6 +53,29 @@ do
 		echo $lmeNumber '... ready!'
 	fi
 done
+
+#Create de array for the search box
+arrayLMEs='var availableTags=['
+f=$outdata/temp
+data=$(ls $outdata | grep -v LME | grep -v 99 | grep -e data.csv | sed 's/_.*//g')
+for lmeNumber in ${data[@]}
+do
+	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+		lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+		echo $lmeNumber','$lmeName >> $f
+done
+
+arrayLMEs="$arrayLMEs $(awk -F ',' '{printf "\"%s %s\",\n", $1, $2}' $f)"
+arrayLMEs=$(echo $arrayLMEs | sed -e 's/\(.*\)./\1/')
+arrayLMEs="$arrayLMEs ];"
+#echo $arrayLMEs
+unlink $f
+
+for f in ${outiframe}/*.php
+do
+	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+done
+
 echo "Ecological Footprint ... DONE!"
 
 # end of script
