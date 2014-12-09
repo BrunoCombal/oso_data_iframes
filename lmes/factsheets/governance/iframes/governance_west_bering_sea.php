@@ -6,6 +6,10 @@ if($templateCache == true){
 	header('Pragma: no-cache'); // HTTP 1.0.
 	header('Expires: 0'); // Proxies.
 }
+$zero = false;
+if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
+	$zero = true;
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -78,6 +82,7 @@ if($templateCache == true){
 	}
 	tbody .lmeName{
 		text-align: left;
+		padding-right:10px;
 		/*width:315px;*/
 	}
 	.l1, .l2, .l3, .l4, .l5{
@@ -122,7 +127,11 @@ $(document).ready(function() {
 		var categoryPlots = [thisLMECode];
 		var outdata = '../'+"data"+'/data.csv';
 		var lmesData = [];
-		var title = "Governance (West Bering Sea)";
+		<?php if($zero){ ?>
+			var title = "Governance";
+		<?php } else { ?>
+			var title = "Governance (West Bering Sea)";
+		<?php } ?>
 		
 		//Check if we have access to parent document (normally not if the iframe is loaded from a different host
 	var sameHost = false;
@@ -134,7 +143,7 @@ $(document).ready(function() {
 	}
 	//Define the behaviour of the View Data link according to the host permissions
 	$('#viewData').click(function(){
-		var sourceURL = "http://onesharedocean.org/?q=data#331";
+		var sourceURL = "http://onesharedocean.org/data#331";
 		if(sameHost){
 			window.parent.window.location = sourceURL;
 		} else {
@@ -167,7 +176,9 @@ function genColumn(lmeNumber)
 		$.each(lines, function(lineNo, line) {
 			if (line) { // ignore empty line (else lines are not drawn)
 				var items = line.split(',');
+				<?php if(!$zero){ ?>
 				if(items[0] == lmeNumber){
+				<?php } ?>
 					var lme = {
 						lmeNumber: items[0],
 						lmeName: items[1],
@@ -199,6 +210,7 @@ function genColumn(lmeNumber)
 					$('table').append(tr);
 					$(tr).append(td1,td2,td3,td4);
 					if($('tbody').find('tr').length > 1){
+					<?php if(!$zero){ ?>
 						var td5 = document.createElement('TD');
 						var img = document.createElement('IMG');
 						$(img).attr('src', '/iframes/lmes/images/delete_gray.png');
@@ -221,6 +233,7 @@ function genColumn(lmeNumber)
 						$(img).mouseleave(function(){
 							$(this).attr('src', '/iframes/lmes/images/delete_gray.png');
 						});
+					<?php } ?>
 					}else{
 						var td5 = document.createElement('TD');
 						$(td5).css('width','16.8');
@@ -238,7 +251,9 @@ function genColumn(lmeNumber)
 						iFrame.style.height = $('#container').height()+200+'px';
 					}
 					
+				<?php if(!$zero){ ?>
 				}
+				<?php } ?>
 			}
 		});
 		
@@ -267,7 +282,8 @@ function genColumn(lmeNumber)
 	}
 	
  } //end function
- genColumn(thisLMECode);
+ 
+
  
  function showLegendTooltip(item){
 	var itemText = '';
@@ -297,6 +313,14 @@ function genColumn(lmeNumber)
  
 	    //add the jquery search
 	    $(function() {
+			genColumn(thisLMECode);
+		<?php if(!$zero){ ?>
+			$('#printPlot')
+				.click(function(){
+					var text = '/iframes/lmes/factsheets/governance/iframes/printAll.php';
+					window.open(text, '_blank');
+				});
+		<?php } ?>
 		
 
 
@@ -380,13 +404,18 @@ $('#title').html(title);
 
 </head>
 <body>
+	<?php if(!$zero){ ?>
+		<img id="printPlot" src="/sites/all/themes/oceanskeleton/images/download_24px.png" style="position:absolute; cursor:pointer; right:200px;top:0px" />
+	<?php } ?>
 	<div id="title"></div>
+	<?php if(!$zero){ ?>
 	<div class="ui-widget" style="margin:auto; width:500px">
 		<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; float:left;" value="Type LME code or name"/>
 		<div id="#results" class="ui-front autocomplete" style="z-index:999 !important" ></div>
 		<input id="addPlot" type="button" value="add LME" disabled="disabled"></input>
 		<input id="resetPlot" type="button" value="Reset" disabled="disabled"></input>
 	</div>
+	<?php } ?>
 	<div id="container" style="width:600px; margin:0 auto">
 		<table cellspacing="0" cellpadding="0">
 			<thead>
@@ -403,7 +432,9 @@ $('#title').html(title);
 					<td class="inte">
 						Integration
 					</td>
+					<?php if(!$zero){ ?>
 					<td></td>
+					<?php } ?>
 				</tr>
 			</thead>
 		</table>
@@ -421,6 +452,8 @@ $('#title').html(title);
 		<div style="clear:both; font: 12px Verdana, sans-serif; padding:5px; position:absolute" id="legendTooltip"></div>
 	</div>
 	<br/><br/>
+	<?php if(!$zero){ ?>
 	<div style="text-align:right"><span id="viewData">Get data and metainformation</span></div>
-</body>
+	<?php } ?>
+	</body>
 </html>
