@@ -85,18 +85,11 @@
       {layers:"arrangements:RFB_ICCAT", transparent:true, styles:'iccat_baltic_sea'},
       {singleTile:true, visibility:true, opacity:1}
       );
-/*      
-      var ices=new OpenLayers.Layer.WMS(
-      "ICES",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_ICES", transparent:true, styles:'ices_baltic_sea'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
- */
+
       var nafo=new OpenLayers.Layer.WMS(
       "NAFO",
       "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_NAFO", transparent:true, styles:'nafo_nw_altantic'},
+      {layers:"arrangements:RFB_NAFO", transparent:true, styles:'nafo_northwest_altantic'},
       {singleTile:true, visibility:true, opacity:1}
       );
        
@@ -114,29 +107,6 @@
       {singleTile:true, visibility:true, opacity:1}
       );
 
-      var nafo=new OpenLayers.Layer.WMS(
-      "NAFO",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_NAFO", transparent:true, styles:'nafo_northwest_atlantic'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-
-/*
-      var neafc=new OpenLayers.Layer.WMS(
-      "NEAFC",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:RFB_NEAFC", transparent:true, styles:'neafc_baltic_sea'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-*/
-/*
-      var ospar=new OpenLayers.Layer.WMS(
-      "OSPAR",
-      "http://"+thisServer+"/geoserver/arrangements/wms",
-      {layers:"arrangements:OSPAR", transparent:true, styles:'ospar_baltic_sea'},
-      {singleTile:true, visibility:true, opacity:1}
-      );
-*/      
       map.addLayers([worldtop, nasco, nafo,nammco, iccat, lmes, eez, world]);
       map.setLayerIndex(world, 0);
       map.setLayerIndex(iccat, 1);
@@ -160,7 +130,6 @@
 				lmeName='';
 				if (typeof(event.features[0])=='undefined'){document.getElementById('infoGeneral').innerHTML='&nbsp;'; return};
 				for (ii=0; ii< event.features.length; ii++){
-					//console.log(event.features[ii].attributes);
 					thisEEZNAME=event.features[ii].attributes['eez'];
 					thisLMENAME=event.features[ii].attributes['LME_NAME'];
 					if (typeof(thisEEZNAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {eezName+=', '+thisEEZNAME}};
@@ -182,7 +151,6 @@
 				rfbName='';
 				if (typeof(event.features[0])=='undefined'){document.getElementById('infoArrangement').innerHTML='&nbsp;'; return};
 				for (ii=0; ii< event.features.length; ii++){
-					console.log(event.features[ii].attributes);
 					thisRFBNAME=event.features[ii].attributes['RFB'];
 					thisUnepRSID=event.features[ii].attributes['UNEP_RS_ID'];
 					if (typeof(thisUnepRSID)!='undefined') {if (rfbName=='') {rfbName=uneprsid[thisUnepRSID]} else {rfbName+=', '+uneprsid[thisUnepRSID]}}
