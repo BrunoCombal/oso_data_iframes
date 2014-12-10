@@ -7,7 +7,8 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
 <script>
  jQuery(document).ready(function(){
 
-   var extent = new OpenLayers.Bounds(-180,-90,180,90);
+   var extent = new OpenLayers.Bounds(30,-90,390,90);
+   var viewInit = extent;
    var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
    var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
 
@@ -20,7 +21,9 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    var GWC="http://onesharedocean.org/geoserver/gwc/service/wms";
    var TSIZE=new OpenLayers.Size(225, 225);
    var TORG=new OpenLayers.LonLat(-180.0, 90.0);
+   GWCGNRL = GWC
    //       "http://onesharedocean.org/geoserver/general/wms",     
+   GWCARR = GWC
    //       "http://onesharedocean.org/geoserver/arrangements/wms",
    var optionsBL={tiled:true, isBaseLayer:true, displayInLayerSwitcher:false, tileSize:TSIZE, tileOrigin:TORG, visibility:true, wrapDateLine:true};
    var optionsShow={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:true, wrapDateLine:true};
@@ -61,8 +64,10 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    ii=0;
    for (var ii in layersList) {
      thisObject=layersList[ii];
+     thisGWC = GWC;
+     //thisGWC = "http://onesharedocean.org/geoserver/arrangements/wms";
      createdLayers[ii] = new OpenLayers.Layer.WMS(
-       thisObject["name"],GWC, {layers:thisObject["layer"], transparent:true,styles:'',format:'image/png'},optionsShow
+       thisObject["name"], thisGWC, {layers:thisObject["layer"], transparent:true,styles:'gray_transparent_outline',format:'image/png'},optionsShow
      );
      map.addLayer(createdLayers[ii]);
      map.setLayerIndex(createdLayers[ii], layerIndex);
@@ -92,7 +97,7 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    layerIndex += 1;
 
    var worldtop=new OpenLayers.Layer.WMS(
-     "Countries", GWC,
+     "Countries (overlay)", GWCGNRL,
      {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
      optionsShow
    );
@@ -100,7 +105,7 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    map.setLayerIndex(worldtop, layerIndex);
    layerIndex += 1;
 
-   map.zoomToExtent(extent);
+   map.zoomToExtent(viewInit);
 
 
    // hide the layerswitcher button
