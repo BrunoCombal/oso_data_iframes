@@ -18,10 +18,14 @@
 							}
 						}
 						thisCluster.push(obj);
-					}
+					//}
+				}
 				}
 			});
+			
 		});
+		//console.log(JSON.stringify(thisCluster));
+		
 			
 		//Create the table
 		jQuery.each(thisCluster, function(){
@@ -86,7 +90,7 @@
                });
                if(jQuery(this).hasClass('selected')){
                  if(jQuery('.selectable').not(jQuery(this).siblings()).not('.selected').length == 0){
-				 console.log('all selected to this selected');
+				 //console.log('all selected to this selected');
                    jQuery('.selectable')
                               .removeClass('selected')
                               .addClass('disabled');
@@ -102,7 +106,7 @@
                      }
                    });
 				 } else if(jQuery('.selected').not('disabled').not(jQuery(this).siblings()).not(jQuery(this)).length == 0){
-					console.log('selected this to all selected');
+					//console.log('selected this to all selected');
                    jQuery('.selectable')
                          .addClass('selected')
                          .removeClass('disabled');
@@ -112,23 +116,23 @@
                      }
                    });
                  } else {
-					console.log('selected this to disabled');
+					//console.log('selected this to disabled');
                    jQuery(this).parent().find('.selectable')
                          .removeClass('selected')
                          .removeClass('hover')
-                         .addClass('disabled')
-                         .each(cbHandler);
-                   map.getLayer(layer.id).setVisibility(false);
+                         .addClass('disabled');
+					map.getLayer(layer.id).setVisibility(false);
                  }
-               } else
-				console.log('disabled to selected');
-               if(jQuery(this).hasClass('disabled')){
+               } else if(jQuery(this).hasClass('disabled')){
+				//console.log('disabled to selected');
                  map.getLayer(layer.id).setVisibility(true);
                  jQuery(this).parent().find('.selectable')
                     .addClass('selected')
                     .removeClass('disabled')
                     .removeClass('hover');
-               }
+               } else {
+				return false;
+			   }
 		});
 
 	});//end get
