@@ -1,3 +1,6 @@
+<?php
+$geoserver_on = @file ('http://onesharedocean.org/geoserver');
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -43,11 +46,10 @@
 	 <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1/external/jquery/jquery.js"></script>
 	<script>
 	jQuery(document).ready(function(){
-		
-		if(jQuery("link[href='/geoserver/openlayers/theme/default/style.css']").prop('sheet').cssRules.length == 0){
-			jQuery('#map-id').html('<div style="text-align:center;width:400px;margin:auto;font-family:sans-serif"><h3>The map service is currently down.<br/>Please try again in a few minutes.</h3><span style="font-size:100px;color:red">&#8856</span></div>');
+	<?php if(!$geoserver_on){ ?>	
+			jQuery('#map-id').html('<div style="text-align:center;width:400px;margin:auto;font-family:sans-serif"><h3>The map service is currently down.<br/>Please try again in a few minutes.</h3><span style="font-size:100px;color:red">&#8856</span></div>').height(300);
 			return false;
-		}
+	<?php } ?>
 		
 		//Check if we have access to parent document (normally not if the iframe is loaded from a different host
    var sameHost = false;
@@ -57,15 +59,6 @@
    }catch(e){
 	 iFrame = null;
    }
-   //Define the behaviour of the View Data link according to the host permissions
-   $('#viewData').click(function(){
-	 var sourceURL = "http://onesharedocean.org/data#245";
-	 if(sameHost){
-	   window.parent.window.location = sourceURL;
-	 } else {
-	   copyToClipboard(sourceURL);
-	 }
-   });
    
 	
 		 var thisServer=window.location.hostname;
@@ -113,84 +106,84 @@
 		   "CCBSP",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_CCBSP", transparent:true, styles:'blue_0025ee_transparent'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'ccbsp', displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'CCBSP', displayInLayerSwitcher:false}
 		 );
 		 
 		 var iccat=new OpenLayers.Layer.WMS(
 		   "ICCAT",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_ICCAT", transparent:true, styles:'iccat_wca'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'iccat',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'ICCAT',displayInLayerSwitcher:false}
 		 );
 		 
 		 var ices=new OpenLayers.Layer.WMS(
 		   "ICES",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_ICES", transparent:true, styles:'green_00cc68_transparent'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'ices',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'ICES',displayInLayerSwitcher:false}
 		 );
 		 
 		 var nafo=new OpenLayers.Layer.WMS(
 		   "NAFO",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_NAFO", transparent:true, styles:'lime_dff400_transparent'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'nafo',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'NAFO',displayInLayerSwitcher:false}
 		 );
 		 
 		 var nammco=new OpenLayers.Layer.WMS(
 		   "NAMMCO",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_NAMMCO", transparent:true, styles:'orange_ff7c00_transparent'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'nammco',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'NAMMCO',displayInLayerSwitcher:false}
 		 );
 		 
 		 var nasco=new OpenLayers.Layer.WMS(
 		   "NASCO",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_NASCO", transparent:true, styles:'purple_ee00e7_transparent'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'nasco',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'NASCO',displayInLayerSwitcher:false}
 		 );
 		 
 		 var neafc=new OpenLayers.Layer.WMS(
 		   "NEAFC",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_NEAFC", transparent:true, styles:'violet_5c00ee_transparent'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'neafc',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'NEAFC',displayInLayerSwitcher:false}
 		 );
 		 
 		 var council = new OpenLayers.Layer.WMS(
 		   "Arctic council",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:Arctic", transparent:true, styles:'nammco_wca'},
-		   {singleTile:true, visibility:true, opacity:1, layerId:'council',displayInLayerSwitcher:false}
+		   {singleTile:true, visibility:true, opacity:1, layerId:'Arctic',displayInLayerSwitcher:false}
 		 );
 		 
 		 var iphc = new OpenLayers.Layer.WMS(
 		   "IPHC",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_IPHC", transparent:true, styles:'lime_dff400_transparent'},
-		   {tiled:false, visibility:true, opacity:1, layerId:'iphc',displayInLayerSwitcher:false}
+		   {tiled:false, visibility:true, opacity:1, layerId:'IPHC',displayInLayerSwitcher:false}
 		 );
 		 
 		 var pices = new OpenLayers.Layer.WMS(
 		   "PICES",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RFB_PICES", transparent:true, styles:'red_ff0038_transparent'},
-		   {tiled:false, visibility:true, opacity:1, layerId:'pices',displayInLayerSwitcher:false}
+		   {tiled:false, visibility:true, opacity:1, layerId:'PICES',displayInLayerSwitcher:false}
 		 );
 		 
 		 var ospar = new OpenLayers.Layer.WMS(
 		   "OSPAR",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:OSPAR", transparent:true, styles:'violet_5c00ee_transparent'},
-		   {tiled:false, visibility:true, opacity:1, layerId:'ospar',displayInLayerSwitcher:false}
+		   {tiled:false, visibility:true, opacity:1, layerId:'OSPAR',displayInLayerSwitcher:false}
 		 );
 
 		 var nowpap = new OpenLayers.Layer.WMS(
 		   "NOWPAP",
 		   "http://onesharedocean.org/geoserver/arrangements/wms",
 		   {layers:"arrangements:RS_North_West_Pacific_UNEP", transparent:true, styles:'yellow_ffe200_transparent'},
-		   {tiled:false, visibility:true, opacity:1, layerId:'nowpap', displayInLayerSwitcher:false}
+		   {tiled:false, visibility:true, opacity:1, layerId:'NOWPAP', displayInLayerSwitcher:false}
 		 );
 		 
 		 map.addLayers([worldtop,world]);
@@ -274,7 +267,7 @@
 	    <table cellspacing="0" cellpadding="0">
           <thead>
             <tr>
-              <td style="background-color:#fff;"></td>
+              <td class="firstTD" style="background-color:#fff;"></td>
               <td theme="integration"></td>
               <td theme="fisheries"></td>
               <td theme="pollution"></td>

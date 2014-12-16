@@ -156,7 +156,6 @@
 				lmeName='';
 				if (typeof(event.features[0])=='undefined'){document.getElementById('infoGeneral').innerHTML='&nbsp;'; return};
 				for (ii=0; ii< event.features.length; ii++){
-					//console.log(event.features[ii].attributes);
 					thisEEZNAME=event.features[ii].attributes['eez'];
 					thisLMENAME=event.features[ii].attributes['LME_NAME'];
 					if (typeof(thisEEZNAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {eezName+=', '+thisEEZNAME}};
@@ -178,7 +177,6 @@
 				rfbName='';
 				if (typeof(event.features[0])=='undefined'){document.getElementById('infoArrangement').innerHTML='&nbsp;'; return};
 				for (ii=0; ii< event.features.length; ii++){
-					console.log(event.features[ii].attributes);
 					thisRFBNAME=event.features[ii].attributes['RFB'];
 					thisUnepRSID=event.features[ii].attributes['UNEP_RS_ID'];
 					if (typeof(thisUnepRSID)!='undefined') {if (rfbName=='') {rfbName=uneprsid[thisUnepRSID]} else {rfbName+=', '+uneprsid[thisUnepRSID]}}

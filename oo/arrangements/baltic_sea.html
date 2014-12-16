@@ -188,7 +188,6 @@
 	   rfbName='';
 	   if (typeof(event.features[0])=='undefined'){document.getElementById('infoArrangement').innerHTML='&nbsp;'; return};
 	   for (ii=0; ii< event.features.length; ii++){
-	     console.log(event.features[ii].attributes);
 	     thisRFBNAME=event.features[ii].attributes['RFB'];
 	     thisUnepRSID=event.features[ii].attributes['UNEP_RS_ID'];
 	     if (typeof(thisUnepRSID)!='undefined') {if (rfbName=='') {rfbName=uneprsid[thisUnepRSID]} else {rfbName+=', '+uneprsid[thisUnepRSID]}}

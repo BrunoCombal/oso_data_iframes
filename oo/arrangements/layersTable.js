@@ -1,48 +1,31 @@
 //TEMPORARY -> CREATE TABLE
-	var themes = ['integration', 'fisheries', 'pollution', 'biodiversity', 'climate', 'abnj'];
+	var allClusters = {"layer":["integration","fisheries","pollution","biodiversity","climate","abnj"],"Abidjan":["pollution","abnj"],"ACAP":["biodiversity","abnj"],"AFC":["pollution","abnj"],"Antigua":["fisheries","pollution","biodiversity","abnj"],"APFIC":["fisheries","abnj"],"Arctic":["fisheries","pollution","biodiversity","climate","abnj"],"ATS":["fisheries","pollution","biodiversity","climate","abnj"],"Barcelona":["abnj"],"BOBP-IGO":["fisheries","abnj"],"Bucharest":["biodiversity","abnj"],"BWMC":["pollution","abnj"],"Cartagena":["biodiversity","abnj"],"CBD":["biodiversity","abnj"],"CCAMLR":["fisheries","biodiversity","abnj"],"CCAS":["biodiversity","abnj"],"CCBSP":["fisheries","abnj"],"CCSBT":["fisheries","abnj"],"CECAF":["fisheries","abnj"],"CITES":["fisheries","biodiversity","abnj"],"CMS":["fisheries","biodiversity","abnj"],"COMHAFAT":["fisheries","abnj"],"FFAC":["fisheries","abnj"],"GFCM":["fisheries","abnj"],"GPA":["pollution","abnj"],"HELCON":["pollution","biodiversity","abnj"],"Hong Kong":["pollution","abnj"],"HSDN":["fisheries","abnj"],"IAC":["biodiversity","abnj"],"IATTC":["fisheries","abnj"],"ICCAT":["fisheries","abnj"],"ICES":["integration","fisheries","pollution","biodiversity","climate","abnj"],"IOTC":["fisheries","abnj"],"IPHC":["fisheries","abnj"],"IWC":["fisheries","abnj"],"Jeddah":["abnj"],"Kuwait":["pollution","abnj"],"Lima":["pollution","abnj"],"London":["pollution","climate","abnj"],"MARPOL":["pollution","abnj"],"Montreal":["pollution","abnj"],"NAFO":["fisheries","abnj"],"Nairobi":["biodiversity","abnj"],"NAMMCO":["fisheries","biodiversity","abnj"],"NASCO":["fisheries","abnj"],"NEAFC":["fisheries","abnj"],"Niue":["fisheries","abnj"],"Noumea":["pollution","biodiversity","climate","abnj"],"NPAFC":["fisheries","abnj"],"OPRC":["pollution","abnj"],"OSPAR":["pollution","biodiversity","abnj"],"PICES":["fisheries","abnj"],"PIF":["integration","fisheries","pollution","biodiversity","climate","abnj"],"PNA":["fisheries","abnj"],"PSC":["fisheries","abnj"],"SCAR":["integration","fisheries","pollution","biodiversity","climate","abnj"],"SEAFDEC":["fisheries","abnj"],"SEAFO":["fisheries","abnj"],"SIOFA":["fisheries","biodiversity","abnj"],"SP":["fisheries","abnj"],"SPC":["fisheries","abnj"],"SPRFMO":["fisheries","abnj"],"Stockholm":["pollution","abnj"],"FAO":["fisheries","abnj"],"UNCLOS":["fisheries","pollution","biodiversity","abnj"],"UNFCC":["climate","abnj"],"UNFSA":["fisheries","pollution","biodiversity","abnj"],"Vienna":["pollution","abnj"],"WCPFC":["fisheries","abnj"],"WECAFC":["fisheries","biodiversity","abnj"],"ACCOBAMS":["fisheries","biodiversity","abnj"],"ACP":["biodiversity","abnj"],"APEC":["fisheries","abnj"],"ASCOBANS":["fisheries","biodiversity","abnj"],"ASEAN":["integration","fisheries","pollution","biodiversity","climate","abnj"],"BCC":["fisheries","pollution","biodiversity","abnj"],"BEAC":["pollution","biodiversity","abnj"],"BIMSTEC":["integration","fisheries","pollution","biodiversity","climate","abnj"],"Bonn":["pollution","abnj"],"BRC":["pollution","biodiversity","abnj"],"COBSEA":["pollution","biodiversity","abnj"],"COREP":["fisheries","abnj"],"CPPS":["fisheries","pollution","biodiversity","abnj"],"CRFM":["fisheries","abnj"],"Dugong":["biodiversity","abnj"],"EU":["fisheries","biodiversity","abnj"],"FCWC":["fisheries","abnj"],"IOSEA":["biodiversity","abnj"],"Mexus":["pollution","abnj"],"NOWPAP":["integration","fisheries","pollution","biodiversity","climate","abnj"],"OLDEPESCA":["fisheries","abnj"],"OSPESCA":["fisheries","abnj"],"PEMSEA":["pollution","abnj"],"PRCM":["fisheries","abnj"],"RECOFI":["fisheries","abnj"],"Rio":["fisheries","pollution","abnj"],"SAARC":["integration","fisheries","pollution","biodiversity","abnj"],"SACEP":["pollution","abnj"],"SADC":["fisheries","abnj"],"SRFC":["fisheries","abnj"],"SWIOFC":["fisheries","abnj"]};
+	
+	var themes = allClusters.layer;
 	var thisCluster = [];
 	
-	jQuery.get('layers_themes_matrix_input.txt',function(data){
+	
+	
 		//fill the array of the layers, according to the layers present on the file
-		var lines = data.split('\n');
-		jQuery.each(lines, function(lineNo, line){
-			var lineArr = line.split(';');
-			jQuery.each(map.layers, function(){
-				
-				if(jQuery(this).prop('layerId')){
-					if(jQuery(this).prop('layerId').toLowerCase() === lineArr[0].toLowerCase()){
-						var obj = {layerId:lineArr[0], themes:[]};
-						for(var i=1;i<lineArr.length;i++){
-							if(lineArr[i] != ""){
-								obj.themes.push(themes[i-1]);
-							}
-						}
-						thisCluster.push(obj);
-					//}
-				}
-				}
-			});
-			
-		});
-		//console.log(JSON.stringify(thisCluster));
-		
-			
-		//Create the table
-		jQuery.each(thisCluster, function(){
+		jQuery.each(map.layers, function(){
 			if(jQuery(this).prop('layerId')){
+				var layerId = jQuery(this).prop('layerId');
 				var layer = this;
 				var tr = document.createElement('TR');
 				var td0 = document.createElement('TD');
 				jQuery(td0)
-					.html(this.layerId)
+					.html(this.name)
+					.addClass('firstTD')
 					.appendTo(tr);
 				jQuery.each(themes, function(){
 					var td = document.createElement('TD');
-					if(layer.themes.indexOf(this.toString()) > -1 ){
-						jQuery(td)
-							.addClass('selectable')
-							.attr('xlayer', layer.layerId)
-							.attr('xtheme', this.toString());
+					if(allClusters[layerId]){
+						if(allClusters[layerId].indexOf(this.toString()) > -1 ){
+							jQuery(td)
+								.addClass('selectable')
+								.attr('xlayer', layerId.toLowerCase())
+								.attr('xtheme', this.toString());
+						}
 					}
 					jQuery([td]).appendTo(tr);
 				});
@@ -62,6 +45,7 @@
 	   var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
 	   if(iFrame != null){
 		 iFrame.style.height = jQuery('table').height()+jQuery('#map-id').height()+jQuery('#tableInfo').height()+100+"px";
+		 iFrame.style.width = '960px';
 		}
 	 }
    }
@@ -135,7 +119,7 @@
 			   }
 		});
 
-	});//end get
+	
 
 	function cbHandler(num,el){
 		var cI = jQuery(el).prop('cellIndex');

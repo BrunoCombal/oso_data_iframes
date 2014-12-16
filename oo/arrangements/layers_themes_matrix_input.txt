@@ -93,7 +93,7 @@ Jeddah;;;;;;
 Lima;;;1;;;
 Mexus;;;1;;;
 Nairobi;;;;1;;
-NAWPAP;1;1;1;1;1;
+NOWPAP;1;1;1;1;1;
 OLDEPESCA;;1;;;;
 OSPESCA;;1;;;;
 PEMSEA;;;1;;;

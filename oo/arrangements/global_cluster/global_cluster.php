@@ -1,11 +1,45 @@
 <?php
 drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
+
+$geoserver_on = @file ('http://onesharedocean.org/geoserver');
 ?>
 
 <link rel="stylesheet" href="/geoserver/openlayers/theme/default/style.css" type="text/css" />
 
 <script>
  jQuery(document).ready(function(){
+	
+	var layersList=[ {layer:"arrangements:cluster_northeast_atlantic", name:"Northeast Atlantic", node:"155",layerId:"ne_atlantic"},
+                    {layer:"arrangements:cluster_northwest_atlantic",name:"Northwest Atlantic", node:"154", layerId:"nw_atlantic"},
+                    {layer:"arrangements:cluster_western_central_atlantic", name:"Western Central Atlantic", node:"156",layerId:"wc_atlantic"},
+                    {layer:"arrangements:cluster_eastern_central_south_atlantic",name:"Eastern Central and South Atlantic", node:'157',layerId:"ecs_atlantic"},
+                    {layer:"arrangements:cluster_northeast_pacific",name:"Northeast Pacific", node:'158',layerId:"ne_pacific"},
+                    {layer:"arrangements:cluster_southeast_pacific",name:"Southeast Pacific", node:'159',layerId:"se_pacific"},
+                    {layer:"arrangements:cluster_northwest_pacific",name:"Northwest Pacific", node:'230',layerId:"sw_pacific"},
+                    {layer:"arrangements:cluster_pacific_islands", name:"Pacific Islands", node:'160',layerId:"pacific_islands"},
+                    {layer:"arrangements:cluster_southeast_asia",name:"Southeast Asia", node:'161',layerId:"se_asia"},
+                    {layer:"arrangements:cluster_eastern_indian_ocean",name:"Eastern Indian Ocean", node:'162',layerId:"e_indian"},
+                    {layer:"arrangements:cluster_western_indian_ocean",name:"Western Indian Ocean", node:'163',layerId:"w_indian"},
+                    {layer:"arrangements:cluster_baltic_sea", name:"Baltic Sea", node:'153',layerId:"baltic_sea"},
+                    {layer:"arrangements:cluster_mediterranean_sea", name:"Mediterranean Sea", node:'150',layerId:"mediterranean_sea"},
+                    {layer:"arrangements:cluster_black_sea", name:"Black Sea", node:'151',layerId:"black_sea"},
+                    {layer:"arrangements:cluster_arctic", name:"Arctic Ocean", node:'164',layerId:"arctic"},
+                    {layer:"arrangements:cluster_southern_ocean", name:"Southern Ocean", node:'165',layerId:"southern"}
+	];
+ 
+ <?php if(!$geoserver_on){ ?>
+	//PLACE SOMETHING HERE
+	jQuery('#clearAll').css('display', 'none');
+	jQuery('.ulColumns input').css('display', 'none');
+	jQuery('.outerLsControls').css('display', 'none');
+	for (var ii in layersList) {
+		thisObject=layersList[ii];
+		jQuery('#'+thisObject["layerId"]).find('a').attr('href','http://onesharedocean.org/node/'+thisObject["node"]);
+	}
+ <?php } else { ?>
+ 
+ 
+ 
 
    var extent = new OpenLayers.Bounds(30,-90,390,90);
    var viewInit = extent;
@@ -29,23 +63,6 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
    var optionsShow={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:true, wrapDateLine:true};
    var optionsHide={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:false, wrapDateLine:true};
 
-   var layersList=[ {layer:"arrangements:cluster_northeast_atlantic", name:"Northeast Atlantic", node:"155",layerId:"ne_atlantic"},
-                    {layer:"arrangements:cluster_northwest_atlantic",name:"Northwest Atlantic", node:"154", layerId:"nw_atlantic"},
-                    {layer:"arrangements:cluster_western_central_atlantic", name:"Western Central Atlantic", node:"156",layerId:"wc_atlantic"},
-                    {layer:"arrangements:cluster_eastern_central_south_atlantic",name:"Eastern Central and South Atlantic", node:'157',layerId:"ecs_atlantic"},
-                    {layer:"arrangements:cluster_northeast_pacific",name:"Northeast Pacific", node:'158',layerId:"ne_pacific"},
-                    {layer:"arrangements:cluster_southeast_pacific",name:"Southeast Pacific", node:'159',layerId:"se_pacific"},
-                    {layer:"arrangements:cluster_northwest_pacific",name:"Northwest Pacific", node:'230',layerId:"sw_pacific"},
-                    {layer:"arrangements:cluster_pacific_islands", name:"Pacific Islands", node:'160',layerId:"pacific_islands"},
-                    {layer:"arrangements:cluster_southeast_asia",name:"Southeast Asia", node:'161',layerId:"se_asia"},
-                    {layer:"arrangements:cluster_eastern_indian_ocean",name:"Eastern Indian Ocean", node:'162',layerId:"e_indian"},
-                    {layer:"arrangements:cluster_western_indian_ocean",name:"Western Indian Ocean", node:'163',layerId:"w_indian"},
-                    {layer:"arrangements:cluster_baltic_sea", name:"Baltic Sea", node:'153',layerId:"baltic_sea"},
-                    {layer:"arrangements:cluster_mediterranean_sea", name:"Mediterranean Sea", node:'150',layerId:"mediterranean_sea"},
-                    {layer:"arrangements:cluster_black_sea", name:"Black Sea", node:'151',layerId:"black_sea"},
-                    {layer:"arrangements:cluster_arctic", name:"Arctic Ocean", node:'164',layerId:"arctic"},
-                    {layer:"arrangements:cluster_southern_ocean", name:"Southern Ocean", node:'165',layerId:"southern"}
-   ];
 
    var layerIndex=0
 
@@ -156,6 +173,7 @@ drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
 			}
 		});
 	});
+	<?php } ?>
  });
 </script>
 
