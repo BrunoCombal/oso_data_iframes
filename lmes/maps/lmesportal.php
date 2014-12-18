@@ -1,8 +1,8 @@
 <?php
 drupal_add_js('sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js');
-drupal_add_js('sites/all/libraries/jquery-ui-1.11.1/jquery-ui.min.js');
 drupal_add_js('/iframes/common/js/lmes.js');
-drupal_add_css('sites/all/libraries/jquery-ui-1.11.1/jquery-ui.min.css');
+drupal_add_library('system', 'ui.autocomplete');
+drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
 include('/data/iframes/common/lmesnav/lmenav.php');
 ?>
@@ -11,7 +11,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
 <script type="text/javascript">
  //Everything is executed and scoped on document ready
  jQuery(document).ready(function(){
-   
+
    ////////////////////// LOGIC FOR THE SEARCH BOX AND THE BUTTONS ////////////////
    jQuery('#lmeNav').css('top','-1px');
    var comboText = "Search for an LME or click on the map";
@@ -23,13 +23,13 @@ include('/data/iframes/common/lmesnav/lmenav.php');
                   jQuery('#buttonLMEs').css('display', 'none');
                   jQuery('#deleteTags').css('display', 'none');
                 })
-         .mouseenter(function(){
-           jQuery('#deleteTags').attr('src', '/iframes/lmes/images/delete_red.png');
-         });
+                .mouseenter(function(){
+                  jQuery('#deleteTags').attr('src', '/iframes/lmes/images/delete_red.png');
+                });
    jQuery('#deleteTags')
-         .mouseleave(function(){
-           jQuery('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
-         });
+                .mouseleave(function(){
+                  jQuery('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
+                });
    jQuery('#tags')
          .keyup(function(){
            if(jQuery('#tags').prop('value') == ""){
@@ -88,8 +88,6 @@ include('/data/iframes/common/lmesnav/lmenav.php');
    var numZoomLevels=2;
    // resolution are: 360/256, 180/256, 90/256, etc... does not exactly match the map
    var resolution = [0.48, 0.24, 0.12];
-
-
 
    var options = {restrictedExtent:extent, maxExtent:extent,
                   // minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:numZoomLevels,
@@ -567,18 +565,18 @@ include('/data/iframes/common/lmesnav/lmenav.php');
                 <li class="l3" rel="pops_pcb"><span>PCBs score</span></li>
               </ul>
             </li>
-            <li class="l2 level"><span>Ecosystem health</span>
-              <ul>
-                <li class="l3" rel="coral"><span>Coral reefs</span></li>
-                <li class="l3" rel="mangroves"><span>Mangroves</span></li>
-                <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
-              </ul>
-            </li>
+          </ul>
+        </li>
+        <li class="l1"><span>Ecosystem health</span>
+          <ul>
+            <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
+            <li class="l3" rel="coral"><span>Coral reefs</span></li>
+            <li class="l3" rel="mangroves"><span>Mangroves</span></li>
+            <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
           </ul>
         </li>
         <li class="l1"><span>Socio-economics</span>
           <ul>
-            <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <li class="l2" rel="population"><span>Population density</span></li>
             <li class="l2" rel="hdi"><span>HDI</span></li>
             <li class="l2" rel="nldi"><span>NLDI</span></li>
