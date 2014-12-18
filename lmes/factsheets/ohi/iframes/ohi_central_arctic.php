@@ -143,7 +143,7 @@ if($_GET['forExport']){
 		if (window.frameElement != null) {
 			var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
 			if(iFrame != null){
-				iFrame.style.height = '510px';
+				iFrame.style.height = '550px';
 			}
 		}
 	}
