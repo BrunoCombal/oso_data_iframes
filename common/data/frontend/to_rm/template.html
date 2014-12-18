@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/iframes/common/data/frontend/front.css" />
+<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.7/themes/smoothness/jquery-ui.css" />-->
 <link rel="stylesheet" href="/misc/ui/jquery.ui.autocomplete.css" />
 <style>
       .ui-autocomplete{max-height:100px, overflow-y:auto;overflow-x:hidden;}
@@ -6,44 +6,9 @@
       .ui-widget{font-size:12px;}
 	  .ui-menu{background:white !important;}
 </style>
-
-<?php
-drupal_add_library('system', 'ui.autocomplete');
-
-if(user_is_logged_in()){
-	if(isset($_POST['cache'])){
-		include('/data/iframes/common/data/frontend/engine.php');
-	}
-	?>
-		<form method="post" id="formCache" action="" enctype="multipart/form-data">
-			<input id="formCacheBtn" type="submit" name="cache" value="Rebuild cache" />
-		</form>
-	<?php
-	
-}
-$oo_file = '/data/iframes/common/data/frontend/oo.json';
-$ooArray = json_decode(file_get_contents($oo_file),true);
-$lmes_file = '/data/iframes/common/data/frontend/lmes.json';
-$counterID = 0;
-$lmesArray = json_decode(file_get_contents($lmes_file), true);
-$nodata = "empty";
-$fileC = "/data/iframes/common/data/services/downcount.json";
-	$arrayC = array();
-	if(file_exists($fileC)){
-		$arrayC = json_decode(file_get_contents($fileC),true);
-	}
-?>
-
 <script type="text/javascript">
 jQuery(document).ready(function(){
-	
-	jQuery('#formCache').submit(function(e){
-		jQuery('#formCacheBtn').attr('value', 'Rebuilding cache...');
-		var el = document.createElement('IMG');
-		jQuery(el).attr('src','/iframes/common/data/images/ajax-loader.gif');
-		jQuery(el).insertAfter('#formCacheBtn');
-		return;
-	});
+	<?php drupal_add_library('system', 'ui.autocomplete'); ?>
 
 	jQuery(".accordionData .categoryData").click(function(){
 		if(jQuery(this).parents('legend').siblings().is(":visible"))
@@ -98,14 +63,12 @@ jQuery(document).ready(function(){
 			jQuery(this).first().css('margin-top', '10px');
 			jQuery(this).last().css('margin-top', '10px');
 		});
-		
 		jQuery('.downloadData').click(function(c){
-			var id = jQuery(this).closest('li').find('a').first().attr('name');
-			jQuery.get("/iframes/common/data/services/downlog.php?id="+id, function(response) {
-				jQuery('a[name="'+id+'"]').parent().find('.counterD').find('em').html(response);
-			});
-			return true;
-		});
+		//console.log(c); //If we want to implement analytics for downloads
+		
+		
+
+               });
 	
 	
 	//When coming from a referenced page with a given bookmark move to it and show it's contents
@@ -118,6 +81,7 @@ jQuery(document).ready(function(){
 
 		jQuery(anchor).parents('.collapsible').find('.categoryData').click();
 		jQuery(anchor).siblings('.fsItem').find('.itemData').click();
+		//console.log(jQuery(anchor).siblings('.fsItem').find('.itemData'));
 		jQuery('html, body').animate({
 				scrollTop: jQuery(anchor).siblings('.fsItem').find('.itemData').offset().top
 			}, 1000);
@@ -312,7 +276,6 @@ function makeid()
 
 }); //document ready
 </script>
-
 <div class="ui-widget" style="margin:auto auto; width:440px;">
 	<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; display:inline;" value="Search available datasets"/>
 	<input id="resetSearch" type="button" value="Reset" disabled="disabled" style="display:inline;"></input>
@@ -320,6 +283,10 @@ function makeid()
 	
 	</div>
 <div id="mainResults">
+<?php $nodata = "NO DATA"; ?>
+<?php
+	$counterID = 0;
+?>
 
 
 <span class="summarySection">Data are provided “as is”, without warranty of any kind.<br/>To contact the data originator, please see the contact point list attached to each dataset (click on <span style="font-variant: small-caps; font-weight: bold">| show details |</span> under a dataset name).</span>
@@ -327,14 +294,49 @@ function makeid()
 
 <span class="titleSection">Open Ocean</span>
 <span class="summarySection">See individual data contact point list to contact the data originator.<br/>For general purpose, the contact point at IOC-UNESCO is Albert Fischer, <span class="email"><?php echo utf8_encode(str_rot13('<a href="mailto://'.'a.fischer@unesco.org'.'">'.'a.fischer@unesco.org'.'</a>')); ?></span>.<br/>This section features a total of <span id="ooTotal" style="font-weight:bold"></span> unique datasets.</span>
-<span id="ooTotal_temp" style="display:none"><?php echo count($ooArray[2]); ?></span>
 
-<div id="accordion_oo">
+<div>
+<?php 
+function cmp($a, $b) {
+    return strcmp($a->title, $b->title);
+}
+
+$nodes = node_load_multiple(array(), array('type' => 'open_ocean_indicator_description'));
+//ksort($nodes);
+usort($nodes, "cmp");
+$categoriesList = array();
+$categoriesList_temp = array();
+foreach ($nodes as $node) { 
+	if ($node->status == 1) {
+		$categories = $node->field_category_oo['und'][0]['value'];
+		$nodeCats = explode(';',$categories);
+		foreach($nodeCats as $cat){
+			if(!in_array(trim(strtolower(str_replace(' ','',$cat))), $categoriesList_temp)){
+				array_push($categoriesList_temp, trim(strtolower(str_replace(' ','',$cat))));
+				array_push($categoriesList, $cat);
+				//var_dump($node->title);
+			}
+		}
+	}
+}
+//var_dump($categoriesList_temp);
+//echo "<br/>";
+//var_dump$categoriesList);
+array_multisort($categoriesList, $categoriesList_temp);
+?>
+<span id="ooTotal_temp" style="display:none"><?php echo count($nodes); ?></span>
 <?php
-$categoriesList = $ooArray[0];
-$categoriesList_temp = $ooArray[1];
-$tempOrder = $ooArray[2];
-//var_dump($tempOrder[0][1]['vid']);
+$tempOrder = array();
+foreach ($nodes as $node) {
+	if(isset($node->field_data_group['und'])){
+		$group = $node->field_data_group['und'][0]['value'];
+		array_push($tempOrder, array($group, $node));
+	} else {
+		array_push($tempOrder, array($node->title, $node));
+	}
+}
+sort($tempOrder);
+
 for($i=0;$i<count($categoriesList_temp);$i++) {
 	echo "<div>";
 	echo "<fieldset class='collapsible'><legend><span class='categoryData fieldset-legend up'>".$categoriesList[$i]."</span></legend>";
@@ -346,48 +348,44 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 	$numberNodes = 0;
 	foreach ($tempOrder as $node) { 
 		$node = $node[1];
-		//$node = node_load($node['nid']);
-		if ($node['status'] == 1) {
-			foreach($arrayC as $arr){
-				if($arr['id'] == $node['nid']){
-					$node['counter'] = (string) $arr['counter'];
-				}
-			}
-			$categories = trim(strtolower(str_replace(' ','',$node['categories'])));
+		if ($node->status == 1) {
+			$categories = trim(strtolower(str_replace(' ','',$node->field_category_oo['und'][0]['value'])));
 			$nodeCats = explode(';',$categories);
 			if(in_array($categoriesList_temp[$i], $nodeCats)){
+				//echo "--> ".$node->title."<br/>";
 				$numberNodes++;
 				
-				if(isset($node['group'])){
+				?>
+				<?php 
+				if(isset($node->field_data_group['und'])){
 					$lastnodeingroup=true;
-					if(($datagroupflag == false) || ($datagroup != $node['group'])){
+					if(($datagroupflag == false) || ($datagroup != $node->field_data_group['und'][0]['value'])){
 						if($datagroupflag == true){
 							echo '<li>&nbsp;</li>';
 						}
-						echo '<li><fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend center">'.$node['group'].'</span></legend></fieldset></li>';
+						echo '<li><fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend center">'.$node->field_data_group['und'][0]['value'].'</span></legend></fieldset></li>';
 						$datagroupflag = true;
 					}
-					$datagroup = $node['group'];
+					$datagroup = $node->field_data_group['und'][0]['value'];
 				} else {
 					$datagroup = '';
 					$datagroupflag=false;
 				}
 				?>
-				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node['nid']; ?>"></a>
-			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node['xml'])){echo 'name="'.$node['xml'].'"';} ?>><?php echo $node['title']; ?></span>
+				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node->nid; ?>"></a>
+			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node->field_xml_metadata_path['und'])){echo 'name="'.urlencode(utf8_encode($node->field_xml_metadata_path['und'][0]['value'])).'"';} ?>><?php echo $node->title; ?></span>
 			
 
 			<span class="itemBtns">
 				<span class="readMore"></span>
-				<?php if(isset($node['view'])){ ?><a href="<?php echo $node['view']; ?>" class="viewData"></a><?php } ?>
-				<?php if(isset($node['google_earth'])){ ?><a href="<?php echo $node['google_earth']; ?>" class="googleearthData"></a><?php } ?>
-				<?php if(isset($node['package'])){ ?><a title="Download dataset from <?php echo $node['title']; ?>" href="<?php echo $node['package']; ?>" class="downloadData"></a><?php } ?>
+				<?php if(isset($node->field_view['und'])){ ?><a href="<?php if(isset($node->field_view['und'])){echo $node->field_view['und'][0]['value'];} ?>" class="viewData"></a><?php } ?>
+				<?php if(isset($node->field_google_earth['und'])){ ?><a href="<?php if(isset($node->field_google_earth['und'])){echo $node->field_google_earth['und'][0]['value'];} ?>" class="googleearthData"></a><?php } ?>
+				<?php if(isset($node->field_package_path['und'])){ ?><a title="Download dataset from <?php echo $node->title; ?>" href="<?php if(isset($node->field_package_path['und'])){echo $node->field_package_path['und'][0]['value'];} ?>" class="downloadData"></a><?php } ?>
 			</span>
 			</legend>
-			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node['summary'])){echo $node['summary'];}else{echo $nodata;} ?>
-			<?php if(user_is_logged_in()){?><br/><span class="counterD">Dataset downloaded <em style="font-weight:bold"><?php if(isset($node['counter'])){ echo $node['counter']; }else{ echo "0";} ?></em> time(s)</span><?php } ?></div>
+			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node->field_definition_oo['und'])){echo $node->field_definition_oo['und'][0]['value'];}else{echo $nodata;} ?></div>
 			<?php
-				if(!isset($node['group'])){
+				if(!isset($node->field_data_group['und'])){
 					$lastnodeingroup=false;
 				}
 			?>
@@ -400,13 +398,13 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
  <li>
   <div class="fset"><span class="lgend">Indicator Description</span>
    <ul>
-	<?php if(isset($node['category'])){	?><li class="divValue"><span class="title">Themes</span><span class="value"><?php echo $node['category']; ?></span></li><?php } ?>
-    <?php if(isset($node['definition'])){ ?><li><span class="title">Definition</span><span class="value searchable"><?php echo $node['definition']; ?></span></li><?php } ?>
-    <?php if(isset($node['relevance'])){ ?><li><span class="title">Relevance</span><span class="value"><?php echo $node['relevance']; ?></span></li><?php } ?>
-    <?php if(isset($node['methodology'])){ ?><li><span class="title">Methodology</span><span class="value"><?php echo $node['methodology']; ?></span></li><?php } ?>
-    <?php if(isset($node['data_source'])){ ?><li><span class="title">Data sources</span><span class="value"><?php echo $node['data_source']; ?></span></li><?php } ?>
-    <?php if(isset($node['partners'])){ ?>
-	<li><span class="title">Partners</span><span class="value"><?php echo $node['partners']; ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_category_oo', array('label' => 'hidden')); if(!empty($field)){	?><li class="divValue"><span class="title">Themes</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_definition_oo', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Definition</span><span class="value searchable"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_relevance', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Relevance</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_methodology', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Methodology</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_data_sources_oo', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Data sources</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_partners', array('label' => 'hidden')); if(!empty($field)){ ?>
+	<li><span class="title">Partners</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
     
    </ul>
   </div>
@@ -415,31 +413,63 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
   <p></p>
   </div>
   </fieldset>
-</li>			
-<?php
+</li>			<?php
+				
+				
 			}
 		}
 	}
-?>
-</ul>
-<span class="numberNodes" ref="<?php echo $numberNodes; ?>"></span>
-</div>
-</fieldset></div>
-<?php
+	echo "</ul>";
+	echo "<span class='numberNodes' ref='".$numberNodes."'></span>";
+	echo "</div>";
+	echo "</fieldset></div>";
 } //end Open Ocean
 ?>
-
+	</div>
 </div>
-</div>
-
 <div class="accordionData" style="padding-top:10px">
 <span class="titleSection">Large Marine Ecosystems</span>
 <span class="summarySection">See individual data contact point list to contact the data originator.<br/>For General purpose, the contact point at IOC-UNESCO is Julian Barbière, <span class="email"><?php echo utf8_encode(str_rot13('<a href="mailto://'.'j.barbiere@unesco.org'.'">'.'j.barbiere@unesco.org'.'</a>')); ?></span><br/>This section features a total of <span id="lmesTotal" style="font-weight:bold"></span> unique datasets.</span>
-<span id="lmesTotal_temp" style="display:none"><?php echo count($lmesArray[2]); ?></span>
+<?php 
+$nodes = node_load_multiple(array(), array('type' => 'lmes_indicator_description'));
+//ksort($nodes);
+usort($nodes, "cmp");
+$categoriesList = array();
+$categoriesList_temp = array();
+foreach ($nodes as $node) { 
+	if ($node->status == 1) {
+		if($node->field_category){
+			$categories = $node->field_category['und'][0]['value'];
+			$nodeCats = explode(';',$categories);
+			foreach($nodeCats as $cat){
+				if(!in_array(trim(strtolower(str_replace(' ','',$cat))), $categoriesList_temp)){
+					array_push($categoriesList_temp, trim(strtolower(str_replace(' ','',$cat))));
+					array_push($categoriesList, $cat);
+					//var_dump($node->title);
+				}
+			}
+		}
+	}
+}
+array_multisort($categoriesList, $categoriesList_temp);
+?>
+<span id="lmesTotal_temp" style="display:none"><?php echo count($nodes); ?></span>
 <?php
-$categoriesList = $lmesArray[0];
-$categoriesList_temp = $lmesArray[1];
-$tempOrder = $lmesArray[2];
+$tempOrder = array();
+foreach ($nodes as $node) {
+	if(isset($node->field_data_group['und'])){
+		$group = $node->field_data_group['und'][0]['value'];
+		array_push($tempOrder, array($group, $node));
+	} else {
+		array_push($tempOrder, array($node->title, $node));
+	}
+}
+sort($tempOrder);
+
+	
+//var_dump($categoriesList_temp);
+//echo "<br/>";
+//var_dump($categoriesList);
 for($i=0;$i<count($categoriesList_temp);$i++) {
 	echo "<div>";
 	echo "<fieldset class='collapsible'><legend><span class='categoryData fieldset-legend up'>".$categoriesList[$i]."</span></legend>";
@@ -451,23 +481,18 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 	$numberNodes = 0;
 	foreach ($tempOrder as $node) { 
 		$node = $node[1];
-		if ($node['status'] == 1) {
-			if(isset($node['categories'])){
-				foreach($arrayC as $arr){
-					if($arr['id'] == $node['nid']){
-						$node['counter'] = (string) $arr['counter'];
-					}
-				}
-				$categories = trim(strtolower(str_replace(' ','',$node['categories'])));
+		if ($node->status == 1) {
+			if($node->field_category){
+				$categories = trim(strtolower(str_replace(' ','',$node->field_category['und'][0]['value'])));
 				$nodeCats = explode(';',$categories);
 				if(in_array($categoriesList_temp[$i], $nodeCats)){
-					
+					//echo "--> ".$node->title."<br/>";
 					$numberNodes++;
 					?>
 					<?php 
-				if(isset($node['group'])){
+				if(isset($node->field_data_group['und'])){
 					$lastnodeingroup=true;
-					$datagroup = $node['group'];
+					$datagroup = $node->field_data_group['und'][0]['value'];
 					if($datagroupflag == false){
 						echo '<li><fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend center">'.$datagroup.'</span></legend></fieldset></li>';
 						$datagroupflag = true;
@@ -477,19 +502,18 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 					$datagroupflag=false;
 				}
 				?>
-				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node['nid']; ?>"></a>
-			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node['xml'])){echo 'name="'.$node['xml'].'"';} ?>><?php echo $node['title']; ?></span>
+				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node->nid; ?>"></a>
+			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node->field_xml_metadata_path['und'])){echo 'name="'.urlencode(utf8_encode($node->field_xml_metadata_path['und'][0]['value'])).'"';} ?>><?php echo $node->title; ?></span>
 			
 
 			<span class="itemBtns">
 				<span class="readMore"></span>
-				<?php if(isset($node['view'])){ ?><a href="<?php echo $node['view']; ?>" class="viewData"></a><?php } ?>
-				<?php if(isset($node['google_earth'])){ ?><a href="<?php echo $node['google_earth']; ?>" class="googleearthData"></a><?php } ?>
-				<?php if(isset($node['package'])){ ?><a title="Download dataset from <?php echo $node['title']; ?>" href="<?php echo $node['package']; ?>" class="downloadData"></a><?php } ?>
+				<?php if(isset($node->field_view['und'])){ ?><a href="<?php if(isset($node->field_view['und'])){echo $node->field_view['und'][0]['value'];} ?>" class="viewData"></a><?php } ?>
+				<?php if(isset($node->field_google_earth['und'])){ ?><a href="<?php if(isset($node->field_google_earth['und'])){echo $node->field_google_earth['und'][0]['value'];} ?>" class="googleearthData"></a><?php } ?>
+				<?php if(isset($node->field_package_path['und'])){ ?><a title="Download dataset from <?php echo $node->title; ?>" href="<?php if(isset($node->field_package_path['und'])){echo $node->field_package_path['und'][0]['value'];} ?>" class="downloadData"></a><?php } ?>
 			</span>
 			</legend>
-			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node['summary'])){echo $node['summary'];}else{echo $nodata;} ?>
-			<?php if(user_is_logged_in()){?><br/><span class="counterD">Dataset downloaded <em style="font-weight:bold"><?php if(isset($node['counter'])){ echo $node['counter']; }else{ echo "0";} ?></em> time(s)</span><?php } ?></div>
+			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node->field_definition['und'])){echo $node->field_definition['und'][0]['value'];}else{echo $nodata;} ?></div>
 			
 			
 			<div class="clearfix"></div>
@@ -499,17 +523,17 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
  <li>
   <div class="fset"><span class="lgend">Indicator Description</span>
    <ul>
-	<?php if(isset($node['module'])){	?> <li class="divValue"><span class="title">Module</span><span class="value"><?php echo $node['module']; ?></span></li><?php } ?>
-	<?php if(isset($node['category'])){ ?><li><span class="title">Category</span><span class="value"><?php echo $node['category']; ?></span></li><?php } ?>
-	<?php if(isset($node['definition'])){ ?><li><span class="title">Definition</span><span class="value searchable"><?php echo $node['definition']; ?></span></li><?php } ?>
-    <?php if(isset($node['unit'])){ ?><li><span class="title">Unit</span><span class="value"><?php echo $node['unit']; ?></span></li><?php } ?>
-    <?php if(isset($node['rationale'])){ ?><li><span class="title">Rationale for inclusion</span><span class="value"><?php echo $node['rationale']; ?></span></li><?php } ?>
-    <?php if(isset($node['interlink'])){ ?><li><span class="title">Interlinkages with other transboundary water systems</span><span class="value"><?php echo $node['interlink']; ?></span></li><?php } ?>
-	<?php if(isset($node['measurements'])){ ?><li><span class="title">Measurement methods and calculation</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
-    <?php if(isset($node['scale'])){ ?><li><span class="title">Scale</span><span class="value"><?php echo $node['scale']; ?></span></li><?php } ?>
-    <?php if(isset($node['data_source'])){ ?><li><span class="title">Data sources</span><span class="value"><?php echo $node['data_source']; ?></span></li><?php } ?>
-    <?php if(isset($node['agencies'])){ ?><li><span class="title">Agencies &amp; contacts</span><span class="value"><?php echo $node['agencies']; ?></span></li><?php } ?>
-    <?php if(isset($node['references'])){ ?><li><span class="title">References</span><span class="value"><?php echo $node['references']; ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_category', array('label' => 'hidden')); if(!empty($field)){	?> <li class="divValue"><span class="title">Module</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_category2', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Category</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_definition', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Definition</span><span class="value searchable"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_unit', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Unit</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_rationale_for_inclusion', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Rationale for inclusion</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_interlinkages_with_other_t', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Interlinkages with other transboundary water systems</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php $field = field_view_field('node', $node, 'field_measurement_methods_and_ca', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Measurement methods and calculation</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_scale', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Scale</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_data_sources', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Data sources</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_agencies_contacts', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">Agencies &amp; contacts</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+    <?php $field = field_view_field('node', $node, 'field_references', array('label' => 'hidden')); if(!empty($field)){ ?><li><span class="title">References</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
 
 	</ul>
   </div>
@@ -525,19 +549,15 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 			}
 		}
 	}
-?>
-	</ul>
-	<span class="numberNodes" ref="<?php echo $numberNodes; ?>"></span>
-	</div>
-	</fieldset></div>
-<?php
+	echo "</ul>";
+	echo "<span class='numberNodes' ref='".$numberNodes."'></span>";
+	echo "</div>";
+	echo "</fieldset></div>";
 } //end LMEs
 ?>
 </div>
 <div style="height:20px;">&nbsp;</div>
 </div>
-
-
 <div id="searchResults" style="display:none">
 <div class="accordionData">
 <ul id="searchUL"></ul>

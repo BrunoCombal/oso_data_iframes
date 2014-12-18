@@ -1,16 +1,14 @@
 <?php
 try{
-if(isset($_GET['uuid'])){
-	$uuid = '/data'.urldecode(utf8_decode($_GET['uuid']));
-	$xmlfile = file_get_contents($uuid);
-	//echo $uuid;
-	$xml = new SimpleXmlElement($xmlfile);
-} else {
-	//$xmlfile = "/data/public_store/lmes_pp/rsrc/new_metainformation_lmes_ppd_yearly.xml";
-	//$xmlfile = "/data/public_store/lmes_nutrients/rsrc/xml_iso19139_lmes_nutrients.xml";
-	//$xmlfile = "/data/public_store/oo_warmpool/rsrc/new_ipwp_xml_iso19139.xml";
-	$xml = simplexml_load_file($xmlfile);
-}
+	if(isset($_GET['uuid'])){
+		$uuid = '/data'.urldecode(utf8_decode($_GET['uuid']));
+		$xmlfile = file_get_contents($uuid);
+		//echo $uuid;
+		$xml = new SimpleXmlElement($xmlfile);
+	} else {
+		//$xmlfile = "/data/public_store/oo_warmpool/rsrc/new_ipwp_xml_iso19139.xml";
+		$xml = simplexml_load_file($xmlfile);
+	}
 } catch (Exception $err){
 	?>
 	<div id="messages">
