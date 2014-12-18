@@ -4,7 +4,7 @@ drupal_add_js('/iframes/common/js/lmes.js');
 drupal_add_library('system', 'ui.autocomplete');
 drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
-include('/data/iframes/common/lmesnav/lmenav.php');
+//include('/data/iframes/common/lmesnav/lmenav.php');
 ?>
 <link rel="stylesheet" href="/iframes/lmes/maps/lmesportal.css" type="text/css" />
 <link rel="stylesheet" href="/geoserver/openlayers/theme/default/style.css" type="text/css" />
@@ -31,21 +31,21 @@ include('/data/iframes/common/lmesnav/lmenav.php');
                   jQuery('#deleteTags').attr('src', '/iframes/lmes/images/delete_gray.png');
                 });
    jQuery('#tags')
-         .keyup(function(){
-           if(jQuery('#tags').prop('value') == ""){
-             jQuery('#deleteTags').css('display','none');
-             jQuery('#buttonLMEs').css('display', 'none');
-           }
-         })
-         .click(function(){
-           if(this.value == comboText){
-             this.value = "";
-             jQuery( "#tags" ).css('color', '#000000');
-           }
-         })
-         .keypress(function(){
-           jQuery('#deleteTags').css('display','inline-block');
-         })
+                .keyup(function(){
+                  if(jQuery('#tags').prop('value') == ""){
+                    jQuery('#deleteTags').css('display','none');
+                    jQuery('#buttonLMEs').css('display', 'none');
+                  }
+                })
+                .click(function(){
+                  if(this.value == comboText){
+                    this.value = "";
+                    jQuery( "#tags" ).css('color', '#000000');
+                  }
+                })
+                .keypress(function(){
+                  jQuery('#deleteTags').css('display','inline-block');
+                })
          .blur(function(){
            if(this.value ==""){
              jQuery( "#tags" ).css('color', '#c0c0c0');
@@ -71,11 +71,12 @@ include('/data/iframes/common/lmesnav/lmenav.php');
          });
 
    jQuery('#buttonLMEs').click(function(){
-     window.open(jQuery(this).attr('href'), '_blank');
+     document.location.href = jQuery(this).attr('href');
+	 //window.open(jQuery(this).attr('href'), '_blank');
    });
-
+	//temporary GCA click event
    jQuery('.buttonGCA').click(function(){
-     window.open('/node/232');
+     document.location.href = '/node/232';
    });
 
    ///////////////// OPENLAYERS ////////////////////            
@@ -89,11 +90,12 @@ include('/data/iframes/common/lmesnav/lmenav.php');
    // resolution are: 360/256, 180/256, 90/256, etc... does not exactly match the map
    var resolution = [0.48, 0.24, 0.12];
 
-   var options = {restrictedExtent:extent, maxExtent:extent,
-                  // minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:numZoomLevels,
-                  resolutions: resolution,
-                  projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
-                  controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+   var options = {
+     //restrictedExtent:extent, maxExtent:extent,
+     // minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:numZoomLevels,
+     resolutions: resolution,
+     projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
+     controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
 
    var map = new OpenLayers.Map("mapOL", options);
    var WDL = false;
@@ -110,8 +112,9 @@ include('/data/iframes/common/lmesnav/lmenav.php');
    var worldtop=new OpenLayers.Layer.WMS(
      "Countries",
      GWCWORLD,
-     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname'},
-     {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1}
+     //     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname'},
+     {layers:"general:G2014_2013_0", transparent:true, styles:'gaul_lightyellow_noname'},
+     {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true}
    );
 
    //LMEs
@@ -119,7 +122,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      "LMES",
      GWCLMES,
      {layers:"lmes:lmes66_pwp", transparent:true, styles:'lmes66_pwp_green_blue', format:'image/png'},
-     {layerId:'lmes', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:true}
+     {layerId:'lmes', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:true, wrapDateLine:true}
    );
 
    //Primary productivity
@@ -129,21 +132,21 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      GWCLMES,
      {layers:"lmes:lmes_chl_pp_and_trends", //"lmes:lmes_chla_longterm", styles:'lmes_chla_mean'
       transparent:true, styles:'lmes_chla', format:'image/png'},
-     {layerId:'chla', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'chla', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var chlachange=new OpenLayers.Layer.WMS(
      "Chlorophyll-A change",
      GWCLMES,
      {layers:"lmes:lmes_chl_pp_and_trends", styles:"lmes_chla_change", transparent:true, format:'image/png'},
-     {layerId:'chlachange', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'chlachange', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var pp_group=new OpenLayers.Layer.WMS(
      "PP_Level",
      GWCLMES,
      {layers:"lmes:lmes_chl_pp_and_trends", transparent:true, styles:'lmes_ppd_group',format:'image/png'},
-     {layerId:'pp_group', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'pp_group', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    /*
@@ -161,7 +164,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      GWCLMES,
      {layers:"lmes:lmes_chl_pp_and_trends",
       transparent:true, styles:'lmes_ppy_change', format:'image/png'},
-     {layerId:'pp_trend', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'pp_trend', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    //SST net change
@@ -170,7 +173,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_sst_net_change", transparent:true, styles:'lmes_sst_change', format:'image/png'},
-     {layerId:'sst_net_change', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'sst_net_change', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    //Ecosystem
@@ -180,7 +183,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes66_data",  styles:'lmes_data_coral', transparent:true, format:'image/png'},
-     {layerId:'coral', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'coral', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    // mangroves
@@ -189,7 +192,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:mangrovepercent_lmes66",  styles:'lmes_mangrovespercent', transparent:true, format:'image/png'},
-     {layerId:'mangroves', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'mangroves', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    //Areas
@@ -198,7 +201,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_shelf_area",  styles:'lmes_shelf_area', transparent:true, format:'image/png'},
-     {layerId:'areas', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'areas', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    // Impacts
@@ -206,7 +209,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      "CumulImpact",
      GWCLMES,
      {layers:"lmes:lmes_cumulative_human_impact", styles:'lmes_chi', transparent:true, format:'image/png'},
-     {layerId:'cumulImpact', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'cumulImpact', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    // Socio eco: ohi
@@ -214,7 +217,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      "OHI",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_ohi", styles:'lmes_ohi', transparent:true, format:'image/png'},
-     {layerId:'ohi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'ohi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    // Socio eco: population
@@ -222,7 +225,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      "Population",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_popdensity', transparent:true, format:'image/png'},
-     {layerId:'population', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'population', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var hdi = new OpenLayers.Layer.WMS(
@@ -230,7 +233,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_hdi', transparent:true, format:'image/png'},
-     {layerId:'hdi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'hdi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var nldi = new OpenLayers.Layer.WMS(
@@ -238,7 +241,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      // "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_nldi', transparent:true, format:'image/png'},
-     {layerId:'nldi', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'nldi', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var overfishing = new OpenLayers.Layer.WMS(
@@ -246,7 +249,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      "http://onesharedocean.org/geoserver/lmes/wms",
      //    GWCLMES,
      {layers:"lmes:lmes_fishing_revenues_indicators", styles:'lmes_socioeco_overfishing', transparent:true, format:'image/png'},
-     {layerId:'overfishing', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'overfishing', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    // icep
@@ -255,21 +258,21 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
-     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var icep2030 = new OpenLayers.Layer.WMS(
      "ICEP 2030",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
-     {layerId:'icep2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'icep2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var icep2050 = new OpenLayers.Layer.WMS(
      "ICEP 2050",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
-     {layerId:'icep2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'icep2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var ld_din = new OpenLayers.Layer.WMS(
@@ -277,7 +280,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
-     {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var ld_din2030 = new OpenLayers.Layer.WMS(
@@ -285,7 +288,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
-     {layerId:'ld_din2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'ld_din2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var ld_din2050 = new OpenLayers.Layer.WMS(
@@ -293,7 +296,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
-     {layerId:'ld_din2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'ld_din2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind = new OpenLayers.Layer.WMS(
@@ -301,7 +304,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
-     {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind2030 = new OpenLayers.Layer.WMS(
@@ -309,7 +312,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
-     {layerId:'merged_ind2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'merged_ind2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind2050 = new OpenLayers.Layer.WMS(
@@ -317,7 +320,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
-     {layerId:'merged_ind2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'merged_ind2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    /*
@@ -340,7 +343,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_plastics_modeldistribution", styles:'lmes_plasticsdistr_5classes_micro_count', transparent:true, format:'image/png'},
-     {layerId:'plasticsmicro', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'plasticsmicro', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var plasticsModelMacroWeight = new OpenLayers.Layer.WMS(
@@ -348,21 +351,21 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_plastics_modeldistribution", styles:'lmes_plasticsdistr_5classes_macro_weight', transparent:true, format:'image/png'},
-     {layerId:'plasticsmacro', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'plasticsmacro', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var governance_int = new OpenLayers.Layer.WMS(
      "Integration",
      GWCLMES,
      {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_integration', transparent:true, format:'image/png'},
-     {layerId:'govInt', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'govInt', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var governance_engt = new OpenLayers.Layer.WMS(
      "Engagement",
      GWCLMES,
      {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_engagement', transparent:true, format:'image/png'},
-     {layerId:'govEng', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'govEng', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var governance_compl = new OpenLayers.Layer.WMS(
@@ -370,7 +373,7 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      //        "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lme_governance_analysis_indicators", styles:'lmes_governance_completeness', transparent:true, format:'image/png'},
-     {layerId:'govCompl', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'govCompl', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
 
@@ -378,21 +381,21 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      "DDT score",
      GWCLMES,
      {layers:"lmes:lmes_pops", styles:'lmes_pops_risk_ddt', transparent:true, format:'image/png'},
-     {layerId:'pops_ddt', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'pops_ddt', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var pops_hch = new OpenLayers.Layer.WMS(
      "HCHs score",
      GWCLMES,
      {layers:"lmes:lmes_pops", styles:'lmes_pops_risk_hch', transparent:true, format:'image/png'},
-     {layerId:'pops_hch', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'pops_hch', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var pops_pcb = new OpenLayers.Layer.WMS(
      "DDT score",
      GWCLMES,
      {layers:"lmes:lmes_pops", styles:'lmes_pops_risk_pcb', transparent:true, format:'image/png'},
-     {layerId:'pops_pcb', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false}
+     {layerId:'pops_pcb', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    //Add layers to map objects
@@ -425,7 +428,8 @@ include('/data/iframes/common/lmesnav/lmenav.php');
          if (typeof(event.features[0])=='undefined'){return};
          LME_NUMBER=event.features[0].attributes.LME_NUMBER;
          LME_NAME=event.features[0].attributes.LME_NAME;
-         jQuery('#buttonLMEs').attr('href','/'+lmeAliasList[parseInt(LME_NUMBER)-1]);
+         document.location.href = '/'+lmeAliasList[parseInt(LME_NUMBER)-1];
+		 jQuery('#buttonLMEs').attr('href','/'+lmeAliasList[parseInt(LME_NUMBER)-1]);
          jQuery('#buttonLMEs').css('display', 'inline-block');
          jQuery('#tags').prop('value', LME_NUMBER+' '+LME_NAME);
          jQuery('#tags').css('color', '#000000');
@@ -499,14 +503,15 @@ include('/data/iframes/common/lmesnav/lmenav.php');
      }
    }
 
-
-
    //Solves the z-index issue with Drupal overlay
    jQuery('#mapOL').find('div').first().css('z-index','0');
 
  }); //Document ready   
 </script>
 
+
+<div style="background-color:#F0DF90; font-family:Verdana, sans-serif; font-size:20px; color:#000000; padding:10px; margin-bottom:10px; width:250px" onclick="window.open('/node/244');">Read more about LMEs</div>
+<?php include('/data/iframes/common/lmesnav/lmenav.php'); ?>
 
 
 <div class="ui-widget" style="line-height:38px;">
@@ -590,19 +595,23 @@ include('/data/iframes/common/lmesnav/lmenav.php');
             <li class="l2" rel="govCompl"><span>Completeness</span></li>
           </ul>
         </li>
-        <li class="l1 lastItem"><span>General information</span>
+        <!--
+        <li class="l1"><span>General information</span>
           <ul>
             <li class="l2" rel="areas"><span>LMEs Area</span></li>
           </ul>
         </li>
+        -->
         <li class="empty"></li>
-        <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li>
+		<li class="l1 lastItem"><span>Global Comparative Assessment</span>
+        </li>
+        <!--<li class="empty"></li>-->
+<!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
         <li class="empty"></li>
         <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
-        <li class="empty"></li>
-        <li class="buttonGCA">Global Comparative Assessment</li>
+        <!--<li class="empty"></li>
+        <li class="buttonGCA">Global Comparative Assessment</li>-->
       </ul>
     </div>
   </div>
 </div>
-
