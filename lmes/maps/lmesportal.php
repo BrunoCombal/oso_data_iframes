@@ -510,7 +510,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 </script>
 
 
-<div style="background-color:#F0DF90; font-family:Verdana, sans-serif; font-size:20px; color:#000000; padding:10px; margin-bottom:10px; width:250px" onclick="window.open('/node/244');">Read more about LMEs</div>
+<div style="background-color:#F0DF90; font-family:Verdana, sans-serif; font-size:20px; color:#000000; padding:10px; margin-bottom:10px; width:250px; cursor:pointer" onclick="window.open('/node/244');">Read more about LMEs</div>
 <?php include('/data/iframes/common/lmesnav/lmenav.php'); ?>
 
 
