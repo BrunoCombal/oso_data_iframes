@@ -28,119 +28,118 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 <script type="text/javascript">
  jQuery(document).ready(function() {
 
- function getColor( name ){
-   thisName = name.split(',',1)[0].split(' ',1);
-   colors={'Arctic':'#ff231d', 'Atlantic':'#2a2dff', 'Mediterranean':'#76FF00', 'Indian':'#ffb41d', 'Pacific':'#29b11b'};
-   return colors[ thisName ];
- };
+   function getColor( name ){
+     thisName = name.split(',',1)[0].split(' ',1);
+     colors={'Arctic':'#ff231d', 'Atlantic':'#2a2dff', 'Mediterranean':'#76FF00', 'Indian':'#ffb41d', 'Pacific':'#29b11b'};
+     return colors[ thisName ];
+   };
 
- function displayData(areaCode) {
-   thisData = dataCumul[codeMapping[areaCode]];
-   if(thisData){
-		text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
-		for (ii=1; ii< thisData.length; ii++) {
-			text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
-		}
-		jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+areaCode+": "+codeMapping[	areaCode]+"</span>"+text);
-	}
- };
-
- function displayDataFromName(Name) {
-   thisData = dataCumul[Name];
-   text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
-   for (ii=1; ii< thisData.length; ii++) {
-     text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
-   }
-   jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+reverseMapping[Name]+": "+Name+"</span>"+text);
- };
-
- var dataCumul={};
- var dataCumulHeader=[];
- var cumul={name:'Cumulative Index', data:[], type:'column'};
- var codeMapping={18:'Arctic Sea',
-                  21:'Atlantic, Northwest', 27:'Atlantic, Northeast', 31:'Atlantic, Western-Central', 34:'Atlantic, Eastern Central',
-                  41:'Atlantic, Southwest', 47:'Atlantic, Southeast', 48:'Atlantic, Antarctic',
-                  37:'Mediterranean and Black Sea',
-                  51:'Indian Ocean, Western', 57:'Indian Ocean, Eastern', 58:'Indian Ocean, Antarctic And Southern',
-                  61:'Pacific, Northwest',
-                  67:'Pacific, Northeast', 71:'Pacific, Western Central', 77:'Pacific, Eastern Central',
-                  81:'Pacific, Southwest', 87:'Pacific, Southeast', 88:'Pacific, Antarctic'};
- 
- var reverseMapping={'Arctic Sea':18,
-                     'Atlantic, Northwest':21, 'Atlantic, Northeast':27, 'Atlantic, Western-Central':31, 'Atlantic, Eastern Central':34,
-                     'Atlantic, Southwest':41, 'Atlantic, Southeast':47, 'Atlantic, Antarctic':48,
-                     'Mediterranean and Black Sea':37,
-                     'Indian Ocean, Western':51, 'Indian Ocean, Eastern':57, 'Indian Ocean, Antarctic And Southern':58,
-                     'Pacific, Northwest':61,
-                     'Pacific, Northeast':67, 'Pacific, Western Central':71, 'Pacific, Eastern Central':77,
-                     'Pacific, Southwest':81, 'Pacific, Southeast':87, 'Pacific, Antarctic':88
- };
-
-
- var options=({
-   credits: {enabled:true, href:'/public_store/', text:'Get data'},
-   title:{text:'Cumulative human impact'},
-   chart: { polar:true, renderTo:'cumulIndex', type:'column',
-            marginTop:0, bottomMargin:0, spacingTop:0, marginLeft:20, marginRight:15, spacingLeft:20, spacingRight:15, spacingBottom:0,
-            width:300, height:310},
-   plotOptions:{series:{shadow:false}, column:{colorByPoint:true}},
-   legend:{enabled:false},
-   tooltip:{valueDecimals:2, formatter:function(){
-     displayDataFromName(this.key);
-     return this.key+'<br/>'+this.y.toFixed(2);
-   }},
-   xAxis:{categories:[],
-          labels:{style:{fontSize:'8px', fontFamily:'Verdana, sans-serif'}}},
-   yAxis:{min:0, max:5, tickInterval:1, minorTickInterval:0.5, allowDecimals:false,
-          gridLineDashStyle:'Dash', minorGridLineDashStyle:'Dot',
-          labels:{style:{fontWeight:'bold', color:'#000000'}}
-   }
-   ,
-   series:[]
- });
-
- jQuery.get('/public_store/cumulative_impact/cumulative_impact.csv', function(data) {
-   var lines = data.split('\n');
-   var ipos=0;
-   jQuery.each(lines, function (lineNo, line) {
-     if (ipos > 0) {
-       var items = line.split(';');
-       thisData=[];
-       for (ii=1; ii<items.length; ii++) {
-         if (isNaN(parseFloat(items[ii]))==false) {
-           thisData.push(parseFloat(items[ii]));
-         }
+   function displayData(areaCode) {
+     thisData = dataCumul[codeMapping[areaCode]];
+     if(thisData){
+       text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
+       for (ii=1; ii< thisData.length; ii++) {
+         text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
        }
-       if (thisData.length > 0) {dataCumul[items[0]] = thisData;}
-       if ( isNaN(parseFloat(items[1])) == false) {
-         cumul.data.push({y:parseFloat(items[1]), color:getColor(items[0]), name:items[0]});
-         faoCode = '';
-         for (code in codeMapping) {
-           if (codeMapping[code]==items[0]) {faoCode=code}
-         }
-         options.xAxis.categories.push('FAO '+faoCode);
-       }
-     } else {
-       var head=line.split(';');
-       dataCumulHeader.push('Cumulative impact');
-       for (ii=2; ii<head.length; ii++) {
-         dataCumulHeader.push(head[ii]);
-       }
+       jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+areaCode+": "+codeMapping[        areaCode]+"</span>"+text);
      }
-     ipos+=1;
-   });
-   // display cumulative index                                            
-   options.series.push(cumul);
-   var chart = new Highcharts.Chart(options);
- });
+   };
 
-	//Bind the click event to the areas according to the number on their title
-	jQuery('area').click(function(){
-		//if(this.title.substring(this.title.length-2) != 37){
-			displayData(this.title.substring(this.title.length-2));
-		//}
-	});
-});
+   function displayDataFromName(Name) {
+     thisData = dataCumul[Name];
+     text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
+     for (ii=1; ii< thisData.length; ii++) {
+       text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
+     }
+     jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+reverseMapping[Name]+": "+Name+"</span>"+text);
+   };
+
+   var dataCumul={};
+   var dataCumulHeader=[];
+   var cumul={name:'Cumulative Index', data:[], type:'column'};
+   var codeMapping={18:'Arctic Sea',
+                    21:'Atlantic, Northwest', 27:'Atlantic, Northeast', 31:'Atlantic, Western-Central', 34:'Atlantic, Eastern Central',
+                    41:'Atlantic, Southwest', 47:'Atlantic, Southeast', 48:'Atlantic, Antarctic',
+                    37:'Mediterranean and Black Sea',
+                    51:'Indian Ocean, Western', 57:'Indian Ocean, Eastern', 58:'Indian Ocean, Antarctic And Southern',
+                    61:'Pacific, Northwest',
+                    67:'Pacific, Northeast', 71:'Pacific, Western Central', 77:'Pacific, Eastern Central',
+                    81:'Pacific, Southwest', 87:'Pacific, Southeast', 88:'Pacific, Antarctic'};
+
+   var reverseMapping={'Arctic Sea':18,
+                       'Atlantic, Northwest':21, 'Atlantic, Northeast':27, 'Atlantic, Western-Central':31, 'Atlantic, Eastern Central':34,
+                       'Atlantic, Southwest':41, 'Atlantic, Southeast':47, 'Atlantic, Antarctic':48,
+                       'Mediterranean and Black Sea':37,
+                       'Indian Ocean, Western':51, 'Indian Ocean, Eastern':57, 'Indian Ocean, Antarctic And Southern':58,
+                       'Pacific, Northwest':61,
+                       'Pacific, Northeast':67, 'Pacific, Western Central':71, 'Pacific, Eastern Central':77,
+                       'Pacific, Southwest':81, 'Pacific, Southeast':87, 'Pacific, Antarctic':88
+   };
+
+
+   var options=({
+     credits: {enabled:true, href:'/public_store/', text:'Get data'},
+     title:{text:'Cumulative human impact', style:{fontFamily:'Verdana, sans-serif',fontSize:'14px'}},
+     chart: { polar:true, renderTo:'cumulIndex', type:'column',
+              marginTop:0, bottomMargin:0, spacingTop:0, marginLeft:20, marginRight:15, spacingLeft:20, spacingRight:15, spacingBottom:0, width:300, height:310},
+     plotOptions:{series:{shadow:false}, column:{colorByPoint:true}},
+     legend:{enabled:false},
+     tooltip:{valueDecimals:2, formatter:function(){
+       displayDataFromName(this.key);
+       return this.key+'<br/>'+this.y.toFixed(2);
+     }},
+     xAxis:{categories:[],
+            labels:{style:{fontSize:'8px', fontFamily:'Verdana, sans-serif'}}},
+     yAxis:{min:0, max:5, tickInterval:1, minorTickInterval:0.5, allowDecimals:false,
+            gridLineDashStyle:'Dash', minorGridLineDashStyle:'Dot',
+            labels:{style:{fontWeight:'bold', color:'#000000'}}
+     }
+     ,
+     series:[]
+   });
+
+   jQuery.get('/public_store/cumulative_impact/cumulative_impact.csv', function(data) {
+     var lines = data.split('\n');
+     var ipos=0;
+     jQuery.each(lines, function (lineNo, line) {
+       if (ipos > 0) {
+         var items = line.split(';');
+         thisData=[];
+         for (ii=1; ii<items.length; ii++) {
+           if (isNaN(parseFloat(items[ii]))==false) {
+             thisData.push(parseFloat(items[ii]));
+           }
+         }
+         if (thisData.length > 0) {dataCumul[items[0]] = thisData;}
+         if ( isNaN(parseFloat(items[1])) == false) {
+           cumul.data.push({y:parseFloat(items[1]), color:getColor(items[0]), name:items[0]});
+           faoCode = '';
+           for (code in codeMapping) {
+             if (codeMapping[code]==items[0]) {faoCode=code}
+           }
+           options.xAxis.categories.push('FAO '+faoCode);
+         }
+       } else {
+         var head=line.split(';');
+         dataCumulHeader.push('Cumulative impact');
+         for (ii=2; ii<head.length; ii++) {
+           dataCumulHeader.push(head[ii]);
+         }
+       }
+       ipos+=1;
+     });
+     // display cumulative index                                            
+     options.series.push(cumul);
+     var chart = new Highcharts.Chart(options);
+   });
+
+   //Bind the click event to the areas according to the number on their title
+   jQuery('area').click(function(){
+     //if(this.title.substring(this.title.length-2) != 37){
+     displayData(this.title.substring(this.title.length-2));
+     //}
+   });
+ });
 </script>
 
 
@@ -187,13 +186,13 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
     <table class="ohi_illustrations">
       <tr >
         <td style="background-color:#ff231d; ">&nbsp;</td>
-	<td style="background-color:#2a2dff; ">&nbsp;</td>
+        <td style="background-color:#2a2dff; ">&nbsp;</td>
         <td style="background-color:#ffb41d; ">&nbsp;</td>
         <td style="background-color:#29b11b; ">&nbsp;</td>
         <tr >
           <td>Arctic</td>
-	  <td>Atlantic</td>
-          <td>Indian</td>    
+          <td>Atlantic</td>
+          <td>Indian</td>
           <td>Pacific</td>
         </tr>
     </table>
