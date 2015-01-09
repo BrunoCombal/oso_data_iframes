@@ -196,6 +196,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
           <td>Pacific</td>
         </tr>
     </table>
+    <small>Note: the <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.</small>
   </div>
 
   <div id="cumulDetail" style="float:left; font-family:Verdana, sans-serif; font-size:11px; width:600px; margin:auto; text-align:justify">
