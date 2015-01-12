@@ -8,8 +8,8 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
 <script>
  jQuery(document).ready(function(){
-	
-	var layersList=[ {layer:"arrangements:cluster_northeast_atlantic", name:"Northeast Atlantic", node:"155",layerId:"ne_atlantic"},
+
+   var layersList=[ {layer:"arrangements:cluster_northeast_atlantic", name:"Northeast Atlantic", node:"155",layerId:"ne_atlantic"},
                     {layer:"arrangements:cluster_northwest_atlantic",name:"Northwest Atlantic", node:"154", layerId:"nw_atlantic"},
                     {layer:"arrangements:cluster_western_central_atlantic", name:"Western Central Atlantic", node:"156",layerId:"wc_atlantic"},
                     {layer:"arrangements:cluster_eastern_central_south_atlantic",name:"Eastern Central and South Atlantic", node:'157',layerId:"ecs_atlantic"},
@@ -25,21 +25,18 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
                     {layer:"arrangements:cluster_black_sea", name:"Black Sea", node:'151',layerId:"black_sea"},
                     {layer:"arrangements:cluster_arctic", name:"Arctic Ocean", node:'164',layerId:"arctic"},
                     {layer:"arrangements:cluster_southern_ocean", name:"Southern Ocean", node:'165',layerId:"southern"}
-	];
- 
- <?php if(!$geoserver_on){ ?>
-	//PLACE SOMETHING HERE
-	jQuery('#clearAll').css('display', 'none');
-	jQuery('.ulColumns input').css('display', 'none');
-	jQuery('.outerLsControls').css('display', 'none');
-	for (var ii in layersList) {
-		thisObject=layersList[ii];
-		jQuery('#'+thisObject["layerId"]).find('a').attr('href','http://onesharedocean.org/node/'+thisObject["node"]);
-	}
- <?php } else { ?>
- 
- 
- 
+   ];
+
+   <?php if(!$geoserver_on){ ?>
+   //PLACE SOMETHING HERE
+   jQuery('#clearAll').css('display', 'none');
+   jQuery('.ulColumns input').css('display', 'none');
+   jQuery('.outerLsControls').css('display', 'none');
+   for (var ii in layersList) {
+     thisObject=layersList[ii];
+     jQuery('#'+thisObject["layerId"]).find('a').attr('href','http://onesharedocean.org/node/'+thisObject["node"]);
+   }
+   <?php } else { ?>
 
    var extent = new OpenLayers.Bounds(30,-90,390,90);
    var viewInit = extent;
@@ -86,11 +83,11 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
      thisObject=layersList[ii];
      thisGWC = GWC;
      //thisGWC = "http://onesharedocean.org/geoserver/arrangements/wms";
-	 jQuery('#'+thisObject["layerId"]).find('a').attr('href','http://onesharedocean.org/node/'+thisObject["node"]);
-	 jQuery('#'+thisObject["layerId"]).find('input').attr('checked',true);
-	 var oS = {};
-	 jQuery.extend(oS,optionsShow);
-	 oS.layerId = thisObject['layerId'];
+     jQuery('#'+thisObject["layerId"]).find('a').attr('href','http://onesharedocean.org/node/'+thisObject["node"]);
+     jQuery('#'+thisObject["layerId"]).find('input').attr('checked',true);
+     var oS = {};
+     jQuery.extend(oS,optionsShow);
+     oS.layerId = thisObject['layerId'];
      createdLayers[ii] = new OpenLayers.Layer.WMS(
        thisObject["name"], thisGWC, {layers:thisObject["layer"], transparent:true,styles:'gray_transparent_outline',format:'image/png'},oS
      );
@@ -98,7 +95,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
      map.setLayerIndex(createdLayers[ii], layerIndex);
      layerIndex += 1;
      ii=ii+1;
-	}
+   }
 
    // LMEs + warmpool = aggregation
    var oH = {};
@@ -107,7 +104,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    var lmes = new OpenLayers.Layer.WMS(
      "LMEs & warmpool", GWC,
      //"http://onesharedocean.org/geoserver/wms",
-     {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
+     {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red', format:'image/png'},
      oH
    );
    map.addLayer(lmes);
@@ -147,33 +144,33 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    // hide table header
    jQuery('div.dataLbl').remove();
 
-	jQuery('.ulColumns li').each(function(){
-		var li = this;
-		jQuery(li).find('input').click(function(){
-			var input = this;
-			jQuery.each(map.layers,function(){
-				if(this.layerId == li.id || this.name.toLowerCase() == li.id){
-					if(jQuery(input).prop('checked')){
-						map.getLayer(this.id).setVisibility(true);
-					} else {
-						map.getLayer(this.id).setVisibility(false);
-					}
-				}
-				
-			});
-		});
-	});
-	jQuery('#clearAll').click(function(){
-		jQuery(".ulColumns").not(".lsControls").find('input').attr('checked', false);
-		jQuery.each(map.layers,function(){
-			if(this.layerId){
-				if(this.layerId != 'worldtop' && this.layerId != 'lmes' && this.layerId != 'eez'){
-					map.getLayer(this.id).setVisibility(false);
-				}
-			}
-		});
-	});
-	<?php } ?>
+   jQuery('.ulColumns li').each(function(){
+     var li = this;
+     jQuery(li).find('input').click(function(){
+       var input = this;
+       jQuery.each(map.layers,function(){
+         if(this.layerId == li.id || this.name.toLowerCase() == li.id){
+           if(jQuery(input).prop('checked')){
+             map.getLayer(this.id).setVisibility(true);
+           } else {
+             map.getLayer(this.id).setVisibility(false);
+           }
+         }
+
+       });
+     });
+   });
+   jQuery('#clearAll').click(function(){
+     jQuery(".ulColumns").not(".lsControls").find('input').attr('checked', false);
+     jQuery.each(map.layers,function(){
+       if(this.layerId){
+         if(this.layerId != 'worldtop' && this.layerId != 'lmes' && this.layerId != 'eez'){
+           map.getLayer(this.id).setVisibility(false);
+         }
+       }
+     });
+   });
+   <?php } ?>
  });
 </script>
 
@@ -240,117 +237,123 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
  .layersLegend tbody {
    border:0;
  }
- 
- 
- 
+
+
+
  /*------------------------*/
  .outerColumns{
-	float:left;
-	width:20%;
-	padding:0;
-	margin:0;
-	font-size:13px;
-}
-.innerColumns{
-	width:150px;
-	align:left;
-	color:#A0A0A0;
-	background-color:#e2F0F0;
-	padding-left:5px;
-	overflow:hidden";
-}
-.ulColumns{
-	margin:0 !important;
-	padding:0 !important;
-	list-style-type: none;
-}
-.ulCoumns li{
-	padding:0;
-	margin:0;
-	vertical-align: middle;
-}
-.ulColumns input{
-	margin-right:5px !important;
-	position: relative !important;
-	top:3px !important;
-}
-.outerLsControls{
-	width:550px;
-	margin:auto auto;
-}
-.lsControls{
-}
-.lsControls li{
-	display:inline;
-	float:left;
-	margin-right:20px;
-}
-#clearAll{
-	float:right;
-	margin-top:20px;
-	margin-right:40px;
-}
+   float:left;
+   width:20%;
+   padding:0;
+   margin:0;
+   font-size:13px;
+ }
+ .innerColumns{
+   width:150px;
+   align:left;
+   color:#A0A0A0;
+   background-color:#e2F0F0;
+   padding-left:5px;
+   overflow:hidden";
+ }
+ .ulColumns{
+   margin:0 !important;
+   padding:0 !important;
+   list-style-type: none;
+ }
+ .ulCoumns li{
+   padding:0;
+   margin:0;
+   vertical-align: middle;
+ }
+ .ulColumns input{
+   margin-right:5px !important;
+   position: relative !important;
+   top:3px !important;
+ }
+ .outerLsControls{
+   width:550px;
+   margin:auto auto;
+ }
+ .lsControls{
+ }
+ .lsControls li{
+   display:inline;
+   float:left;
+   margin-right:20px;
+ }
+ #clearAll{
+   float:right;
+   margin-top:20px;
+   margin-right:40px;
+ }
 </style>
 
+<p style="padding-top:1em; padding-bottom:1em">
+  Regional clusters of arrangements are grouped in 5 main regions (Atlantic, Pacific, Indian ocean, Inlan seas and Polar). Individual arrangements are shown as a shade of gray: the more the arrangements overlap an area the darker it is.
+  To show or hide a cluster, click on the check button in front of its name. To see the relation between a regional cluster and related issues, click on its name.
+</p>
+
+<div style="clear:both"></div>
 
 <div id="layerswitcher" class="olControlLayerSwitcher" style="display:none"></div>
 
 
 <div class="outerColumns">
-    <div class="innerColumns">Atlantic</div>
-	<ul class="ulColumns">
-		<li id="ne_atlantic"><input type="checkbox" /><a>Northeast Atlantic</a></li>
-		<li id="nw_atlantic"><input type="checkbox" /><a>Northwest Atlantic</a></li>
-		<li id="wc_atlantic"><input type="checkbox" /><a>Western Central Atlantic</a></li>
-		<li id="ecs_atlantic"><input type="checkbox" /><a>Eastern Central and South Atlantic</a></li>
-	</ul>
+  <div class="innerColumns">Atlantic</div>
+  <ul class="ulColumns">
+    <li id="ne_atlantic"><input type="checkbox" /><a>Northeast Atlantic</a></li>
+    <li id="nw_atlantic"><input type="checkbox" /><a>Northwest Atlantic</a></li>
+    <li id="wc_atlantic"><input type="checkbox" /><a>Western Central Atlantic</a></li>
+    <li id="ecs_atlantic"><input type="checkbox" /><a>Eastern Central and South Atlantic</a></li>
+  </ul>
 </div>
 
 <div class="outerColumns">
-    <div class="innerColumns">Pacific</div>
-	<ul class="ulColumns">
-		<li id="ne_pacific"><input type="checkbox" /><a>Northeast Pacific</a></li>
-		<li id="se_pacific"><input type="checkbox" /><a>Southeast Pacific</a></li>
-		<li id="sw_pacific"><input type="checkbox" /><a>Northwest Pacific</a></li>
-		<li id="pacific_islands"><input type="checkbox" /><a>Pacific Islands Region</a></li>
-	</ul>
+  <div class="innerColumns">Pacific</div>
+  <ul class="ulColumns">
+    <li id="ne_pacific"><input type="checkbox" /><a>Northeast Pacific</a></li>
+    <li id="se_pacific"><input type="checkbox" /><a>Southeast Pacific</a></li>
+    <li id="sw_pacific"><input type="checkbox" /><a>Northwest Pacific</a></li>
+    <li id="pacific_islands"><input type="checkbox" /><a>Pacific Islands Region</a></li>
+  </ul>
 </div>
 
 <div class="outerColumns">
-    <div class="innerColumns">Indian ocean</div>
-	<ul class="ulColumns">
-		<li id="se_asia"><input type="checkbox" /><a>Southeast Asia</a></li>
-		<li id="e_indian"><input type="checkbox" /><a>Eastern Indian Ocean</a></li>
-		<li id="w_indian"><input type="checkbox" /><a>Western Indian Ocean</a></li>
-	</ul>
+  <div class="innerColumns">Indian ocean</div>
+  <ul class="ulColumns">
+    <li id="se_asia"><input type="checkbox" /><a>Southeast Asia</a></li>
+    <li id="e_indian"><input type="checkbox" /><a>Eastern Indian Ocean</a></li>
+    <li id="w_indian"><input type="checkbox" /><a>Western Indian Ocean</a></li>
+  </ul>
 </div>
 
 <div class="outerColumns">
-    <div class="innerColumns">Inland seas</div>
-	<ul class="ulColumns">
-			<li id="baltic_sea"><input type="checkbox" /><a>Baltic Sea</a></li>
-			<li id="mediterranean_sea"><input type="checkbox" /><a>Mediterranean Sea</a></li>
-			<li id="black_sea"><input type="checkbox" /><a>Black Sea</a></li>
-		</ul>
+  <div class="innerColumns">Inland seas</div>
+  <ul class="ulColumns">
+    <li id="baltic_sea"><input type="checkbox" /><a>Baltic Sea</a></li>
+    <li id="mediterranean_sea"><input type="checkbox" /><a>Mediterranean Sea</a></li>
+    <li id="black_sea"><input type="checkbox" /><a>Black Sea</a></li>
+  </ul>
 </div>
 
 <div class="outerColumns">
-    <div class="innerColumns">Polar</div>
-	<ul class="ulColumns">
-		<li id="arctic"><input type="checkbox" /><a>Arctic</a></li>
-		<li id="southern"><input type="checkbox" /><a>Southern Ocean</a></li>
-	</ul>
+  <div class="innerColumns">Polar</div>
+  <ul class="ulColumns">
+    <li id="arctic"><input type="checkbox" /><a>Arctic</a></li>
+    <li id="southern"><input type="checkbox" /><a>Southern Ocean</a></li>
+  </ul>
 </div>
 <button id="clearAll">clear all</button>
 
 <div style="clear:both"></div>
 <div class="outerLsControls">
-    <ul class="ulColumns lsControls">
-		<li id="grid"><label><input type="checkbox"/>Grid</label></li>
-		<li id="worldtop"/><label><input type="checkbox" checked/>Countries (overlay)</label></li>
-		<li id="eez"/><label><input type="checkbox"/>EEZ</label></li>
-		<li id="lmes"/><label><input type="checkbox"/>LMEs & warmpool</label></li>
-	</ul>
+  <ul class="ulColumns lsControls">
+    <li id="grid"><label><input type="checkbox"/>Grid</label></li>
+    <li id="worldtop"/><label><input type="checkbox" checked/>Countries (overlay)</label></li>
+    <li id="eez"/><label><input type="checkbox"/>EEZ</label></li>
+    <li id="lmes"/><label><input type="checkbox"/>LMEs & warmpool</label></li>
+  </ul>
 </div>
 <div style="clear:both"></div>
 
