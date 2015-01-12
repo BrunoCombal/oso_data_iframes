@@ -111,18 +111,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    map.setLayerIndex(lmes, layerIndex);
    layerIndex += 1;
 
-   var oH = {};
-   jQuery.extend(oH,optionsHide);
-   oH.layerId = 'eez';
-   var eez=new OpenLayers.Layer.WMS(
-     "EEZ",
-     GWC,
-     {layers:"general:World_Maritime_Boundaries_v8", transparent:true, styles:'', format:'image/png'},
-     oH
-   );
-   map.addLayer(eez);
-   map.setLayerIndex(eez, layerIndex);
-   layerIndex += 1;
+
 
    var oS = {};
    jQuery.extend(oS,optionsShow);
@@ -134,6 +123,20 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    );
    map.addLayer(worldtop);
    map.setLayerIndex(worldtop, layerIndex);
+   layerIndex += 1;
+
+
+   var oH = {};
+   jQuery.extend(oH,optionsHide);
+   oH.layerId = 'eez';
+   var eez=new OpenLayers.Layer.WMS(
+     "EEZ",
+     GWC,
+     {layers:"general:World_Maritime_Boundaries_v8", transparent:true, styles:'', format:'image/png'},
+     oH
+   );
+   map.addLayer(eez);
+   map.setLayerIndex(eez, layerIndex);
    layerIndex += 1;
 
    map.zoomToExtent(viewInit);
