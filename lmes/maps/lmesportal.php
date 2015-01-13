@@ -80,7 +80,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    });
 
    ///////////////// OPENLAYERS ////////////////////            
-
+   OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5 ;
    // to match the map:
    var extent = new OpenLayers.Bounds(-180, -90, 180, 90);
    // to match the map:
@@ -113,7 +113,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      "Countries",
      GWCWORLD,
      //     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname'},
-     {layers:"general:G2014_2013_0", transparent:true, styles:'gaul_lightyellow_noname'},
+     {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
      {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true}
    );
 
@@ -524,6 +524,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 <div class="mainTool">
   <div class="column-map">
     <div id="mapOL" style="width:750px; height:375px; cursor:pointer"></div>
+    <span style="font-size:0.75em;">Political boundaries: <a href="http://www.fao.org/geonetwork/srv/en/main.home?uuid=f7e7adb0-88fd-11da-a88f-000d939bc5d8">GAUL (2015)</a>, FAO Statistics Division. For other data, metainformation is found in the <a href="/node/27">data page</a>.</span><br/>
     <div id="legOL" style="clear:both;"></div>
   </div>
   <div class="column-layers">
