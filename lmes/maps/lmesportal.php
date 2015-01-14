@@ -446,7 +446,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
 
    //Handles interaction between menu, map and legends
-   jQuery("#accordion li").click(function(){
+   jQuery("#accordion li").click(function(event){
      event.stopPropagation();
      if(jQuery(this).attr('rel') != undefined){
        showLayer(this);
