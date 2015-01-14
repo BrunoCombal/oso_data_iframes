@@ -253,72 +253,75 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    );
 
    // icep
+   // there is a problem with the cache management
    var icep = new OpenLayers.Layer.WMS(
      "ICEP",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
      {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var icep2030 = new OpenLayers.Layer.WMS(
      "ICEP 2030",
-     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
      {layerId:'icep2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var icep2050 = new OpenLayers.Layer.WMS(
      "ICEP 2050",
-     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
      {layerId:'icep2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var ld_din = new OpenLayers.Layer.WMS(
      "ld_din",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
      {layerId:'ld_din', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var ld_din2030 = new OpenLayers.Layer.WMS(
-     "ld_din",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "ld_din2030",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
      {layerId:'ld_din2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var ld_din2050 = new OpenLayers.Layer.WMS(
-     "ld_din",
-     //"http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "ld_din2050",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_ld_din_cat', transparent:true, format:'image/png'},
      {layerId:'ld_din2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind = new OpenLayers.Layer.WMS(
      "Merged indicator",
-     //"http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
      {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind2030 = new OpenLayers.Layer.WMS(
-     "Merged indicator",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "Merged indicator 2030",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
      {layerId:'merged_ind2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind2050 = new OpenLayers.Layer.WMS(
-     "Merged indicator",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
+     "Merged indicator 2050",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     //GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
      {layerId:'merged_ind2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
