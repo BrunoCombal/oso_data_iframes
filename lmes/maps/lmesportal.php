@@ -579,9 +579,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         <li class="l1"><span>Ecosystem health</span>
           <ul>
             <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
-            <li class="l3" rel="coral"><span>Coral reefs</span></li>
-            <li class="l3" rel="mangroves"><span>Mangroves</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
+            <li class="l2" rel="coral"><span>Coral reefs</span></li>
+            <li class="l2" rel="mangroves"><span>Mangroves</span></li>
           </ul>
         </li>
         <li class="l1"><span>Socio-economics</span>
