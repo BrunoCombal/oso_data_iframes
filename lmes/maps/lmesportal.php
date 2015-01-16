@@ -46,14 +46,14 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
                 .keypress(function(){
                   jQuery('#deleteTags').css('display','inline-block');
                 })
-         .blur(function(){
-           if(this.value ==""){
-             jQuery( "#tags" ).css('color', '#c0c0c0');
-             this.value = comboText;
-             jQuery('#deleteTags').css('display','none');
-             jQuery('#buttonLMEs').css('display', 'none');
-           }
-         })
+                .blur(function(){
+                  if(this.value ==""){
+                    jQuery( "#tags" ).css('color', '#c0c0c0');
+                    this.value = comboText;
+                    jQuery('#deleteTags').css('display','none');
+                    jQuery('#buttonLMEs').css('display', 'none');
+                  }
+                })
          .autocomplete({
            source: availableTags,
            open: function(e, ui) {
@@ -72,9 +72,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
    jQuery('#buttonLMEs').click(function(){
      document.location.href = jQuery(this).attr('href');
-	 //window.open(jQuery(this).attr('href'), '_blank');
+     //window.open(jQuery(this).attr('href'), '_blank');
    });
-	//temporary GCA click event
+   //temporary GCA click event
    jQuery('.buttonGCA').click(function(){
      document.location.href = '/node/232';
    });
@@ -432,7 +432,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
          LME_NUMBER=event.features[0].attributes.LME_NUMBER;
          LME_NAME=event.features[0].attributes.LME_NAME;
          document.location.href = '/'+lmeAliasList[parseInt(LME_NUMBER)-1];
-		 jQuery('#buttonLMEs').attr('href','/'+lmeAliasList[parseInt(LME_NUMBER)-1]);
+         jQuery('#buttonLMEs').attr('href','/'+lmeAliasList[parseInt(LME_NUMBER)-1]);
          jQuery('#buttonLMEs').css('display', 'inline-block');
          jQuery('#tags').prop('value', LME_NUMBER+' '+LME_NAME);
          jQuery('#tags').css('color', '#000000');
@@ -513,7 +513,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 </script>
 
 
-<div style="background-color:#F0DF90; font-family:Verdana, sans-serif; font-size:20px; color:#000000; padding:10px; margin-bottom:10px; width:250px; cursor:pointer" onclick="window.open('/node/244');">Read more about LMEs</div>
+
 <?php include('/data/iframes/common/lmesnav/lmenav.php'); ?>
 
 
@@ -531,8 +531,13 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
     <div id="legOL" style="clear:both;"></div>
   </div>
   <div class="column-layers">
+
+<!--    <div style="background-color:#F0DF90; color:#000000; margin-bottom:10px; cursor:pointer" onclick="window.open('/node/244');">Read more about LMEs</div> -->
+
     <div id="accordion">
       <ul>
+	<li class="buttonLMEs" onclick="window.open('<?php echo drupal_get_path_alias('/node/244'); ?>');">Read more about LMEs</li>
+	<li class="empty"></li>
         <li class="l1" rel="lmes"><span class="selected">LMEs</span>
         </li>
         <li class="l1" rel="descProductivity"><span>Productivity</span>
@@ -601,16 +606,16 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <!--
         <li class="l1"><span>General information</span>
-          <ul>
-            <li class="l2" rel="areas"><span>LMEs Area</span></li>
-          </ul>
+        <ul>
+        <li class="l2" rel="areas"><span>LMEs Area</span></li>
+        </ul>
         </li>
         -->
         <li class="empty"></li>
-		<li class="l1 lastItem"><span>Global Comparative Assessment</span>
+        <li class="l1 lastItem"><span>Global Comparative Assessment</span>
         </li>
         <!--<li class="empty"></li>-->
-<!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
+        <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
         <li class="empty"></li>
         <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
         <!--<li class="empty"></li>
