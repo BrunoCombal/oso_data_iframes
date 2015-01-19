@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
       #map-id {
-       width: 750px;
-       height: 375px;
+       width: 600px;
+       height: 300px;
        margin:0;
        padding:0;
       }
@@ -32,7 +32,7 @@
         OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5
 
         var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
-        var resolution = [0.48, 0.24, 0.12];
+        var resolution = [1.2, 0.6, 0.3];
         var options = {restrictedExtent: defaultExtent,maxExtent:defaultExtent,
           resolutions: resolution,
           projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
@@ -43,7 +43,7 @@
 
         var thisWrapDateLine = false;
         var GWC="http://onesharedocean.org/geoserver/gwc/service/wms";
-        TSIZE=new OpenLayers.Size(375,375);
+        TSIZE=new OpenLayers.Size(300,150);
         TORG=new OpenLayers.LonLat(-180.0, 90.0);
 
         var countriesBack = new OpenLayers.Layer.WMS(
