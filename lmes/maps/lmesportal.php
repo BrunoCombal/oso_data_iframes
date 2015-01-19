@@ -176,6 +176,22 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'sst_net_change', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
+   // fish and fisheries
+   var catch_rel_2030 = new OpenLayers.Layer.WMS(
+     "Catch change (2030)",
+     GWCLMES,
+     {layers:"lmes_and_catch_relative_2030", transparent:true, styles:"futureFishCatch_percent", format:'image/png'},
+     {layerId:'fishRelative2030', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
+   var catch_rel_2050 = new OpenLayers.Layer.WMS(
+     "Catch change (2050)",
+     GWCLMES,
+     {layers:"lmes_and_catch_relative_2050", transparent:true, styles:"futureFishCatch_percent", format:'image/png'},
+     {layerId:'fishRelative2050', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
+
    //Ecosystem
    //Coral reefs
    var coral = new OpenLayers.Layer.WMS(
@@ -407,6 +423,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      lmes,
      chla, chlachange, pp_group, pp_trend,
      sst_net_change,
+     catch_rel_2030, catch_rel_2050,
      coral,
      mangroves,
      areas,
@@ -549,7 +566,12 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="sst_net_change"><span>SST net change</li>
           </ul>
         </li>
-        <li class="l1"><span>Fish &amp; Fisheries</span></li>
+        <li class="l1" rel="descFisheries"><span>Fish &amp; Fisheries</span>
+	  <ul>
+	    <li class="l2" rel="fishRelative2030"><span>Catch change (2030)</span></li>
+	    <li class="l2" rel="fishRelative2050"><span>Catch change (2050)</span></li>
+	  </ul>
+	</li>	
         <li class="l1"><span>Pollution</span>
           <ul>
             <li class="l2 level"><span>Nutrients</span>
