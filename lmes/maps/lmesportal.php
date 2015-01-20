@@ -54,21 +54,21 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
                     jQuery('#buttonLMEs').css('display', 'none');
                   }
                 })
-         .autocomplete({
-           source: availableTags,
-           open: function(e, ui) {
-             var list = '';
-             var results = jQuery('ul.ui-autocomplete.ui-widget-content a');
-             jQuery('#results').html(list);
-           },
-           select: function(e, ui) {
-             var lmename = ui.item.value.split(' ');
-             var lmecode = lmename.shift();
-             jQuery('#buttonLMEs').attr('href','/'+lmeAliasList[parseInt(lmecode)-1]);
-             jQuery('#buttonLMEs').attr('target','_blank');
-             jQuery('#buttonLMEs').css("display", "inline-block");
-           }
-         });
+                .autocomplete({
+                  source: availableTags,
+                  open: function(e, ui) {
+                    var list = '';
+                    var results = jQuery('ul.ui-autocomplete.ui-widget-content a');
+                    jQuery('#results').html(list);
+                  },
+                  select: function(e, ui) {
+                    var lmename = ui.item.value.split(' ');
+                    var lmecode = lmename.shift();
+                    jQuery('#buttonLMEs').attr('href','/'+lmeAliasList[parseInt(lmecode)-1]);
+                    jQuery('#buttonLMEs').attr('target','_blank');
+                    jQuery('#buttonLMEs').css("display", "inline-block");
+                  }
+                });
 
    jQuery('#buttonLMEs').click(function(){
      document.location.href = jQuery(this).attr('href');
@@ -112,8 +112,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    var worldtop=new OpenLayers.Layer.WMS(
      "Countries",
      GWCWORLD,
-     //     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname'},
-     {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
+     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
+//     {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
      {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true}
    );
 
@@ -177,6 +177,61 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    );
 
    // fish and fisheries
+   var fish_subsidy = new OpenLayers.Layer.WMS(
+     "Fisheries subsidy",
+     GWCLMES,
+     {layers:'lmes:lmes_fisheries_10year_average', transparent:true, styles:'lmes_fisheries_10year_subsidy', format:'image/png'},
+     {layerId:'fishSubsidy', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+   var fish_footprint = new OpenLayers.Layer.WMS(
+     "Fisheries ecological footprint",
+     GWCLMES,
+     {layers:'lmes:lmes_fisheries_10year_average', transparent:true, styles:'lmes_fisheries_10year_footprint', format:'image/png'},
+     {layerId:'fishFootprint', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+   var fish_MTI = new OpenLayers.Layer.WMS(
+     "Fisheries MTI",
+     GWCLMES,
+     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_mti',format:'image/png'},
+     {layerId:'fishMTI',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+   var fish_FiB = new OpenLayers.Layer.WMS(
+     "Fisheries FiB",
+     GWCLMES,
+     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_fib',format:'image/png'},
+     {layerId:'fishFiB',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+   var fish_stock_number = new OpenLayers.Layer.WMS(
+     "Fisheries Stock Status (number)",
+     GWCLMES,
+     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_stockstatus_number',format:'image/png'},
+     {layerId:'fishStockNumber',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+   var fish_stock_biomass = new OpenLayers.Layer.WMS(
+     "Fisheries Stock Status (biomass)",
+     GWCLMES,
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_stockstatus_biomass",format:"image/png"},
+     {layerId:'fishStockBiomass',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+   var fish_trawling = new OpenLayers.Layer.WMS(
+     "Fisheries Trawling",
+     GWCLMES,
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_trawling",format:"image/png"},
+     {layerId:'fishTrawling',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+   var fish_rate_effective = new OpenLayers.Layer.WMS(
+     "Fisheries Rate effective fishing",
+     GWCLMES,
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_ratechange_effectivefishing",format:"image/png"},
+     {layerId:'fishRateEffective',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+   var fish_change_percent = new OpenLayers.Layer.WMS(
+     "Fisheries percent change",
+     GWCLMES,
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_percentchange",format:"image/png"},
+     {layerId:'fishPercentChange',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   );
+
    var catch_rel_2030 = new OpenLayers.Layer.WMS(
      "Catch change (2030)",
      GWCLMES,
@@ -190,7 +245,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layers:"lmes_and_catch_relative_2050", transparent:true, styles:"futureFishCatch_percent", format:'image/png'},
      {layerId:'fishRelative2050', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
-
 
    //Ecosystem
    //Coral reefs
@@ -423,6 +477,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      lmes,
      chla, chlachange, pp_group, pp_trend,
      sst_net_change,
+     fish_subsidy, fish_footprint, fish_MTI,
+     fish_FiB, fish_stock_number, fish_stock_biomass,
+     fish_trawling,fish_rate_effective,fish_change_percent,
      catch_rel_2030, catch_rel_2050,
      coral,
      mangroves,
@@ -544,17 +601,19 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 <div class="mainTool">
   <div class="column-map">
     <div id="mapOL" style="width:750px; height:375px; cursor:pointer"></div>
+<!--
     <span style="font-size:0.75em;">Political boundaries: <a href="http://www.fao.org/geonetwork/srv/en/main.home?uuid=f7e7adb0-88fd-11da-a88f-000d939bc5d8">GAUL (2015)</a>, FAO Statistics Division. For other data, metainformation is found in the <a href="/node/27">data page</a>.</span><br/>
+-->
     <div id="legOL" style="clear:both;"></div>
   </div>
   <div class="column-layers">
 
-<!--    <div style="background-color:#F0DF90; color:#000000; margin-bottom:10px; cursor:pointer" onclick="window.open('/node/244');">Read more about LMEs</div> -->
+    <!--    <div style="background-color:#F0DF90; color:#000000; margin-bottom:10px; cursor:pointer" onclick="window.open('/node/244');">Read more about LMEs</div> -->
 
     <div id="accordion">
       <ul>
-	<li class="buttonLMEs" onclick="window.open('<?php echo drupal_get_path_alias('/node/244'); ?>');">Read more about LMEs</li>
-	<li class="empty"></li>
+        <li class="buttonLMEs" onclick="window.open('<?php echo drupal_get_path_alias('/node/244'); ?>');">Read more about LMEs</li>
+        <li class="empty"></li>
         <li class="l1" rel="lmes"><span class="selected">LMEs</span>
         </li>
         <li class="l1" rel="descProductivity"><span>Productivity</span>
@@ -567,11 +626,20 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
           </ul>
         </li>
         <li class="l1" rel="descFisheries"><span>Fish &amp; Fisheries</span>
-	  <ul>
-	    <li class="l2" rel="fishRelative2030"><span>Catch change (2030)</span></li>
-	    <li class="l2" rel="fishRelative2050"><span>Catch change (2050)</span></li>
-	  </ul>
-	</li>	
+          <ul>
+	    <li class="l2" rel="fishSubsidy"><span>Fishing subsidy / landed value</span></li>
+	    <li class="l2" rel="fishFootprint"><span>Ecological footprint</span></li>
+	    <li class="l2" rel="fishMTI"><span>MTI change (1950 to 2000)</span></li>
+	    <li class="l2" rel="fishFiB"><span>FiB change (1950 to 2000)</span></li>
+	    <li class="l2" rel="fishStockNumber"><span>Stock status change in number</span></li>
+	    <li class="l2" rel="fishStockBiomass"><span>Stock status change in biomass</span></li>
+	    <li class="l2" rel="fishTrawling"><span>Catch from bottom trawling gears</span></li>
+	    <li class="l2" rel="fishRateEffective"><span>Rate of effective fishing effort</span></li>
+            <li class="l2" rel="fishRelative2030"><span>Catch change (2030), sub-LME</span></li>
+            <li class="l2" rel="fishRelative2050"><span>Catch change (2050), sub-LME</span></li>
+	    <li class="l2" rel="fishPercentChange"><span>Percent change in cath potential (2050)</span></li>
+          </ul>
+        </li>
         <li class="l1"><span>Pollution</span>
           <ul>
             <li class="l2 level"><span>Nutrients</span>
