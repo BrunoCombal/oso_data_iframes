@@ -1,26 +1,27 @@
 <link rel="stylesheet" href="/iframes/common/data/frontend/front.css" />
 <link rel="stylesheet" href="/misc/ui/jquery.ui.autocomplete.css" />
 <style>
-      .ui-autocomplete{max-height:100px, overflow-y:auto;overflow-x:hidden;}
-      html .ui-autocomplete{height:400px} /* IE6 does not support max-height */
-      .ui-widget{font-size:12px;}
-	  .ui-menu{background:white !important;}
+ .ui-autocomplete{max-height:100px, overflow-y:auto;overflow-x:hidden;}
+ html .ui-autocomplete{height:400px} /* IE6 does not support max-height */
+ .ui-widget{font-size:12px;}
+ .ui-menu{background:white !important;}
 </style>
 
 <?php
 drupal_add_library('system', 'ui.autocomplete');
 
 if(user_is_logged_in()){
-	if(isset($_POST['cache'])){
-		include('/data/iframes/common/data/frontend/engine.php');
-	}
-	?>
-		<form method="post" id="formCache" action="" enctype="multipart/form-data">
-			<input id="formCacheBtn" type="submit" name="cache" value="Rebuild cache" />
-		</form>
-	<?php
-	
+  if(isset($_POST['cache'])){
+    include('/data/iframes/common/data/frontend/engine.php');
+  }
 }
+?>
+<form method="post" id="formCache" action="" enctype="multipart/form-data">
+  <input id="formCacheBtn" type="submit" name="cache" value="Rebuild cache" />
+</form>
+<?php
+
+
 $oo_file = '/data/iframes/common/data/frontend/oo.json';
 $ooArray = json_decode(file_get_contents($oo_file),true);
 $lmes_file = '/data/iframes/common/data/frontend/lmes.json';
@@ -36,7 +37,7 @@ $fileC = "/data/iframes/common/data/services/downcount.json";
 
 <script type="text/javascript">
 jQuery(document).ready(function(){
-	
+
 	jQuery('#formCache').submit(function(e){
 		jQuery('#formCacheBtn').attr('value', 'Rebuilding cache...');
 		var el = document.createElement('IMG');
@@ -57,9 +58,9 @@ jQuery(document).ready(function(){
 			jQuery(this).removeClass('up');
 		}
 	});
-	
+
 	jQuery(".accordionData .itemData").click(function(){
-	
+
 		if(!jQuery(this).parents('.fsItem').find('.bodyData').is(':visible')){
 			jQuery(this).removeClass('up');
 			jQuery(this).addClass('down');
@@ -82,7 +83,7 @@ jQuery(document).ready(function(){
 			jQuery(this).parents('.fsItem').find(".readMore").html("| show details |");
 		}
 	});
-	
+
 	jQuery(".readMore").click(function(){
            jQuery(this).parents('.fsItem').find('.itemData').click();
        })
@@ -98,7 +99,7 @@ jQuery(document).ready(function(){
 			jQuery(this).first().css('margin-top', '10px');
 			jQuery(this).last().css('margin-top', '10px');
 		});
-		
+
 		jQuery('.downloadData').click(function(c){
 			var id = jQuery(this).closest('li').find('a').first().attr('name');
 			jQuery.get("/iframes/common/data/services/downlog.php?id="+id, function(response) {
@@ -106,15 +107,15 @@ jQuery(document).ready(function(){
 			});
 			return true;
 		});
-	
-	
+
+
 	//When coming from a referenced page with a given bookmark move to it and show it's contents
 	var hash = document.location.hash;
 
 	if ( hash != "" ) {
-		var anchor = jQuery('a[name=\''+hash.substring(1, hash.length)+'\']');		
+		var anchor = jQuery('a[name=\''+hash.substring(1, hash.length)+'\']');
 		anchor = anchor[0];
-		
+
 
 		jQuery(anchor).parents('.collapsible').find('.categoryData').click();
 		jQuery(anchor).siblings('.fsItem').find('.itemData').click();
@@ -122,21 +123,21 @@ jQuery(document).ready(function(){
 				scrollTop: jQuery(anchor).siblings('.fsItem').find('.itemData').offset().top
 			}, 1000);
 	}
-	
+
 	jQuery('.numberNodes').each(function(){
 		jQuery(this).parents('.collapsible').find('.categoryData').html(jQuery(this).parents('.collapsible').find('.categoryData').html()+' ('+jQuery(this).attr('ref')+')');
 	});
-	
+
 	function unscrambleEmails(){
 		var a = jQuery('.email').each(function(){
 			var b = jQuery(this).html();
 			jQuery(this).html(b.replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));
 			jQuery(this).removeClass('email');
 		});
-				
+
 	}
 	unscrambleEmails();
-	
+
 	var searchTags = [];
 	var searchIDs = [];
 	var searchMoreText = [];
@@ -157,7 +158,7 @@ jQuery(document).ready(function(){
 		}
 		jQuery('#tempDiv').remove();
 	});
-	
+
 	function stripCommonWords(input){
 	input = input.replace(/\,/g, "");
 	input = input.replace(/\_/g, "");
@@ -171,7 +172,7 @@ jQuery(document).ready(function(){
 		});
 		return strArray;
 	}
-	
+
 	var comboText = "Search available datasets";
 	jQuery( "#resetSearch" ).css('color', '#c0c0c0');
 	jQuery("#resetSearch")
@@ -191,7 +192,7 @@ jQuery(document).ready(function(){
 					jQuery( "#resetSearch" ).css('color', '#c0c0c0');
 				});
 			});
-			
+
 	});
 	jQuery( "#tags" ).css('color', '#c0c0c0');
 	jQuery("#tags")
@@ -241,8 +242,8 @@ jQuery(document).ready(function(){
 					}
 				}
 				response(res);
-				
-				
+
+
 			},
 			open: function(e, ui) {
 				var list = '';
@@ -272,14 +273,14 @@ jQuery(document).ready(function(){
 				});
 				jQuery('#resetSearch').attr('disabled', false);
 				jQuery( "#resetSearch" ).css('color', '#000000');
-				
-				
-				
+
+
+
 			}
 		});
 		jQuery('#ooTotal').html(jQuery('#ooTotal_temp').html());
 		jQuery('#lmesTotal').html(jQuery('#lmesTotal_temp').html());
-	
+
 
 
 function highlighter(word, element) {
@@ -317,7 +318,7 @@ function makeid()
 	<input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; display:inline;" value="Search available datasets"/>
 	<input id="resetSearch" type="button" value="Reset" disabled="disabled" style="display:inline;"></input>
 	<div id="#results" class="ui-front autocomplete" style="z-index:999 !important; background:white !important;" ></div>
-	
+
 	</div>
 <div id="mainResults">
 
@@ -344,7 +345,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 	$datagroupflag=false;
 	$lastnodeingroup=false;
 	$numberNodes = 0;
-	foreach ($tempOrder as $node) { 
+	foreach ($tempOrder as $node) {
 		$node = $node[1];
 		//$node = node_load($node['nid']);
 		if ($node['status'] == 1) {
@@ -357,7 +358,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 			$nodeCats = explode(';',$categories);
 			if(in_array($categoriesList_temp[$i], $nodeCats)){
 				$numberNodes++;
-				
+
 				if(isset($node['group'])){
 					$lastnodeingroup=true;
 					if(($datagroupflag == false) || ($datagroup != $node['group'])){
@@ -375,7 +376,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 				?>
 				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node['nid']; ?>"></a>
 			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node['xml'])){echo 'name="'.$node['xml'].'"';} ?>><?php echo $node['title']; ?></span>
-			
+
 
 			<span class="itemBtns">
 				<span class="readMore"></span>
@@ -391,8 +392,8 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 					$lastnodeingroup=false;
 				}
 			?>
-			
-			
+
+
 			<div class="clearfix"></div>
 			<div class="bodyData">
 				<div class="idData">
@@ -407,7 +408,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
     <?php if(isset($node['data_source'])){ ?><li><span class="title">Data sources</span><span class="value"><?php echo $node['data_source']; ?></span></li><?php } ?>
     <?php if(isset($node['partners'])){ ?>
 	<li><span class="title">Partners</span><span class="value"><?php echo $node['partners']; ?></span></li><?php } ?>
-    
+
    </ul>
   </div>
  </li>
@@ -415,7 +416,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
   <p></p>
   </div>
   </fieldset>
-</li>			
+</li>
 <?php
 			}
 		}
@@ -449,7 +450,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 	$datagroupflag=false;
 	$lastnodeingroup=false;
 	$numberNodes = 0;
-	foreach ($tempOrder as $node) { 
+	foreach ($tempOrder as $node) {
 		$node = $node[1];
 		if ($node['status'] == 1) {
 			if(isset($node['categories'])){
@@ -461,10 +462,10 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 				$categories = trim(strtolower(str_replace(' ','',$node['categories'])));
 				$nodeCats = explode(';',$categories);
 				if(in_array($categoriesList_temp[$i], $nodeCats)){
-					
+
 					$numberNodes++;
 					?>
-					<?php 
+					<?php
 				if(isset($node['group'])){
 					$lastnodeingroup=true;
 					$datagroup = $node['group'];
@@ -479,7 +480,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 				?>
 				<li id="<?php $counterID++; echo 'item_'.$counterID; ?>" <?php if(($lastnodeingroup == true) && ($datagroup == '')){echo 'style="margin-top:10px;"';} ?>><a name="<?php echo $node['nid']; ?>"></a>
 			<fieldset class="collapsible fsItem"><legend><span class="itemData fieldset-legend up <?php  if($datagroup != ''){ ?>datagroup<?php } ?>" <?php if(isset($node['xml'])){echo 'name="'.$node['xml'].'"';} ?>><?php echo $node['title']; ?></span>
-			
+
 
 			<span class="itemBtns">
 				<span class="readMore"></span>
@@ -490,8 +491,8 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
 			</legend>
 			<div class="summaryData <?php  if($datagroup != ''){ ?>summaryNoDG<?php } ?>"><?php  if(isset($node['summary'])){echo $node['summary'];}else{echo $nodata;} ?>
 			<?php if(user_is_logged_in()){?><br/><span class="counterD">Dataset downloaded <em style="font-weight:bold"><?php if(isset($node['counter'])){ echo $node['counter']; }else{ echo "0";} ?></em> time(s)</span><?php } ?></div>
-			
-			
+
+
 			<div class="clearfix"></div>
 			<div class="bodyData">
 				<div class="idData">
@@ -519,7 +520,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
   </div>
   </fieldset>
 </li>
-				
+
 <?php
 				}
 			}
