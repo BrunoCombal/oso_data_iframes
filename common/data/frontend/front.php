@@ -14,13 +14,12 @@ if(user_is_logged_in()){
   if(isset($_POST['cache'])){
     include('/data/iframes/common/data/frontend/engine.php');
   }
-}
 ?>
 <form method="post" id="formCache" action="" enctype="multipart/form-data">
   <input id="formCacheBtn" type="submit" name="cache" value="Rebuild cache" />
 </form>
 <?php
-
+}
 
 $oo_file = '/data/iframes/common/data/frontend/oo.json';
 $ooArray = json_decode(file_get_contents($oo_file),true);
