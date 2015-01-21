@@ -1,3 +1,11 @@
+<style>
+ .lmes_global_legend td, tr {
+   padding:0;
+ }
+ .lmes_global_legend tbody{
+   border:none;
+ }
+</style>
 <div id="leg-chla" class="legendOL" rel="LMES_data_chla">
   <span>Long term mean Chlorophyll-A concentration (mg.m<sup>-3</sup>)<br/><small>Source: J.E. O'Reilly <a href="http://onesharedocean.org/?q=node/27" target="_top">get data and metainformation</a></small></span><br /><br />
   <ul>
@@ -79,14 +87,21 @@
 
 <div id="leg-fishSubsidy" class="legendOL" ref="fishSubsidy">
   <span>Ratio value of Fishing subsidy to landed value</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>0 &ndash; 0.19</td>
+        <td>0.19 &ndash; 0.30</td>
+        <td>0.30 &ndash; 0.46</td>
+        <td>0.46 &ndash; 0.73</td>
+        <td>0.73 &ndash; 0.8</td>
       </tr>
     </tbody>
   </table>
@@ -97,14 +112,21 @@
 
 <div id="leg-fishFootprint" class="legendOL" ref="fishFootprint">
   <span>Ecological footprint or Primary Production Required (PPR)</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>0 &ndash; 0.012</td>
+        <td>0.012 &ndash; 0.06</td>
+        <td>0.06 &ndash; 0.14</td>
+        <td>0.14 &ndash; 0.25</td>
+        <td>0.25 &ndash; 1.3</td>
       </tr>
     </tbody>
   </table>
@@ -116,14 +138,21 @@
 
 <div id="leg-fishMTI" class="legendOL" ref="fishMTI">
   <span>Marine Trophic Index (MTI): change in the average value of MTI in the 2000s from that in the 1950s</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>0.04 &ndash; 0.8</td>
+        <td>-0.028 &ndash; 0.04</td>
+        <td>-0.12 &ndash; -0.028</td>
+        <td>-0.35 &ndash; -0.12</td>
+        <td>-1.5 &ndash; -0.35</td>
       </tr>
     </tbody>
   </table>
@@ -134,14 +163,21 @@
 
 <div id="leg-fishFiB" class="legendOL" ref="fishFiB">
   <span>Fishing in Balance index (FiB): change in the average value of FIB in the 2000s from that in the 1950s</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>-5 &ndash; -0.85</td>
+        <td>-0.85 &ndash; 0.39</td>
+        <td>0.39 &ndash; 0.9</td>
+        <td>0.9 &ndash; 1.8</td>
+        <td>1.8 &ndash; 4.2</td>
       </tr>
     </tbody>
   </table>
@@ -152,14 +188,21 @@
 
 <div id="leg-fishStockNumber" class="legendOL" ref="fishStockNumber">
   <span>Stock status (number): number of stocks in the collapsed and overexploited stages as a % of the total number of stocks between 2000-2010</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>0 &ndash; 34</td>
+        <td>34 &ndash; 46</td>
+        <td>46 &ndash; 51.5</td>
+        <td>51.5 &ndash; 59</td>
+        <td>59 &ndash; 100</td>
       </tr>
     </tbody>
   </table>
@@ -170,14 +213,21 @@
 
 <div id="leg-fishStockBiomass" class="legendOL" ref="fishStockBiomass">
   <span>Stock status (biomass): catch biomass of stocks in the collapsed and overexploited stages as % of the total catch biomass between 2000-2010</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>0 &ndash; 10</td>
+        <td>10 &ndash; 18</td>
+        <td>18 &ndash; 31.5</td>
+        <td>31.5 &ndash; 47.8</td>
+        <td>47.8 &ndash; 100</td>
       </tr>
     </tbody>
   </table>
@@ -188,14 +238,21 @@
 
 <div id="leg-fishTrawling" class="legendOL" ref="fishTwraling">
   <span>Catch from bottom trawling gears as % of total catch</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody >
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>0 &ndash; 10.5</td>
+        <td>10.5 &ndash; 15</td>
+        <td>15 &ndash; 20</td>
+        <td>20 &ndash; 32.3</td>
+        <td>32.3 &ndash; 100</td>
       </tr>
     </tbody>
   </table>
@@ -206,14 +263,21 @@
 
 <div id="leg-fishRateEffective" class="legendOL" ref="fishRateEffective">
   <span>Rate of change of effective fishing effort ( kW) from the mean of the 1980s to the mean of the 2000s</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>-20 &ndash; 0.2</td>
+        <td>0.2 &ndash; 1.8</td>
+        <td>1.8 &ndash; 5.7</td>
+        <td>5.7 &ndash; 10</td>
+        <td>10 &ndash; 130</td>
       </tr>
     </tbody>
   </table>
@@ -224,14 +288,21 @@
 
 <div id="leg-fishPercentChange" class="legendOL" ref="fishPercentChange">
   <span>Percent (%) change in catch potential in the 2050s</span>
-  <table>
-    <tbody style="border:none">
+  <table class="lmes_global_legend">
+    <tbody>
       <tr>
         <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very Low</td>
         <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
         <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
         <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
         <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Very High</td>
+      </tr>
+      <tr>
+        <td>14.5 &ndash; 100</td>
+        <td>3.5 &ndash; 14.5</td>
+        <td>-3.6 &ndash; 3.5</td>
+        <td>-8 &ndash; -3.6</td>
+        <td>-28 &ndash; -8</td>
       </tr>
     </tbody>
   </table>
@@ -242,24 +313,24 @@
 
 <div id="leg-fishRelative2030" class="legendOL" ref="catch_rel_2030">
   <span>Projection of the fish catch for decade 2030, as a percentage of catch in decade 2000</span>.
-  <table style="border:none!important; max-width:400px;">
-    <tbody style="border:none!important;">
+  <table class="lmes_global_legend" style="max-width:400px;">
+    <tbody>
       <tr>
-        <td style="padding:0!important;"><span style="background-color:#ed372c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> &lt; -50%</td>
-        <td style="padding:0!important;"><span style="background-color:#f47b2a;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -50%</td>
-        <td style="padding:0!important;"><span style="background-color:#ffc62e;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -20%</td>
-        <td style="padding:0!important;"><span style="background-color:#dde345;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -5%</td>
-        <td style="padding:0!important;"><span style="background-color:#ececec;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -1%</td>
+        <td ><span style="background-color:#ed372c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> &lt; -50%</td>
+        <td ><span style="background-color:#f47b2a;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -50%</td>
+        <td ><span style="background-color:#ffc62e;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -20%</td>
+        <td ><span style="background-color:#dde345;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -5%</td>
+        <td ><span style="background-color:#ececec;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -1%</td>
       </tr>
       <tr>
-        <td style="padding:0!important;"><span style="background-color:#54b448;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0%</td>
-        <td style="padding:0!important;"><span style="background-color:#74c9c4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 1%</td>
-        <td style="padding:0!important;"><span style="background-color:#45bbeb;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 5%</td>
-        <td style="padding:0!important;"><span style="background-color:#4b69b1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 20%</td>
-        <td style="padding:0!important;"><span style="background-color:#3a53a3;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 50%</td>
+        <td ><span style="background-color:#54b448;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0%</td>
+        <td ><span style="background-color:#74c9c4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 1%</td>
+        <td ><span style="background-color:#45bbeb;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 5%</td>
+        <td ><span style="background-color:#4b69b1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 20%</td>
+        <td ><span style="background-color:#3a53a3;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 50%</td>
       </tr>
       <tr>
-        <td style="padding:0!important;"><span style="background-color:#ffff;border:1px solid #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> No data</li>
+        <td ><span style="background-color:#ffff;border:1px solid #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> No data</li>
       </tr>
     </tbody>
   </table>
