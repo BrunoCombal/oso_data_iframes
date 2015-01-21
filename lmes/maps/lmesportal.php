@@ -637,7 +637,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 	    <li class="l2" rel="fishRateEffective"><span>Rate of effective fishing effort</span></li>
             <li class="l2" rel="fishRelative2030"><span>Catch change (2030), sub-LME</span></li>
             <li class="l2" rel="fishRelative2050"><span>Catch change (2050), sub-LME</span></li>
-	    <li class="l2" rel="fishPercentChange"><span>Percent change in cath potential (2050)</span></li>
+	    <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential (2050)</span></li>
           </ul>
         </li>
         <li class="l1"><span>Pollution</span>
