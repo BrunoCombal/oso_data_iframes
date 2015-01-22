@@ -249,12 +249,19 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    //Ecosystem
    //Coral reefs
    var coral = new OpenLayers.Layer.WMS(
-     "Coral reefs",
+     "Coral coverage",
      //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
-     {layers:"lmes:lmes66_data",  styles:'lmes_data_coral', transparent:true, format:'image/png'},
+     {layers:"lmes:lmes_coral_coverage",  styles:'coral_coverage', transparent:true, format:'image/png'},
      {layerId:'coral', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
+
+   var coral_int_risk = new OpenLayers.Layer.WMS(
+     "Reefs integrated risk",
+     GWCLMES,
+     {layers:"lmes:lmes_reef_total_integrated_risk", styles:'', transparent:true, format:'image/png'},
+     {layerId:'reef_risk',tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+     );
 
    // mangroves
    var mangroves=new OpenLayers.Layer.WMS(
@@ -481,7 +488,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      fish_FiB, fish_stock_number, fish_stock_biomass,
      fish_trawling,fish_rate_effective,fish_change_percent,
      catch_rel_2030, catch_rel_2050,
-     coral,
+     coral, coral_int_risk,
      mangroves,
      areas,
      cumulImpact,
@@ -627,14 +634,14 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descFisheries"><span>Fish &amp; Fisheries</span>
           <ul>
-	    <li class="l2" rel="fishSubsidy"><span>Fishing subsidy / landed value</span></li>
+	    <li class="l2" rel="fishSubsidy"><span>Fishing subsidy</span></li>
 	    <li class="l2" rel="fishFootprint"><span>Ecological footprint</span></li>
-	    <li class="l2" rel="fishMTI"><span>MTI change (1950 to 2000)</span></li>
-	    <li class="l2" rel="fishFiB"><span>FiB change (1950 to 2000)</span></li>
-	    <li class="l2" rel="fishStockNumber"><span>Stock status change in number</span></li>
-	    <li class="l2" rel="fishStockBiomass"><span>Stock status change in biomass</span></li>
-	    <li class="l2" rel="fishTrawling"><span>Catch from bottom trawling gears</span></li>
-	    <li class="l2" rel="fishRateEffective"><span>Rate of effective fishing effort</span></li>
+	    <li class="l2" rel="fishMTI"><span>Marine Trophic Index</span></li>
+	    <li class="l2" rel="fishFiB"><span>Fishing-in-Balance</span></li>
+	    <li class="l2" rel="fishStockNumber"><span>Stock status (number)</span></li>
+	    <li class="l2" rel="fishStockBiomass"><span>Stock status (biomass)</span></li>
+	    <li class="l2" rel="fishTrawling"><span>Catch from bottom trawling</span></li>
+	    <li class="l2" rel="fishRateEffective"><span>Fishing effort</span></li>
             <li class="l2" rel="fishRelative2030"><span>Catch change (2030), sub-LME</span></li>
             <li class="l2" rel="fishRelative2050"><span>Catch change (2050), sub-LME</span></li>
 	    <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential (2050)</span></li>
@@ -675,7 +682,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
           <ul>
             <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
-            <li class="l2" rel="coral"><span>Coral reefs</span></li>
+            <li class="l2" rel="coral"><span>Coral coverage</span></li>
+	    <li class="l2" rel="reef_risk"><span>Reefs integrated risk</span></li>
             <li class="l2" rel="mangroves"><span>Mangroves</span></li>
           </ul>
         </li>
