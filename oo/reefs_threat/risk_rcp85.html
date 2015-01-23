@@ -68,18 +68,18 @@
     <div class="legend_container">
       <table class="risk_legend">
         <tr>
-            <td style="background-color:#5FBADD; ">&nbsp;</td>
-	    <td style="background-color:#78BB4B; ">&nbsp;</td>
-	    <td style="background-color:#E4E344; ">&nbsp;</td>
-            <td style="background-color:#EE9F42; ">&nbsp;</td>
-	    <td style="background-color:#D8232A; ">&nbsp;</td>
-	    <td style="background-color:#000000; ">&nbsp;</td>
+            <td style="background-color:#35618f; ">&nbsp;</td>
+	    <td style="background-color:#ff9849; ">&nbsp;</td>
+	    <td style="background-color:#ff0017; ">&nbsp;</td>
+            <td style="background-color:#9d000a; ">&nbsp;</td>
+	    <td style="background-color:#652424; ">&nbsp;</td>
+	    <td style="background-color:#690032; ">&nbsp;</td>
         <tr>
-            <td>Very low</td>
-	    <td>Low</td>
+            <td>Low</td>
 	    <td>Medium</td>
 	    <td>High</td>
 	    <td>Very high</td>
+	    <td>Critical</td>
 	    <td>Extreme</td>
        </tr>
 
@@ -89,6 +89,8 @@
 
     <script>
      OpenLayers.IMAGE_RELOAD_ATTEMPS = 5; //need to load multiple little tiles, may be too much for the bandwidth, try 5 times before showing a pink tile
+
+     OpenLayers.DOTS_PER_INCH = 90.71428571428572;
 
      var extent = new OpenLayers.Bounds(30,-90,390,90);
      var minResolution=1/800.0;
@@ -121,21 +123,21 @@
      var risk_2010 = new OpenLayers.Layer.WMS(
        "Risk 2010",
        WMS,
-       {layers:"ocean:oo_reefs_threat_2010_rcp85", styles:'',format:'image/png', transparent:true},
+       {layers:"ocean:oo_reefs_threat_2010_rcp85", format:'image/png', transparent:true},
        {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, visibility:false, wrapDateLine:true}
      );
 
      var risk_2030 = new OpenLayers.Layer.WMS(
        "Risk 2030",
        WMS,
-       {layers:"ocean:oo_reefs_threat_2030_rcp85", styles:'',format:'image/png', transparent:true},
+       {layers:"ocean:oo_reefs_threat_2030_rcp85", format:'image/png', transparent:true},
        {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, visibility:false, wrapDateLine:true}
      );
 
      var risk_2050 = new OpenLayers.Layer.WMS(
        "Risk 2050",
        WMS,
-       {layers:"ocean:oo_reefs_threat_2050_rcp85", styles:'',format:'image/png', transparent:true},
+       {layers:"ocean:oo_reefs_threat_2050_rcp85", format:'image/png', transparent:true},
        {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, visibility:true, wrapDateLine:true}
      );
      
