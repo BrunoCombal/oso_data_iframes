@@ -94,11 +94,11 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
          {tiled:true, isBaseLayer:false, opacity:1, visibility:false}
        );
 
-       var iac = new OpenLayers.Layer.WMS(
-         "IAC",
+       var accobams = new OpenLayers.Layer.WMS(
+         "ACCOBAMS",
          "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:IAC_MOU_simplified", transparent:true, styles:'green_00cc68_transparent'},
-         {tiled:true, isBaseLayer:false, layerId:'IAC', opacity:1, visibility:true, displayInLayerSwitcher:false}
+         {layers:"arrangements:ACCOBAMS_ALL", transparent:true, styles:'green_00cc68_transparent'},
+         {tiled:true, isBaseLayer:false, layerId:'ACCOBAMS', opacity:1, visibility:true, displayInLayerSwitcher:false}
        );
 
 
@@ -158,7 +158,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
          {tiled:false, visibility:true, opacity:1, layerId:'EU', displayInLayerSwitcher:false}
        );
 
-       map.addLayers([worldtop, iac, ices, nasco, neafc, nammco, iccat, ospar, ascobans, eu, lmes, eez, world]);
+       map.addLayers([worldtop, accobams, ices, nasco, neafc, nammco, iccat, ospar, ascobans, eu, lmes, eez, world]);
        map.setLayerIndex(world, 0);
        map.setLayerIndex(iccat, 1);
        map.setLayerIndex(nasco, 2);
@@ -168,7 +168,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        map.setLayerIndex(neafc, 6);
        map.setLayerIndex(eu, 7);
        map.setLayerIndex(ascobans, 8);
-       map.setLayerIndex(iac, 9);
+       map.setLayerIndex(accobams, 9);
        map.setLayerIndex(worldtop, 10);
        map.setLayerIndex(lmes, 11);
        map.setLayerIndex(eez, 12);
