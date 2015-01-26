@@ -52,15 +52,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 			return false;
 	<?php } ?>
 		
-		//Check if we have access to parent document (normally not if the iframe is loaded from a different host
-   var sameHost = false;
-   try{
-	 parent.document;
-	 sameHost = true;
-   }catch(e){
-	 iFrame = null;
-   }
-   
+		
    
 //////////////////////////////////////////////////////////////
 var extent = new OpenLayers.Bounds(-180,-90,180,90);

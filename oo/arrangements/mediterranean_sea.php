@@ -42,7 +42,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
      }
      
     </style>
-    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script src="/sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js"></script>
 	 <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1/external/jquery/jquery.js"></script>
 	<script>
 	jQuery(document).ready(function(){
@@ -53,13 +53,6 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 	<?php } ?>
 		
 		//Check if we have access to parent document (normally not if the iframe is loaded from a different host
-   var sameHost = false;
-   try{
-	 parent.document;
-	 sameHost = true;
-   }catch(e){
-	 iFrame = null;
-   }
    
    
 //////////////////////////////////////////////////////////////
