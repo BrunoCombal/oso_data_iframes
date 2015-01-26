@@ -70,7 +70,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
          "Countries (background)",
          "http://onesharedocean.org/geoserver/general/wms",
          {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
-         {singleTile:true, isBaseLayer:true, visibility:true}
+         {singleTile:true, isBaseLayer:true, visibility:true, displayInLayerSwitcher:false}
        );
 
        var worldtop=new OpenLayers.Layer.WMS(
@@ -89,23 +89,23 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
        var eez=new OpenLayers.Layer.WMS(
          "EEZ",
-         "http://onesharedocean.org/geoserver/ocean/wms",
-         {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+         "http://onesharedocean.org/geoserver/general/wms",
+         {layers:"general:World_Maritime_Boundaries_v8", transparent:true, styles:''},
          {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
        );
 
        var dugong = new OpenLayers.Layer.WMS(
-	 "Dugong MoU",
+	 "Dugong",
 	 "http://onesharedocean.org/geoserver/arrangements/wms",
-	 {layers:"arrangements:Dugong_MOU", transparent:true, styles:'red_ff2d00_transparent'},
-	 {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+	 {layers:"arrangements:Dugong_MOU_simplified", transparent:true, styles:'red_ff2d00_transparent'},
+	 {singleTile:true, opacity:1, layerId:'Dugong', visibility:true, displayInLayerSwitcher: false}
        );
 
        var iosea = new OpenLayers.Layer.WMS(
-	 "IOSEA MoU",
-	 "http://onesharedocean.org/geoserver/arrangemetns/wms",
-	 {layers:"arrangements:IOSEA_MOU", transparent:true, styles:'yellow_ffe200_transparent'},
-	 {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
+	 "IOSEA",
+	 "http://onesharedocean.org/geoserver/arrangements/wms",
+	 {layers:"arrangements:IOSEA_MOU_simplified", transparent:true, styles:'yellow_ffe200_transparent'},
+	 {singleTile:true, opacity:1, layerId:'IOSEA', visibility:true, displayInLayerSwitcher:false}
        );
 
        var iotc=new OpenLayers.Layer.WMS(
