@@ -39,22 +39,31 @@
 		jQuery('thead td[theme="climate"]').html('Climate Change');
 		jQuery('thead td[theme="abnj"]').html('Relevance to ABNJ');
 		jQuery('#tableInfo').html('In the table below, a green rectangle at the intersection of a line and a column means that an arrangement (line) covers a themes (column). Click in the table to start with an empty map and show or hide each arrangement individually.');
-		//If host allows it, resize the frame from within
-   if(sameHost){
-	 if (window.frameElement != null) {
-	   var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
-	   if(iFrame != null){
-		 iFrame.style.height = jQuery('table').height()+jQuery('#map-id').height()+jQuery('#tableInfo').height()+100+"px";
-		 iFrame.style.width = '960px';
+	
+	//Check if we have access to parent document (normally not if the iframe is loaded from a different host
+	var sameHost = false;
+	try{
+		parent.document;
+		sameHost = true;
+	}catch(e){
+		iFrame = null;
+	}
+	//If host allows it, resize the frame from within
+	if(sameHost){
+		if (window.frameElement != null) {
+			var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
+			if(iFrame != null){
+				iFrame.style.height = jQuery('table').height()+jQuery('#map-id').height()+jQuery('#tableInfo').height()+100+"px";
+				iFrame.style.width = '960px';
+			}
 		}
-	 }
-   }
+	}
 	   
 
        //Logic for the interaction between the table and the map
        jQuery('tbody .selectable').addClass('selected');
        jQuery('tbody .selectable')
-             .hover(function(){
+             .mouseenter(function(){
                jQuery(this).parent().children().not('.selectable').addClass('trdissel');
                jQuery(this).parent().find('.selectable').addClass('hover');
              })
@@ -120,24 +129,3 @@
 		});
 
 	
-
-	function cbHandler(num,el){
-		var cI = jQuery(el).prop('cellIndex');
-		var xt = jQuery(el).attr('xtheme');
-		var nD = jQuery('tbody tr .disabled[xtheme="'+xt+'"]').length;
-		var nS = jQuery('tbody tr .selected[xtheme="'+xt+'"]').length;
-		var nSel = jQuery('tbody tr .selectable[xtheme="'+xt+'"]').length;
-		if(nD == 0){ //check
-			jQuery('thead td[theme="'+xt+'"] input[type="checkbox"]')
-				.prop('checked', true)
-				.prop('indeterminate', false);
-		} else if(nD == nSel){
-			jQuery('thead td[theme="'+xt+'"] input[type="checkbox"]')
-				.prop('checked', false)
-				.prop('indeterminate', false);
-		} else { //indefinite
-			jQuery('thead td[theme="'+xt+'"] input[type="checkbox"]')
-				.prop('checked', false)
-				.prop('indeterminate', true);
-		}
-	}//end function

@@ -38,6 +38,8 @@
     <div id="layerswitcher" class="olControlLayerSwitcher"></div>
     
     <script>
+     OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+
      var WDL=true;
      var TORG = new OpenLayers.LonLat(-180.0, 90.0);
      var TSIZE=new OpenLayers.Size(350, 200);
@@ -67,22 +69,27 @@
      
      var worldtop=new OpenLayers.Layer.WMS(
        "Countries",
-       "http://onesharedocean.org/geoserver/general/wms",
+       //"http://onesharedocean.org/geoserver/general/wms",
+       GWC,
        {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
        {tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, wrapDateLine:true, visibility:true, opacity:1}
      );
      
      var lmes = new OpenLayers.Layer.WMS(
        "LMEs & warmpool",
-       "http://onesharedocean.org/geoserver/wms",
-       {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
+       //"http://onesharedocean.org/geoserver/wms",
+       GWC,
+       {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red', format:'image/png'},
        {tiled:true, tileSize:TSIZE, tileOrigin:TORG, wrapDateLine:WDL, isBaseLayer:false, opacity:1, visibility:false}
      );
      
      var eez = new OpenLayers.Layer.WMS(
        "EEZ",
-       "http://onesharedocean.org/geoserver/wms",
-       {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+       //"http://onesharedocean.org/geoserver/wms",
+       GWC,
+       {layers:"general:World_Maritime_Boundaries_v8", //"ocean:OBIS_eezs", 
+	transparent:true, styles:'polygon_contour_ffe600',//'eez_nofill_contour_orange_labels'
+       },
        {tiled:true, tileSize:TSIZE, tileOrigin:TORG, wrapDateLine:WDL, isBaseLayer:false, opacity:1, visibility:false}
      );
      
