@@ -107,6 +107,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    //MF var GWCWORLD="http://onesharedocean.org/geoserver/general/gwc/service/wms";
    var GWCLMES="http://onesharedocean.org/geoserver/gwc/service/wms";
    var GWCWORLD="http://onesharedocean.org/geoserver/gwc/service/wms";
+   var GWCGENERAL="http://onesharedocean.org/geoserver/gwc/service/wms";
 
    //Map of the world
    var worldtop=new OpenLayers.Layer.WMS(
@@ -120,8 +121,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    //LMEs
    var lmes = new OpenLayers.Layer.WMS(
      "LMES",
-     GWCLMES,
-     {layers:"lmes:lmes66_pwp", transparent:true, styles:'lmes66_pwp_green_blue', format:'image/png'},
+     GWCGENERAL,
+     {layers:"general:lmes66_pwp", transparent:true, styles:'lmes66_pwp_green_blue', format:'image/png'},
      {layerId:'lmes', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:true, wrapDateLine:true}
    );
 
@@ -264,13 +265,12 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      );
 
    // mangroves
-   var mangroves=new OpenLayers.Layer.WMS(
-     "Mangroves",
-     //"http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
-     {layers:"lmes:mangrovepercent_lmes66",  styles:'lmes_mangrovespercent', transparent:true, format:'image/png'},
-     {layerId:'mangroves', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-   );
+//   var mangroves=new OpenLayers.Layer.WMS(
+//     "Mangroves",
+//     GWCLMES,
+//     {layers:"lmes:",  styles:'lmes_mangrovespercent', transparent:true, format:'image/png'},
+//     {layerId:'mangroves', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+//   );
 
    //Areas
    var areas= new OpenLayers.Layer.WMS(
@@ -489,7 +489,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      fish_trawling,fish_rate_effective,fish_change_percent,
      catch_rel_2030, catch_rel_2050,
      coral, coral_int_risk,
-     mangroves,
+//     mangroves,
      areas,
      cumulImpact,
      ohi, population, hdi, nldi, overfishing,
@@ -684,7 +684,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
 	    <li class="l2" rel="reef_risk"><span>Reefs integrated risk</span></li>
-            <li class="l2" rel="mangroves"><span>Mangroves</span></li>
+<!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
         <li class="l1"><span>Socio-economics</span>
