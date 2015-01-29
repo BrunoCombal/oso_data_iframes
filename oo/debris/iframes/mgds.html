@@ -7,48 +7,48 @@
     <title></title>
     <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
     <style>
-      #map-id {
-      width: 640px;
-      height: 512px;
-      }
-      #layerswitcher.olControlLayerSwitcher{
-      font-size:12px !important;
-      font-family:sans-serif !important;
-      font-weight: normal;
-      }
-      .olControlLayerSwitcher .layersDiv{
-      background-color:#c0c0c0 !important;
-      margin: 0.5em !important;
-      width:12em;
-      padding-top:0;
-      }
-	  #infoArrangement, #infoGeneral{
-	  font-size:12px !important;
-	  font-weight:normal;
-	  font-family:sans-serif !important;
-	  }
+     #map-id {
+       width: 640px;
+       height: 512px;
+     }
+     #layerswitcher.olControlLayerSwitcher{
+       font-size:12px !important;
+       font-family:sans-serif !important;
+       font-weight: normal;
+     }
+     .olControlLayerSwitcher .layersDiv{
+       background-color:#c0c0c0 !important;
+       margin: 0.5em !important;
+       width:12em;
+       padding-top:0;
+     }
+     #infoArrangement, #infoGeneral{
+       font-size:12px !important;
+       font-weight:normal;
+       font-family:sans-serif !important;
+     }
     </style>
-    
+
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
     <div id="legend" style="width:100%; font-family:sans-serif; font-size:12px;">
       <caption>Number of pieces per km<sup>2</sup></caption>
       <table border="0" style="width:150px; line-height:12px;">
-	<col width="150px"/>
-	<tr>
-	  <td style="background:#FFFFFF; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0</td>
-	  <td style="background:#0099cc; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0 &ndash; 500</td>
-	  <td style="background:#00cc00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">500 &ndash; 1,000</td>
-	  <td style="background:#ace600; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">1,000 &ndash; 2,000</td>
-	  <td style="background:#ffff00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">2,000 &ndash; 5,000</td>
-	</tr>
-	<tr>
-	  <td style="background:#ffcc00; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">5,000 &ndash; 10,000</td>
-	  <td style="background:#ff9900; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">10,000 &ndash; 20,000</td>
-	  <td style="background:#ff6600; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20,000 &ndash; 50,000</td>
-	  <td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt;50,000</td>
-	</tr>
+        <col width="150px"/>
+        <tr>
+          <td style="background:#FFFFFF; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0</td>
+          <td style="background:#0099cc; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">0 &ndash; 500</td>
+          <td style="background:#00cc00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">500 &ndash; 1,000</td>
+          <td style="background:#ace600; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">1,000 &ndash; 2,000</td>
+          <td style="background:#ffff00; min-width:10px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">2,000 &ndash; 5,000</td>
+        </tr>
+        <tr>
+          <td style="background:#ffcc00; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">5,000 &ndash; 10,000</td>
+          <td style="background:#ff9900; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">10,000 &ndash; 20,000</td>
+          <td style="background:#ff6600; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">20,000 &ndash; 50,000</td>
+          <td style="background:#ff0000; width:30px"></td><td style="width:100px; min-width:100px; margin-left:1px; padding-left:1px; margin-right:5px; padding-right:0px">&gt;50,000</td>
+        </tr>
       </table>
     </div>
     <div id="map-id" style="float:left"></div>
@@ -62,136 +62,139 @@
     <div style="clear:both"></div>
 
     <script>
-      var extent = new OpenLayers.Bounds([-180, -20, -80, 60]);
-      var minResolution=360/512.0;
-      var maxResolution=5/512.0;
-      var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
-      var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
-      var options = {minResolution:minResolution, maxResolution:maxResolution, restrictexExtend:new OpenLayers.Bounds(-180,180,-90,90),
-      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
-      
-      var map = new OpenLayers.Map("map-id", options);
-      layersSwitcher.maximizeControl();
+     var extent = new OpenLayers.Bounds([-180, -20, -80, 60]);
+     var minResolution=360/512.0;
+     var maxResolution=5/512.0;
+     var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
+     var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false});
+     var options = {minResolution:minResolution, maxResolution:maxResolution, restrictexExtend:new OpenLayers.Bounds(-180,180,-90,90),
+                    controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+
+     var map = new OpenLayers.Map("map-id", options);
+     layersSwitcher.maximizeControl();
 
 
-      var WDL = false;
-      var TILE=false;
-      var STYLE='';
-      var TSIZE=new OpenLayers.Size(256,256);
+     var WDL = false;
+     var TILE=false;
+     var STYLE='';
+     var TSIZE=new OpenLayers.Size(256,256);
+     var TORG = new OpenLayers.LonLat(-180, 90);
 
-      var world=new OpenLayers.Layer.WMS(
-      "Countries",
-      "http://onesharedocean.org/geoserver/general/gwc/service/wms",
-      {layers:"general:world_epsg4326", styles:'countries_lightyellow_noname', format:'image/png'},
-      {wrapDateLine:WDL, displayInLayerSwitcher:false,  singleTile:TILE, tileSize:TSIZE, isBaseLayer:true, visibility:true}
-      );
-      
-      var mgds2001 = new OpenLayers.Layer.WMS(
-      "2001",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2001", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var OA = "http://onesharedocean.org/geoserver/ocean_add/wms";
+     var GEN = "http://onesharedocean.org/geoserver/general/wms";
 
-      var mgds2002 = new OpenLayers.Layer.WMS(
-      "2002",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2002", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var world=new OpenLayers.Layer.WMS(
+       "Countries",
+       GEN,
+       {layers:"general:world_epsg4326", styles:'countries_lightyellow_noname', format:'image/png'},
+       {wrapDateLine:WDL, displayInLayerSwitcher:false,  singleTile:TILE, tileSize:TSIZE, isBaseLayer:true, visibility:true}
+     );
 
-      var mgds2003 = new OpenLayers.Layer.WMS(
-      "2003",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2003", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2001 = new OpenLayers.Layer.WMS(
+       "2001",
+       OA,
+       {layers:"ocean_add:mgds_conc_2001", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2004 = new OpenLayers.Layer.WMS(
-      "2004",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2004", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2002 = new OpenLayers.Layer.WMS(
+       "2002",
+       OA,
+       {layers:"ocean_add:mgds_conc_2002", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2005 = new OpenLayers.Layer.WMS(
-      "2005",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2005", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE,isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2003 = new OpenLayers.Layer.WMS(
+       "2003",
+       OA,
+       {layers:"ocean_add:mgds_conc_2003", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2006 = new OpenLayers.Layer.WMS(
-      "2006",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2006", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2004 = new OpenLayers.Layer.WMS(
+       "2004",
+       OA,
+       {layers:"ocean_add:mgds_conc_2004", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2007 = new OpenLayers.Layer.WMS(
-      "2007",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2007", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2005 = new OpenLayers.Layer.WMS(
+       "2005",
+       OA,
+       {layers:"ocean_add:mgds_conc_2005", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE,isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2008 = new OpenLayers.Layer.WMS(
-      "2008",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2008", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2006 = new OpenLayers.Layer.WMS(
+       "2006",
+       OA,
+       {layers:"ocean_add:mgds_conc_2006", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2009 = new OpenLayers.Layer.WMS(
-      "2009",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2009", transparent:true, styles:STYLE, format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2007 = new OpenLayers.Layer.WMS(
+       "2007",
+       OA,
+       {layers:"ocean_add:mgds_conc_2007", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2010 = new OpenLayers.Layer.WMS(
-      "2010",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2010", transparent:true, styles:'', format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2008 = new OpenLayers.Layer.WMS(
+       "2008",
+       OA,
+       {layers:"ocean_add:mgds_conc_2008", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2011 = new OpenLayers.Layer.WMS(
-      "2011",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2011", transparent:true, styles:'', format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2009 = new OpenLayers.Layer.WMS(
+       "2009",
+       OA,
+       {layers:"ocean_add:mgds_conc_2009", transparent:true, styles:STYLE, format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      var mgds2012 = new OpenLayers.Layer.WMS(
-      "2012",
-      "http://onesharedocean.org/geoserver/ocean/gwc/service/wms",
-      {layers:"ocean:mgds_conc_2012", transparent:true, styles:'', format:'image/png'},
-      {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
-      );
+     var mgds2010 = new OpenLayers.Layer.WMS(
+       "2010",
+       OA,
+       {layers:"ocean_add:mgds_conc_2010", transparent:true, styles:'', format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
+     var mgds2011 = new OpenLayers.Layer.WMS(
+       "2011",
+       OA,
+       {layers:"ocean_add:mgds_conc_2011", transparent:true, styles:'', format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      map.addLayers([mgds2001, mgds2002, mgds2003, mgds2004, mgds2005, mgds2006, mgds2007,
-          mgds2008, mgds2009, mgds2010, mgds2011, mgds2012,
-	  world]);
+     var mgds2012 = new OpenLayers.Layer.WMS(
+       "2012",
+       OA,
+       {layers:"ocean_add:mgds_conc_2012", transparent:true, styles:'', format:'image/png'},
+       {wrapDateLine:WDL, singleTile:TILE, isBaseLayer:false, opacity:1, visibility:true}
+     );
 
-      map.setLayerIndex(world, 0);
-      map.setLayerIndex(mgds2001, 1);
-      map.setLayerIndex(mgds2002, 1);
-      map.setLayerIndex(mgds2003, 1);
-      map.setLayerIndex(mgds2004, 1);
-      map.setLayerIndex(mgds2005, 1);
-      map.setLayerIndex(mgds2006, 1);
-      map.setLayerIndex(mgds2007, 1);
-      map.setLayerIndex(mgds2008, 1);
-      map.setLayerIndex(mgds2009, 1);
-      map.setLayerIndex(mgds2010, 1);
-      map.setLayerIndex(mgds2011, 1);
-      map.setLayerIndex(mgds2012, 1);
-      
-      map.zoomToExtent(extent);
-	  
+     map.addLayers([mgds2001, mgds2002, mgds2003, mgds2004, mgds2005, mgds2006, mgds2007,
+                    mgds2008, mgds2009, mgds2010, mgds2011, mgds2012,
+                    world]);
+
+     map.setLayerIndex(world, 0);
+     map.setLayerIndex(mgds2001, 1);
+     map.setLayerIndex(mgds2002, 1);
+     map.setLayerIndex(mgds2003, 1);
+     map.setLayerIndex(mgds2004, 1);
+     map.setLayerIndex(mgds2005, 1);
+     map.setLayerIndex(mgds2006, 1);
+     map.setLayerIndex(mgds2007, 1);
+     map.setLayerIndex(mgds2008, 1);
+     map.setLayerIndex(mgds2009, 1);
+     map.setLayerIndex(mgds2010, 1);
+     map.setLayerIndex(mgds2011, 1);
+     map.setLayerIndex(mgds2012, 1);
+
+     map.zoomToExtent(extent);
+
     </script>
   </body>
-  
+
 </html>
