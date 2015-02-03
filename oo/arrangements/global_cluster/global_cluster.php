@@ -293,7 +293,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 </style>
 
 <p style="padding-top:1em; padding-bottom:1em">
-  Regional clusters of arrangements are grouped in 5 main regions (Atlantic, Pacific, Indian ocean, Inlan seas and Polar). Individual arrangements are shown as a shade of gray: the more the arrangements overlap an area the darker it is.
+  Regional clusters of arrangements are grouped in 5 main regions (Atlantic, Pacific, Indian ocean, Inland seas and Polar regions). Individual arrangements are shown as a shade of gray: the more the arrangements overlap an area the darker it is.
   To show or hide a cluster, click on the check button in front of its name. To see the relation between a regional cluster and related issues, click on its name.
 </p>
 
