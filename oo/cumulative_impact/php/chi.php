@@ -52,21 +52,21 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
        var orderedData=[];
        for (var ii=1; ii<reordered.length; ii++) {
-	  orderedData.push( {y:thisData[reordered[ii]], color:'#808080' });
-//         orderedData.push( {y:thisData[reordered[ii]], color:colorRisk[Math.floor(thisData[reordered[ii]])] });
+         orderedData.push( {y:thisData[reordered[ii]], color:'#808080' });
+         //         orderedData.push( {y:thisData[reordered[ii]], color:colorRisk[Math.floor(thisData[reordered[ii]])] });
        }
 
        var options=({
-	 credits:{enabled:false},
+         credits:{enabled:false},
          title:{text:codeMapping[areaCode]},
          subtitle:{text:'Cumulative Human Impact: '+thisData[0].toFixed(3)},
          chart:{type:'bar', renderTo:'divChart'},
          xAxis:{categories:orderedGoals, title:{text:null}},
          yAxis:{min:0, max:2, title:{text:'Score'}},
-	 legend:{enabled:false},
-	 tooltip:{formatter:function(){
-	   return this.x+': '+this.y;
-	 }},
+         legend:{enabled:false},
+         tooltip:{formatter:function(){
+           return this.x+': '+this.y;
+         }},
          series:[{
            data:orderedData,
            animation:false
@@ -209,21 +209,32 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
   <div id="toolinfo" style="font-family:Verdana, sans-serif; width:600px; padding:0; margin:0; font-size:11px; text-align:justify">
     <!-- legend -->
     <table>
-      <tbody>
-	
-      </tbody>
-    </table>
 
-    <h2 style="padding:0; margin:0;">Cumulative Human Impact score by FAO fishing areas. Click on an FAO Fishing Area to display the contribution of human stressors to the cumulative human impact.<br/>
-      Note: the <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.
-    </h2>
+      <table>
+        <tbody style="border:none; line-height:1.1em; border:0; padding:0; font-family:Verdana, sans-serif; font-size:10px">
+          <table>
+            <tbody style="border:none; line-height:1.1em; border:0; padding:0; font-family:Verdana, sans-serif; font-size:10px">
+              <tr>
+                <td style="background-color:#5FBADD; padding:3px;width:20px;"></td><td style="padding:3px;">Very low (0 - 1)</td>
+                <td style="background-color:#78bb4b; padding:3px;width:20px;"></td><td style="padding:3px;">Low (1-2)</td>
+                <td style="background-color:#e4e344; padding:3px;width:20px;"></td><td style="padding:3px;">Medium (2-3)</td>
+                <td style="background-color:#ee9f42; padding:3px;width:20px;"></td><td style="padding:3px;">High (3-4)</td>
+                <td style="background-color:#d8232a; padding:3px;width:20px;"></td><td style="padding:3px;">Very high (4-5)</td>
+              </tr>
+            </tbody>
+
+          </table>
+
+          <h2 style="padding:0; margin:0;">Cumulative Human Impact score by FAO fishing areas. Click on an FAO Fishing Area to display the contribution of human stressors to the cumulative human impact.<br/>
+            Note: the <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.
+          </h2>
   </div>
 
 
   <div id="cumulDetail" style="font-family:Verdana, sans-serif; font-size:11px; width:600px; margin:auto; text-align:justify">
   </div>
 
-  <div id="divChart" style="width:600px">Nothing here yet</div>
+  <div id="divChart" style="width:600px"></div>
 
   <div style="clear:both"></div>
 
