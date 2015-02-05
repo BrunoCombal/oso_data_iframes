@@ -25,8 +25,18 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
  }
 </style>
 
-<script type="text/javascript">
+<script type="text/javascript" class=".skipping-this">
  jQuery(document).ready(function() {
+
+   var reordered=[5,6,9,4,12,10,11,7,8,1,2,3];
+   var goals=["CHI","destructive fishing","nondestructive high bycatch", "nondestructive low bycatch", "Ocean Acidification", "Ocean based pollution", "Oil rigs", "Pelagic high bycatch", "Pelagic low bycatch", "Shipping", "Sea level rise","SST","UV"];
+
+   var colorRisk=['#5FBADD','#78bb4b','#e4e344','#ee9f42','#d8232a'];
+
+   var orderedGoals=[];
+   for (var ii=1; ii<reordered.length; ii++) {
+     orderedGoals.push(goals[reordered[ii]]);
+   }
 
    function getColor( name ){
      thisName = name.split(',',1)[0].split(' ',1);
@@ -34,14 +44,50 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
      return colors[ thisName ];
    };
 
+
+   function displayChart(areaCode) {
+
+     thisData = dataCumul[codeMapping[areaCode]];
+     if(thisData){
+
+       var orderedData=[];
+       for (var ii=1; ii<reordered.length; ii++) {
+	  orderedData.push( {y:thisData[reordered[ii]], color:'#808080' });
+//         orderedData.push( {y:thisData[reordered[ii]], color:colorRisk[Math.floor(thisData[reordered[ii]])] });
+       }
+
+       var options=({
+	 credits:{enabled:false},
+         title:{text:codeMapping[areaCode]},
+         subtitle:{text:'Cumulative Human Impact: '+thisData[0].toFixed(3)},
+         chart:{type:'bar', renderTo:'divChart'},
+         xAxis:{categories:orderedGoals, title:{text:null}},
+         yAxis:{min:0, max:2, title:{text:'Score'}},
+	 legend:{enabled:false},
+	 tooltip:{formatter:function(){
+	   return this.x+': '+this.y;
+	 }},
+         series:[{
+           data:orderedData,
+           animation:false
+         }]
+       });
+
+       var chart = new Highcharts.Chart(options);
+     }
+   };
+
    function displayData(areaCode) {
      thisData = dataCumul[codeMapping[areaCode]];
      if(thisData){
-       text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
-       for (ii=1; ii< thisData.length; ii++) {
-         text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
-       }
-       jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+areaCode+": "+codeMapping[        areaCode]+"</span>"+text);
+       /*
+          text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
+          for (ii=1; ii< thisData.length; ii++) {
+          text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
+          }
+          jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+areaCode+": "+codeMapping[        areaCode]+"</span>"+text);
+        */
+       displayChart(areaCode);
      }
    };
 
@@ -52,6 +98,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
        text += '<strong>'+dataCumulHeader[ii]+'</strong>: '+thisData[ii]+'<br/>';
      }
      jQuery("#cumulDetail").html("<span style='font-size:1.2em;'>FAO Fishing Area "+reverseMapping[Name]+": "+Name+"</span>"+text);
+
    };
 
    var dataCumul={};
@@ -148,7 +195,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
   </map>
   <div style="float:left; width:600px">
-    <h1 style="color:red;">Interactive graphic under development (new version)</h1>
     <h1>Cumulative Human Impact by FAO Fishing Area</h1>
   </div>
   <div style="float:right;"> <!-- empty for centering the title above -->
@@ -160,16 +206,24 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
   <div style="clear:both"></div>
 
-  <div id="toolinfo" style="float:left; font-family:Verdana, sans-serif; width:600px; padding:0; margin:0; font-size:11px; text-align:justify">
-    <h2 style="padding:0; margin:0;">The map shows the FAO fishing areas. For each of these areas, the plot on the right compares the cumulative human impact score (out of a maximum score of 5).</h2><h2 style="padding:0; margin:0;"> Click either on the map or the plot to see the contribution of human stressors to the cumulative human impact for FAO fishing areas.
+  <div id="toolinfo" style="font-family:Verdana, sans-serif; width:600px; padding:0; margin:0; font-size:11px; text-align:justify">
+    <!-- legend -->
+    <table>
+      <tbody>
+	
+      </tbody>
+    </table>
+
+    <h2 style="padding:0; margin:0;">Cumulative Human Impact score by FAO fishing areas. Click on an FAO Fishing Area to display the contribution of human stressors to the cumulative human impact.<br/>
       Note: the <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.
     </h2>
   </div>
 
 
-  <div id="cumulDetail" style="float:left; font-family:Verdana, sans-serif; font-size:11px; width:600px; margin:auto; text-align:justify">
+  <div id="cumulDetail" style="font-family:Verdana, sans-serif; font-size:11px; width:600px; margin:auto; text-align:justify">
   </div>
 
+  <div id="divChart" style="width:600px">Nothing here yet</div>
 
   <div style="clear:both"></div>
 
