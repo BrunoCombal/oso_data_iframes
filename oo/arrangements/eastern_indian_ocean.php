@@ -242,8 +242,10 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
       </div>
     </div>
 
-    <div style="clear:both"></div><br/>
+    The ASEAN arrangement is not shown on this map.
 
+    <div style="clear:both"></div><br/>
+    
 
     <div id="infoArrangement">&nbsp;</div>
     <div id="infoGeneral">&nbsp;</div>
