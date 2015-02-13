@@ -103,7 +103,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
        var iccat=new OpenLayers.Layer.WMS(
          "ICCAT",
-         "http://"+thisServer+"/geoserver/arrangements/wms",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
          {layers:"arrangements:RFB_ICCAT", transparent:true, styles:'iccat_baltic_sea'},
          {singleTile:true, visibility:true, opacity:1, layerId:'ICCAT', displayInLayerSwitcher:false}
        );
@@ -111,21 +111,21 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
        var nammco=new OpenLayers.Layer.WMS(
          "NAMMCO",
-         "http://"+thisServer+"/geoserver/arrangements/wms",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
          {layers:"arrangements:RFB_NAMMCO", transparent:true, styles:'nammco_baltic_sea'},
          {singleTile:true, visibility:true, opacity:1, layerId:'NAMMCO', displayInLayerSwitcher:false}
        );
 
        var nasco=new OpenLayers.Layer.WMS(
          "NASCO",
-         "http://"+thisServer+"/geoserver/arrangements/wms",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
          {layers:"arrangements:RFB_NASCO", transparent:true, styles:'nasco_baltic_sea'},
          {singleTile:true, visibility:true, opacity:1, layerId:'NASCO', displayInLayerSwitcher:false}
        );
 
        var nafo=new OpenLayers.Layer.WMS(
          "NAFO",
-         "http://"+thisServer+"/geoserver/arrangements/wms",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
          {layers:"arrangements:RFB_NAFO", transparent:true, styles:'nafo_northwest_atlantic'},
          {singleTile:true, visibility:true, opacity:1, layerId:'NAFO', displayInLayerSwitcher:false}
        );
