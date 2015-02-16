@@ -135,14 +135,20 @@
          // ranges
          arearange={name:'min-max', type:'arearange', zindex:0, data:[], legendIndex:legendIndex};
          legendIndex+=1;
-         for (year in seriesMin) {
+         // Firefox mix up the range chronological orfer
+         yearList=[];
+         for (year in seriesMin) {yearList.push(year)}
+
+         for (ii in yearList.sort()) {
+	   year=yearList[ii];
            arearange.data.push([ parseInt(year), seriesMin[year], seriesMax[year] ]);
          }
          options.series.push(arearange);
 
          // average series
          average={name:'Average', type:'line', dashStyle:'dash', marker:{enabled:false}, zIndex:2, visible:true, data:[], legendIndex:legendIndex};
-         for ( year in seriesAvg ) {
+         for ( ii in yearList.sort() ) {
+	   year=yearList[ii];
            if ( typeof(seriesCount[year])!='undefined'   ) {
              average.data.push( [ parseInt(year) , seriesAvg[year] /parseFloat(seriesCount[year]) ] );
            }
