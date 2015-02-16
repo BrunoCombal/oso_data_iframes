@@ -33,7 +33,9 @@
                   zoomType:'x',
                   resetZoomButton:{relativeTo:'chart', position:{align:'right', verticalAlign:'bottom', x:-10, y:-50}}
          },
-         subtitle:{text:'Mesozooplankton '+dataType.name.toLowerCase()}, title:{text:australian.name},
+         subtitle:{//text:'Mesozooplankton '+dataType.name.toLowerCase()
+	   text:'Copepod Community Size'
+	 }, title:{text:australian.name},
 	 tooltip:{valueDecimals:4},
          xAxis:{title:{text:'Year'}, type:'date', allowDecimals:false},
          yAxis:{title:{text:'Seasonal variability of the<br/>Copepod Community Size',
@@ -132,15 +134,21 @@
          // ranges
          arearange={name:'min-max', type:'arearange', zindex:0, data:[], legendIndex:legendIndex};
          legendIndex+=1;
-         for (year in seriesMin) {
+	 // Firefox mix up the range chronological orfer
+         yearList=[];
+         for (year in seriesMin) {yearList.push(year)}
+
+         for (ii in yearList.sort()) {
+	   year=yearList[ii];
            arearange.data.push([ parseInt(year), seriesMin[year], seriesMax[year] ]);
          }
          options.series.push(arearange);
 
          // average series
          average={name:'Average', type:'line', dashStyle:'dash', marker:{enabled:false}, zIndex:2, visible:true, data:[], legendIndex:legendIndex};
-         for ( year in seriesAvg ) {
-           if ( typeof(seriesCount[year])!='undefined'   ) {
+         for ( ii in yearList.sort() ) {
+	   year=yearList[ii];
+           if ( typeof(seriesCount[year])!='undefined' ) {
              average.data.push( [ parseInt(year) , seriesAvg[year] /parseFloat(seriesCount[year]) ] );
            }
          }

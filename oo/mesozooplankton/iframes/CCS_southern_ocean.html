@@ -34,7 +34,10 @@
                   resetZoomButton:{relativeTo:'chart', position:{align:'right', verticalAlign:'bottom', x:-10, y:-50}}
          },
 	 tooltip:{valueDecimals:4},
-         subtitle:{text:'Mesozooplankton '+dataType.name.toLowerCase()}, title:{text:southern_ocean.name},
+         subtitle:{//text:'Mesozooplankton '+dataType.name.toLowerCase()
+	   text:'Copepod Community Size'
+	 }, 
+	 title:{text:southern_ocean.name},
          xAxis:{title:{text:'Year'}, type:'date', allowDecimals:false},
          yAxis:{title:{//text:dataType.name+' seasonal variability',
 	   text:"Seasonal vairiability of the<br/>Copepod Community Size",
