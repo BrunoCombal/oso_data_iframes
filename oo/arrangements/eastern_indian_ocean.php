@@ -244,7 +244,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
 
     <div style="clear:both"></div><br/>
-    <center style="font-family:verdana,sans-serif;font-size:10px">The ASEAN Agreement is not shown on the table and the map.</center>
+
     
 
     <div id="infoArrangement">&nbsp;</div>
