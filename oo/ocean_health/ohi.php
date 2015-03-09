@@ -28,7 +28,8 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 <script type="text/javascript" class=".skipping-this">
  jQuery(document).ready(function() {
 
-   var goals=["OHI", "FP (FIS)", "SP (ICO)", "BD (SPP)"];
+   var goals=[ "Food provision (fisheries)", "Artisanal fishing opportunity", "Natural products", "Carbon storage" , "Coastal protection", "Tourism & recreation", "Coastal livelihoods & economies", "Sense of place (iconic species)", "Clean Water", "Biodiversity (Species)"];
+   var indexMap=[0, 1, 8,10]
    var colorRisk=['#5FBADD','#78bb4b','#e4e344','#ee9f42','#d8232a'];
 
    function getColor( name ){
@@ -47,10 +48,10 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
        var options=({
          credits:{enabled:false},
          title:{text:codeMapping[areaCode]},
-         subtitle:{text:'Cumulative Human Impact: '+thisData[0].toFixed(3)},
-         chart:{type:'bar', renderTo:'divChart'},
+         subtitle:{text:'Ocean Health Index: '+thisData[0].toFixed(0), html:true},
+         chart:{type:'bar', polar:true, renderTo:'divChart'},
          xAxis:{categories:goals, title:{text:null}},
-         yAxis:{min:0, max:2, title:{text:'Score'}},
+         yAxis:{min:0, max:100, tickInterval:25, title:{text:null}},
          legend:{enabled:false},
          tooltip:{formatter:function(){
            return this.x+': '+this.y;
@@ -79,6 +80,14 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
        displayChart(areaCode);
      } else if (areaCode=="37") {
        jQuery("#divChart").html('<big style="color:red"><b>The <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.</b></big>');
+     } else if (areaCode=="18") {
+       jQuery("#divChart").html('<big style="color:red"><b>The Arctic Sea</b></big>');
+     } else if (areaCode=="48") {
+       jQuery("#divChart").html('<big style="color:red"><b>The Atlantic, Antarctic</b></big>');
+     } else if (areaCode=="58"){
+       jQuery("#divChart").html('<big style="color:red"><b>The Indian Ocean, Antarctic and Southern</b></big>');
+     } else if (areaCode=="88") {
+       jQuery("#divChart").html('<big style="color:red"><b>The Pacific, Antarctic</b></big>');
      }
    };
 
@@ -122,10 +131,12 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
      jQuery.each(lines, function (lineNo, line) {
        if (ipos > 0) {
          var items = line.split(';');
-         thisData=[];
+         thisData=[null, null, null, null, null, null, null, null, null, null];
          for (ii=2; ii<items.length; ii++) {
            if (isNaN(parseFloat(items[ii]))==false) {
-             thisData.push(parseFloat(items[ii]));
+//             thisData.push(parseFloat(items[ii]));
+	     thisData[indexMap[ii-2]]=parseFloat(items[ii]);
+	     console.log(ii);
            }
          }
          if (thisData.length > 0) {dataCumul[items[1]] = thisData; }
@@ -139,7 +150,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
          }
        } else {
          var head=line.split(';');
-         dataCumulHeader.push('Cumulative impact');
+         dataCumulHeader.push('Ocean Health');
          for (ii=2; ii<head.length; ii++) {
            dataCumulHeader.push(head[ii]);
          }
@@ -184,7 +195,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
   </map>
   <div style="float:left; width:600px">
-    <h1>Cumulative Human Impact by FAO Fishing Area</h1>
+    <h1>Ocean Health Index by FAO Fishing Area</h1>
   </div>
   <div style="float:right;"> <!-- empty for centering the title above -->
   </div>
@@ -197,21 +208,27 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
   <div id="toolinfo" style="font-family:Verdana, sans-serif; width:600px; padding:0; margin:0; font-size:11px; text-align:justify">
     <!-- legend -->
-<!--
+
     <table>
       <tbody style="border:none; line-height:1.1em; border:0; padding:0; font-family:Verdana, sans-serif; font-size:10px">
         <table>
           <tbody style="border:none; line-height:1.1em; border:0; padding:0; font-family:Verdana, sans-serif; font-size:10px">
             <tr>
-              <td style="background-color:#5FBADD; padding:3px;width:20px;"></td><td style="padding:3px;">Very low (0-1)</td>
-              <td style="background-color:#78bb4b; padding:3px;width:20px;"></td><td style="padding:3px;">Low (1-2)</td>
-              <td style="background-color:#e4e344; padding:3px;width:20px;"></td><td style="padding:3px;">Medium (2-3)</td>
-              <td style="background-color:#ee9f42; padding:3px;width:20px;"></td><td style="padding:3px;">High (3-4)</td>
-              <td style="background-color:#d8232a; padding:3px;width:20px;"></td><td style="padding:3px;">Very high (4-5)</td>
+              <td style="background-color:#d7191c; padding:3px;width:20px;"></td><td style="padding:3px;">0-10</td>
+              <td style="background-color:#e75b3a; padding:3px;width:20px;"></td><td style="padding:3px;">10-20</td>
+              <td style="background-color:#f89d59; padding:3px;width:20px;"></td><td style="padding:3px;">20-30</td>
+              <td style="background-color:#fdc980; padding:3px;width:20px;"></td><td style="padding:3px;">30-40</td>
+              <td style="background-color:#feedaa; padding:3px;width:20px;"></td><td style="padding:3px;">40-50</td>
+              <td style="background-color:#ecf6c8; padding:3px;width:20px;"></td><td style="padding:3px;">50-60</td>
+              <td style="background-color:#c7e5db; padding:3px;width:20px;"></td><td style="padding:3px;">60-70</td>
+              <td style="background-color:#9ccee3; padding:3px;width:20px;"></td><td style="padding:3px;">70-80</td>
+              <td style="background-color:#64a4cc; padding:3px;width:20px;"></td><td style="padding:3px;">80-90</td>
+              <td style="background-color:#2c7bb6; padding:3px;width:20px;"></td><td style="padding:3px;">90-100</td>
+              <td style="background-color:#ececec; padding:3px;width:20px;"></td><td style="padding:3px;">NA</td>
             </tr>
           </tbody>
         </table>
--->
+
         <h2 style="margin-bottom:0; padding-bottom:0">Ocean Health Index score by FAO fishing areas.</h2>
         <div id="divChart" style="width:600px"></div>
 
@@ -221,8 +238,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
 
   <div id="cumulDetail" style="font-family:Verdana, sans-serif; font-size:11px; width:600px; margin:auto; text-align:justify"> </div>
-
-
 
 
   <div style="clear:both"></div>
