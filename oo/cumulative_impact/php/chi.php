@@ -175,7 +175,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
     <area shape="poly" coords="483,1,483,12,507,13,514,15,519,15,513,20,510,27,505,29,502,32,501,35,494,36,486,40,481,42,477,49,480,50,480,88,538,89,538,88,535,88,535,78,547,77,547,70,554,65,569,60,587,59,593,53,598,50,587,48,585,46,593,41,590,38,579,45,566,49,570,43,584,36,599,34,598,0" title="Atlantic, Northeast - FAO Fishing Area 27"  />
     <area shape="poly" coords="199,250,431,250,432,263,414,274,386,273,383,279,313,277,307,286,322,290,318,294,227,292,210,285,216,278,222,270,200,264" title="Pacific, Antarctic - FAO Fishing Area 88" />
     <area shape="poly" coords="209,192,349,191,348,249,200,249,200,212,204,203,205,197,209,197" title="Pacific, Southwest - FAO Fishing Area 81" />
-    <area shape="poly" coords="0,225,83,225,83,242,198,242,199,267,175,263,123,263,94,264,66,273,58,272,61,264,41,264,23,265,12,268,0,268,0,267,1,267" title="Indian Ocean, Antarctic & Southern - FAO Fishing Area 58" />
+    <area shape="poly" coords="0,225,83,225,83,242,198,242,199,267,175,263,123,263,94,264,66,273,58,272,61,264,41,264,23,265,12,268,0,268,0,267,1,267" title="Indian Ocean, Antarctic And Southern - FAO Fishing Area 58" />
     <area shape="poly" coords="83,223,0,223,1,200,4,195,3,189,9,189,9,181,16,175,15,158,33,133,21,133,13,123,2,100,9,99,25,126,46,115,43,110,37,111,28,101,31,97,40,102,47,104,63,107,73,110,78,132,78,150,83,150" title="Indian Ocean, Western - FAO Fishing Area 51" />
     <area shape="poly" coords="79,134,79,149,84,149,84,241,199,240,198,211,187,210,179,203,168,200,145,206,142,189,159,180,164,177,165,163,140,164,127,162,122,153,123,145,115,135,115,124,100,107,82,120,80,133" title="Indian Ocean, Eastern - FAO Fishing Area 57" />
     <area shape="poly" coords="129,126,142,126,143,117,256,118,257,191,209,190,207,195,201,193,188,171,188,181,179,180,174,174,174,171,170,173,166,176,166,161,130,161,126,159,125,153,123,151,124,142,116,135,118,127,126,132,132,130" title="Pacific, Western Central - FAO Fishing Area 71" />
@@ -189,7 +189,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
   <div style="float:right;"> <!-- empty for centering the title above -->
   </div>
   <div style="float:left; width:600px">
-    <img usemap="#IMap" title="FAO Fishing Area Map" src="/private_store/cumulative_impact/chi_fao_oceans.png"/>
+    <img usemap="#IMap" title="FAO Fishing Area Map" src="/private_store/cumulative_impact/chi_eez_labels.png"/>
   </div>
   <div id="cumulIndex" style="float:right; " ></div>
 
