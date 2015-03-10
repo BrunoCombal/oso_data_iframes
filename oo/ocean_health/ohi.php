@@ -192,9 +192,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
     <area shape="poly" coords="572,72,553,76,543,85,541,89,557,94,565,96,577,101,593,101,599,99,599,73" title="Mediterranean and Black Sea - FAO Fishing Area 37" />
 
   </map>
-  <div style="float:left; width:600px">
-    <h1>Ocean Health Index by FAO Fishing Area</h1>
-  </div>
+
   <div style="float:right;"> <!-- empty for centering the title above -->
   </div>
   <div style="float:left; width:600px">
@@ -225,7 +223,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
       </tbody>
     </table>
 
-    <h2 style="margin-bottom:0; padding-bottom:0">Ocean Health Index score by FAO fishing areas.</h2>
     <div id="divChart" style="width:600px"></div>
 
     <h2 style="margin-bottom:0; padding-bottom:0">Hover the pointer over each FAO Fishing Area (colored polygons on the map) to display the values of their sub-goals in a bar chart.</h2>
