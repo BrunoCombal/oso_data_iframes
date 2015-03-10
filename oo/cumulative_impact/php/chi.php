@@ -157,7 +157,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
   <map name="IMap" >
     <area shape="poly" coords="64,0,64,23,47,27,42,29,51,35,64,41,99,35,115,27,156,34,212,37,255,38,260,39,278,42,289,36,374,42,393,41,387,53,412,64,423,66,426,53,440,54,442,49,439,45,427,39,427,34,419,30,413,29,414,21,424,15,433,20,442,20,478,16,481,13,482,1" title="Arctic Sea - FAO Fishing Area 18" />
     <area shape="poly" coords="255,40,258,43,257,117,141,116,141,124,127,125,124,114,143,104,144,83,151,74,173,72,172,63,175,52,186,46,227,43" title="Pacific, Northwest - FAO Fishing Area 61" />
-    <area shape="poly" coords="259,43,259,84,333,83,333,82,348,82,347,63,340,53,325,48,311,47,297,44,290,46,289,50,279,48,283,42,273,42,262,41" title="Atlantic, Northeast - FAO FIshing Area 27" />
+    <area shape="poly" coords="259,43,259,84,333,83,333,82,348,82,347,63,340,53,325,48,311,47,297,44,290,46,289,50,279,48,283,42,273,42,262,41" title="Atlantic, Northeast - FAO Fishing Area 27" />
     <area shape="poly" coords="258,85,258,190,349,190,349,141,416,141,421,137,418,135,415,137,405,128,392,121,375,116,360,96,346,84" title="Pacific, Eastern Central - FAO Fishing Area 77" />
     <area shape="poly" coords="421,138,418,142,351,142,351,249,437,249,437,241,431,235,427,231,430,208,434,179,424,173,417,158,423,143" title="Pacific, Southeast - FAO Fishing Area 87"  />
     <area shape="poly" coords="438,249,466,250,466,232,516,232,516,150,499,150,499,141,463,141,458,142,457,152,468,158,484,159,486,163,481,170,480,177,477,183,468,187,461,199,454,202,450,207,449,211,440,213,437,219,434,228,433,234,439,240,440,243,438,245" title="Atlantic, Southwest - FAO Fishing Area 41"  />
@@ -179,11 +179,13 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
   </map>
   <div style="float:left; width:600px">
     <h1>Cumulative Human Impact by FAO Fishing Area</h1>
+    <a href="/data#420" style="color:#AAA; font-family:Verdana; font-size:12px">Get indicator description, data and meta-information</a><br/>
+    <a href="/private_store/cumulative_impact/chi_eez_labels.png" style="color:#AAA; font-family:Verdana; font-size:12px">Get the map as an image (click: display, right-click: download)</a>
   </div>
   <div style="float:right;"> <!-- empty for centering the title above -->
   </div>
   <div style="float:left; width:600px">
-    <img usemap="#IMap" title="FAO Fishing Area Map" src="/private_store/cumulative_impact/chi_eez_labels.png"/>
+    <img usemap="#IMap" src="/private_store/cumulative_impact/chi_eez_labels.png"/>
   </div>
   <div id="cumulIndex" style="float:right; " ></div>
 
@@ -204,7 +206,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
     </table>
 
-    <h2 style="margin-bottom:0; padding-bottom:0">Cumulative Human Impact score by FAO fishing areas.</h2>
     <div id="divChart" style="width:600px"></div>
 
     <h2 style="margin-bottom:0; padding-bottom:0">Hover the pointer over each FAO Fishing Area (colored polygons on the map) to display the values of their sub-goals in a bar chart.</h2>
