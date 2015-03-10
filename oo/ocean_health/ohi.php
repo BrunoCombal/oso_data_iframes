@@ -28,7 +28,7 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 <script type="text/javascript" class=".skipping-this">
  jQuery(document).ready(function() {
 
-   var goals=[ "Food provision (fisheries)", "Artisanal fishing opportunity", "Natural products", "Carbon storage" , "Coastal protection", "Tourism & recreation", "Coastal livelihoods & economies", "Sense of place (iconic species)", "Clean Water", "Biodiversity (Species)"];
+   var goals=[ "Food provision<br/>(fisheries)", "Artisanal fishing<br/>opportunity", "Natural products", "Carbon storage" , "Coastal<br/>protection", "Tourism<br/>& recreation", "Coastal livelihoods<br/>& economies", "Sense of place<br/>(iconic species)", "Clean Water", "Biodiversity<br/>(Species)"];
    var indexMap=[0, 1, 8,10]
    var colorRisk=['#5FBADD','#78bb4b','#e4e344','#ee9f42','#d8232a'];
 
@@ -38,20 +38,20 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
      return colors[ thisName ];
    };
 
-
    function displayChart(areaCode) {
-
      thisData = dataCumul[codeMapping[areaCode]];
      if(thisData){
        coloredData=[];
-       for (ii=1; ii<thisData.length; ii++){coloredData.push({y:thisData[ii], color:'#808080'})}
+       for (ii=1; ii<thisData.length; ii++){coloredData.push({y:thisData[ii], color:'rgba(80,220,180,60)'})}
        var options=({
          credits:{enabled:false},
          title:{text:codeMapping[areaCode]},
-         subtitle:{text:'Ocean Health Index: '+thisData[0].toFixed(0), html:true},
-         chart:{type:'bar', polar:true, renderTo:'divChart'},
-         xAxis:{categories:goals, title:{text:null}},
-         yAxis:{min:0, max:100, tickInterval:25, title:{text:null}},
+         subtitle:{text:'Ocean Health Index: <b>'+thisData[0].toFixed(0)+'</b>'+'<br/><span style="font-size:0.75em">Food provision:'+thisData[1].toFixed(0)+'; Sense of place (iconic species): '+thisData[8].toFixed(0)+'; Biodiversity (species): '+thisData[10].toFixed(0)+'</span>',
+                   useHtml:true, style:{"fontFamily":"Verdana, sans-serif", "fontSize":"16px"}},
+         chart:{type:'bar', polar:true, renderTo:'divChart', spacingTop:20, spacingBottom:10},
+         plotOptions:{series:{color:'#00FFDD'}},
+         xAxis:{reversed:false,categories:goals, title:{text:null}, labels:{useHtml:true, distance:20}},
+         yAxis:{min:0, max:100, minorGridLineColor:'#FFFFFF', gridLineColor:'#C0C0C0', gridLineWidth:3,tickInterval:25, title:{text:null}},
          legend:{enabled:false},
          tooltip:{formatter:function(){
            return this.x+': '+this.y;
@@ -123,8 +123,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
                        'Pacific, Southwest':81, 'Pacific, Southeast':87, 'Pacific, Antarctic':88
    };
 
-
-
    jQuery.get('/public_store/oo_ohi/oo_ohi.csv', function(data) {
      var lines = data.split('\n');
      var ipos=0;
@@ -134,19 +132,17 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
          thisData=[null, null, null, null, null, null, null, null, null, null];
          for (ii=2; ii<items.length; ii++) {
            if (isNaN(parseFloat(items[ii]))==false) {
-//             thisData.push(parseFloat(items[ii]));
-	     thisData[indexMap[ii-2]]=parseFloat(items[ii]);
-	     console.log(ii);
+             //             thisData.push(parseFloat(items[ii]));
+             thisData[indexMap[ii-2]]=parseFloat(items[ii]);
            }
          }
          if (thisData.length > 0) {dataCumul[items[1]] = thisData; }
          if ( isNaN(parseFloat(items[1])) == false) {
-           cumul.data.push({y:parseFloat(items[1]), color:getColor(items[0]), name:items[0]});
+           //cumul.data.push({y:parseFloat(items[1]), color:getColor(items[0]), name:items[0]});
            faoCode = '';
            for (code in codeMapping) {
              if (codeMapping[code]==items[0]) {faoCode=code}
            }
-
          }
        } else {
          var head=line.split(';');
@@ -157,7 +153,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
        }
        ipos+=1;
      });
-
    });
 
    //Bind the click event to the areas according to the number on their title
@@ -168,7 +163,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
    });
  });
 </script>
-
 
 <div class="oo_illustration">
   <map name="IMap" >
@@ -211,29 +205,27 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
     <table>
       <tbody style="border:none; line-height:1.1em; border:0; padding:0; font-family:Verdana, sans-serif; font-size:10px">
-        <table>
-          <tbody style="border:none; line-height:1.1em; border:0; padding:0; font-family:Verdana, sans-serif; font-size:10px">
-            <tr>
-              <td style="background-color:#d7191c; padding:3px;width:20px;"></td><td style="padding:3px;">0-10</td>
-              <td style="background-color:#e75b3a; padding:3px;width:20px;"></td><td style="padding:3px;">10-20</td>
-              <td style="background-color:#f89d59; padding:3px;width:20px;"></td><td style="padding:3px;">20-30</td>
-              <td style="background-color:#fdc980; padding:3px;width:20px;"></td><td style="padding:3px;">30-40</td>
-              <td style="background-color:#feedaa; padding:3px;width:20px;"></td><td style="padding:3px;">40-50</td>
-              <td style="background-color:#ecf6c8; padding:3px;width:20px;"></td><td style="padding:3px;">50-60</td>
-              <td style="background-color:#c7e5db; padding:3px;width:20px;"></td><td style="padding:3px;">60-70</td>
-              <td style="background-color:#9ccee3; padding:3px;width:20px;"></td><td style="padding:3px;">70-80</td>
-              <td style="background-color:#64a4cc; padding:3px;width:20px;"></td><td style="padding:3px;">80-90</td>
-              <td style="background-color:#2c7bb6; padding:3px;width:20px;"></td><td style="padding:3px;">90-100</td>
-              <td style="background-color:#ececec; padding:3px;width:20px;"></td><td style="padding:3px;">NA</td>
-            </tr>
-          </tbody>
-        </table>
+        <tr>
+          <td style="background-color:#d7191c; padding:3px;width:20px;"></td><td style="padding:3px;">0-10</td>
+          <td style="background-color:#e75b3a; padding:3px;width:20px;"></td><td style="padding:3px;">10-20</td>
+          <td style="background-color:#f89d59; padding:3px;width:20px;"></td><td style="padding:3px;">20-30</td>
+          <td style="background-color:#fdc980; padding:3px;width:20px;"></td><td style="padding:3px;">30-40</td>
+          <td style="background-color:#feedaa; padding:3px;width:20px;"></td><td style="padding:3px;">40-50</td>
+          <td style="background-color:#ecf6c8; padding:3px;width:20px;"></td><td style="padding:3px;">50-60</td>
+          <td style="background-color:#c7e5db; padding:3px;width:20px;"></td><td style="padding:3px;">60-70</td>
+          <td style="background-color:#9ccee3; padding:3px;width:20px;"></td><td style="padding:3px;">70-80</td>
+          <td style="background-color:#64a4cc; padding:3px;width:20px;"></td><td style="padding:3px;">80-90</td>
+          <td style="background-color:#2c7bb6; padding:3px;width:20px;"></td><td style="padding:3px;">90-100</td>
+          <td style="background-color:#ececec; padding:3px;width:20px;"></td><td style="padding:3px;">NA</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <h2 style="margin-bottom:0; padding-bottom:0">Ocean Health Index score by FAO fishing areas.</h2>
-        <div id="divChart" style="width:600px"></div>
+    <h2 style="margin-bottom:0; padding-bottom:0">Ocean Health Index score by FAO fishing areas.</h2>
+    <div id="divChart" style="width:600px"></div>
 
-        <h2 style="margin-bottom:0; padding-bottom:0">Hover the pointer over each FAO Fishing Area (colored polygons on the map) to display the values of their sub-goals in a bar chart.</h2>
-        <h2 style="margin-bottom:0; padding-bottom:0">Note: the <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.</h2>
+    <h2 style="margin-bottom:0; padding-bottom:0">Hover the pointer over each FAO Fishing Area (colored polygons on the map) to display the values of their sub-goals in a bar chart.</h2>
+    <h2 style="margin-bottom:0; padding-bottom:0">Note: the <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.</h2>
   </div>
 
 
