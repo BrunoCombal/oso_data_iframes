@@ -43,10 +43,17 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
      if(thisData){
        coloredData=[];
        for (ii=1; ii<thisData.length; ii++){coloredData.push({y:thisData[ii], color:'rgba(80,220,180,60)'})}
+
+       var valueString='';
+       var nextSep='';
+       if (thisData[1] != null) {valueString+='Food provision (fisheries): '+thisData[1].toFixed(0); nextSep='; ';}
+       if (thisData[8] != null) {valueString+=nextSep+'Sense of place (iconic): '+thisData[8].toFixed(0); nextSep='; '}
+       if (thisData[10] != null) {valueString+=nextSep+' Biodiversity (species): '+thisData[10].toFixed(0);}
+
        var options=({
          credits:{enabled:false},
          title:{text:codeMapping[areaCode]},
-         subtitle:{text:'Ocean Health Index: <b>'+thisData[0].toFixed(0)+'</b>'+'<br/><span style="font-size:0.75em">Food provision:'+thisData[1].toFixed(0)+'; Sense of place (iconic species): '+thisData[8].toFixed(0)+'; Biodiversity (species): '+thisData[10].toFixed(0)+'</span>',
+         subtitle:{text:'Ocean Health Index: <b>'+thisData[0].toFixed(0)+'</b>'+'<br/><span style="font-size:0.75em">'+valueString+'</span>',
                    useHtml:true, style:{"fontFamily":"Verdana, sans-serif", "fontSize":"16px"}},
          chart:{type:'bar', polar:true, renderTo:'divChart', spacingTop:20, spacingBottom:10},
          plotOptions:{series:{color:'#00FFDD'}},
@@ -68,7 +75,6 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
 
    function displayData(areaCode) {
      thisData = dataCumul[codeMapping[areaCode]];
-
      if (thisData){
        /*
           text='<br/><strong>'+dataCumulHeader[0]+'</strong>: '+thisData[0]+'<br/><br/>';
@@ -80,14 +86,12 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
        displayChart(areaCode);
      } else if (areaCode=="37") {
        jQuery("#divChart").html('<big style="color:red"><b>The <a href="/node/80">Mediterranean</a> and <a href="/node/116">Black Sea</a> are evaluated in the LME assessment. Please visit those sections for further information.</b></big>');
-     } else if (areaCode=="18") {
-       jQuery("#divChart").html('<big style="color:red"><b>The Arctic Sea</b></big>');
      } else if (areaCode=="48") {
-       jQuery("#divChart").html('<big style="color:red"><b>The Atlantic, Antarctic</b></big>');
+       jQuery("#divChart").html('<big style="color:red"><b>The Atlantic, Antarctic</b> is not evaluated for Open Ocean. Please refer to the LME <a href="/lmes" target="_blank">section</a>.</big>');
      } else if (areaCode=="58"){
-       jQuery("#divChart").html('<big style="color:red"><b>The Indian Ocean, Antarctic and Southern</b></big>');
+       jQuery("#divChart").html('<big style="color:red"><b>The Indian Ocean, Antarctic and Southern</b> is not evaluated for the Open Ocean. Please refer to the LME <a href="/lmes" target="_blank">section</a>.</big>');
      } else if (areaCode=="88") {
-       jQuery("#divChart").html('<big style="color:red"><b>The Pacific, Antarctic</b></big>');
+       jQuery("#divChart").html('<big style="color:red"><b>The Pacific, Antarctic</b> is not evaluated for the Open Ocean. Please refer to the LME <a href="/lmes" target="_blank">section</a>.</big>');
      }
    };
 
