@@ -180,12 +180,12 @@ drupal_add_js('sites/all/libraries/Highcharts-4.0.4/js/highcharts-more.js');
   <div style="float:left; width:600px">
     <h1>Cumulative Human Impact by FAO Fishing Area</h1>
     <a href="/data#420" style="color:#AAA; font-family:Verdana; font-size:12px">Get indicator description, data and meta-information</a><br/>
-    <a href="/private_store/cumulative_impact/chi_eez_labels.png" style="color:#AAA; font-family:Verdana; font-size:12px">Get the map as an image (click: display, right-click: download)</a>
+    <a href="/private_store/cumulative_impact/chi_fao_oceans.png" style="color:#AAA; font-family:Verdana; font-size:12px">Get the map as an image (click: display, right-click: download)</a>
   </div>
   <div style="float:right;"> <!-- empty for centering the title above -->
   </div>
   <div style="float:left; width:600px">
-    <img usemap="#IMap" src="/private_store/cumulative_impact/chi_eez_labels.png"/>
+    <img usemap="#IMap" src="/private_store/cumulative_impact/chi_fao_oceans.png"/>
   </div>
   <div id="cumulIndex" style="float:right; " ></div>
 
