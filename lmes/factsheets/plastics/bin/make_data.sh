@@ -13,8 +13,6 @@ outiframe=$out'/iframes'$temp
 outddata='data'$temp
 outdata=$out/$outddata
 fName='data.csv'
-rm -fr $outdata
-rm -fr $outiframe
 mkdir -p ${outiframe}
 mkdir -p ${outdata}
 
