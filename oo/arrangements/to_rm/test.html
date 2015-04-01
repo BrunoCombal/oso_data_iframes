@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-Equiv="Cache-Control" content="no-cache"/>
+    <meta http-Equiv="Pragma" Content="no-cache"/>
+    <meta http-Equiv="Expires" content="0"/>
+    <title></title>
+    <link rel="stylesheet" href="/geoserver/openlayers/theme/default/style.css" type="text/css" />
+    <style>
+     #map-id {
+       width: 700px;
+       height: 400px;
+       float:left;
+       margin-left: 60px !important;
+     }
+     #layerswitcher.olControlLayerSwitcher{
+       font-size:12px !important;
+       font-family:sans-serif !important;
+       font-weight: normal;
+     }
+     .olControlLayerSwitcher .layersDiv{
+       background-color:#c0c0c0 !important;
+       margin: 1.5em !important;
+       padding-top:0;
+       margin-top:0 !important;
+     }
+     .olControlLayerSwitcher {
+       float:left;
+       position: relative !important;
+       top: 0 !important;
+       right: 0;
+       width: 12em !important;
+     }
+     #infoArrangement, #infoGeneral{
+       font-size:12px !important;
+       font-weight:normal;
+       font-family:sans-serif !important;
+     }
+     .selectable{
+       cursor: pointer;
+     }
+     .disabled, .dis{
+       background-color:gray;
+     }
+     .selected, .sel{
+       background-color:green;
+     }
+     .hover{
+       background-color:orange;
+     }
+     table{
+       margin:auto;
+       font-family:Verdana, sans-serif;
+       font-size:12px;
+     }
+     table td{
+       width: 90px;
+       text-align:right;
+       padding-right: 5px;
+     }
+     table thead td{
+       text-align:center;
+       vertical-align:bottom;
+       background-color:#e2e2e2;
+       font-size:13px;
+     }
+    </style>
+
+    <script src="/sites/all/libraries/OpenLayers-2.13.1/OpenLayers.js"></script>
+    <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1/external/jquery/jquery.js"></script>
+
+    <script>
+     jQuery(document).ready(function(){
+       //Check if we have access to parent document (normally not if the iframe is loaded from a different host
+       var sameHost = false;
+       try {
+         parent.document;
+         sameHost = true;
+       } catch(e){
+         iFrame = null;
+       }
+       //Define the behaviour of the View Data link according to the host permissions
+       jQuery('#viewData').click(function(){
+         var sourceURL = "http://onesharedocean.org/data#245";
+         if (sameHost){
+           window.parent.window.location = sourceURL;
+         } else {
+           copyToClipboard(sourceURL);
+         }
+       });
+       //If host allows it, resize the frame from within
+       if (sameHost){
+         if (window.frameElement != null) {
+           var iFrame = parent.document.getElementById(window.frameElement.getAttribute('id'));
+           if (iFrame != null){
+             iFrame.style.height = '600px';
+           }
+         }
+       }
+
+       var themesId=["integration", "fisheries", "pollution", "climate", "abnj"];
+       var layersId=["ccbsp", "iattc", "iphc", "npafc", "oldepesca", "ospesca", "pices", "psc", "wcpfc", "antigua"];
+       var hasLayer={};
+       hasLayer["integration"]=["wcpfc","iattc", "npafc", "pices", "oldepesca"];
+       hasLayer["fisheries"]=["ccbsp", "iattc", "iphc", "npafc", "oldepesca", "ospesca", "pices", "psc", "wcpfc", "antigua"];
+       hasLayer["pollution"]=["antigua", "pices"];
+       hasLayer["climate"]=["pices"];
+       hasLayer["abnj"]=["ccbsp", "iattc", "iphc", "npafc", "oldepesca", "ospesca", "pices", "psc", "wcpfc", "antigua"];
+
+       var WDL=true;
+       var TORG = new OpenLayers.LonLat(-180.0, 90.0);
+       var TSIZE=new OpenLayers.Size(350, 200);
+       var resolBase=1.0285714285714285;
+       var resolutions=[resolBase, resolBase/2.0, resolBase/4.0, resolBase/8.0, resolBase/16.0];
+       var GWC="http://onesharedocean.org/geoserver/gwc/service/wms"
+
+       var extent = new OpenLayers.Bounds(-180,-90,180,90);
+       var minResolution=360/700.0;
+       var maxResolution=0.5/700.0;
+       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
+       var graticule=new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
+       var options = {
+         resolutions:resolutions, projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
+         maxExtent:extent, wrapDateline:true,
+         controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+
+       var map = new OpenLayers.Map("map-id", options);
+       layersSwitcher.maximizeControl();
+
+       var world=new OpenLayers.Layer.WMS(
+         "Countries (background)",
+         "http://onesharedocean.org/geoserver/general/wms",
+         {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
+         {tiled:false, tileSize:TSIZE, tileOrigin:TORG, wrapDateLine:true, isBaseLayer:true, visibility:true}
+       );
+
+       var worldtop=new OpenLayers.Layer.WMS(
+         "Countries",
+         "http://onesharedocean.org/geoserver/general/wms",
+         {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
+         {tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, wrapDateLine:true, visibility:true, opacity:1}
+       );
+
+       var lmes = new OpenLayers.Layer.WMS(
+         "LMEs & warmpool",
+         "http://onesharedocean.org/geoserver/wms",
+         {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
+         {tiled:true, tileSize:TSIZE, tileOrigin:TORG, wrapDateLine:WDL, isBaseLayer:false, opacity:1, visibility:false}
+       );
+
+       var eez = new OpenLayers.Layer.WMS(
+         "EEZ",
+         "http://onesharedocean.org/geoserver/wms",
+         {layers:"ocean:OBIS_eezs", transparent:true, styles:'eez_nofill_contour_orange_labels'},
+         {tiled:true, tileSize:TSIZE, tileOrigin:TORG, wrapDateLine:WDL, isBaseLayer:false, opacity:1, visibility:false}
+       );
+
+       var ccbsp=new OpenLayers.Layer.WMS(
+         "CCBSP",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_CCBSP", transparent:true, styles:'crfm_wca'},
+         {layerId:'ccbsp', singleTile:true, visibility:true, opacity:1,displayInLayerSwitcher:false, themes:['fisheries','abnj']}
+       );
+
+       var iattc=new OpenLayers.Layer.WMS(
+         "IATTC",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_IATTC", transparent:true, styles:'iccat_wca'},
+         {layerId:'iattc', singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['abnj']}
+       );
+
+       var iphc=new OpenLayers.Layer.WMS(
+         "IPHC",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_IPHC", transparent:true, styles:'nammco_wca'},
+         {layerId:'iphc',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['fisheries']}
+       );
+
+       var npafc=new OpenLayers.Layer.WMS(
+         "NPAFC",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_NPAFC", transparent:true, styles:'oldepesca_wca'},
+         {layerId:'npafc',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['integration','fisheries','abnj']}
+       );
+
+       var oldepesca=new OpenLayers.Layer.WMS(
+         "OLDEPESCA",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_OLDEPESCA", transparent:true, styles:'ospesca_wca'},
+         {layerId:'oldepesca',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['integration','fisheries','abnj']}
+       );
+
+       var pices=new OpenLayers.Layer.WMS(
+         "PICES",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_PICES", transparent:true, styles:'wecafc_wca'},
+         {layerId:'pices',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['integration','fisheries','pollution','biodiversity','climate']}
+       );
+
+       var psc=new OpenLayers.Layer.WMS(
+         "PSC",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_PSC", transparent:true, styles:'wecafc_wca'},
+         {layerId:'psc',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['fisheries','abnj']}
+       );
+
+       var wcpfc=new OpenLayers.Layer.WMS(
+         "WCPFC",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_WCPFC", transparent:true, styles:'orange_ffaf00_transparent'},
+         {layerId:'wcpfc',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['integration','abnj']}
+       );
+
+       var ospesca=new OpenLayers.Layer.WMS(
+         "OSPESCA",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:RFB_OSPESCA", transparent:true, styles:'purple_ee00e7_transparent'},
+         {layerId:'ospesca',singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['fisheries','abnj']}
+       );
+
+       var antigua=new OpenLayers.Layer.WMS(
+         "Antigua",
+         "http://onesharedocean.org/geoserver/arrangements/wms",
+         {layers:"arrangements:Antigua", transparent:true, styles:'antigua_ne_pacific'},
+         {layerId:'antigua', singleTile:true, visibility:true, opacity:1, displayInLayerSwitcher:false, themes:['fisheries','biodiversity','abnj']}
+       );
+
+       map.addLayers([worldtop, ccbsp, iattc, iphc, npafc, oldepesca, ospesca, pices, psc, wcpfc, antigua, lmes, eez, world]);
+       map.setLayerIndex(world, 0);
+       map.setLayerIndex(wcpfc, 1);
+       map.setLayerIndex(iattc, 2);
+       map.setLayerIndex(npafc, 3);
+       map.setLayerIndex(iphc, 4);
+       map.setLayerIndex(pices, 5);
+       map.setLayerIndex(oldepesca, 6);
+       map.setLayerIndex(ospesca, 7);
+       map.setLayerIndex(antigua, 8);
+       map.setLayerIndex(psc, 9);
+       map.setLayerIndex(ccbsp, 10);
+       map.setLayerIndex(worldtop, 11);
+       map.setLayerIndex(lmes, 12);
+       map.setLayerIndex(eez, 13);
+       map.zoomToExtent([-170,-5,-80,65]);
+
+       var infoGnrl = new OpenLayers.Control.WMSGetFeatureInfo({
+         url:'http://onesharedocean.org/geoserver/ocean/wms',
+         title:'identify feature by clicking',
+         output:'features', infoFormat:'application/vnd.ogc.gml',
+         format: new OpenLayers.Format.GML,
+         eventListeners: {
+           getfeatureinfo: function(event) {
+             eezName='';
+             lmeName='';
+             if (typeof(event.features[0])=='undefined'){document.getElementById('infoGeneral').innerHTML='&nbsp;'; return};
+             for (ii=0; ii< event.features.length; ii++){
+               thisEEZNAME=event.features[ii].attributes['eez'];
+               thisLMENAME=event.features[ii].attributes['LME_NAME'];
+               if (typeof(thisEEZNAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {eezName+=', '+thisEEZNAME}};
+               if (typeof(thisLMENAME)!='undefined') {if (eezName=='') {eezName=thisEEZNAME} else {lmeName+=', '+thisLMENAME}};
+             }
+             document.getElementById('infoGeneral').innerHTML=eezName;
+           }
+         }
+       });
+
+       uneprsid={'2053':'Abidjan', '170':'Antigua', '994':'Bucharest', '2041':'Helsinki', '2054':'Lima', '1125':'Jeddah', '1119':'Kuwait', '2051':'Noumea', '510':'Cartagena', '2049':'Barcelona', '1960':'Nairobi'};
+       var infoArrangement = new OpenLayers.Control.WMSGetFeatureInfo({
+         url:'http://onesharedocean.org/geoserver/arrangements/wms',
+         title:'identify feature by clicking',
+         output:'features', infoFormat:'application/vnd.ogc.gml',
+         format: new OpenLayers.Format.GML,
+         eventListeners: {
+           getfeatureinfo: function(event) {
+             rfbName='';
+             if (typeof(event.features[0])=='undefined'){document.getElementById('infoArrangement').innerHTML='&nbsp;'; return};
+             for (ii=0; ii< event.features.length; ii++){
+               thisRFBNAME=event.features[ii].attributes['RFB'];
+               thisUnepRSID=event.features[ii].attributes['UNEP_RS_ID'];
+               if (typeof(thisUnepRSID)!='undefined') {if (rfbName=='') {rfbName=uneprsid[thisUnepRSID]} else {rfbName+=', '+uneprsid[thisUnepRSID]}}
+               if (typeof(thisRFBNAME)!='undefined'){if (rfbName=='') {rfbName=thisRFBNAME} else { rfbName+=', '+thisRFBNAME}};
+               if (typeof(thisOther)!='undefined'){if (rfbName=='') {rfbName=thisRFBNAME} else {rfbName+=', '+thisOther}};
+             }
+             document.getElementById('infoArrangement').innerHTML=rfbName;
+           }
+         }
+       });
+
+       map.addControl(infoGnrl);
+       infoGnrl.activate();
+       map.addControl(infoArrangement);
+       infoArrangement.activate();
+
+       //TEMPORARY -> CREATE TABLE
+       var themes = ['integration', 'fisheries', 'pollution', 'biodiversity', 'climate', 'abnj'];
+       jQuery.each(map.layers, function(){
+         if(jQuery(this).prop('layerId')){
+           var layer = this;
+           var tr = document.createElement('TR');
+           var td0 = document.createElement('TD');
+           jQuery(td0)
+                             .html(this.name)
+                             .appendTo(tr);
+           jQuery.each(themes, function(){
+             var td = document.createElement('TD');
+             if(layer.themes.indexOf(this.toString()) > -1 ){
+               jQuery(td)
+                            .addClass('selectable')
+                            .attr('xlayer', layer.name.toLowerCase())
+                            .attr('xtheme', this.toString());
+             }
+             jQuery([td]).appendTo(tr);
+           });
+           jQuery(tr).appendTo('tbody');
+         }
+       });
+
+       //TEMPORARY -> RULES FOR SELECTION
+       jQuery('tbody .selectable').addClass('selected');
+       jQuery('tbody .selectable')
+             .hover(function(){
+               jQuery(this).parent().find('.selectable').addClass('hover');
+             })
+             .mouseleave(function(){
+               jQuery(this).parent().find('.selectable').removeClass('hover');
+             })
+             .click(function(){
+               var td = this;
+               var layer = false;
+               jQuery.each(map.layers, function(){
+                 if(jQuery(this).prop('layerId')){
+                   if(jQuery(this).prop('layerId') == jQuery(td).attr('xlayer')){
+                     layer = this;
+                   }
+                 }
+               });
+               if(jQuery(this).hasClass('selected')){
+                 if(jQuery('.selectable').not(jQuery(this).siblings()).not('.selected').length == 0){
+                   jQuery('.selectable')
+                              .removeClass('selected')
+                              .addClass('disabled');
+                   jQuery('thead input').prop('checked',false);
+                   jQuery(this).parent().find('.selectable')
+                              .removeClass('disabled')
+                              .addClass('selected')
+                              .removeClass('hover')
+                              .each(cbHandler);
+                   jQuery.each(map.layers, function(){
+                     if(jQuery(this).prop('layerId')){
+                       if(jQuery(this).prop('layerId') != jQuery(td).attr('xlayer')){
+                         map.getLayer(this.id).setVisibility(false);
+                       }
+                     }
+                   });
+                 } else if(jQuery('.selected').not('disabled').not(jQuery(this).siblings()).not(jQuery(this)).length == 0){
+                   jQuery('.selectable')
+                         .addClass('selected')
+                         .removeClass('disabled')
+                         .each(cbHandler);
+                   jQuery.each(map.layers, function(){
+                     if(jQuery(this).prop('layerId')){
+                       map.getLayer(this.id).setVisibility(true);
+                     }
+                   });
+                 } else {
+                   jQuery(this).parent().find('.selectable')
+                         .removeClass('selected')
+                         .removeClass('hover')
+                         .addClass('disabled')
+                         .each(cbHandler);
+                   map.getLayer(layer.id).setVisibility(false);
+                 }
+               } else
+
+               if(jQuery(this).hasClass('disabled')){
+                 map.getLayer(layer.id).setVisibility(true);
+                 jQuery(this).parent().find('.selectable')
+                    .addClass('selected')
+                    .removeClass('disabled')
+                    .removeClass('hover')
+                    .each(cbHandler);
+               }
+             });
+
+
+       //TEMPORARY -> SELECT/UNSELECT COLUMNS
+       jQuery('thead :checkbox')
+             .mouseup(function(){
+               var checkbox = this;
+               var theme = jQuery(this).parent().attr('theme');
+               jQuery('.selectable').each(function(){
+                 var layer = false;
+                 if(jQuery(this).attr('xtheme') == theme){
+                   layer = jQuery(this).attr('xlayer');
+                   if(jQuery(checkbox).prop('checked')){
+                     jQuery(this).parent().find('.selectable')
+                                     .addClass('disabled')
+                                     .removeClass('selected');
+                     //.each(cbHandler);
+                   } else {
+                     jQuery(this).parent().find('.selectable')
+                                     .addClass('selected')
+                                     .removeClass('disabled');
+                   }
+                 }
+                 if(layer){
+                   jQuery.each(map.layers, function(){
+                     if(jQuery(this).prop('layerId')){
+                       if(jQuery(this).attr('layerId') == layer){
+                         if(jQuery(checkbox).prop('checked')){
+                           map.getLayer(this.id).setVisibility(false);
+                         } else {
+                           map.getLayer(this.id).setVisibility(true);
+                         }
+                       }
+                     }
+                   });
+                 }
+               });
+
+               jQuery('thead td').not(jQuery(this).parent()).each(function(){
+                 theme = jQuery(this).attr('theme');
+                 var nSel = jQuery('.selectable[xtheme="'+theme+'"]').length;
+                 var nS = jQuery('.selected[xtheme="'+theme+'"]').length;
+                 var nD = jQuery('.disabled[xtheme="'+theme+'"]').length;
+                 if(nD == 0){ //check
+                   jQuery(this).find('input[type="checkbox"]')
+                         .prop('checked', true)
+                         .prop('indeterminate', false);
+                 } else if(nD == nSel){
+                   jQuery(this).find('input[type="checkbox"]')
+                         .prop('checked', false)
+                         .prop('indeterminate', false);
+                 } else { //indefinite
+                   jQuery(this).find('input[type="checkbox"]')
+                         .prop('checked', false)
+                         .prop('indeterminate', true);
+                 }
+               });
+               if(jQuery('.selected').length == 0){
+                 jQuery('.selectable')
+                    .removeClass('disabled')
+                    .addClass('selected');
+                 jQuery('thead :checkbox')
+                    .prop('checked', true)
+                    .prop('indeterminate', false);
+                 jQuery.each(map.layers, function(){
+                   if(jQuery(this).prop('layerId')){
+                     map.getLayer(this.id).setVisibility(true);
+                   }
+                 });
+               }
+             })
+             .mouseleave(function(){
+               var theme = jQuery(this).parent().attr('theme');
+               var nSel = jQuery('.selectable[xtheme="'+theme+'"]').length;
+               var nS = jQuery('.selected[xtheme="'+theme+'"]').length;
+               if(nSel == nS){
+                 jQuery(this).prop('checked', true);
+               }
+             });
+
+       function cbHandler(num,el){
+         var cI = jQuery(el).prop('cellIndex');
+         var xt = jQuery(el).attr('xtheme');
+         var nD = jQuery('tbody tr .disabled[xtheme="'+xt+'"]').length;
+         var nS = jQuery('tbody tr .selected[xtheme="'+xt+'"]').length;
+         var nSel = jQuery('tbody tr .selectable[xtheme="'+xt+'"]').length;
+         if(nD == 0){ //check
+           jQuery('thead td[theme="'+xt+'"] input[type="checkbox"]')
+                     .prop('checked', true)
+                     .prop('indeterminate', false);
+
+         } else if(nD == nSel){ jQuery('thead td[theme="'+xt+'"] input[type="checkbox"]')
+                                       .prop('checked', false)
+                                       .prop('indeterminate', false);
+         } else { //indefinite
+           jQuery('thead td[theme="'+xt+'"] input[type="checkbox"]')
+                                       .prop('checked', false)
+                                       .prop('indeterminate', true);
+         }
+       }
+
+     });
+    </script>
+  </head>
+  <body>
+    <div style="width:940px;margin:auto;">
+      <div id="layerSelector">
+        <table>
+          <thead>
+            <tr>
+              <td style="background-color:#fff;"></td>
+              <td theme="integration">Integration<br/><input type="checkbox" name="integration" value="integration" checked></td>
+              <td theme="fisheries">Fisheries<br/><input type="checkbox" name="fisheries" value="fisheries"  checked></td>
+              <td theme="pollution">Pollution<br/><input type="checkbox" name="pollution" value="pollution"  checked></td>
+              <td theme="biodiversity">Biodiversity<br/><input type="checkbox" name="biodiversity" value="biodiversity"  checked></td>
+              <td theme="climate">Climate Change<br/><input type="checkbox" name="climate" value="climate"  checked></td>
+              <td theme="abnj">Relevance to ABNJ<br/><input type="checkbox" name="abnj" value="abnj"  checked></td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div style="clear:both"></div><br/>
+
+      <div id="infoArrangement">&nbsp;</div>
+      <div id="infoGeneral">&nbsp;</div>
+      <div>
+        <div id="map-id" ></div>
+        <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+      </div>
+    </div>
+  </body>
+
+</html>

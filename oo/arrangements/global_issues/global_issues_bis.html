@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>Global view of arrangements by issues</title>
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+     #map-id {
+       width: 900px;
+       height: 450px;
+     }
+     .olControlLayerSwitcher{
+       position:relative!important;
+       top:0!important;
+       width:400px!important;
+     }
+     #OpenLayers_Control_MinimizeDiv{
+       display:none!important;
+     }
+     .dataLbl{
+       display:none!important;
+     }
+     .dataLayersDiv{
+       position:relative;
+       width:100%;
+     }
+     #layersSwitcher.olControlLayerSwitcher{
+       font-size:12px !important;
+       font-family:Verdana, sans-serif !important;
+       font-weight: normal;
+       padding:0!important;
+       margin:0!important;
+       position:relative!important;
+     }
+     .layersDiv{
+       -webkit-column-count: 3; /* Chrome, Safari, Opera */
+       -moz-column-count: 3; /* Firefox */
+       column-count: 3;
+       -webkit-column-gap: 4px; /* Chrome, Safari, Opera */
+       -moz-column-gap: 4px; /* Firefox */
+       column-width:150px;
+       column-gap: 1em;
+       column-rule: 3px solid #FFFFFF;
+
+     }
+     .olControlLayerSwitcher .layersDiv{
+       font-family:Verdana, sans-serif;
+       font-size:12px;
+       font-weight:normal;
+       background-color: #C0C0C0 !important;
+       margin: 0.1em !important;
+       width: 100%;
+       padding-top:0!important;
+       padding:0!important;
+       margin:0!important;
+     }
+
+     .layersLegend {
+       font-family:Verdana, sans-serif;
+       font-size:10px;
+       font-weight:normal;
+     }
+    </style>
+
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  </head>
+  <body>
+
+    <div style="width:100%; font-size:10px; font-family: verdana, sans-serif;">
+      <p><b>Integration:</b> ICES, PIF, SCAR (missing), ASEAN (missing), BIMSTEC (missing), NOWPAP, SAARC (missing)</p>
+
+      <p><b>Fisheries:</b> Antigua, APFIC, Arctic council, ATS, BOBP-IGO, CCAMLR, CCBSP, CCSBT, CECAF, CITS (missing), CMS (missing), COMHAFAT, FFAC, GFCM, HSDN (missing), IATTC, ICCAT, ICES, IOTC, IPHC, IWC (missing), NAFO, NAMMCO, NASCO, NEAFC, NIUE (missing), NPAFC, PICES, PIF, PNA (missing), PSC, SCAR (missing), SEAFDEC, SEAFO, SIOFA, SP (missing), SPRFMO, FAO fishing areas, UNCLOS (missing), UNFSA (missing), WCPFC, WECAFC, ACCOBAMS (missing), APEC (missing), ASCOBANS, ASEAN (missing), BCC (missing), BIMSTEC (missing), COREP, CPPS, CRFM, EU, FCWC, NOWPAP, OLDEPESCA, OSPESCA, PRCM (missing), RECOFI, RIO (missing), SAARC (missing), SADC (missing), SRFC, SWIOFC</p>
+
+      <p><b>Pollution:</b> Abidjan, AFC (missing), Antigua, Arctic, ATS, Barcelona, Bucharest, BWMC (missing), Cartagena, GPA (missing), Helsinki Convention, Hong-kong (missing), ICES, Jeddah, Kuwait, Lima, London (missing), MARPOL (missing),  Montreal (missing), Nairobi, Noum&eacute;a, OPRC (missing), OSPAR, PIF, SCAR (missing), Stockholm (missing), UNCLOS (missing), UNFSA (missing), Vienna (missing), ASEAN (missing), BCC (missing), BEAC (missing), BIMSTEC (missing), Bonn (missing), BRC (missing), COBSEA, CPPS, LIMA, Mexus (missing), NOWPAP, PEMSEA (missing), Rio (missing), SAARC (missing), SACEP (missing)</p>
+
+      <p><b>Biodiversity:</b> ACAP (missing), Antigua, Arctic council, ATS, Barcelona, CBD (missing), CCAMLR, CCAS, CITES (missing), CMS (missing), Helsinki convention, IAC (missing), ICES, NAMMCO, Noum&eacute;a, OSPAR, PIF, SCAR (missing), SIOFA, UNCLOS (missing), UNFSA (missing), WECAFC, ACCOBAMS (missing), ACPB (missing), ASCOBANS,  ASEAN (missing), BCC (missing), BEAC (missing), BIMSTEC (missing), BRC (missing), Bucharest, Cartagena, COBSEA (missing), CPPS, Dugong (missing), EU, IOSEA (missing), Nairobi, NOWPAP, SAARC (missing)</p>
+
+      <p><b>Climate change:</b> Arctic council, ATS, ICES, London (missing), Noum&eacute;a, PIF, SCAR (missing), UNFCC (missing), ASEAN (missing), BIMSTEC (missing), NOWPAP</p>
+
+      <p><b>ABNJ:</b> Abidjan, ACAP (missing), AFC (missing), Antigua, APFIC, Arctic council, ATS, Barcelona, BOBP-IGO, Bucharest, BWMC, Cartagena, CBD, CCAMLR, CCAS, CCBSP, CCSBT, CECAF, CITES (missing), CMS (missing), COMHAFAT, FFAC, GFCM, GPA (missing), Helsinki Convention, Hong-Kong Convention, HSDN, IAC, IATTC, ICCAT, ICES, IOTC, IPHC, IWC (missing), Jeddah, Kuwait, Lima, London (missing), MARPOL (missing), Montreal (missing), NAFO, Nairobi, NAMMCO, NASCO, NEAFC, Niue (missing), Noum&eacute;a, NPAFC, OPRC 90 (missing), OSPAR, PICES, PIF, PNA (missing), PSC, SCAR (missing), SEAFDEC, SEAFO, SIOFA, SP drif nets (missing), SPC, SPRFMO, Stockholm convention, FAO fishing areas, UNCLOS (missing), UNFCC (missing), UNFSA (missing), Vienna (missing), WCPFC, WECAFC</p>
+    </div>
+
+    <div id="layerswitcher" class="olControlLayerSwitcher" ></div>
+
+
+    <table class="layersLegend">
+      <tr>
+        <td><span style="background-color:#AAAAAA; opacity:0.2; filter:alpha(opacity=20);">&nbsp;&nbsp;&nbsp;&nbsp;</span>1 arrangement</td>
+        <td><span style="background-color:#AAAAAA; opacity:0.4; filter:alpha(opacity=40);">&nbsp;&nbsp;&nbsp;&nbsp;</span>2 arrangements</td>
+        <td><span style="background-color:#AAAAAA; opacity:0.5; filter:alpha(opacity=60);">&nbsp;&nbsp;&nbsp;&nbsp;</span>3 arrangements</td>
+        <td><span style="background-color:#AAAAAA; opacity:0.6; filter:alpha(opacity=80);">&nbsp;&nbsp;&nbsp;&nbsp;</span>4 arrangements</td>
+        <td><span style="background-color:#AAAAAA; opacity:1; filter:alpha(opacity=100);">&nbsp;&nbsp;&nbsp;&nbsp;</span>5 arrangements or more</td>
+      </tr>
+    </table>
+
+    <div id="map-id" ></div>
+    <div style="clear:both"></div>
+
+    <script>
+     var extent = new OpenLayers.Bounds(30,-90,390,90);
+
+     var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher'),'ascending':false});
+     var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false,  displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
+     var options = {numZoomLevels:5, resolutions:[0.8, 0.4,0.2,0.1, 0.05],
+                    controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+
+     var map = new OpenLayers.Map("map-id", options);
+     layersSwitcher.maximizeControl();
+
+     var GWC = "http://onesharedocean.org/geoserver/gwc/service/wms";
+     var TSIZE = new OpenLayers.Size(225, 225);
+     var TORG = new OpenLayers.LonLat(-180.0, 90.0);
+
+     var world=new OpenLayers.Layer.WMS(
+       "Countries (background)",
+       GWC, 
+       {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png', transparent:true},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:true, visibility:true, wrapDateLine:true, displayInLayerSwitcher:false}
+     );
+
+     var worldtop=new OpenLayers.Layer.WMS(
+       "Countries",
+       GWC, 
+       {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png', transparent:true},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, visibility:true, opacity:1, wrapDateLine:true}
+     );
+
+     var lmes = new OpenLayers.Layer.WMS(
+       "LMEs",
+       GWC, 
+       {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels'},
+       {tiled:true, tileSize:TSIZE, tileorigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+     );
+
+     var eez = new OpenLayers.Layer.WMS(
+       "EEZ",
+       GWC, 
+       {layers:"ocean:World_Maritime_Boundaries_v8", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+     );
+
+     var integration = new OpenLayers.Layer.WMS(
+       "Integration",
+       GWC, 
+       {layers:"issue_integration", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1, wrapDateLine:true}
+     );
+
+     var fisheries = new OpenLayers.Layer.WMS(
+       "Fisheries",
+       GWC,
+       {layers:"issue_fisheries", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1, wrapDateLine:true}
+     );
+
+     var pollution = new OpenLayers.Layer.WMS(
+       "Pollution",
+       GWC,
+       {layers:"issue_pollution", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1}
+     );
+
+     var biodiversity = new OpenLayers.Layer.WMS(
+       "Biodiversity",
+       GWC,
+       {layers:"issue_biodiversity", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1}
+     );
+
+     var climate_change = new OpenLayers.Layer.WMS(
+       "Climate Change",
+       GWC,
+       {layers:"issue_climate_change", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1}
+     );
+
+     var abnj = new OpenLayers.Layer.WMS(
+       "ABNJ",
+       GWC,
+       {layers:"issue_abnj", transparent:true, styles:''},
+       {tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1, wrapDateLine:true}
+     );
+
+
+     map.addLayers([worldtop, integration, fisheries, pollution, biodiversity, climate_change, abnj, lmes, eez, world]);
+     map.setLayerIndex(world, 0);
+     map.setLayerIndex(integration, 1);
+     map.setLayerIndex(fisheries, 2);
+     map.setLayerIndex(pollution, 3);
+     map.setLayerIndex(biodiversity, 4);
+     map.setLayerIndex(climate_change, 5);
+     map.setLayerIndex(abnj, 6);
+     map.setLayerIndex(worldtop, 7);
+     map.setLayerIndex(lmes, 8);
+     map.setLayerIndex(eez, 9);
+     map.zoomToExtent(extent);
+
+    </script>
+  </body>
+
+</html>
