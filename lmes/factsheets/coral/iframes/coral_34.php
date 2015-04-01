@@ -31,10 +31,10 @@ if($templateCache == true){
        cursor: pointer;
      }
      .highcharts-tooltip span {
-       background-color:white;
        z-index:9999!important;
        /*border: 1px solid #000000;*/
        margin:0;
+       padding:0;
        /*padding: 5px;*/
        top: 0;
        left:0;
@@ -86,11 +86,7 @@ if($templateCache == true){
        function genChart() {
          var options = {
            credits:{enabled:false},
-           chart: {renderTo: 'container', type: 'column', zoomType:'x', spacingLeft:20, spacingRight:50,
-                   resetZoomButton:{relativeTo:'chart', position: {align:'right', verticalAlign: 'bottom', x:-10, y:-75},
-                                    theme:{fill: 'white', stroke:'red', r:0, states:{hover:{fill:'#41739D', style:{color:'white'}}}}
-                   }
-           },
+           chart: {renderTo: 'container', type: 'column', spacingLeft:20, spacingRight:50},
            legend:{align:'center', layout:'horizontal', itemStyle:{'font-weight': 'normal', 'max-width':'125'}, x:20},
            title: { text: '', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
            xAxis: { type: 'linear', title:{text:'Risk level'}, categories: ["Very high", "High", "Medium", "Low"]},
@@ -112,9 +108,6 @@ if($templateCache == true){
              valueDecimals: 2,
              useHTML: true,
              style: {'z-index':9999},
-             positioner: function (labelWidth, labelHeight, point) {
-               return { x: point.plotX, y: point.plotY-20 };
-             },
              formatter: function() {
                var riskCategory = this.point.category+" ";
                return '<b>'+this.point.series.name+'</b><br />'+this.y.toFixed(2)+'% of corals<br/> in '+riskCategory+' risk category';
@@ -187,7 +180,7 @@ if($templateCache == true){
                                    });
 
 
-         var comboText = "Type LME code or name";
+         var comboText = "Type LME code or name (only those with coral are available)";
          var maxComboText = 'Maximum number of datasets reached';
          $( "#tags" ).css('color', '#c0c0c0');
 
@@ -253,7 +246,7 @@ if($templateCache == true){
   <body>
 
     <div class="ui-widget" style="margin:auto; width:500px">
-      <input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; float:left;" value="Type LME code or name"/>
+      <input id="tags" class="autocomplete" style="width:320px; z-index:999 !important; float:left;" value="Type LME code or name; only those with coral are available"/>
       <div id="#results" class="ui-front autocomplete" style="z-index:999 !important" ></div>
       <input id="addPlot" type="button" value="add LME" disabled="disabled"></input>
       <input id="resetPlot" type="button" value="Reset plot" disabled="disabled"></input>
