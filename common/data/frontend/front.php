@@ -505,7 +505,7 @@ for($i=0;$i<count($categoriesList_temp);$i++) {
     <?php if(isset($node['unit'])){ ?><li><span class="title">Unit</span><span class="value"><?php echo $node['unit']; ?></span></li><?php } ?>
     <?php if(isset($node['rationale'])){ ?><li><span class="title">Rationale for inclusion</span><span class="value"><?php echo $node['rationale']; ?></span></li><?php } ?>
     <?php if(isset($node['interlink'])){ ?><li><span class="title">Interlinkages with other transboundary water systems</span><span class="value"><?php echo $node['interlink']; ?></span></li><?php } ?>
-	<?php if(isset($node['measurements'])){ ?><li><span class="title">Measurement methods and calculation</span><span class="value"><?php echo render($field); ?></span></li><?php } ?>
+	<?php if(isset($node['measurements'])){ ?><li><span class="title">Measurement methods and calculation</span><span class="value"><?php echo render($node['measurements']); ?></span></li><?php } ?>
     <?php if(isset($node['scale'])){ ?><li><span class="title">Scale</span><span class="value"><?php echo $node['scale']; ?></span></li><?php } ?>
     <?php if(isset($node['data_source'])){ ?><li><span class="title">Data sources</span><span class="value"><?php echo $node['data_source']; ?></span></li><?php } ?>
     <?php if(isset($node['agencies'])){ ?><li><span class="title">Agencies &amp; contacts</span><span class="value"><?php echo $node['agencies']; ?></span></li><?php } ?>

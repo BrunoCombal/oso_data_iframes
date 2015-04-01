@@ -1,0 +1,175 @@
+--------------<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title></title>
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <style>
+      #map-id {
+      width: 600px;
+      height: 300px;
+      }
+      #lswitcher.olControlLayerSwitcher{
+       font-size:11px !important;
+       font-family:sans-serif !important;
+       font-weight: normal;
+       width:100px;
+      }
+      .olControlLayerSwitcher .layersDiv{
+       background-color:#c0c0c0 !important;
+       width:100px;       
+       float:right;
+       padding:0;
+       margin:0;
+      }
+      #viewData {
+      font-family: Verdana;
+      font-size: 10px;
+      cursor: pointer;
+      }
+    </style>    
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+
+    <script type="text/javascript">
+    function init(){    
+
+    $('#viewData').click(function(){
+       window.parent.window.location = "http://onesharedocean.org/data#252";
+    });
+
+    var wfsUrl = 'http://onesharedocean.org/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=ocean:LME66&outputFormat=GML2&cql_filter=LME_NUMBER=';
+
+    var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
+    var minResolution=360/600.0;
+    var maxResolution=5/600.0;
+    var options = {minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
+    maxExtent:defaultExtent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+    var map = new OpenLayers.Map("map-id", options);
+    var layerSwitcher = new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('map-selector')});
+    map.addControl(layerSwitcher);
+
+    var lmeID=64;
+
+    wrapDateLine=true;
+    if (lmeID==46) { wrapDateLine=false;}
+    if (lmeID==64) { wrapDateLine=false;}
+    if (lmeID==53) { wrapDateLine=false;}
+    if (lmeID==1) { wrapDateLine=false;}
+
+    var fcp2030=new OpenLayers.Layer.WMS(
+    "2030", 'http://onesharedocean.org/geoserver/lmes/wms',
+//    {layers:'lmes:LME_CPSRESA1B_2030', transparent:true, style:'futureFishCatch_low_high'},
+    {layers:'lmes:lmes_catch_relative_2030', transparent:true, style:'futureFishCatch_percent'},
+    {singleTile:false, isBaseLayer: false, opacity:1, visibility:true, wrapDateLine:wrapDateLine}
+    );
+
+    var fcp2050=new OpenLayers.Layer.WMS(
+    "2050", 'http://onesharedocean.org/geoserver/lmes/wms',
+//    {layers:'lmes:LME_CPSRESA1B_2050', transparent:true, style:'futureFishCatch_low_high'},
+    {layers:'lmes:lmes_catch_relative_2050', transparent:true, style:'futureFishCatch_percent'},
+    {singleTile:false, isBaseLayer: false, opacity:1, visibility:false, wrapDateLine:wrapDateLine}
+    );
+
+    var lmesName=new OpenLayers.Layer.WMS(
+      "LME name", 'http://onesharedocean.org/geoserver/ocean/wms',
+      {layers:'ocean:LME66', transparent:true, styles:'lmes_names_id_noshape'},
+     {singleTile:true, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:wrapDateLine}
+    );
+		
+    var countries = new OpenLayers.Layer.WMS(
+      "Countries", 'http://onesharedocean.org/geoserver/general/wms',
+      {layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname', bgcolor:'0xDCF0FA'},
+      {transparent:false, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:wrapDateLine, singleTile:true, ratio:1,yx:{'EPSG:4326':true}}
+    );
+
+    var countriesNames = new OpenLayers.Layer.WMS(
+      "Countries names", 'http://onesharedocean.org/geoserver/general/wms',
+      {layers:'general:world_epsg4326', transparent:true, styles:'countries_names_noshape'},
+      {transparent:false, visibility:false, opacity:1, wrapDateLine:wrapDateLine, singleTile:true, ratio:1,yx:{'EPSG:4326':true}}
+    );
+    
+    map.addLayers([fcp2030, fcp2050, countries, countriesNames, lmesName]);
+
+    map.setLayerIndex(fcp2030, 0);
+    map.setLayerIndex(fcp2050, 1);
+    map.setLayerIndex(countries, 2);
+    map.setLayerIndex(countriesNames, 3);
+    map.setLayerIndex(lmesName, 4);
+
+    var extent=OpenLayers.Request.GET({
+                url: wfsUrl + lmeID,
+                async:false,
+                success: function(response) {
+					var format = new OpenLayers.Format.GML();
+                    var features = format.read(response.responseText);
+					// display this feature in green
+					var vectorLME = new OpenLayers.Layer.Vector('LME');
+					vectorLME.addFeatures(features[0]);
+					vectorLME.style={strokeWidth:2, strokeColor:'#88898A', strokeOpacity:1, fillColor:'#e2e2e2', fillOpacity:0};
+
+                    map.setLayerIndex(fcp2030, 0);
+                    map.setLayerIndex(fcp2050, 1);
+                    map.setLayerIndex(countries, 2);
+                    map.setLayerIndex(countriesNames, 3);
+                    map.setLayerIndex(lmesName, 4);
+                    map.addLayers([vectorLME]);
+		    map.setLayerIndex(vectorLME, 6);
+		    // zoom to the extent
+                    if (lmeID==1){
+                        map.zoomToExtent(new OpenLayers.Bounds(-180, 50, -155, 62));
+                    } else if (lmeID==46) {
+                        map.zoomToExtent(new OpenLayers.Bounds(160, -49, 179, -31));
+                    } else if (lmeID==53) {
+                        map.zoomToExtent(new OpenLayers.Bounds(153, 50, 179.75, 63));
+                    } else if (lmeID==64) {
+                        map.zoomToExtent(new OpenLayers.Bounds(-180, 50, 180, 90));
+                    } else {
+                        map.zoomToExtent(features[0].geometry.getBounds());
+                    }
+                    return features[0].geometry.getBounds();
+                    },
+                failure: function() {
+                       return defaultExtent;
+                    }
+            });
+}
+
+    </script>
+  </head>
+  <body onload="init();">
+    <div style="font-family:verdana, sans-serif">Proportion of catch potential change in 2030 and 2050, compared to 2000.</div>
+    <div id="map-id" style="float:left; margin:0; margin-right:0px; padding:0; display:inline"></div>
+    <div style="float:left; width:100px;">
+      <img src="http://onesharedocean.org/geoserver/lmes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&STRICT=false&style=futureFishCatch_percent&legend_options=fontName:Verdana;fontAntiAliasing:true;dpi:72;">
+    </div>
+    <div id="map-selector" class="olControlLayerSwitcher" ></div>
+    <div style="clear:both; height:20px;"></div>
+
+<!--
+    <table style="width:100%">
+      <tr>
+      <td style="text-align:left; width:20%; font-family:verdana, sans-serif; font-size:10px;"></td>
+      <td style="text-align:left; width:20%; font-family:verdana, sans-serif; font-size:10px;"></td>
+      <td style="text-align:center; width:20%; font-family:verdana, sans-serif; font-size:10px;">Catch potential (tons/year)</td>
+      <td style="text-align:left; width:20%; font-family:verdana, sans-serif; font-size:10px;"></td>
+      <td style="text-align:left; width:20%; font-family:verdana, sans-serif; font-size:10px;"></td>
+      </tr>
+      <tr>
+      <td style="text-align:left; width:20%; font-family:verdana, sans-serif; font-size:10px;">0</td>
+      <td style="text-align:center; width:20%; font-family:verdana, sans-serif; font-size:10px;">3,750</td>
+      <td style="text-align:center; width:20%; font-family:verdana, sans-serif; font-size:10px;">7,500</td>
+      <td style="text-align:center; width:20%; font-family:verdana, sans-serif; font-size:10px;">11,250</td>
+      <td style="text-align:right; width:20%; font-family:verdana, sans-serif; font-size:10px;">&gt;15,000</td>
+      <tr>
+    </table>
+    <img width="100%" height="20px" src="/private_store/illustrations/futureCatch_legend.png"/>
+-->
+
+
+    <div style="text-align:right"><span id="viewData">Get data and metainformation</span></div>
+
+  </body>
+</html>

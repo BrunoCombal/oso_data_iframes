@@ -113,8 +113,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    var worldtop=new OpenLayers.Layer.WMS(
      "Countries",
      GWCWORLD,
-     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
-//     {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
+//     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
+     {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
      {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true}
    );
 
@@ -161,7 +161,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
     */
    var pp_trend=new OpenLayers.Layer.WMS(
      "PP_TREND",
-     //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_chl_pp_and_trends",
       transparent:true, styles:'lmes_ppy_change', format:'image/png'},
@@ -171,7 +170,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    //SST net change
    var sst_net_change=new OpenLayers.Layer.WMS(
      "SST net change",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
      {layers:"lmes:lmes_sst_net_change", transparent:true, styles:'lmes_sst_change', format:'image/png'},
      {layerId:'sst_net_change', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}

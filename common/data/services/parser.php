@@ -679,7 +679,7 @@ var metadata = <?php echo json_encode($metadata); ?>;
 					<?php if(count($metadata[1][5][1][10][1])>0) { //Temporal Info ?>
 						
 					<li>
-						<span class='title'>Tine Period</span>
+						<span class='title'>Time Period</span>
 						<span class='value'><?php echo $metadata[1][5][1][10][1][0][1]; ?> - <?php echo $metadata[1][5][1][10][1][1][1]; ?></span>
 					</li>
 					<?php } ?>

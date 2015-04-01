@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title></title>
+    <link rel="stylesheet" href="http://onesharedocean.org/geoserver/openlayers/theme/default/style.css" type="text/css">
+    <style>
+      #map-id {
+      width: 600px;
+      height: 300px;
+      }
+    </style>    
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+
+    <script type="text/javascript">
+    function init(){    
+    var wfsUrl = 'http://onesharedocean.org/geoserver/wfs?service=wfs&version=1.0.0&request=GetFeature&typename=ocean:LME66&outputFormat=GML2&cql_filter=LME_NUMBER=';
+
+    var defaultExtent = new OpenLayers.Bounds(-180,-90,180,90);
+    var minResolution=360/600;
+    var maxResolution=5/600;
+    var options = { minResolution: minResolution, maxResolution:maxResolution, numZoomLevels:16,
+    //resolutions:resolutions,
+    maxExtent:defaultExtent, controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+    var map = new OpenLayers.Map("map-id", options);
+
+    var TILE=true;
+    TORG=new OpenLayers.LonLat(-180.0, 90.0);
+    var TSIZE=new OpenLayers.Size(256,256);
+    var WDL=true;
+    var OCEANGWC='http://onesharedocean.org/geoserver/ocean/wms'; //'http://onesharedocean.org/geoserver/ocean/gwc/service/wms';
+    var GRLGWC='http://onesharedocean.org/geoserver/general/wms'; // 'http://onesharedocean.org/geoserver/general/gwc/service/wms';
+
+    var lmes=new OpenLayers.Layer.WMS(
+		"LMEs", OCEANGWC,
+		{layers:'ocean:LME66', transparent:true, styles:'lmes_grey_noname'},
+		{singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:WDL}
+		);
+
+    var lmesName=new OpenLayers.Layer.WMS(
+		"LMEs", OCEANGWC,
+		{layers:'ocean:LME66', transparent:true, styles:'lmes_names_id_noshape'},
+		{singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:true,  wrapDateLine:WDL}
+		);
+		
+    var countries = new OpenLayers.Layer.WMS(
+		"Countries", GRLGWC,
+		{layers:'general:world_epsg4326', transparent:true, styles:'countries_lightyellow_noname', bgcolor:'0xDCF0FA'},
+		{transparent:true, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG}
+		)
+
+    var countriesNames = new OpenLayers.Layer.WMS(
+		"Countries", GRLGWC,
+		{layers:'general:world_epsg4326', transparent:true, styles:'countries_names_noshape'},
+		{transparent:true, visibility:true, opacity:1, wrapDateLine:WDL, singleTile:TILE, tileSize:TSIZE, tileOrigin:TORG}
+		)
+
+    map.addLayers([lmes, countries, countriesNames, lmesName]);
+    map.setLayerIndex(lmes, 0);
+    map.setLayerIndex(countries, 2);
+    map.setLayerIndex(countriesNames, 3);
+    map.setLayerIndex(lmesName, 4);
+		
+    //map.addLayers([ lmes, countries]);
+    var lmeID=5;
+    var extent=OpenLayers.Request.GET({
+                url: wfsUrl + lmeID,
+                async:false,
+                success: function(response) {
+          	   var format = new OpenLayers.Format.GML();
+                   var features = format.read(response.responseText);
+		   // display this feature in green
+		   var vectorLME = new OpenLayers.Layer.Vector('LME');
+		   vectorLME.addFeatures(features[0]);
+		   vectorLME.style={strokeWidth:1, strokeColor:'#878889', fillColor:'#98E600', fillOpacity:0.4};
+		   map.addLayers([vectorLME]);
+		   map.setLayerIndex(lmes, 0);
+		   map.setLayerIndex(vectorLME, 1);
+		   map.setLayerIndex(countries, 2);
+		   map.setLayerIndex(countriesNames, 3);
+		   map.setLayerIndex(lmesName, 4);
+		   // zoom to the extent
+                   map.zoomToExtent(features[0].geometry.getBounds());
+                   return features[0].geometry.getBounds();
+                },
+                failure: function() {
+                   return defaultExtent;
+                }
+            });
+}
+
+</script>
+  </head>
+
+
+  <body onload="init();">
+
+    <div style="float:left; clear:none; display:inline"> <!-- abstract containter -->
+    <div id="map-id" style="float:left; margin:0; margin-right:0px; padding:0; display:inline"></div>
+    <div style="float:right;  font-size:10px; max-width:280px; margin-left:0; padding-left:10px; display:inline; font-family:sans-serif;">
+      <b>LME #5</b> (<a target="_top" href="/?q=node/57">previous</a> <a target="_top" href="/?q=node/59">next</a>) <br/>
+      <b>Countries:</b> Mexico, U.S.A<br/>
+      <b>Area:</b> 1530387 km<sup>2</sup><br/>
+    </div>
+    </div>
+
+  </body>
+  
+</html>
