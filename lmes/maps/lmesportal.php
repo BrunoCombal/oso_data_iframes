@@ -113,7 +113,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    var worldtop=new OpenLayers.Layer.WMS(
      "Countries",
      GWCWORLD,
-//     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
+     //     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
      {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
      {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true}
    );
@@ -247,6 +247,12 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
    //Ecosystem
    //Coral reefs
+   var mangrove = new OpenLayers.Layer.WMS(
+     "Mangrove Cover",
+     GWCLMES, 
+     {layers:"lmes:lmes_mangrove", style:'lmes_mangrove', transparent:true, format:'image/png'},
+     {layerId:'mangrove', tile:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
    var coral = new OpenLayers.Layer.WMS(
      "Coral coverage",
      //    "http://onesharedocean.org/geoserver/lmes/wms",
@@ -260,15 +266,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      GWCLMES,
      {layers:"lmes:lmes_reef_total_integrated_risk", styles:'', transparent:true, format:'image/png'},
      {layerId:'reef_risk',tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-     );
-
-   // mangroves
-//   var mangroves=new OpenLayers.Layer.WMS(
-//     "Mangroves",
-//     GWCLMES,
-//     {layers:"lmes:",  styles:'lmes_mangrovespercent', transparent:true, format:'image/png'},
-//     {layerId:'mangroves', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-//   );
+   );
 
    //Areas
    var areas= new OpenLayers.Layer.WMS(
@@ -432,6 +430,13 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'plasticsmacro', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
+   var mpaChange = new OpenLayers.Layer.WMS(
+     "MPA Change",
+     GWCLMES,
+     {layers:"lmes:lmes_mpa_change", styles:'mpa_change', transparent:true, format:'image/png'},
+     {layerId:'mpaChange', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
    var governance_int = new OpenLayers.Layer.WMS(
      "Integration",
      GWCLMES,
@@ -486,13 +491,15 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      fish_FiB, fish_stock_number, fish_stock_biomass,
      fish_trawling,fish_rate_effective,fish_change_percent,
      catch_rel_2030, catch_rel_2050,
+     mangrove,
      coral, coral_int_risk,
-//     mangroves,
+     //     mangroves,
      areas,
      cumulImpact,
      ohi, population, hdi, nldi, overfishing,
      icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
      plasticsModelMicroCount, plasticsModelMacroWeight,
+     mpaChange,
      governance_int, governance_engt, governance_compl,
      pops_ddt, pops_hch, pops_pcb
    ]);
@@ -606,9 +613,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 <div class="mainTool">
   <div class="column-map">
     <div id="mapOL" style="width:750px; height:375px; cursor:pointer"></div>
-<!--
+    <!--
     <span style="font-size:0.75em;">Political boundaries: <a href="http://www.fao.org/geonetwork/srv/en/main.home?uuid=f7e7adb0-88fd-11da-a88f-000d939bc5d8">GAUL (2015)</a>, FAO Statistics Division. For other data, metainformation is found in the <a href="/node/27">data page</a>.</span><br/>
--->
+    -->
     <div id="legOL" style="clear:both;"></div>
   </div>
   <div class="column-layers">
@@ -632,17 +639,17 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descFisheries"><span>Fish &amp; Fisheries</span>
           <ul>
-	    <li class="l2" rel="fishSubsidy"><span>Fishing subsidy</span></li>
-	    <li class="l2" rel="fishFootprint"><span>Ecological footprint</span></li>
-	    <li class="l2" rel="fishMTI"><span>Marine Trophic Index</span></li>
-	    <li class="l2" rel="fishFiB"><span>Fishing-in-Balance</span></li>
-	    <li class="l2" rel="fishStockNumber"><span>Stock status (number)</span></li>
-	    <li class="l2" rel="fishStockBiomass"><span>Stock status (biomass)</span></li>
-	    <li class="l2" rel="fishTrawling"><span>Catch from bottom trawling</span></li>
-	    <li class="l2" rel="fishRateEffective"><span>Fishing effort</span></li>
+            <li class="l2" rel="fishSubsidy"><span>Fishing subsidy</span></li>
+            <li class="l2" rel="fishFootprint"><span>Ecological footprint</span></li>
+            <li class="l2" rel="fishMTI"><span>Marine Trophic Index</span></li>
+            <li class="l2" rel="fishFiB"><span>Fishing-in-Balance</span></li>
+            <li class="l2" rel="fishStockNumber"><span>Stock status (number)</span></li>
+            <li class="l2" rel="fishStockBiomass"><span>Stock status (biomass)</span></li>
+            <li class="l2" rel="fishTrawling"><span>Catch from bottom trawling</span></li>
+            <li class="l2" rel="fishRateEffective"><span>Fishing effort</span></li>
             <li class="l2" rel="fishRelative2030"><span>Catch change (2030), sub-LME</span></li>
             <li class="l2" rel="fishRelative2050"><span>Catch change (2050), sub-LME</span></li>
-	    <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential (2050)</span></li>
+            <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential (2050)</span></li>
           </ul>
         </li>
         <li class="l1"><span>Pollution</span>
@@ -680,9 +687,10 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
           <ul>
             <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
+	    <li class="l2" rel="mangrove"><span>Mangrove Coverage</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
-	    <li class="l2" rel="reef_risk"><span>Reefs integrated risk</span></li>
-<!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
+            <li class="l2" rel="reef_risk"><span>Reefs integrated risk</span></li>
+            <!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
         <li class="l1"><span>Socio-economics</span>
@@ -695,6 +703,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1"><span>Governance</span>
           <ul>
+            <li class="l2" rel="mpaChange"><span>MPA change</span></li>
             <li class="l2" rel="govInt"><span>Integration</span></li>
             <li class="l2" rel="govEng"><span>Engagement</span></li>
             <li class="l2" rel="govCompl"><span>Completeness</span></li>
