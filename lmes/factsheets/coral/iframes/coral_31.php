@@ -89,8 +89,8 @@ if($templateCache == true){
            chart: {renderTo: 'container', type: 'column', spacingLeft:20, spacingRight:50},
            legend:{align:'center', layout:'horizontal', itemStyle:{'font-weight': 'normal', 'max-width':'125'}, x:20},
            title: { text: '', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
-           xAxis: { type: 'linear', title:{text:'Risk level'}, categories: ["Very high", "High", "Medium", "Low"]},
-           yAxis: { title: { text: 'Proportion (%)' , useHTML:true}, floor:0 },
+           xAxis: { type: 'linear', title:{text:'Threat category'}, categories: ["Very high", "High", "Medium", "Low"]},
+           yAxis: { title: { text: '% coral area' , useHTML:true}, floor:0 },
            series: [],
 
            plotOptions:{
@@ -125,8 +125,8 @@ if($templateCache == true){
            $.each(lines, function(lineNo, line) {
              if (line) { // ignore empty line (else lines are not drawn)
                var items = line.split(';');
-               for(var u=0;u<categoryPlots.length;u++){
-                 if(items[0] == categoryPlots[u]){
+               for (var u=0; u<categoryPlots.length; u++){
+                 if (items[0] == categoryPlots[u]){
                    var coralThreat={name:'', data:[]};
                    coralThreat.name=items[1];
                    for (ipush=7; ipush<11; ipush++) {
@@ -142,7 +142,6 @@ if($templateCache == true){
              chart.destroy();
            }
            chart = new Highcharts.Chart(options);
-
          });
        }
        var chart = false;
@@ -152,33 +151,30 @@ if($templateCache == true){
 
        //add the jquery search
        $(function() {
-         $('#addPlot')
-                                   .click(function(){
-                                     $('#resetPlot').attr('disabled', false);
-                                     $('#tags').prop('value', '');
-                                     $('#tags').focus();
-                                     addedLMECode = $('#addPlot').attr('rel');
-                                     categoryPlots.push(addedLMECode);
-                                     genChart();
+         $('#addPlot').click(function(){
+           $('#resetPlot').attr('disabled', false);
+           $('#tags').prop('value', '');
+           $('#tags').focus();
+           addedLMECode = $('#addPlot').attr('rel');
+           categoryPlots.push(addedLMECode);
+           genChart();
 
-                                     if (plotCounter >= 5) {
-                                       $(this).attr('disabled', true);
-                                       $('#tags').attr('disabled', true);
-                                       $('#tags').prop('value', maxComboText);
-                                     }
-                                   });
-         $('#resetPlot')
-                                   .click(function(){
-                                     plotCounter = -1;
-                                     categoryPlots = [thisLMECode];
-                                     genChart(thisLMECode);
+           if (plotCounter >= 5) {
+             $(this).attr('disabled', true);
+             $('#tags').attr('disabled', true);
+             $('#tags').prop('value', maxComboText);
+           }
+         });
+         $('#resetPlot').click(function(){
+           plotCounter = -1;
+           categoryPlots = [thisLMECode];
+           genChart(thisLMECode);
 
-                                     $('#tags').attr('disabled', false);
-                                     $('#tags').prop('value','');
-                                     $('#tags').focus();
-                                     $(this).attr('disabled', true);
-                                   });
-
+           $('#tags').attr('disabled', false);
+           $('#tags').prop('value','');
+           $('#tags').focus();
+           $(this).attr('disabled', true);
+         });
 
          var comboText = "Type LME code or name (only those with coral are available)";
          var maxComboText = 'Maximum number of datasets reached';
@@ -221,21 +217,21 @@ if($templateCache == true){
        });
 
        var availableTags=[
-	 //"01 East Bering Sea", "02 Gulf Of Alaska", "03 California Current",
-	 "04 Gulf Of California", "05 Gulf Of Mexico", "06 Southeast U.S. Continental Shelf",
-	 //"07 Northeast U.S. Continental Shelf", "08 Scotian Shelf", "09 Labrador Newfoundland",
-	 "10 Insular Pacific Hawaiian", "11 Pacific Central American Coastal", "12 Caribbean Sea",
-	 //"13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf",
-	 "16 East Brazil Shelf", "17 North Brazil Shelf",
-	 //"18 Canadian Eastern Arctic West Greenland", "19 Greenland Sea", "20 Barents Sea", "21 Norwegian Sea", "22 North Sea", "23 Baltic Sea", "24 Celtic Biscay Shelf", "25 Iberian Coastal", "26 Mediterranean Sea", "27 Canary Current", "28 Guinea Current", "29 Benguela Current",
-	 "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "33 Red Sea", "34 Bay Of Bengal","35 Gulf Of Thailand", "36 South China Sea", "37 Sulu Celebes Sea", "38 Indonesian Sea", "39 North Australian Shelf", "40 Northeast Australian Shelf", "41 East Central Australian Shelf",
-	 //"42 Southeast Australian Shelf", "43 South West Australian Shelf",
-	 "44 West Central Australian Shelf", "45 Northwest Australian Shelf",
-	 //"46 New Zealand Shelf",
-	 "47 East China Sea",
-	 //"48 Yellow Sea",
-	 "49 Kuroshio Current",
-	 //"50 Sea Of Japan", "51 Oyashio Current", "52 Sea Of Okhotsk", "53 West Bering Sea", "54 Northern Bering Chukchi Seas", "55 Beaufort Sea", "56 East Siberian Sea", "57 Laptev Sea", "58 Kara Sea", "59 Iceland Shelf And Sea", "60 Faroe Plateau", "61 Antarctica", "62 Black Sea", "63 Hudson Bay Complex", "64 Central Arctic", "65 Aleutian Islands", "66 Canadian High Arctic North Greenland"
+         //"01 East Bering Sea", "02 Gulf Of Alaska", "03 California Current",
+         "04 Gulf Of California", "05 Gulf Of Mexico", "06 Southeast U.S. Continental Shelf",
+         //"07 Northeast U.S. Continental Shelf", "08 Scotian Shelf", "09 Labrador Newfoundland",
+         "10 Insular Pacific Hawaiian", "11 Pacific Central American Coastal", "12 Caribbean Sea",
+         //"13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf",
+         "16 East Brazil Shelf", "17 North Brazil Shelf",
+         //"18 Canadian Eastern Arctic West Greenland", "19 Greenland Sea", "20 Barents Sea", "21 Norwegian Sea", "22 North Sea", "23 Baltic Sea", "24 Celtic Biscay Shelf", "25 Iberian Coastal", "26 Mediterranean Sea", "27 Canary Current", "28 Guinea Current", "29 Benguela Current",
+         "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "33 Red Sea", "34 Bay Of Bengal","35 Gulf Of Thailand", "36 South China Sea", "37 Sulu Celebes Sea", "38 Indonesian Sea", "39 North Australian Shelf", "40 Northeast Australian Shelf", "41 East Central Australian Shelf",
+         //"42 Southeast Australian Shelf", "43 South West Australian Shelf",
+         "44 West Central Australian Shelf", "45 Northwest Australian Shelf",
+         //"46 New Zealand Shelf",
+         "47 East China Sea",
+         //"48 Yellow Sea",
+         "49 Kuroshio Current",
+         //"50 Sea Of Japan", "51 Oyashio Current", "52 Sea Of Okhotsk", "53 West Bering Sea", "54 Northern Bering Chukchi Seas", "55 Beaufort Sea", "56 East Siberian Sea", "57 Laptev Sea", "58 Kara Sea", "59 Iceland Shelf And Sea", "60 Faroe Plateau", "61 Antarctica", "62 Black Sea", "63 Hudson Bay Complex", "64 Central Arctic", "65 Aleutian Islands", "66 Canadian High Arctic North Greenland"
        ];
 
      }); //get
