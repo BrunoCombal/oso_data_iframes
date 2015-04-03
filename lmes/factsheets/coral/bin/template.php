@@ -89,8 +89,8 @@ if($templateCache == true){
            chart: {renderTo: 'container', type: 'column', spacingLeft:20, spacingRight:50},
            legend:{align:'center', layout:'horizontal', itemStyle:{'font-weight': 'normal', 'max-width':'125'}, x:20},
            title: { text: '', x: 0, useHTML: true, align: 'center', style: {font: '14px Verdana, sans-serif', color: '#000000'} },
-           xAxis: { type: 'linear', title:{text:'Risk level'}, categories: ["Very high", "High", "Medium", "Low"]},
-           yAxis: { title: { text: 'Proportion (%)' , useHTML:true}, floor:0 },
+           xAxis: { type: 'linear', title:{text:'Threat category'}, categories: ["Very high", "High", "Medium", "Low"]},
+           yAxis: { title: { text: '% coral area' , useHTML:true}, floor:0 },
            series: [],
 
            plotOptions:{
