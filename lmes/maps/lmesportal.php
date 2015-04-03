@@ -689,7 +689,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
 	    <li class="l2" rel="mangrove"><span>Mangrove Coverage</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
-            <li class="l2" rel="reef_risk"><span>Reefs integrated risk</span></li>
+            <li class="l2" rel="reef_risk"><span>Reefs integrated threat</span></li>
             <!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
