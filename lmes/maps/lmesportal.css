@@ -1,3 +1,10 @@
+/* openlayers */
+div.olControlAttribution{
+    font-family:Verdana;
+    font-size:10px;
+    bottom:3px;}
+
+/* menu accordion */
 #accordion {
     background: #c5e58a;
     width: 190px;

@@ -95,7 +95,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      // minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:numZoomLevels,
      resolutions: resolution,
      projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
-     controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar()]};
+     controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), new OpenLayers.Control.Attribution()]};
 
    var map = new OpenLayers.Map("mapOL", options);
    var WDL = false;
@@ -115,7 +115,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      GWCWORLD,
      //     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
      {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
-     {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true}
+     {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true,
+     attribution:"Political boundaries: GAUL (2015), FAO Statistics Division"}
    );
 
    //LMEs
@@ -459,7 +460,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'govCompl', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
-
    var pops_ddt = new OpenLayers.Layer.WMS(
      "DDT score",
      GWCLMES,
@@ -530,7 +530,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    map.addControl(info);
    info.activate();
 
-
    //Handles interaction between menu, map and legends
    jQuery("#accordion li").click(function(event){
      event.stopPropagation();
@@ -551,7 +550,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
        });
      }
    });
-
 
    //Includes legends file
    jQuery.get("/iframes/lmes/maps/lmes_portal_legends.html", function(data){
@@ -598,10 +596,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
  }); //Document ready   
 </script>
 
-
-
 <?php include('/data/iframes/common/lmesnav/lmenav.php'); ?>
-
 
 <div class="ui-widget" style="line-height:38px;">
   <input id="tags" style="position:relative; top:-2px; line-height:30px; width:370px; font-family:sans-serif; font-size:18px; border:1px solid #C0C0C0; color:#c0C0C0; vertical-align:middle" value="Search for an LME or click on the map"/>
