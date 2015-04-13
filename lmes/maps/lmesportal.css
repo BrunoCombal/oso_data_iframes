@@ -196,7 +196,11 @@ div.olControlAttribution{
     font-size:14px;
     line-height:1.4em;
     list-style-type:disc;
-    width:100%;
+    width:90%;
+    margin-left:20px;
+    text-align:justify;
+    float:none;
+    clear:both;
 }
 .legendOL.introduction p{
     font-family:Verdana,sans-serif;

@@ -640,7 +640,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="fishFiB"><span>Fishing-in-Balance</span></li>
             <li class="l2" rel="fishStockNumber"><span>Stock status (number)</span></li>
             <li class="l2" rel="fishStockBiomass"><span>Stock status (biomass)</span></li>
-            <li class="l2" rel="fishTrawling"><span>Catch from bottom trawling</span></li>
+            <li class="l2" rel="fishTrawling"><span>Catch from bottom impacting gear</span></li>
             <li class="l2" rel="fishRateEffective"><span>Fishing effort</span></li>
             <li class="l2" rel="fishRelative2030"><span>Catch change (2030), sub-LME</span></li>
             <li class="l2" rel="fishRelative2050"><span>Catch change (2050), sub-LME</span></li>
