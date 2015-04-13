@@ -684,7 +684,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
 	    <li class="l2" rel="mangrove"><span>Mangrove Coverage</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
-            <li class="l2" rel="reef_risk"><span>Reefs integrated threat</span></li>
+            <li class="l2" rel="reef_risk"><span>Reefs at risk</span></li>
+            <li class="l2" rel="mpaChange"><span>MPA change</span></li>
             <!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
@@ -698,7 +699,6 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1"><span>Governance</span>
           <ul>
-            <li class="l2" rel="mpaChange"><span>MPA change</span></li>
             <li class="l2" rel="govInt"><span>Integration</span></li>
             <li class="l2" rel="govEng"><span>Engagement</span></li>
             <li class="l2" rel="govCompl"><span>Completeness</span></li>
