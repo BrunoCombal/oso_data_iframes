@@ -647,9 +647,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential (2050)</span></li>
           </ul>
         </li>
-        <li class="l1"><span>Pollution</span>
+        <li class="l1" rel="descPollution"><span>Pollution</span>
           <ul>
-            <li class="l2 level"><span>Nutrients</span>
+            <li class="l2 level" rel="descNutrients"><span>Nutrients</span>
               <ul>
                 <li class="l3" rel="icep"><span>ICEP</span></li>
                 <li class="l3" rel="icep2030"><span>ICEP (2030)</span></li>
@@ -662,14 +662,14 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
                 <li class="l3" rel="merged_ind2050"><span>Merged indicator (2050)</span></li>
               </ul>
             </li>
-            <li class="l2 level"><span>Plastics</span>
+            <li class="l2 level" rel="descPlastics"><span>Plastics</span>
               <ul>
                 <li class="l3" rel="plasticsmicro"><span>Micro Plastics</span></li>
                 <li class="l3" rel="plasticsmacro"><span>Macro Plastics</span></li>
               </ul>
             </li>
 
-            <li class="l2 level"><span>POPs</span>
+            <li class="l2 level" rel="descPOPs"><span>POPs</span>
               <ul>
                 <li class="l3" rel="pops_ddt"><span>DDT score</span></li>
                 <li class="l3" rel="pops_hch"><span>HCHs score</span></li>
@@ -678,7 +678,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             </li>
           </ul>
         </li>
-        <li class="l1"><span>Ecosystem health</span>
+        <li class="l1" rel="descEcosystemHealth"><span>Ecosystem health</span>
           <ul>
             <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
@@ -689,7 +689,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
-        <li class="l1"><span>Socio-economics</span>
+        <li class="l1" rel="descSocioEconomics"><span>Socio-economics</span>
           <ul>
             <li class="l2" rel="population"><span>Population density</span></li>
             <li class="l2" rel="hdi"><span>HDI</span></li>
@@ -697,7 +697,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="overfishing"><span>Overfishing</span></li>
           </ul>
         </li>
-        <li class="l1"><span>Governance</span>
+        <li class="l1" rel="descGovernance"><span>Governance</span>
           <ul>
             <li class="l2" rel="govInt"><span>Integration</span></li>
             <li class="l2" rel="govEng"><span>Engagement</span></li>
