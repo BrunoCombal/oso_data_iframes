@@ -214,7 +214,27 @@ div.olControlAttribution{
     clear:both;
 }
 
-
+.legendOL.introduction blockquote{
+    width:95%;
+    border-top:none;
+    font-family:Georgia, serif;
+    font-size:18px;
+    padding-left:30px;
+    background-color:#F9F6D8;
+}
+.legendOL.introduction blockquote:before{
+    font-family:Georgia, serif;
+    font-size:80px!important;
+    content: "\201C";
+    position:absolute;
+    left:-20px;
+    top:-20px;
+}
+.legendOL.introduction blockquote:after{
+    font-family:Georgia, serif;
+    font-size:24px;    
+    content: "\201D";
+}
 
 #leg-areas ul li{
     width:175px;
