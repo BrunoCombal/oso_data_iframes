@@ -116,7 +116,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      //     {layers:"general:world_epsg4326", transparent:true, styles:'countries_lightyellow_noname', format:'image/png'},
      {layers:"general:g2015_2012_0", transparent:true, styles:'gaul_lightyellow_noname', format:'image/png'}, //"general:G2014_2013_0", 
      {tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:true, visibility:true, opacity:1, wrapDateLine:true,
-     attribution:"Political boundaries: GAUL (2015), FAO Statistics Division"}
+      attribution:"Political boundaries: GAUL (2015), FAO Statistics Division"}
    );
 
    //LMEs
@@ -250,7 +250,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    //Coral reefs
    var mangrove = new OpenLayers.Layer.WMS(
      "Mangrove Cover",
-     GWCLMES, 
+     GWCLMES,
      {layers:"lmes:lmes_mangrove", style:'lmes_mangrove', transparent:true, format:'image/png'},
      {layerId:'mangrove', tile:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
@@ -625,11 +625,19 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descProductivity"><span>Productivity</span>
           <ul>
-            <li class="l2" rel="chla"><span>Chlorophyll-A</span></li>
-            <li class="l2" rel="chlachange"><span class="double">Chlorophyll-A<br/>(% change)</span></li>
-            <li class="l2" rel="pp_group"><span>Primary productivity group</span></li>
-            <li class="l2" rel="pp_trend"><span class="double">Primary productivity<br/>(% change)</span></li>
-            <li class="l2" rel="sst_net_change"><span>SST net change</li>
+            <li class="l2 level" rel="descPPD"><span>Primary productivity</span>
+              <ul>
+                <li class="l3" rel="chla"><span>Chlorophyll-A</span></li>
+                <li class="l3" rel="chlachange"><span class="double">Chlorophyll-A<br/>(% change)</span></li>
+                <li class="l3" rel="pp_group"><span>Primary productivity group</span></li>
+                <li class="l3" rel="pp_trend"><span class="double">Primary productivity<br/>(% change)</span></li>
+              </ul>
+            </li>
+            <li class="l2 level" rel="descSST"><span>Sea Surface Temperature</span>
+              <ul>
+                <li class="l3" rel="sst_net_change"><span>SST net change</span></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li class="l1" rel="descFisheries"><span>Fish &amp; Fisheries</span>
@@ -651,15 +659,15 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
           <ul>
             <li class="l2 level" rel="descNutrients"><span>Nutrients</span>
               <ul>
-                <li class="l3" rel="icep"><span>ICEP</span></li>
-                <li class="l3" rel="icep2030"><span>ICEP (2030)</span></li>
-                <li class="l3" rel="icep2050"><span>ICEP (2050)</span></li>
-                <li class="l3" rel="ld_din"><span>DIN loading</span></li>
-                <li class="l3" rel="ld_din2030"><span>DIN loading (2030)</span></li>
-                <li class="l3" rel="ld_din2050"><span>DIN loading (2050)</span></li>
-                <li class="l3" rel="merged_ind"><span>Merged indicator</span></li>
-                <li class="l3" rel="merged_ind2030"><span>Merged indicator (2030)</span></li>
-                <li class="l3" rel="merged_ind2050"><span>Merged indicator (2050)</span></li>
+                <li class="l3" rel="icep"><span>Eutrophication Potential <small>2000</small></span></li>
+                <li class="l3" rel="icep2030"><span>Eutrophication Potential <small>2030</small></span></li>
+                <li class="l3" rel="icep2050"><span>Eutrophication Potential <small>2050</small></span></li>
+                <li class="l3" rel="ld_din"><span>Inorganic Nitrogen <small>2000</small></span></li>
+                <li class="l3" rel="ld_din2030"><span>Inorganic Nitrogen <small>2030</small></span></li>
+                <li class="l3" rel="ld_din2050"><span>Inorganic Nitrogen <small>2050</small></span></li>
+                <li class="l3" rel="merged_ind"><span>Nutrient risk <small>2000</small></span></li>
+                <li class="l3" rel="merged_ind2030"><span>Nutrient risk <small>2030</small></span></li>
+                <li class="l3" rel="merged_ind2050"><span>Nutrient risk <small>2050</small></span></li>
               </ul>
             </li>
             <li class="l2 level" rel="descPlastics"><span>Plastics</span>
@@ -682,10 +690,10 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
           <ul>
             <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
-	    <li class="l2" rel="mangrove"><span>Mangrove Coverage</span></li>
+            <li class="l2" rel="mangrove"><span>Mangrove Coverage</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
             <li class="l2" rel="reef_risk"><span>Reefs at risk</span></li>
-            <li class="l2" rel="mpaChange"><span>MPA change</span></li>
+            <li class="l2" rel="mpaChange"><span>MPA extent change</span></li>
             <!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
