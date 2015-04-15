@@ -220,7 +220,7 @@ div.olControlAttribution{
     font-family:Georgia, serif;
     font-size:18px;
     padding-left:30px;
-    background-color:#F9F6D8;
+    /*background-color:#F9F6D8;*/
 }
 .legendOL.introduction blockquote:before{
     font-family:Georgia, serif;
