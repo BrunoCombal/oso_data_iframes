@@ -256,9 +256,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    );
    var coral = new OpenLayers.Layer.WMS(
      "Coral coverage",
-     //    "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
-     {layers:"lmes:lmes_coral_coverage",  styles:'coral_coverage', transparent:true, format:'image/png'},
+     "http://onesharedocean.org/geoserver/lmes/wms", //use cache again when the problem with geoserver is solved
+     //GWCLMES,
+     {layers:"lmes:lmes_coral_coverage",  styles:'coral_coverage2', transparent:true, format:'image/png'},
      {layerId:'coral', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
@@ -690,7 +690,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
           <ul>
             <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
-            <li class="l2" rel="mangrove"><span>Mangrove Coverage</span></li>
+            <li class="l2" rel="mangrove"><span>Mangrove coverage</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
             <li class="l2" rel="reef_risk"><span>Reefs at risk</span></li>
             <li class="l2" rel="mpaChange"><span>MPA extent change</span></li>
