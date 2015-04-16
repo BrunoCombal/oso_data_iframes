@@ -688,12 +688,12 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descEcosystemHealth"><span>Ecosystem health</span>
           <ul>
-            <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
-            <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
             <li class="l2" rel="mangrove"><span>Mangrove coverage</span></li>
             <li class="l2" rel="coral"><span>Coral coverage</span></li>
             <li class="l2" rel="reef_risk"><span>Reefs at risk</span></li>
             <li class="l2" rel="mpaChange"><span>MPA extent change</span></li>
+            <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
+            <li class="l2" rel="ohi"><span>Ocean Health Index</span></li>
             <!--            <li class="l2" rel="mangroves"><span>Mangroves</span></li> -->
           </ul>
         </li>
