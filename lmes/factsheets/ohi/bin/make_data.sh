@@ -28,28 +28,28 @@ f=$outdata/$inFile
 for i in $(seq 1 66);
 do
 
-lme=$(awk -F ';' -v theCode=${i} 'BEGIN { OFS = ","; ORS = "\n\n" } {if ($1 == theCode){$1=$2=""; print $0}}' $f)
-lme=${lme:2}
-	lmeNumber=$i
-	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
-	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
-	
-	if [ "$lme" ];then
-		echo $lmeNumber","$lmeName","$lme >> ${outdata}/data.csv
-	fi
-	
-	# create a new html iframe
-	iframe=${outiframe}/ohi_${name}.php
-	cp $out/'bin'/${template} ${iframe}
-	
-	
-	# update information in the html page
-	perl -i -pe 's/CHARTTITLETOREPLACE/ ('"${lmeName}"')/' ${iframe}
-	perl -i -pe 's/THISLMECODETOREPLACE/"'${lmeNumber}'"/' ${iframe}
-	perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
-		
-		
-		echo $lmeNumber '... ready!'
+    lme=$(awk -F ';' -v theCode=${i} 'BEGIN { OFS = ","; ORS = "\n\n" } {if ($1 == theCode){$1=$2=""; print $0}}' $f)
+    lme=${lme:2}
+    lmeNumber=$i
+    name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+    lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+
+    if [ "$lme" ];then
+        echo $lmeNumber","$lmeName","$lme >> ${outdata}/data.csv
+    fi
+
+        # create a new html iframe
+    iframe=${outiframe}/ohi_${name}.php
+    cp $out/'bin'/${template} ${iframe}
+
+
+        # update information in the html page
+    perl -i -pe 's/CHARTTITLETOREPLACE/ ('"${lmeName}"')/' ${iframe}
+    perl -i -pe 's/THISLMECODETOREPLACE/"'${lmeNumber}'"/' ${iframe}
+    perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
+
+
+    echo $lmeNumber '... ready!'
 done
 
 #Create de array for the search box
@@ -62,7 +62,7 @@ arrayLMEs="$arrayLMEs ];"
 
 for f in ${outiframe}/*.php
 do
-	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+    perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
 done
 cp $(find ${outiframe} -name $(ls ${outiframe}/ | head -1)) ${outiframe}/printAll.php
 
