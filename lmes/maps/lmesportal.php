@@ -290,7 +290,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    var ohi = new OpenLayers.Layer.WMS(
      "OHI",
      "http://onesharedocean.org/geoserver/lmes/wms",
-     {layers:"lmes:lmes_ohi", styles:'lmes_ohi', transparent:true, format:'image/png'},
+     {layers:"lmes:lmes_ohi_subgoals", styles:'lmes_ohi_quantile', transparent:true, format:'image/png'},
      {layerId:'ohi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
