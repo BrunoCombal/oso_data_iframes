@@ -99,7 +99,8 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var dugong = new OpenLayers.Layer.WMS(
          "Dugong",
          "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:Dugong_MOU_simplified", transparent:true, styles:'red_ff2d00_transparent'},
+         {//layers:"arrangements:Dugong_MOU_simplified",
+	   layers:"arrangements:dugong_mou_merged", transparent:true, styles:'red_ff2d00_transparent'},
          {singleTile:true, opacity:1, layerId:'Dugong', visibility:true, displayInLayerSwitcher: false}
        );
 

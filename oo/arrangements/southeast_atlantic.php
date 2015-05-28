@@ -97,14 +97,16 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var turtles = new OpenLayers.Layer.WMS(
          "EA Turtles",
          "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:East_Atlantic_Turtles_MOU", transparent:true},
+         {//layers:"arrangements:East_Atlantic_Turtles_MOU"
+	   layers:"arrangements:east_atlantic_turtles_MOU_merged", transparent:true},
          {singleTile:true, visibility:true, opacity:1, layerId:'East_Atlantic_Turtles', displayInLayerSwitcher:false}
        );
 
        var cetaceans = new OpenLayers.Layer.WMS(
 	 "WA Cetaceans",
 	 "http://onesharedocean.org/geoserver/arrangements/wms",
-	 {layers:"arrangements:West_African_Cetaceans_MOU", transparent:true, styles:'yellow_ffe200_transparent'},
+	 {//layers:"arrangements:West_African_Cetaceans_MOU"
+	   layers:"arrangements:west_africa_cetaceans_MOU_merged", transparent:true, styles:'yellow_ffe200_transparent'},
 	 {singleTile:true, visibility:true, opacity:1, layerId:'West_African_Cetaceans', displayInLayerSwitcher:false}
        );
 

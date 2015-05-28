@@ -57,6 +57,10 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        //////////////////////////////////////////////////////////////
        //      var thisServer=window.location.hostname;
 
+       var TSIZE=new OpenLayers.Size(225,225);
+       var TORG = new OpenLayers.LonLat(-180.0,90.0);
+       var resolutions=[0.8, 0.4, 0.2, 0.1, 0.05];
+
        var extent = new OpenLayers.Bounds(-180,-90,180,90);
        var minResolution=360/700.0;
        var maxResolution=10/700.0;
@@ -64,17 +68,21 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
        var graticule=new OpenLayers.Control.Graticule({numPoints: 2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
 
-       var options = {minResolution:minResolution, maxResolution:maxResolution,
-                      controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+       var options = {//minResolution:minResolution, maxResolution:maxResolution,
+	 resolutions:resolutions,
+	 projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
+         controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
 
        var map = new OpenLayers.Map("map-id", options);
        layersSwitcher.maximizeControl();
 
        var world=new OpenLayers.Layer.WMS(
          "Countries (background)",
-         "http://onesharedocean.org/geoserver/general/wms",
-         {layers:"general:G2014_2013_0", styles:'gaul_lightyellow_noname', format:'image/png'},
-         {wrapDateLine:true, singleTile:true, isBaseLayer:true, visibility:true, displayInLayerSwitcher:false}
+         //"http://onesharedocean.org/geoserver/general/wms",
+	 "http://onesharedocean.org/geoserver/gwc/service/wms",
+         {//layers:"general:G2014_2013_0",
+	  layers:"general:G2014_2013_0",transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
+         {wrapDateLine:true, tiled:true, tileSize:TSIZE, tileOrigin:TORG,isBaseLayer:true, visibility:true, displayInLayerSwitcher:false}
        );
 
        var lmes = new OpenLayers.Layer.WMS(
@@ -93,24 +101,28 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
        var iac = new OpenLayers.Layer.WMS(
          "IAC",
-         "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:IAC_MOU_simplified", transparent:true, styles:'green_00cc68_transparent'},
-         {tiled:true, isBaseLayer:false, layerId:'IAC', opacity:1, visibility:true, displayInLayerSwitcher:false}
+         //"http://onesharedocean.org/geoserver/arrangements/wms",
+	 "http://onesharedocean.org/geoserver/gwc/service/wms",
+         {//layers:"arrangements:IAC_MOU_simplified", 
+	  layers:"arrangements:iac_mou_merged",transparent:true, styles:'green_00cc68_transparent'},
+         {tiled:true, tileSize:TSIZE, tileOrigin:TORG,isBaseLayer:false, layerId:'IAC', opacity:1, visibility:true, displayInLayerSwitcher:false}
        );
-
 
        var worldtop=new OpenLayers.Layer.WMS(
          "Countries",
-         "http://onesharedocean.org/geoserver/general/wms",
+         //"http://onesharedocean.org/geoserver/general/wms",
+	 "http://onesharedocean.org/geoserver/gwc/service/wms",
          {layers:"general:G2014_2013_0", transparent:true,styles:'gaul_lightyellow_noname', format:'image/png'},
-         {wrapDateLine:true, singleTile:true, isBaseLayer:false, visibility:true, opacity:1}
+         {wrapDateLine:true, tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, visibility:true, opacity:1}
        );
 
        var crfm=new OpenLayers.Layer.WMS(
          "CRFM",
-         "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:RFB_CRFM", transparent:true, styles:'crfm_wca'},
-         {wrapDateLine:true, singleTile:true, visibility:true, opacity:1, layerId:'CRFM', displayInLayerSwitcher:false}
+         //"http://onesharedocean.org/geoserver/arrangements/wms",
+	 "http://onesharedocean.org/geoserver/gwc/service/wms",
+         {//layers:"arrangements:RFB_CRFM",
+	   layers:"arrangements:rfb_crfm_merged", transparent:true, styles:'crfm_wca'},
+         {wrapDateLine:true,  tiled:true, tileSize:TSIZE, tileOrigin:TORG, visibility:true, opacity:1, layerId:'CRFM', displayInLayerSwitcher:false}
        );
 
        var iccat=new OpenLayers.Layer.WMS(

@@ -106,7 +106,8 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var iac = new OpenLayers.Layer.WMS(
          "IAC",
          "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:IAC_MOU_simplified", transparent:true, styles:'green_00cc68_transparent'},
+         {//layers:"arrangements:IAC_MOU_simplified"
+	   layers:"arrangements:iac_mou_merged", transparent:true, styles:'green_00cc68_transparent'},
          {tiled:true, isBaseLayer:false, layerId:'IAC', opacity:1, visibility:true, displayInLayerSwitcher:false}
        );
 

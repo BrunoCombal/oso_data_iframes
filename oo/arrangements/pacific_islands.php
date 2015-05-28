@@ -98,7 +98,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var cetacean = new OpenLayers.Layer.WMS(
 	 "Cetaceans",
 	 "http://onesharedocean.org/geoserver/arrangements/wms",
-	 {layers:"arrangements:Pacific_Islands_Cetaceans_MOU", transparent:true, styles:''},
+	 {layers:"arrangements:pacific_islands_cetaceans_MOU_merged", transparent:true, styles:''},
 	 {singleTile:true, visibility:true, opacity:1, layerId:'Pacific_Islands_Cetaceans', displayInLayerSwitcher:false}
        );
 
@@ -133,7 +133,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var pif = new OpenLayers.Layer.WMS(
          "PIF",
          "http://onesharedocean.org/geoserver/arrangements/wms",
-         {layers:"arrangements:PIF", transparent:true, styles:'blue_0025ee_transparent'},
+         {layers:"arrangements:pif_merged", transparent:true, styles:'blue_0025ee_transparent'},
          {singleTile:true, visibility:true, opacity:1, layerId:'PIF', displayInLayerSwitcher:false}
        );
 
