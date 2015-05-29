@@ -6,6 +6,17 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
 <link rel="stylesheet" href="/geoserver/openlayers/theme/default/style.css" type="text/css" />
 
+<style>
+ div.olControlAttribution{
+   font-family:Verdana;
+   font-size:10px;
+   bottom:3px;
+   background-color:#e4e4e4;
+   opacity:0.7;
+   filter:alpha(opacity=70);
+ }
+</style>
+
 <script>
  jQuery(document).ready(function(){
 
@@ -44,7 +55,9 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"},layerId:'grid'});
 
    var options = {resolutions:[0.8, 0.4, 0.2, 0.1, 0.05], numZoomLevels:5,
-                  controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule]};
+                  controls:[new OpenLayers.Control.PanZoom(),
+                            new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule,
+                            new OpenLayers.Control.Attribution()]};
 
    var map = new OpenLayers.Map("map-id", options);
    layersSwitcher.maximizeControl();
@@ -59,7 +72,6 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    var optionsBL={tiled:true, isBaseLayer:true, displayInLayerSwitcher:false, tileSize:TSIZE, tileOrigin:TORG, visibility:true, wrapDateLine:true};
    var optionsShow={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:true, wrapDateLine:true};
    var optionsHide={tiled:true, isBaseLayer:false, tileSize:TSIZE, tileOrigin:TORG, visibility:false, wrapDateLine:true};
-
 
    var layerIndex=0
 
@@ -112,7 +124,6 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    layerIndex += 1;
 
 
-
    var oS = {};
    jQuery.extend(oS,optionsShow);
    oS.layerId = 'worldtop';
@@ -127,12 +138,14 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 
 
    var oH = {};
-   jQuery.extend(oH,optionsHide);
+   jQuery.extend(oH,optionsHide,{attribution:'EEZ: Claus S., N. De Hauwere, B. Vanhoorne, F. Souza Dias, F. Hernandez, and J. Mees (Flanders Marine Institute) (2015). MarineRegions.org. Accessed at http://www.marineregions.org.'});
    oH.layerId = 'eez';
    var eez=new OpenLayers.Layer.WMS(
      "EEZ",
      GWC,
-     {layers:"general:World_Maritime_Boundaries_v8", transparent:true, styles:'', format:'image/png'},
+     {//layers:"general:World_Maritime_Boundaries_v8",
+       layers:"general:outer_line_EEZ",
+       transparent:true, styles:'', format:'image/png'},
      oH
    );
    map.addLayer(eez);
@@ -140,7 +153,6 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
    layerIndex += 1;
 
    map.zoomToExtent(viewInit);
-
 
    // hide the layerswitcher button
    jQuery('#OpenLayers_Control_MinimizeDiv').css("visibility",'hidden');
