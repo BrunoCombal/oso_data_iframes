@@ -101,9 +101,10 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        );
 
        var lmes = new OpenLayers.Layer.WMS(
-         "LMEs & warmpool",
-         "http://onesharedocean.org/geoserver/wms",
-         {layers:"LME66_warmpool", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
+         "LMEs",
+         // "http://onesharedocean.org/geoserver/wms",
+         GWC,
+         {layers:"ocean:LME66", transparent:true, styles:'lmes_nofill_contour_red_labels', format:'image/png'},
          {tiled:true, tileSize:TSIZE, tileOrigin:TORG, wrapDateLine:WDL, isBaseLayer:false, opacity:1, visibility:false}
        );
 
