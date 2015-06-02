@@ -71,9 +71,12 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var maxResolution=10/700.0;
        var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher'),'ascending':false});
        var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
+
        var options = {//restrictedExtent:extent, maxExtent:extent, minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:6,
          resolutions:resolutions,
-         controls:[new OpenLayers.Control.PanZoom(), new OpenLayers.Control.NavToolbar(),
+	 projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
+         controls:[new OpenLayers.Control.PanZoom(),
+		   new OpenLayers.Control.NavToolbar(),
                    layersSwitcher, graticule,
                    new OpenLayers.Control.Attribution()]};
 

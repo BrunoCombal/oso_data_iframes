@@ -4,9 +4,9 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-Equiv="Cache-Control" content="no-cache"/>
-    <meta http-Equiv="Pragma" Content="no-cache"/>
-    <meta http-Equiv="Expires" content="0"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
     <title></title>
     <link rel="stylesheet" href="/geoserver/openlayers/theme/default/style.css" type="text/css">
     <link rel="stylesheet" href="layersTable.css" type="text/css" />
@@ -68,13 +68,15 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var extent = new OpenLayers.Bounds(-180,-90,180,90);
        var minResolution=360/700.0;
        var maxResolution=10/700.0;
-       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher') , 'ascending':false});
+       var layersSwitcher=new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher'),'ascending':false});
        var graticule = new OpenLayers.Control.Graticule({numPoints:2, labelled:true, layerName:'Grid', labelFormat:'dd', visible:false, displayInLayerSwitcher:true, labelSymbolizer:{fontFamily:"sans-serif",fontColor:"#000000", fontSize:"12px"}});
+
        var options = {//minResolution:minResolution, maxResolution:maxResolution, numZoomLevels:6,
          resolutions:resolutions,
          projection: new OpenLayers.Projection('EPSG:4326'), units:"degrees",
          controls:[new OpenLayers.Control.PanZoom(),
-                   new OpenLayers.Control.NavToolbar(), layersSwitcher, graticule,
+                   new OpenLayers.Control.NavToolbar(),
+		   layersSwitcher, graticule,
                    new OpenLayers.Control.Attribution()]};
 
        var map = new OpenLayers.Map("map-id", options);
@@ -119,7 +121,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
 	 GWC,
          {//layers:"arrangements:Dugong_MOU_simplified",
            layers:"arrangements:dugong_mou_merged", transparent:true, styles:'red_ff2d00_transparent'},
-         {tiled:true, tileSize:TSIZE, tileOrigin:TORG, opacity:1, layerId:'Dugong', visibility:true, displayInLayerSwitcher: false, wrapDateLine:true}
+         {tiled:true, tileSize:TSIZE, tileOrigin:TORG, opacity:1, layerId:'Dugong', visibility:true, displayInLayerSwitcher:false, wrapDateLine:true}
        );
 
        var iosea = new OpenLayers.Layer.WMS(

@@ -71,7 +71,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
       "Countries (background)",
       "http://"+thisServer+"/geoserver/general/wms",
       {layers:"general:Countries_south_epsg_3031", styles:'world_epsg4326_top', format:'image/png'},
-      {singleTile:true, isBaseLayer:true, visibility:true}
+      {singleTile:true, isBaseLayer:true, visibility:true, displayInLayerSwitcher:false}
       );
       
       var worldtop=new OpenLayers.Layer.WMS(
