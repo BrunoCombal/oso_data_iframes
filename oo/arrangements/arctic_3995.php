@@ -88,7 +88,7 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
        var eez = new OpenLayers.Layer.WMS(
          "EEZ",
          "http://onesharedocean.org/geoserver/general/wms",
-         {layers:"general:World_Maritime_Boundaries_v8", transparent:true, styles:''},
+         {layers:"general:outer_line_EEZ", transparent:true, styles:''},
          {singleTile:true, isBaseLayer:false, opacity:1, visibility:false}
        );
 
