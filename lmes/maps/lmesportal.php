@@ -171,8 +171,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    //SST net change
    var sst_net_change=new OpenLayers.Layer.WMS(
      "SST net change",
+     //"http://onesharedocean.org/geoserver/lmes/wms",
      GWCLMES,
-     {layers:"lmes:lmes_sst_net_change", transparent:true, styles:'lmes_sst_change', format:'image/png'},
+     {layers:"lmes:lmes_sst_net_change", transparent:true, styles:'', format:'image/png'},
      {layerId:'sst_net_change', tiled:true, tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
@@ -295,6 +296,27 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    );
 
    // Socio eco: population
+   var climateThreat = new OpenLayers.Layer.WMS(
+     "Climate threat",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_climate_threat", styles:'', transparent:true, format:'image/png'},
+     {layerId:'climateThreat', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
+   var climate2100SPP1 = new OpenLayers.Layer.WMS(
+     "climate2100SPP1",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_climate_threat", styles:'lmes_climate_threat_spp1', transparent:true, format:'image/png'},
+     {layerId:'climate2100SPP1', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
+   var climate2100SPP3 = new OpenLayers.Layer.WMS(
+     "climate2100SPP3",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_climate_threat", styles:'lmes_climate_threat_spp3', transparent:true, format:'image/png'},
+     {layerId:'climate2100SPP3', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
    var population = new OpenLayers.Layer.WMS(
      "Population",
      "http://onesharedocean.org/geoserver/lmes/wms",
@@ -496,6 +518,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      //     mangroves,
      areas,
      cumulImpact,
+     climateThreat, climate2100SPP1, climate2100SPP3,
      ohi, population, hdi, nldi, overfishing,
      icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
      plasticsModelMicroCount, plasticsModelMacroWeight,
@@ -699,6 +722,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descSocioEconomics"><span>Socio-economics</span>
           <ul>
+            <li class="l2" rel="climateThreat"><span>Climate threat index</span></li>
+            <li class="l2" rel="climate2100SPP1"><span>Climate threat 2100 (SPP1)</span></li>
+            <li class="l2" rel="climate2100SPP3"><span>Climate threat 2100 (SPP3)</span></li>
             <li class="l2" rel="population"><span>Population density</span></li>
             <li class="l2" rel="hdi"><span>HDI</span></li>
             <li class="l2" rel="nldi"><span>NLDI</span></li>
@@ -720,7 +746,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         -->
         <li class="empty"></li>
-        <li class="l1 lastItem"><span>Global Comparative Assessment</span>
+        <li class="l1 lastItem"><span>Patterns of risk among LMEs</span>
         </li>
         <!--<li class="empty"></li>-->
         <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
