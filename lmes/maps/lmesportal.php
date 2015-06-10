@@ -304,18 +304,18 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'climateThreat', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
-   var climate2100SPP1 = new OpenLayers.Layer.WMS(
-     "climate2100SPP1",
+   var climate2100SSP1 = new OpenLayers.Layer.WMS(
+     "climate2100SSP1",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_climate_threat", styles:'lmes_climate_threat_spp1', transparent:true, format:'image/png'},
-     {layerId:'climate2100SPP1', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+     {layerId:'climate2100SSP1', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
-   var climate2100SPP3 = new OpenLayers.Layer.WMS(
-     "climate2100SPP3",
+   var climate2100SSP3 = new OpenLayers.Layer.WMS(
+     "climate2100SSP3",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_climate_threat", styles:'lmes_climate_threat_spp3', transparent:true, format:'image/png'},
-     {layerId:'climate2100SPP3', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+     {layerId:'climate2100SSP3', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
    
    var HDI200913 = new OpenLayers.Layer.WMS(
@@ -325,18 +325,18 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'HDI200913', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
    );
 
-   var HDISPP1 = new OpenLayers.Layer.WMS(
-     "HDI 2100, SPP1",
+   var HDISSP1 = new OpenLayers.Layer.WMS(
+     "HDI 2100, SSP1",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_pop_hdi_nldi", styles:"lmes_hdi_2100_spp1", transparent:true, format:'image/png'},
-     {layerId:'HDISPP1', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
+     {layerId:'HDISSP1', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
    );
 
-   var HDISPP3 =  new OpenLayers.Layer.WMS(
-     "HDI 2100, SPP3",
+   var HDISSP3 =  new OpenLayers.Layer.WMS(
+     "HDI 2100, SSP3",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_pop_hdi_nldi", styles:"lmes_hdi_2100_spp3", transparent:true, format:'image/png'},
-     {layerId:'HDISPP3', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
+     {layerId:'HDISSP3', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
    );
 
 /*
@@ -542,8 +542,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      //     mangroves,
      areas,
      cumulImpact,
-     climateThreat, climate2100SPP1, climate2100SPP3,
-     HDI200913, HDISPP1, HDISPP3,
+     climateThreat, climate2100SSP1, climate2100SSP3,
+     HDI200913, HDISSP1, HDISSP3,
      ohi, //population, hdi, nldi, overfishing,
      icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
      plasticsModelMicroCount, plasticsModelMacroWeight,
@@ -748,11 +748,11 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         <li class="l1" rel="descSocioEconomics"><span>Socio-economics</span>
           <ul>
 	    <li class="l2" rel="HDI200913"><span>HDI (2009-2013)</span></li>
-	    <li class="l2" rel="HDISPP1"><span>HDI (2100, SPP1)</span></li>
-	    <li class="l2" rel="HDISPP3"><span>HDI (2100, SPP3)</span></li>
-            <li class="l2" rel="climateThreat"><span>Climate threat index</span></li>
-            <li class="l2" rel="climate2100SPP1"><span>Climate threat 2100 (SPP1)</span></li>
-            <li class="l2" rel="climate2100SPP3"><span>Climate threat 2100 (SPP3)</span></li>
+	    <li class="l2" rel="HDISSP1"><span>HDI (2100, SSP1)</span></li>
+	    <li class="l2" rel="HDISSP3"><span>HDI (2100, SSP3)</span></li>
+            <li class="l2" rel="climateThreat"><span>Climate threat index (Present-Day)</span></li>
+            <li class="l2" rel="climate2100SSP1"><span>SLR Threat 2100 (SSP1)</span></li>
+            <li class="l2" rel="climate2100SSP3"><span>SLR Threat 2100 (SSP3)</span></li>
           </ul>
         </li>
         <li class="l1" rel="descGovernance"><span>Governance</span>
