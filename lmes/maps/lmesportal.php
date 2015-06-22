@@ -339,6 +339,20 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'HDISSP3', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
    );
 
+   var tourismRevenues = new OpenLayers.Layer.WMS(
+     "Tourism revenues",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_revenues", styles:"", transparent:true, format:'image/png'},
+     {layerId:'tourismRevenues',tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
+   var LVRevenues = new OpenLayers.Layer.WMS(
+     "Landed Values revenues",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_revenues",styles:"socioeco_landed_value",transparent:true, format:'image/png'},
+     {layerId:'LVRevenues',tiled:false,tilesize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   )
+
 /*
    var population = new OpenLayers.Layer.WMS(
      "Population",
@@ -543,7 +557,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      areas,
      cumulImpact,
      climateThreat, climate2100SSP1, climate2100SSP3,
-     HDI200913, HDISSP1, HDISSP3,
+     HDI200913, HDISSP1, HDISSP3,tourismRevenues, LVRevenues,
      ohi, //population, hdi, nldi, overfishing,
      icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
      plasticsModelMicroCount, plasticsModelMacroWeight,
@@ -753,6 +767,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="climateThreat"><span>Climate threat index (Present-Day)</span></li>
             <li class="l2" rel="climate2100SSP1"><span>SLR Threat 2100 (SSP1)</span></li>
             <li class="l2" rel="climate2100SSP3"><span>SLR Threat 2100 (SSP3)</span></li>
+	    <li class="l2" rel="tourismRevenues"><span>Tourism revenues</span></li>
+	    <li class="l2" rel="LVRevenues"><span>Fisheries revenues (landed value)</span></li>
           </ul>
         </li>
         <li class="l1" rel="descGovernance"><span>Governance</span>
