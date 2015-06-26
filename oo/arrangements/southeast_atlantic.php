@@ -111,7 +111,8 @@ $geoserver_on = @file ('http://onesharedocean.org/geoserver');
          "EEZ",
          //"http://onesharedocean.org/geoserver/general/wms",
 	 GWC,
-         {layers:"general:World_Maritime_Boundaries_v8", transparent:true, styles:''},
+         {//layers:"general:World_Maritime_Boundaries_v8", 
+	   layers:"general:outer_line_EEZ", transparent:true, styles:''},
          {tiled:true,  tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true,
 	 attribution:"EEZ: Claus S., N. De Hauwere, B. Vanhoorne, F. Souza Dias, F. Hernandez, and J. Mees (Flanders Marine Institute) (2015). MarineRegions.org. Accessed at http://www.marineregions.org. "}
        );
