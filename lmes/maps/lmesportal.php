@@ -318,6 +318,13 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'climate2100SSP3', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
    
+   var coastPop2010 = new OpenLayers.Layer.WMS(
+     "Coastal Population",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_socio_eco_population",styles:'', transparent:true, format:'image/png'},
+     {layerId:'coastPop2010', tile:false, tilSize:TSIZE, tileOrigin:TORG,isBaseLayer:false, opacity:1,visibility:false, wrapDateLine:true}
+   );
+
    var HDI200913 = new OpenLayers.Layer.WMS(
      "HDI 2009-2013",
      "http://onesharedocean.org/geoserver/lmes/wms",
@@ -556,7 +563,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      //     mangroves,
      areas,
      cumulImpact,
-     climateThreat, climate2100SSP1, climate2100SSP3,
+     coastPop2010,climateThreat, climate2100SSP1, climate2100SSP3,
      HDI200913, HDISSP1, HDISSP3,tourismRevenues, LVRevenues,
      ohi, //population, hdi, nldi, overfishing,
      icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
@@ -761,14 +768,15 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descSocioEconomics"><span>Socio-economics</span>
           <ul>
+	    <li class="l2" rel="coastPop2010"><span>Coastal population (2010)</span></li>
+	    <li class="l2" rel="LVRevenues"><span>Fisheries revenues (landed value)</span></li>
+	    <li class="l2" rel="tourismRevenues"><span>Tourism revenues</span></li>
 	    <li class="l2" rel="HDI200913"><span>HDI (2009-2013)</span></li>
 	    <li class="l2" rel="HDISSP1"><span>HDI (2100, SSP1)</span></li>
 	    <li class="l2" rel="HDISSP3"><span>HDI (2100, SSP3)</span></li>
             <li class="l2" rel="climateThreat"><span>Climate threat index (Present-Day)</span></li>
             <li class="l2" rel="climate2100SSP1"><span>SLR Threat 2100 (SSP1)</span></li>
             <li class="l2" rel="climate2100SSP3"><span>SLR Threat 2100 (SSP3)</span></li>
-	    <li class="l2" rel="tourismRevenues"><span>Tourism revenues</span></li>
-	    <li class="l2" rel="LVRevenues"><span>Fisheries revenues (landed value)</span></li>
           </ul>
         </li>
         <li class="l1" rel="descGovernance"><span>Governance</span>
