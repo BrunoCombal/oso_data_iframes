@@ -118,16 +118,16 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
     <script type="text/javascript">
      $(document).ready(function() {
 
-       var thisLMECode = THISLMECODETOREPLACE;
+       var thisLMECode = "33";
        var addedLMECode = -1;
        var plotCounter = -1;
        var categoryPlots = [thisLMECode];
-       var outdata = THISLMEOUTDATA+'/data.csv';
+       var outdata = "/iframes/lmes/factsheets/population/data"+'/data.csv';
        var lmesData = [];
        <?php if($zero){ ?>
        var title = "Population";
        <?php } else { ?>
-       var title = "Population (CHARTTITLETOREPLACE)";
+       var title = "Population (Red Sea)";
        <?php } ?>
 
        //Check if we have access to parent document (normally not if the iframe is loaded from a different host
@@ -339,7 +339,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
          });
        });
 
-       LISTOFAVAILABLELMES
+var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Current", "04 Gulf Of California", "05 Gulf Of Mexico", "06 Southeast U.S. Continental Shelf", "07 Northeast U.S. Continental Shelf", "08 Scotian Shelf", "09 Newfoundland-Labrador Shelf", "10 Insular Pacific - Hawaiian", "11 Pacific Central - American Coastal", "12 Caribbean Sea", "13 Humboldt Current", "14 Patagonian Shelf", "15 South Brazil Shelf", "16 East Brazil Shelf", "17 North Brazil Shelf", "18 Canadian Eastern Arctic - West Greenland", "19 Greenland Sea", "20 Barents Sea", "21 Norwegian Sea", "22 North Sea", "23 Baltic Sea", "24 Celtic-Biscay Shelf", "25 Iberian Coastal ", "26 Mediterranean", "27 Canary Current", "28 Guinea Current", "29 Benguela Current", "30 Agulhas Current", "31 Somali Coastal Current", "32 Arabian Sea", "33 Red Sea", "34 Bay of Bengal", "35 Gulf of Thailand", "36 South China Sea", "37 Sulu - Celebes Sea", "38 Indonesian Sea", "39 North Australian Shelf", "40 Northeast Australian Shelf", "41 East Central Australian Shelf", "42 Southeast Australian Shelf", "43 Southwest Australian Shelf", "44 West - Central Australian Shelf", "45 Northwest Australian Shelf", "46 New Zealand Shelf", "47 East China Sea", "48 Yellow Sea", "49 Kuroshio", "50 Sea of Japan / East Sea", "51 Oyashio Current", "52 Sea of Okhotsk", "53 West Bering", "54 Northern Bering - Chukchi Seas", "55 Beaufort Sea", "56 East Siberian Sea", "57 Laptev Sea", "58 Kara Sea", "59 Iceland Shelf and Sea", "60 Faroe Plateau", "61 Antarctic", "62 Black Sea", "63 Hudson Bay Complex", "64 Central Arctic", "65 Aleutian Is", "66 Canadian High Arctic - North Greenland" ];
 
        $('#title').html(title);
 
