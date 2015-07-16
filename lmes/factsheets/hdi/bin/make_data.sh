@@ -5,61 +5,70 @@
 # purpose: read original data and create well-formated data files and create html template files
 
 mapfile="/data/iframes/lmes/factsheets/lme_code_names.csv"
-inFile="/data/public_store/lmes_socioeco/lme_area_pop_nldi_hdi.csv"
+inFile="/data/public_store/lmes_socioeco/rsrc/wrk_files/lmes_nldi_poor_extract.csv"
 template='hdi_template.html'
-temp=''
-out="/data/iframes/lmes/factsheets/hdi"
-outiframe=$out'/iframes'$temp
-outddata='data'$temp
-outdata=$out/$outddata
-fName='data.csv'
-rm -fr $outdata
-rm -fr $outiframe
-mkdir -p ${outiframe}
-mkdir -p ${outdata}
 
-echo "Human Development Index"
+outDir="/data/iframes/lmes/factsheets/hdi"
+iframeDir=${outDir}/iframes_new
+dataDir=${outDir}/data
+outData=${dataDir}/data.csv
+
+mkdir -p ${iframeDir}
+mkdir -p ${dataDir}
+
+echo "HDI"
 echo "==== Starting process ===="
 echo "Processing individual data files..."
 
+# generate a working file for the php scripts
+# keep only lines starting with an lme number (allows generating printAll.php)
+awk -F";" '$1~ "^[0-9].*$" {print $0}' ${inFile} > ${outData}
+# change ; into ,
+sed -i 's/;/,/g' ${outData}
 
-tempFile=${outdata}/cutted.txt
-cut -d ',' -f 1,3-13 ${inFile} > ${tempFile}
 cat ${mapfile} | while read code name;
 do
-	toappend=$(awk -F ',' -v code=$code '{if ($1==code) {print $0};}' $tempFile);
-	
-	lmeNumber=$code
-	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
-	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
-	lmeN=$(printf "%02d" $lmeNumber)
-	echo $lmeName,$lmeN,$toappend >> ${outdata}/data.csv
-		
-	# create a new html iframe
-	iframe=${outiframe}/hdi_${name}.php
-	cp $out/'bin'/${template} ${iframe}
-		
-	# update information in the html page
-	perl -i -pe 's/CHARTTITLETOREPLACE/'"${lmeName}"'/' ${iframe}
-	perl -i -pe 's/THISLMECODETOREPLACE/"'${lmeN}'"/' ${iframe}
-	perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
-	
-	echo $lmeN' - '$lmeName' ... Done!'
+    #toappend=$(awk -F ';' -v code=$code '{if ($1==code) {print $0};}' ${inFile});
+
+    lmeNumber=$code
+    outName=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' ${mapfile} | tr '[:upper:]' '[:lower:]')
+    lmeName=$(echo ${outName} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+    lmeN=$(printf "%02d" $lmeNumber)
+
+    # create a new html iframe
+    namePhp=`echo ${name} | tr [:upper:] [:lower:]`
+    iframe=${iframeDir}/hdi_${namePhp}.php
+    cp -f ${outDir}/bin/${template} ${iframe}
+
+    # update information in the html page
+    perl -i -pe 's/CHARTTITLETOREPLACE/'"${lmeName}"'/' ${iframe}
+    perl -i -pe 's/THISLMECODETOREPLACE/"'${lmeN}'"/' ${iframe}
+    perl -i -pe 's|THISLMEOUTDATA|"'${dataDir#/data}'"|' ${iframe}
+
+    echo $lmeN' - '$lmeName' ... Done!'
 done
-rm $tempFile
+
+# let's generate the printAll.php code
 arrayLMEs='var availableTags=['
-f=$outdata/$fName
-arrayLMEs="$arrayLMEs $(awk -F ',' '{printf "\"%02d %s\",\n", $2, $1}' $f)"
+
+arrayLMEs="$arrayLMEs $(awk -F ';' -v g='"' 'NR<2{next}{ if ($1 > 0) {printf "%s%02d %s%s,\n", g,$1, $2,g}}' ${inFile})"
+# "' #to help emacs parsing colors...
+
 arrayLMEs=$(echo $arrayLMEs | sed -e 's/\(.*\)./\1/')
 arrayLMEs="$arrayLMEs ];"
-#echo $arrayLMEs
+echo $arrayLMEs > tmpfile
 
-for f in ${outiframe}/*.php
+for f in ${iframeDir}/*.php
 do
-	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+    #perl -i -pe "s/LISTOFAVAILABLELMES/${arrayLMEs}/" ${f}
+    sed -i '/LISTOFAVAILABLELMES/{
+    r tmpfile
+    d
+    }' ${f} 
 done
-cp $(find ${outiframe} -name $(ls ${outiframe}/ | head -1)) ${outiframe}/printAll.php
 
-echo "Human Development Index ... DONE!"
+cp $(find ${iframeDir} -name $(ls ${iframeDir}/ | head -1)) ${iframeDir}/printAll.php
+
+echo "HDI... DONE!"
 
 # end of script
