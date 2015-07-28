@@ -195,7 +195,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td4 = document.createElement('TD');
                  $(td4).html( numberWithCommasNoData( lme.threatSSP3) );
                  //assign color classes
-                 $(td2).addClass(threatClass(lme.threatIndex));
+                 $(td2).addClass(threatClass2010(lme.threatIndex));
                  $(td3).addClass(threatClass(lme.threatSSP1));
                  $(td4).addClass(threatClass(lme.threatSSP3));
 
@@ -241,6 +241,23 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
              }
            });
          });
+
+         function threatClass2010(value){
+           if (value > 0.7699) {
+             item='l5';
+           } else if (value > 0.6330) {
+             item='l4';
+           } else if (value > 0.5330) {
+             item='l3';
+           } else if (value > 0.3509) {
+             item='l2';
+           } else if (value >= 0) {
+             item='l1';
+           } else {
+             item='l0';
+           }
+           return item;
+         }
 
          function threatClass(value) {
            if (value > 0.6525) {
