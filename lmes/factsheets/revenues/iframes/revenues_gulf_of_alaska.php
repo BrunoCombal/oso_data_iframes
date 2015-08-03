@@ -127,7 +127,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
        <?php if($zero){ ?>
        var title = "Revenues and economic activity";
        <?php } else { ?>
-       var title = "Revenues (Gulf Of Alaska)";
+       var title = "Revenues and Night Lights (Gulf Of Alaska)";
        <?php } ?>
 
        //Check if we have access to parent document (normally not if the iframe is loaded from a different host
@@ -140,7 +140,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
        }
        //Define the behaviour of the View Data link according to the host permissions
        $('#viewData').click(function(){
-         var sourceURL = "http://onesharedocean.org/data#385";
+         var sourceURL = "http://onesharedocean.org/data#457";
          if(sameHost){
            window.parent.window.location = sourceURL;
          } else {
@@ -191,7 +191,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td1 = document.createElement('TD');
                  $(td1).html(lme.lmeNumber+' '+lme.lmeName).addClass('lmeName');
                  var td2 = document.createElement('TD');
-                 $(td2).html( numberWithCommasNoData( lme.avgAnnualCatch) );
+                 $(td2).html( numberWithCommasNoData( lme.avgAnnualLV) );
                  var td3 = document.createElement('TD');
                  $(td3).html( numberWithCommasNoData( lme.avgTourism) );
                  var td4 = document.createElement('TD');
