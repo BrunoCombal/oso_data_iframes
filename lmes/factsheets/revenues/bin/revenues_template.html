@@ -197,10 +197,13 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td3 = document.createElement('TD');
                  $(td3).html( numberWithCommasNoData( lme.avgTourism) );
                  var td4 = document.createElement('TD');
+		 if (lme.nldi=='NaN') lme.nldi='No data';
                  $(td4).html( lme.nldi );
 		 var td5 = document.createElement('TD');
+		 if (lme.protein=="NaN") lme.protein='No data';
 		 $(td5).html( lme.protein);
 		 var td6 = document.createElement('TD');
+		 if (lme.tourismContr=="NaN") lme.tourismContr='No data';
 		 $(td6).html( lme.tourismContr);
 
                  //assign color classes

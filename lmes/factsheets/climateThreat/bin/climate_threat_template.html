@@ -197,6 +197,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td4 = document.createElement('TD');
                  $(td4).html( numberWithCommasNoData( lme.threatSSP3) );
 		 var td5 = document.createElement('TD');
+		 if (lme.contemporary=='NaN') lme.contemporary='No data';
 		 $(td5).html( lme.contemporary );
                  //assign color classes
                  $(td2).addClass(threatClass2010(lme.threatIndex));
