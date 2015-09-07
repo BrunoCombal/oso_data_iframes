@@ -78,7 +78,6 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      .l0, .l1, .l2, .l3, .l4, .l5{
        color: #000000;
-       border:1px #fff solid;
        padding-left:5px;
        padding-right:5px;
        text-align:right;
@@ -188,7 +187,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td2 = document.createElement('TD');
                  $(td2).html( numberWithCommasNoData( lme.poor) );
 		 //assign color classes
-                 $(td2).addClass(popClass(lme.poor));
+                 $(td2).addClass(pourClass(lme.poor));
 
                  $('table').append(tr);
                  $(tr).append(td1,td2);
@@ -233,14 +232,14 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
            });
          });
 
-         function popClass(value) {
-           if (value > 73000000) {
+         function pourClass(value) {
+           if (value > 12000000) {
              item='l5';
-           } else if (value >29000000) {
+           } else if (value > 3500000) {
              item='l4';
-           } else if (value > 2500000) {
+           } else if (value > 250000) {
              item='l3';
-           } else if (value > 150000) {
+           } else if (value > 21000) {
              item='l2';
            } else if (value > 0) {
              item='l1';
@@ -344,16 +343,16 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
       <table cellspacing="0" cellpadding="0">
         <thead>
           <tr>
-            <td></td>
+            <th></th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
           <tr>
-            <td>LME</td>
-            <td>Coastal poor</td>
+            <th>LME</th>
+            <th>Coastal poor</th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
         </thead>
