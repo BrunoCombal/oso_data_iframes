@@ -409,7 +409,7 @@ if($_GET['forExport']){
 				<li><span class="legendText">Risk level: </span></li>
 				<li><div class="score l5"></div> <span class="legendText">Very high</span></li>
 				<li><div class="score l4"></span></div> <span class="legendText">High</span></li>
-				<li><div class="score l3"></div> <span class="legendText">Menium</span></li>
+				<li><div class="score l3"></div> <span class="legendText">Medium</span></li>
 				<li><div class="score l2"></div> <span class="legendText">Low</span></li>
 				<li><div class="score l1"></div> <span class="legendText">Very low</span></li>
 			</ul>
