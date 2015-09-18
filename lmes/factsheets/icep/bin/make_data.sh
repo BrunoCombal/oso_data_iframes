@@ -18,35 +18,35 @@ mkdir -p ${outiframe}
 mkdir -p ${outdata}
 
 for ((ii=1; ii<67; ii++)); do
-	data2000=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%02d,%s,%s",$1,$18,$19}}' ${inDir}/${inFile2000} | tr -cd '[[:alnum:]].,')
-	data2030=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%s,%s",$18,$19}}' ${inDir}/${inFile2030} | tr -cd '[[:alnum:]].,')
-	data2050=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%s,%s",$18,$19}}' ${inDir}/${inFile2050} | tr -cd '[[:alnum:]].,')
-	if [ ! "${data2000}" = '' ]; then
-	
-		name=$(awk -F ' ' -v thisLME=${ii} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
-	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
-		echo ${lmeName}','${data2000}','${data2030}','${data2050} >> $outdata/data.csv		
-	fi
+    data2000=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%02d,%s,%s,%s",$1,$17,$18,$19}}' ${inDir}/${inFile2000} | tr -cd '[[:alnum:]].,')
+    data2030=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%s,%s,%s",$17,$18,$19}}' ${inDir}/${inFile2030} | tr -cd '[[:alnum:]].,')
+    data2050=$(awk -F ',' -v code=$ii '{if ($1==code){printf "%s,%s,%s",$17,$18,$19}}' ${inDir}/${inFile2050} | tr -cd '[[:alnum:]].,')
+    if [ ! "${data2000}" = '' ]; then
+
+        name=$(awk -F ' ' -v thisLME=${ii} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+        lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+        echo ${lmeName}','${data2000}','${data2030}','${data2050} >> $outdata/data.csv
+    fi
 done
 
 #generate the template files
 f=${outdata}/data.csv
 awk -F ',' '{if (NR > 0){printf "%s\n", $2}}' $f | while read lmeNumber
 do
-	name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
-	lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
-	
-	iframe=${outiframe}/'icep_'${name}.php
-	cp $out/'bin'/${template} ${iframe}
+    name=$(awk -F ' ' -v thisLME=${lmeNumber} '{if ($1==thisLME) {printf "%s", $2};}' $mapfile | tr '[:upper:]' '[:lower:]')
+    lmeName=$(echo ${name} | sed 's/_/ /g' | sed -e "s/\b\(.\)/\u\1/g" | sed -s "s/ Us / U.S. /g")
+
+    iframe=${outiframe}/'icep_'${name}.php
+    cp $out/'bin'/${template} ${iframe}
 
 
-	
-	perl -i -pe 's/CHARTTITLETOREPLACE/'"(${lmeName})"'/' ${iframe}
-	perl -i -pe 's/THISLMECODETOREPLACE/'${lmeNumber}'/' ${iframe}
-	perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
-	
-	
-	echo $lmeNumber' - '$lmeName' ... ready!'
+
+    perl -i -pe 's/CHARTTITLETOREPLACE/'"(${lmeName})"'/' ${iframe}
+    perl -i -pe 's/THISLMECODETOREPLACE/'${lmeNumber}'/' ${iframe}
+    perl -i -pe 's/THISLMEOUTDATA/"'${outddata}'"/' ${iframe}
+
+
+    echo $lmeNumber' - '$lmeName' ... ready!'
 done
 
 arrayLMEs='var availableTags=['
@@ -58,7 +58,7 @@ arrayLMEs="$arrayLMEs ];"
 
 for f in ${outiframe}/*.php
 do
-	perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
+    perl -i -pe 's/LISTOFAVAILABLELMES/ '"${arrayLMEs}"'/' ${f}
 done
 cp $(find ${outiframe} -name $(ls ${outiframe}/ | head -1)) ${outiframe}/printAll.php
 

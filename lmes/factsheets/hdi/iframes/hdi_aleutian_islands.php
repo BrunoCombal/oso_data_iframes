@@ -78,11 +78,10 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      .l0, .l1, .l2, .l3, .l4, .l5{
        color: #000000;
-       border:1px #fff solid;
        padding-left:5px;
        padding-right:5px;
        text-align:right;
-       vertical-align:top;
+       vertical-align:middle;
        font-family: "Courier New", Courier, monospace;
        font-size:14px;
      }
@@ -184,10 +183,10 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                    lmeNumber: parseInt(items[0]),
                    lmeName: items[1],
                    poverty: parseFloat(items[2]).toFixed(0),
-                   nldi: parseFloat(items[3]).toFixed(3),
-                   hdi: parseFloat(items[4]).toFixed(3),
-                   hdiSSP1: parseFloat(items[5]).toFixed(3),
-                   hdiSSP3: parseFloat(items[6]).toFixed(3),
+                   nldi: parseFloat(items[3]).toFixed(4),
+                   hdi: parseFloat(items[4]).toFixed(4),
+                   hdiSSP1: parseFloat(items[5]).toFixed(4),
+                   hdiSSP3: parseFloat(items[6]).toFixed(4),
                  };
 
                  var tr = document.createElement('TR');
@@ -354,24 +353,23 @@ var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Cu
       </div>
     <?php } ?>
     <div id="container" style="width:800px; margin:0 auto">
-      <table cellspacing="0" cellpadding="0">
+      <table cellspacing="4" cellpadding="0">
         <thead>
           <tr>
-            <td></td>
-            <td colspan="1"></td>
-
-            <td colspan="2" style="border-bottom:1px solid #000;">HDI 2100</td>
+            <th></th>
+            <th colspan="1"></th>
+            <th colspan="2" style="border-bottom:1px solid #000;">HDI 2100</th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
           <tr>
-            <td>LME</td>
-            <td>HDI</td>
-            <td title="A sustainable development pathway with reduced fossil fuel emissions and highly educated and economically productive population making healthy lifestyle choices."><a href="/glossary#SPP1" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP1</a></td>
-            <td title="A fragmented world development scenario where wealth is unevenly distributed with pockets of concentrated wealth and of extreme poverty, and majority of countries having mediocre living standards and high population growth rates."><a href="/glossary/SPP3" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP3</a></td>
+            <th>LME</th>
+            <th>HDI</th>
+            <th title="A sustainable development pathway with reduced fossil fuel emissions and highly educated and economically productive population making healthy lifestyle choices."><a href="/glossary#SPP1" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP1</a></th>
+            <th title="A fragmented world development scenario where wealth is unevenly distributed with pockets of concentrated wealth and of extreme poverty, and majority of countries having mediocre living standards and high population growth rates."><a href="/glossary/SPP3" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP3</a></th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
         </thead>
