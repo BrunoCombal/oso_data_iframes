@@ -15,7 +15,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>LMEs Poor coastal</title>
+    <title>LMEs Coastal Poor</title>
     <link rel="stylesheet" href="/sites/all/libraries/jquery-ui-1.11.1/jquery-ui.min.css" />
     <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1/external/jquery/jquery.js"></script>
     <script type="text/javascript" src="/sites/all/libraries/jquery-ui-1.11.1//jquery-ui.min.js"></script>
@@ -78,11 +78,10 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      .l0, .l1, .l2, .l3, .l4, .l5{
        color: #000000;
-       border:1px #fff solid;
        padding-left:5px;
        padding-right:5px;
        text-align:right;
-       vertical-align:top;
+       vertical-align:middle;
        font-family: "Courier New", Courier, monospace;
        font-size:14px;
      }
@@ -125,9 +124,9 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
        var outdata = "/iframes/lmes/factsheets/poor/data"+'/data.csv';
        var lmesData = [];
        <?php if($zero){ ?>
-       var title = "Poor coastal";
+       var title = "Coastal poor";
        <?php } else { ?>
-       var title = "Poor coastal (South West Australian Shelf)";
+       var title = "Coastal Poor (South West Australian Shelf)";
        <?php } ?>
 
        //Check if we have access to parent document (normally not if the iframe is loaded from a different host
@@ -188,7 +187,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td2 = document.createElement('TD');
                  $(td2).html( numberWithCommasNoData( lme.poor) );
 		 //assign color classes
-                 $(td2).addClass(popClass(lme.poor));
+                 $(td2).addClass(pourClass(lme.poor));
 
                  $('table').append(tr);
                  $(tr).append(td1,td2);
@@ -233,14 +232,14 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
            });
          });
 
-         function popClass(value) {
-           if (value > 73000000) {
+         function pourClass(value) {
+           if (value > 12000000) {
              item='l5';
-           } else if (value >29000000) {
+           } else if (value > 3500000) {
              item='l4';
-           } else if (value > 2500000) {
+           } else if (value > 250000) {
              item='l3';
-           } else if (value > 150000) {
+           } else if (value > 21000) {
              item='l2';
            } else if (value > 0) {
              item='l1';
@@ -344,16 +343,16 @@ var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Cu
       <table cellspacing="0" cellpadding="0">
         <thead>
           <tr>
-            <td></td>
+            <th></th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
           <tr>
-            <td>LME</td>
-            <td>Coastal poor</td>
+            <th>LME</th>
+            <th>Coastal poor</th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
         </thead>
@@ -362,11 +361,11 @@ var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Cu
     </div>
     <div id="legendRanges">
       <ul>
-        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#D8232A; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">highly crowded</span></li>
-        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#EE9F42; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">moderately crowded</span></li>
-        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#E4E344; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">slightly crowded</span></li>
-        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#78BB4B; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">slightly sparse</span></li>
-        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#5FBADD; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">most sparse</span></li>
+        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#D8232A; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Very large</span></li>
+        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#EE9F42; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Large</span></li>
+        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#E4E344; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Moderately large</span></li>
+        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#78BB4B; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Small</span></li>
+        <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#5FBADD; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">Very small</span></li>
         <li><div style="border-radius:50%; width:20px; height:20px; padding:0px; background:#CBCCCB; border: 1px solid #CBCCCB; color:#FFFFFF; text-align:center; font: 10px Arial, sans-serif;"><span style="margin: auto auto;"></span></div> <span class="legendText">no data</span></li>
       </ul>
     </div>
