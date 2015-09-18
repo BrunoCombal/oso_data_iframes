@@ -78,11 +78,10 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      .l0, .l1, .l2, .l3, .l4, .l5{
        color: #000000;
-       border:1px #fff solid;
        padding-left:5px;
        padding-right:5px;
        text-align:right;
-       vertical-align:top;
+       vertical-align:middle;
        font-family: "Courier New", Courier, monospace;
        font-size:14px;
      }
@@ -255,13 +254,13 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
          });
 
          function popClass(value) {
-           if (value > 73000000) {
+           if (value > 70000000) {
              item='l5';
            } else if (value >29000000) {
              item='l4';
            } else if (value > 2500000) {
              item='l3';
-           } else if (value > 150000) {
+           } else if (value > 100000) {
              item='l2';
            } else if (value > 0) {
              item='l1';
@@ -362,23 +361,23 @@ var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Cu
       </div>
     <?php } ?>
     <div id="container" style="width:800px; margin:0 auto">
-      <table cellspacing="0" cellpadding="0">
+      <table cellspacing="4" cellpadding="0">
         <thead>
           <tr>
-            <td></td>
-            <td colspan="2" style="border-bottom:1px solid #000; ">Total population</td>
+	    <th></th>
+            <th colspan="2" style="border-bottom:1px solid #000; ">Total population</th>
 
-            <td colspan="2" style="border-bottom:1px solid #000">Rural population</td>
+            <th colspan="2" style="border-bottom:1px solid #000">Rural population</th>
             <?php if(!$zero){ ?>
               <td></td>
             <?php } ?>
           </tr>
           <tr>
-            <td>LME</td>
-            <td>2010</td>
-            <td>2100</td>
-            <td>2010</td>
-            <td>2100</td>
+            <th>LME</th>
+            <th>2010</th>
+            <th>2100</th>
+            <th>2010</th>
+            <th>2100</th>
             <?php if(!$zero){ ?>
               <td></td>
             <?php } ?>
