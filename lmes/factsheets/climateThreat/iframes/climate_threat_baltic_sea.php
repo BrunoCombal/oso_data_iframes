@@ -63,7 +63,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
        /*width:100%;*/
        font: 12px Verdana,sans-serif;
        margin: 20px auto;
-       text-align:center;
+       text-align:left;
        vertical-align:middle;
      }
      thead tr{
@@ -71,6 +71,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      tbody tr{
        height:26px;
+       vertical-align:middle;
      }
      tbody .lmeName{
        text-align: left;
@@ -78,11 +79,10 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      .l0, .l1, .l2, .l3, .l4, .l5{
        color: #000000;
-       border:1px #fff solid;
        padding-left:5px;
        padding-right:5px;
        text-align:right;
-       vertical-align:top;
+       vertical-align:middle;
        font-family: "Courier New", Courier, monospace;
        font-size:14px;
      }
@@ -90,6 +90,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
        font-size:12px;
        display:block;
        text-align:center;
+       vertical-align:middle;
      }
      tbody .l0{
        background: #CBCCCB;
@@ -183,6 +184,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                    slrMax: parseFloat(items[3]).toFixed(4),
                    threatSSP1: parseFloat(items[4]).toFixed(4),
                    threatSSP3: parseFloat(items[5]).toFixed(4),
+		   contemporary: parseFloat(items[6]).toFixed(4),
                  };
 
                  var tr = document.createElement('TR');
@@ -194,13 +196,17 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  $(td3).html( numberWithCommasNoData(lme.threatSSP1) );
                  var td4 = document.createElement('TD');
                  $(td4).html( numberWithCommasNoData( lme.threatSSP3) );
+		 var td5 = document.createElement('TD');
+		 if (lme.contemporary=='NaN') lme.contemporary='No data';
+		 $(td5).html( lme.contemporary );
                  //assign color classes
                  $(td2).addClass(threatClass2010(lme.threatIndex));
                  $(td3).addClass(threatClass(lme.threatSSP1));
                  $(td4).addClass(threatClass(lme.threatSSP3));
+		 $(td5).addClass(contempClass(lme.contemporary));
 
                  $('table').append(tr);
-                 $(tr).append(td1,td2,td3,td4);
+                 $(tr).append(td1,td2,td5,td3,td4);
                  if ($('tbody').find('tr').length > 1){
                    <?php if (!$zero){ ?>
                    var tdX = document.createElement('TD');
@@ -243,13 +249,13 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
          });
 
          function threatClass2010(value){
-           if (value > 0.7699) {
+           if (value >= 0.7700) {
              item='l5';
-           } else if (value > 0.6330) {
+           } else if (value >= 0.6331) {
              item='l4';
-           } else if (value > 0.5330) {
+           } else if (value >= 0.5331) {
              item='l3';
-           } else if (value > 0.3509) {
+           } else if (value >= 0.3510) {
              item='l2';
            } else if (value >= 0) {
              item='l1';
@@ -259,14 +265,31 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
            return item;
          }
 
+	 function contempClass(value) {
+	   if ( value >= 0.4501 ) {
+	     item='l5';
+	   } else if (value >=0.3411 ) {
+	     item='l4';
+	   } else if (value >= 0.2971) {
+	     item='l3';
+	   } else if (value >= 0.2401) {
+	     item='l2';
+	   } else if (value >= 0) {
+	     item='l1';
+	   } else {
+	     item='l0';
+	   }
+	   return item;
+	 }
+
          function threatClass(value) {
-           if (value > 0.6525) {
+           if (value >= 0.6526) {
              item='l5';
-           } else if (value > 0.5800) {
+           } else if (value >= 0.5801) {
              item='l4';
-           } else if (value > 0.5200) {
+           } else if (value >= 0.5201) {
              item='l3';
-           } else if (value > 0.4750) {
+           } else if (value >= 0.4751) {
              item='l2';
            } else if (value >= 0) {
              item='l1';
@@ -367,24 +390,24 @@ var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Cu
       </div>
     <?php } ?>
     <div id="container" style="width:800px; margin:0 auto">
-      <table cellspacing="0" cellpadding="0">
+      <table cellspacing="4" cellpadding="0">
         <thead>
           <tr>
-            <td></td>
-            <td colspan="1" >2010</td>
-
-            <td colspan="2" style="border-bottom:1px solid #000">2100</td>
+            <th></th>
+            <th colspan="2" style="text-align:center;border-bottom:1px solid #000">2010</th>
+            <th colspan="2" style="text-align:center;border-bottom:1px solid #000">2100</th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
           <tr>
-            <td>LME</td>
-            <td></td>
-            <td title="A sustainable development pathway with reduced fossil fuel emissions and highly educated and economically productive population making healthy lifestyle choices." ><a href="/glossary#SSP1" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP1</a></td>
-            <td title="A fragmented world development scenario where wealth is unevenly distributed with pockets of concentrated wealth and of extreme poverty, and majority of countries having mediocre living standards and high population growth rates." ><a href="http://onesharedocean.org/glossary#SSP3" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP3</a></td>
+            <th style="vertical-align:top">LME</th>
+            <th style="vertical-align:top">Climate<br/>Threat</th>
+	    <th style="vertical-align:top">Contemporary<br/>Threat</th>
+            <th style="vertical-align:top" title="A sustainable development pathway with reduced fossil fuel emissions and highly educated and economically productive population making healthy lifestyle choices." ><a href="/glossary#SSP1" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP1</a></th>
+            <th style="vertical-align:top" title="A fragmented world development scenario where wealth is unevenly distributed with pockets of concentrated wealth and of extreme poverty, and majority of countries having mediocre living standards and high population growth rates." ><a href="http://onesharedocean.org/glossary#SSP3" target="_blank" style="color:#000; border-bottom:1px dotted #C0C0C0">SSP3</a></th>
             <?php if(!$zero){ ?>
-              <td></td>
+              <th></th>
             <?php } ?>
           </tr>
         </thead>
