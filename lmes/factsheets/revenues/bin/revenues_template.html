@@ -184,7 +184,7 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                    avgAnnualLV: parseFloat(items[4]).toFixed(0),
                    propStock: parseFloat(items[5]).toFixed(0),
                    avgTourism: parseFloat(items[6]).toFixed(0),
-                   nldi: parseFloat(items[7]).toFixed(3),
+                   nldi: parseFloat(items[7]).toFixed(4),
 		   protein: parseFloat(items[8]).toFixed(1),
 		   tourismContr: parseFloat(items[9]).toFixed(1)
                  };
@@ -253,13 +253,13 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
          });
 
 	 function nldiClass(value){
-           if (value >= 0.855) {
+           if (value >= 0.8531) {
              item='l5';
-           } else if (value >= 0.8) {
+           } else if (value >= 0.8001) {
              item='l4';
-           } else if (value >= 0.705) {
+           } else if (value >= 0.7061) {
              item='l3';
-           } else if (value >= 0.65) {
+           } else if (value >= 0.6600) {
              item='l2';
            } else if (value > 0) {
              item='l1';

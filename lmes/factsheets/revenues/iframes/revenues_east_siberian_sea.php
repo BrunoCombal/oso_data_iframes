@@ -63,11 +63,12 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
        /*width:100%;*/
        font: 12px Verdana,sans-serif;
        margin: 20px auto;
-       text-align:center;
-       vertical-align:middle;
+       text-align:left;
+       vertical-align:bottom;
      }
      thead tr{
        height:20px;
+       vertical-align:bottom!important;
      }
      tbody tr{
        height:26px;
@@ -78,11 +79,10 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
      }
      .l0, .l1, .l2, .l3, .l4, .l5{
        color: #000000;
-       border:1px #fff solid;
        padding-left:5px;
        padding-right:5px;
        text-align:right;
-       vertical-align:top;
+       vertical-align:middle;
        font-family: "Courier New", Courier, monospace;
        font-size:14px;
      }
@@ -184,7 +184,9 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                    avgAnnualLV: parseFloat(items[4]).toFixed(0),
                    propStock: parseFloat(items[5]).toFixed(0),
                    avgTourism: parseFloat(items[6]).toFixed(0),
-                   nldi: parseFloat(items[7]).toFixed(3),
+                   nldi: parseFloat(items[7]).toFixed(4),
+		   protein: parseFloat(items[8]).toFixed(1),
+		   tourismContr: parseFloat(items[9]).toFixed(1)
                  };
 
                  var tr = document.createElement('TR');
@@ -195,13 +197,20 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
                  var td3 = document.createElement('TD');
                  $(td3).html( numberWithCommasNoData( lme.avgTourism) );
                  var td4 = document.createElement('TD');
+		 if (lme.nldi=='NaN') lme.nldi='No data';
                  $(td4).html( lme.nldi );
+		 var td5 = document.createElement('TD');
+		 if (lme.protein=="NaN") lme.protein='No data';
+		 $(td5).html( lme.protein);
+		 var td6 = document.createElement('TD');
+		 if (lme.tourismContr=="NaN") lme.tourismContr='No data';
+		 $(td6).html( lme.tourismContr);
 
                  //assign color classes
                  $(td4).addClass(nldiClass(lme.nldi));
 
                  $('table').append(tr);
-                 $(tr).append(td1,td2,td3,td4);
+                 $(tr).append(td1,td2, td5, td3, td6 ,td4);
                  if ($('tbody').find('tr').length > 1){
                    <?php if (!$zero){ ?>
                    var tdX = document.createElement('TD');
@@ -244,13 +253,13 @@ if(substr(__FILE__, strrpos(__FILE__, '/')+1) == "printAll.php"){
          });
 
 	 function nldiClass(value){
-           if (value > 0.855) {
+           if (value >= 0.8531) {
              item='l5';
-           } else if (value > 0.8) {
+           } else if (value >= 0.8001) {
              item='l4';
-           } else if (value > 0.705) {
+           } else if (value >= 0.7061) {
              item='l3';
-           } else if (value > 0.65) {
+           } else if (value >= 0.6600) {
              item='l2';
            } else if (value > 0) {
              item='l1';
@@ -351,24 +360,15 @@ var availableTags=[ "01 East Bering Sea", "02 Gulf of Alaska", "03 California Cu
       </div>
     <?php } ?>
     <div id="container" style="width:800px; margin:0 auto">
-      <table cellspacing="0" cellpadding="0">
+      <table cellspacing="4" cellpadding="0">
         <thead>
-          <tr>
-            <td></td>
-            <td>Fisheries</td>
-            <td>Tourism</td>
-	    <td>Economic activity</td>
-
-            <?php if(!$zero){ ?>
-              <td></td>
-            <?php } ?>
-          </tr>
-          <tr>
-            <td>LME</td>
-            <td>Annual landed value</td>
-            <td>Annual revenues</td>
-            <td>NLDI</td>
-
+          <tr style="border:1px solid black!important;">
+            <th>LME</th>
+            <th style="padding:2px;">Fisheries Annual<br/>Landed Value</th>
+	    <th style="padding:2px;">% Fish Protein<br/>Contribution</th>
+            <th style="padding:2px;">Tourism Annual<br/>Revenues</th>
+	    <th>% Tourism<br/>Contribution to GDP</th>
+            <th>NLDI</td>
             <?php if(!$zero){ ?>
               <td></td>
             <?php } ?>
