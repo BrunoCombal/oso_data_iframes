@@ -317,7 +317,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layers:"lmes:lmes_climate_threat", styles:'lmes_climate_threat_spp3', transparent:true, format:'image/png'},
      {layerId:'climate2100SSP3', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
-   
+
    var coastPop2010 = new OpenLayers.Layer.WMS(
      "Coastal Population",
      "http://onesharedocean.org/geoserver/lmes/wms",
@@ -336,21 +336,21 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      "HDI 2009-2013",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_pop_hdi_nldi", styles:"lmes_hdi_2009-2013", transparent:true, format:'image/png'},
-     {layerId:'HDI200913', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
+     {layerId:'HDI200913', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var HDISSP1 = new OpenLayers.Layer.WMS(
      "HDI 2100, SSP1",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_pop_hdi_nldi", styles:"lmes_hdi_2100_spp1", transparent:true, format:'image/png'},
-     {layerId:'HDISSP1', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
+     {layerId:'HDISSP1', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var HDISSP3 =  new OpenLayers.Layer.WMS(
      "HDI 2100, SSP3",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_pop_hdi_nldi", styles:"lmes_hdi_2100_spp3", transparent:true, format:'image/png'},
-     {layerId:'HDISSP3', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visiblity:false, wrapDateLine:true}
+     {layerId:'HDISSP3', tiled:false, tilseSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var tourismRevenues = new OpenLayers.Layer.WMS(
@@ -367,48 +367,48 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'LVRevenues',tiled:false,tilesize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    )
 
-/*
-   var population = new OpenLayers.Layer.WMS(
-     "Population",
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_popdensity', transparent:true, format:'image/png'},
-     {layerId:'population', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-   );
+     /*
+        var population = new OpenLayers.Layer.WMS(
+        "Population",
+        "http://onesharedocean.org/geoserver/lmes/wms",
+        {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_popdensity', transparent:true, format:'image/png'},
+        {layerId:'population', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
 
-   var hdi = new OpenLayers.Layer.WMS(
-     "HDI",
-     //"http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
-     {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_hdi', transparent:true, format:'image/png'},
-     {layerId:'hdi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-   );
+        var hdi = new OpenLayers.Layer.WMS(
+        "HDI",
+        //"http://onesharedocean.org/geoserver/lmes/wms",
+        GWCLMES,
+        {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_hdi', transparent:true, format:'image/png'},
+        {layerId:'hdi', tiled:true,tileSize:TSIZE, tileOrigin: TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
 
-   var nldi = new OpenLayers.Layer.WMS(
-     "NLDI",
-     // "http://onesharedocean.org/geoserver/lmes/wms",
-     GWCLMES,
-     {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_nldi', transparent:true, format:'image/png'},
-     {layerId:'nldi', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-   );
+        var nldi = new OpenLayers.Layer.WMS(
+        "NLDI",
+        // "http://onesharedocean.org/geoserver/lmes/wms",
+        GWCLMES,
+        {layers:"lmes:lmes_area_pop_nldi_hdi", styles:'lmes_socioeco_nldi', transparent:true, format:'image/png'},
+        {layerId:'nldi', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
 
-   var overfishing = new OpenLayers.Layer.WMS(
-     "Overfishing",
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     //    GWCLMES,
-     {layers:"lmes:lmes_fishing_revenues_indicators", styles:'lmes_socioeco_overfishing', transparent:true, format:'image/png'},
-     {layerId:'overfishing', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-   );
-*/
+        var overfishing = new OpenLayers.Layer.WMS(
+        "Overfishing",
+        "http://onesharedocean.org/geoserver/lmes/wms",
+        //    GWCLMES,
+        {layers:"lmes:lmes_fishing_revenues_indicators", styles:'lmes_socioeco_overfishing', transparent:true, format:'image/png'},
+        {layerId:'overfishing', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+        );
+      */
 
-   // icep
-   // there is a problem with the cache management
-   var icep = new OpenLayers.Layer.WMS(
-     "ICEP",
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     //GWCLMES,
-     {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
-     {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
-   );
+     // icep
+     // there is a problem with the cache management
+     var icep = new OpenLayers.Layer.WMS(
+       "ICEP",
+       "http://onesharedocean.org/geoserver/lmes/wms",
+       //GWCLMES,
+       {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_icep_cat', transparent:true, format:'image/png'},
+       {layerId:'icep', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+     );
 
    var icep2030 = new OpenLayers.Layer.WMS(
      "ICEP 2030",
@@ -452,24 +452,24 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
    var merged_ind = new OpenLayers.Layer.WMS(
      "Merged indicator",
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     //GWCLMES,
+     //"http://onesharedocean.org/geoserver/lmes/wms",
+     GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2000", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
      {layerId:'merged_ind', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind2030 = new OpenLayers.Layer.WMS(
      "Merged indicator 2030",
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     //GWCLMES,
+     //"http://onesharedocean.org/geoserver/lmes/wms",
+     GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2030", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
      {layerId:'merged_ind2030', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
    var merged_ind2050 = new OpenLayers.Layer.WMS(
      "Merged indicator 2050",
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     //GWCLMES,
+     //"http://onesharedocean.org/geoserver/lmes/wms",
+     GWCLMES,
      {layers:"lmes:lmes_nutrients_loading_eutrophication_2050", styles:'lmes_mergedin_cat', transparent:true, format:'image/png'},
      {layerId:'merged_ind2050', tiled:true, tileSize:TSIZE, tileOrigin: TORG,isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
@@ -555,6 +555,15 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'pops_pcb', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
+   <!--
+   var lmes_risk = new OpenLayers.Layer.WMS(
+     "LMEs Risk",
+     //GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_risk", styles:"",transparent:true,format:'image/png'},
+     {layerId:'lmes_risk', tiled:true, tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   )
+     -->
    //Add layers to map objects
    map.addLayers([
      worldtop,
@@ -577,7 +586,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      plasticsModelMicroCount, plasticsModelMacroWeight,
      mpaChange,
      governance_int, governance_engt, governance_compl,
-     pops_ddt, pops_hch, pops_pcb
+     pops_ddt, pops_hch, pops_pcb,
+     lmes_risk
    ]);
 
    map.zoomToMaxExtent();
@@ -726,21 +736,21 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="fishStockBiomass"><span>Stock status (biomass)</span></li>
             <li class="l2" rel="fishTrawling"><span>Catch from bottom impacting gear</span></li>
             <li class="l2" rel="fishRateEffective"><span>Fishing effort</span></li>
-            <li class="l2" rel="fishRelative2030"><span>Catch change (2030), sub-LME</span></li>
-            <li class="l2" rel="fishRelative2050"><span>Catch change (2050), sub-LME</span></li>
-            <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential (2050)</span></li>
+            <li class="l2" rel="fishRelative2030"><span>Change in catch potential <small>2030</small></span></li>
+            <li class="l2" rel="fishRelative2050"><span>Change in catch potential <small>2050</small></span></li>
+            <li class="l2" rel="fishPercentChange"><span>Percent change in catch potential <small>2050</small></span></li>
           </ul>
         </li>
         <li class="l1" rel="descPollution"><span>Pollution</span>
           <ul>
             <li class="l2 level" rel="descNutrients"><span>Nutrients</span>
               <ul>
-                <li class="l3" rel="icep"><span>Eutrophication Potential <small>2000</small></span></li>
-                <li class="l3" rel="icep2030"><span>Eutrophication Potential <small>2030</small></span></li>
-                <li class="l3" rel="icep2050"><span>Eutrophication Potential <small>2050</small></span></li>
-                <li class="l3" rel="ld_din"><span>Inorganic Nitrogen <small>2000</small></span></li>
-                <li class="l3" rel="ld_din2030"><span>Inorganic Nitrogen <small>2030</small></span></li>
-                <li class="l3" rel="ld_din2050"><span>Inorganic Nitrogen <small>2050</small></span></li>
+                <li class="l3" rel="icep"><span>Nutrient ratio (ICEP) <small>2000</small></span></li>
+                <li class="l3" rel="icep2030"><span>Nutrient ratio (ICEP) <small>2030</small></span></li>
+                <li class="l3" rel="icep2050"><span>Nutrient ratio (ICEP) <small>2050</small></span></li>
+                <li class="l3" rel="ld_din"><span>Nitrogen load <small>2000</small></span></li>
+                <li class="l3" rel="ld_din2030"><span>Nitrogen load <small>2030</small></span></li>
+                <li class="l3" rel="ld_din2050"><span>Nitrogen load <small>2050</small></span></li>
                 <li class="l3" rel="merged_ind"><span>Nutrient risk <small>2000</small></span></li>
                 <li class="l3" rel="merged_ind2030"><span>Nutrient risk <small>2030</small></span></li>
                 <li class="l3" rel="merged_ind2050"><span>Nutrient risk <small>2050</small></span></li>
@@ -764,8 +774,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descEcosystemHealth"><span>Ecosystem health</span>
           <ul>
-            <li class="l2" rel="mangrove"><span>Mangrove coverage</span></li>
-            <li class="l2" rel="coral"><span>Coral coverage</span></li>
+            <li class="l2" rel="mangrove"><span>Mangrove extent</span></li>
+            <li class="l2" rel="coral"><span>Coral extent</span></li>
             <li class="l2" rel="reef_risk"><span>Reefs at risk</span></li>
             <li class="l2" rel="mpaChange"><span>MPA extent change</span></li>
             <li class="l2" rel="cumulImpact"><span>Cumulative Impact</span></li>
@@ -775,13 +785,13 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         <li class="l1" rel="descSocioEconomics"><span>Socio-economics</span>
           <ul>
-	    <li class="l2" rel="coastPop2010"><span>Coastal population (2010)</span></li>
-	    <li class="l2" rel="coastPoor"><span>Coastal Poor</span></li>
-	    <li class="l2" rel="LVRevenues"><span>Fisheries revenues (landed value)</span></li>
-	    <li class="l2" rel="tourismRevenues"><span>Tourism revenues</span></li>
-	    <li class="l2" rel="HDI200913"><span>HDI (2009-2013)</span></li>
-	    <li class="l2" rel="HDISSP1"><span>HDI (2100, SSP1)</span></li>
-	    <li class="l2" rel="HDISSP3"><span>HDI (2100, SSP3)</span></li>
+            <li class="l2" rel="coastPop2010"><span>Coastal population (2010)</span></li>
+            <li class="l2" rel="coastPoor"><span>Coastal Poor</span></li>
+            <li class="l2" rel="LVRevenues"><span>Fisheries revenues (landed value)</span></li>
+            <li class="l2" rel="tourismRevenues"><span>Tourism revenues</span></li>
+            <li class="l2" rel="HDI200913"><span>HDI (2009-2013)</span></li>
+            <li class="l2" rel="HDISSP1"><span>HDI (2100, SSP1)</span></li>
+            <li class="l2" rel="HDISSP3"><span>HDI (2100, SSP3)</span></li>
             <li class="l2" rel="climateThreat"><span>Climate threat index (Present-Day)</span></li>
             <li class="l2" rel="climate2100SSP1"><span>SLR Threat 2100 (SSP1)</span></li>
             <li class="l2" rel="climate2100SSP3"><span>SLR Threat 2100 (SSP3)</span></li>
@@ -802,14 +812,19 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         -->
         <li class="empty"></li>
-        <li class="l1 lastItem"><span>Patterns of risk among LMEs</span>
-        </li>
-        <!--<li class="empty"></li>-->
-        <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
-        <li class="empty"></li>
-        <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
-        <!--<li class="empty"></li>
-        <li class="buttonGCA">Global Comparative Assessment</li>-->
+
+        <li class="l1 lastItem" onclick="window.open('<?php  echo drupal_get_path_alias('node/232'); ?>');"><span>Patterns of risk among LMEs</span>
+
+          <!--
+          <li class="l1 lastItem" rel="lmes_risk"><span>Patterns of risk among LMEs</span>
+            -->
+          </li>
+          <!--<li class="empty"></li>-->
+          <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
+          <li class="empty"></li>
+          <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
+          <!--<li class="empty"></li>
+          <li class="buttonGCA">Global Comparative Assessment</li>-->
       </ul>
     </div>
   </div>
