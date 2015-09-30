@@ -555,15 +555,15 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'pops_pcb', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
-   <!--
-   var lmes_risk = new OpenLayers.Layer.WMS(
-     "LMEs Risk",
-     //GWCLMES,
-     "http://onesharedocean.org/geoserver/lmes/wms",
-     {layers:"lmes:lmes_risk", styles:"",transparent:true,format:'image/png'},
-     {layerId:'lmes_risk', tiled:true, tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
-   )
-     -->
+   
+   //var lmes_risk = new OpenLayers.Layer.WMS(
+   //  "LMEs Risk",
+   //  GWCLMES,
+   //  "http://onesharedocean.org/geoserver/lmes/wms",
+   //  {layers:"lmes:lmes_risk", styles:"",transparent:true,format:'image/png'},
+   //  {layerId:'lmes_risk', tiled:true, tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   //)
+     
    //Add layers to map objects
    map.addLayers([
      worldtop,
@@ -587,7 +587,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      mpaChange,
      governance_int, governance_engt, governance_compl,
      pops_ddt, pops_hch, pops_pcb,
-     lmes_risk
+     //lmes_risk
    ]);
 
    map.zoomToMaxExtent();
@@ -652,22 +652,24 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      jQuery('li span').removeClass('selected');
      jQuery(el).find('span').first().addClass('selected');
      var l = false;
-     for(var i=1; i<map.getNumLayers();i++){
+     for (var i=1; i<map.getNumLayers();i++){
        var layerId = map.layers[i].layerId;
-       if(layerId == menuItem){
+       if (layerId == menuItem){
          l = {id: layerId, pos: i};
        }
      }
-     if(l){
-       for(var i=1; i<map.getNumLayers();i++){
-         map.layers[i].setVisibility(false);
-       }
+     // by default hide all but the lme map
+     for(var i=1; i<map.getNumLayers();i++){
+       map.layers[i].setVisibility(false);
+     }
+
+     if (l){
        jQuery('.legendOL').css('display', 'none');
        map.layers[l.pos].setVisibility(true);
        jQuery('#leg-'+l.id).css('display', 'block');
      } else {
-       if(menuItem.substring(0,4) != 'desc'){
-
+       map.layers[1].setVisibility(true);
+       if (menuItem.substring(0,4) != 'desc'){
          jQuery('.legendOL').css('display', 'none');
        } else {
          jQuery('.legendOL').css('display', 'none');
@@ -817,14 +819,14 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
           <!--
           <li class="l1 lastItem" rel="lmes_risk"><span>Patterns of risk among LMEs</span>
-            -->
-          </li>
-          <!--<li class="empty"></li>-->
-          <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
-          <li class="empty"></li>
-          <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
-          <!--<li class="empty"></li>
-          <li class="buttonGCA">Global Comparative Assessment</li>-->
+          -->
+        </li>
+        <!--<li class="empty"></li>-->
+        <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
+        <li class="empty"></li>
+        <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
+        <!--<li class="empty"></li>
+        <li class="buttonGCA">Global Comparative Assessment</li>-->
       </ul>
     </div>
   </div>
