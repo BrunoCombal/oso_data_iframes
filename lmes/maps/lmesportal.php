@@ -556,13 +556,12 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    );
 
    
-   //var lmes_risk = new OpenLayers.Layer.WMS(
-   //  "LMEs Risk",
-   //  GWCLMES,
-   //  "http://onesharedocean.org/geoserver/lmes/wms",
-   //  {layers:"lmes:lmes_risk", styles:"",transparent:true,format:'image/png'},
-   //  {layerId:'lmes_risk', tiled:true, tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
-   //)
+   var desclmesrisk = new OpenLayers.Layer.WMS(
+     "LMEs Risk",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_risk", styles:"",transparent:true,format:'image/png'},
+     {layerId:'desclmesrisk', tiled:true, tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
+   )
      
    //Add layers to map objects
    map.addLayers([
@@ -587,7 +586,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      mpaChange,
      governance_int, governance_engt, governance_compl,
      pops_ddt, pops_hch, pops_pcb,
-     //lmes_risk
+     desclmesrisk
    ]);
 
    map.zoomToMaxExtent();
@@ -707,7 +706,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
     <div id="accordion">
       <ul>
-        <li class="buttonLMEs" onclick="window.open('<?php echo drupal_get_path_alias('/node/244'); ?>');">Read more about LMEs</li>
+        <li class="buttonLMEs" onclick="window.open('/<?php echo drupal_get_path_alias('node/244'); ?>');">Read about LMEs</li>
         <li class="empty"></li>
         <li class="l1" rel="lmes"><span class="selected">LMEs</span>
         </li>
@@ -814,15 +813,14 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         -->
         <li class="empty"></li>
+<!--   <li class="l1 lastItem" onclick="window.open('<?php  echo drupal_get_path_alias('node/232'); ?>');"><span>Patterns of risk among LMEs</span> -->
 
-        <li class="l1 lastItem" onclick="window.open('<?php  echo drupal_get_path_alias('node/232'); ?>');"><span>Patterns of risk among LMEs</span>
+          <li class="l1" rel="desclmesrisk"><span>Patterns of risk among LMEs</span>
 
-          <!--
-          <li class="l1 lastItem" rel="lmes_risk"><span>Patterns of risk among LMEs</span>
-          -->
         </li>
         <!--<li class="empty"></li>-->
         <!--         <li class="buttonIntroLMEs" onclick="window.open('/node/244');">Read more about LMEs</li> -->
+
         <li class="empty"></li>
         <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
         <!--<li class="empty"></li>
