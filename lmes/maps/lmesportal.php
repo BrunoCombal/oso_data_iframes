@@ -297,6 +297,13 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    );
 
    // Socio eco: population
+   var contempThreat = new OpenLayers.Layer.WMS(
+     "Contemporary Threat",
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_contemporary_threat_index", styles:'', transparent:true, format:'image/png'},
+     {layerId:'contempThreat', tiled:false, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
+   );
+
    var climateThreat = new OpenLayers.Layer.WMS(
      "Climate threat",
      "http://onesharedocean.org/geoserver/lmes/wms",
@@ -555,39 +562,39 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
      {layerId:'pops_pcb', tiled:true, tileSize:TSIZE, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
 
-   
+
    var desclmesrisk = new OpenLayers.Layer.WMS(
      "LMEs Risk",
      "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_risk", styles:"",transparent:true,format:'image/png'},
      {layerId:'desclmesrisk', tiled:true, tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    )
-     
-   //Add layers to map objects
-   map.addLayers([
-     worldtop,
-     lmes,
-     chla, chlachange, pp_group, pp_trend,
-     sst_net_change,
-     fish_subsidy, fish_footprint, fish_MTI,
-     fish_FiB, fish_stock_number, fish_stock_biomass,
-     fish_trawling,fish_rate_effective,fish_change_percent,
-     catch_rel_2030, catch_rel_2050,
-     mangrove,
-     coral, coral_int_risk,
-     //     mangroves,
-     areas,
-     cumulImpact,
-     coastPop2010,coastPoor,climateThreat, climate2100SSP1, climate2100SSP3,
-     HDI200913, HDISSP1, HDISSP3,tourismRevenues, LVRevenues,
-     ohi, //population, hdi, nldi, overfishing,
-     icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
-     plasticsModelMicroCount, plasticsModelMacroWeight,
-     mpaChange,
-     governance_int, governance_engt, governance_compl,
-     pops_ddt, pops_hch, pops_pcb,
-     desclmesrisk
-   ]);
+
+     //Add layers to map objects
+     map.addLayers([
+       worldtop,
+       lmes,
+       chla, chlachange, pp_group, pp_trend,
+       sst_net_change,
+       fish_subsidy, fish_footprint, fish_MTI,
+       fish_FiB, fish_stock_number, fish_stock_biomass,
+       fish_trawling,fish_rate_effective,fish_change_percent,
+       catch_rel_2030, catch_rel_2050,
+       mangrove,
+       coral, coral_int_risk,
+       //     mangroves,
+       areas,
+       cumulImpact,
+       coastPop2010,coastPoor,contempThreat,climateThreat, climate2100SSP1, climate2100SSP3,
+       HDI200913, HDISSP1, HDISSP3,tourismRevenues, LVRevenues,
+       ohi, //population, hdi, nldi, overfishing,
+       icep, icep2030, icep2050, ld_din, ld_din2030, ld_din2050, merged_ind, merged_ind2030, merged_ind2050,
+       plasticsModelMicroCount, plasticsModelMacroWeight,
+       mpaChange,
+       governance_int, governance_engt, governance_compl,
+       pops_ddt, pops_hch, pops_pcb,
+       desclmesrisk
+     ]);
 
    map.zoomToMaxExtent();
    //Defines behaviour of map interactions
@@ -708,6 +715,8 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
       <ul>
         <li class="buttonLMEs" onclick="window.open('/<?php echo drupal_get_path_alias('node/244'); ?>');">Read about LMEs</li>
         <li class="empty"></li>
+	<li class="buttonLMEs" onclick="window.open('/<?php echo drupal_get_path_alias('node/244#twap'); ?>');">Assessment methodology</li>
+	<li class="empty"></li>
         <li class="l1" rel="lmes"><span class="selected">LMEs</span>
         </li>
         <li class="l1" rel="descProductivity"><span>Productivity</span>
@@ -794,6 +803,7 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
             <li class="l2" rel="HDISSP1"><span>HDI (2100, SSP1)</span></li>
             <li class="l2" rel="HDISSP3"><span>HDI (2100, SSP3)</span></li>
             <li class="l2" rel="climateThreat"><span>Climate threat index (Present-Day)</span></li>
+	    <li class="l2" rel="contempThreat"><span>Contemporary threat index</span></li>
             <li class="l2" rel="climate2100SSP1"><span>SLR Threat 2100 (SSP1)</span></li>
             <li class="l2" rel="climate2100SSP3"><span>SLR Threat 2100 (SSP3)</span></li>
           </ul>
@@ -813,9 +823,9 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
         </li>
         -->
         <li class="empty"></li>
-<!--   <li class="l1 lastItem" onclick="window.open('<?php  echo drupal_get_path_alias('node/232'); ?>');"><span>Patterns of risk among LMEs</span> -->
+        <!--   <li class="l1 lastItem" onclick="window.open('<?php  echo drupal_get_path_alias('node/232'); ?>');"><span>Patterns of risk among LMEs</span> -->
 
-          <li class="l1" rel="desclmesrisk"><span>Patterns of risk among LMEs</span>
+        <li class="l1" rel="desclmesrisk"><span>Patterns of risk among LMEs</span>
 
         </li>
         <!--<li class="empty"></li>-->
@@ -823,9 +833,18 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
 
         <li class="empty"></li>
         <li class="buttonWP" onclick="window.open('<?php  echo drupal_get_path_alias('node/242'); ?>');">Western Pacific Warm Pool</li>
-        <!--<li class="empty"></li>
-        <li class="buttonGCA">Global Comparative Assessment</li>-->
+        <li class="empty"></li>
+
+        <!-- <li class="buttonGCA">Global Comparative Assessment</li>-->
       </ul>
     </div>
-  </div>
-</div>
+    <div>
+<!--
+      <a href="/public_store/lmes_factsheets/TWAP_LMEs_global_maps.pdf" style="font-size:10px;"/><img src="/iframes/iconz/1445959008_icon-70-document-file-pdf.png" style="width:48px!important;"/>Download all global maps</a>
+-->
+    </div>
+    <div style="font-size:10px">
+      <a href="/public_store/lmes_factsheets/lmes_factsheets.zip"><img src="/iframes/iconz/1445959008_icon-70-document-file-pdf.png" style="width:48px!important;"/>Download all factsheets</a><br/><small>(get individual factsheets from each LME page)</small>
+      <div>
+      </div>
+    </div>
