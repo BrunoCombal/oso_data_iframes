@@ -180,55 +180,64 @@ drupal_add_css('misc/ui/jquery.ui.autocomplete.css');
    // fish and fisheries
    var fish_subsidy = new OpenLayers.Layer.WMS(
      "Fisheries subsidy",
-     GWCLMES,
-     {layers:'lmes:lmes_fisheries_10year_average', transparent:true, styles:'lmes_fisheries_10year_subsidy', format:'image/png'},
+//     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:'lmes:lmes_fisheries_10year_average', transparent:true, styles:'lmes_fisheries_10year_subsidy_minus_20_21', format:'image/png'},
      {layerId:'fishSubsidy', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
    var fish_footprint = new OpenLayers.Layer.WMS(
      "Fisheries ecological footprint",
-     GWCLMES,
-     {layers:'lmes:lmes_fisheries_10year_average', transparent:true, styles:'lmes_fisheries_10year_footprint', format:'image/png'},
+//     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:'lmes:lmes_fisheries_10year_average', transparent:true, styles:'lmes_fisheries_10year_footprint_minus_20_21', format:'image/png'},
      {layerId:'fishFootprint', tiled:true, tileSize:TSIZE, tileOrigin:TORG, isBaseLayer:false, opacity:1, visibility:false, wrapDateLine:true}
    );
    var fish_MTI = new OpenLayers.Layer.WMS(
      "Fisheries MTI",
-     GWCLMES,
-     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_mti',format:'image/png'},
+     //     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_mti_minus_20_21',format:'image/png'},
      {layerId:'fishMTI',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
    var fish_FiB = new OpenLayers.Layer.WMS(
      "Fisheries FiB",
-     GWCLMES,
-     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_fib',format:'image/png'},
+     //GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_fib_minus_20_21',format:'image/png'},
      {layerId:'fishFiB',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
    var fish_stock_number = new OpenLayers.Layer.WMS(
      "Fisheries Stock Status (number)",
-     GWCLMES,
-     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_stockstatus_number',format:'image/png'},
+//     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:'lmes:lmes_fisheries_10year_average',transparent:true,styles:'lmes_fisheries_10year_stockstatus_number_minus_20_21',format:'image/png'},
      {layerId:'fishStockNumber',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
    var fish_stock_biomass = new OpenLayers.Layer.WMS(
      "Fisheries Stock Status (biomass)",
-     GWCLMES,
-     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_stockstatus_biomass",format:"image/png"},
+//     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_stockstatus_biomass_minus_20_21",format:"image/png"},
      {layerId:'fishStockBiomass',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
    var fish_trawling = new OpenLayers.Layer.WMS(
      "Fisheries Trawling",
-     GWCLMES,
-     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_trawling",format:"image/png"},
+     //     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_trawling_minus_20_21",format:"image/png"},
      {layerId:'fishTrawling',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
    var fish_rate_effective = new OpenLayers.Layer.WMS(
      "Fisheries Rate effective fishing",
-     GWCLMES,
-     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_ratechange_effectivefishing",format:"image/png"},
+     //     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
+     {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_ratechange_effectivefishing_minus_20_21",format:"image/png"},
      {layerId:'fishRateEffective',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
    var fish_change_percent = new OpenLayers.Layer.WMS(
      "Fisheries percent change",
-     GWCLMES,
+     //     GWCLMES,
+     "http://onesharedocean.org/geoserver/lmes/wms",
      {layers:"lmes:lmes_fisheries_10year_average",transparent:true,styles:"lmes_fisheries_10year_percentchange",format:"image/png"},
      {layerId:'fishPercentChange',tiled:true,tileSize:TSIZE,tileOrigin:TORG,isBaseLayer:false,opacity:1,visibility:false,wrapDateLine:true}
    );
