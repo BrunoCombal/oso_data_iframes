@@ -5,6 +5,19 @@
  .lmes_global_legend tbody{
    border:none;
  }
+ .ht:hover .tooltip {
+   display:block;
+
+ }
+ .tooltip {
+   display: none;
+   color: black;
+   background-color:#a0a0a0;
+   margin-left: 28px; /* moves the tooltip to the right */
+   margin-top: 15px; /* moves it down */
+   position: absolute;
+   z-index: 1000;
+ }
 </style>
 
 <div id="leg-chla" class="legendOL" rel="LMES_data_chla">
@@ -1348,55 +1361,89 @@ Risk level:
 </div>
 
 <div id="leg-desclmesrisk" class="legendOL introduction" >
+  <span>Risk priorities of LMEs based on multivariate indicators weighted by human development.</span>
+    <table class="lmes_global_legend" style="width:550px;">
+    <tbody>
+      <tr>
+        <td><span style="background-color:#5FBADD;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Lowest</td>
+        <td><span style="background-color:#78BB4B;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Low</td>
+        <td><span style="background-color:#E4E344;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Medium</td>
+        <td><span style="background-color:#EE9F42;">&nbsp;&nbsp;&nbsp;&nbsp;</span> High</td>
+        <td><span style="background-color:#d8232A;">&nbsp;&nbsp;&nbsp;&nbsp;</span> Highest</td>
+        <td><span style="background-color:#cbcccb;">&nbsp;&nbsp;&nbsp;&nbsp;</span> No results</td>
+      </tr>
+      <tr>
+        <td>0 &ndash; 0.19</td>
+        <td>0.19 &ndash; 0.30</td>
+        <td>0.30 &ndash; 0.46</td>
+        <td>0.46 &ndash; 0.73</td>
+        <td>0.73 &ndash; 0.8</td>
+      </tr>
+    </tbody>
+  </table>
+  <small>Source: K.M. Kleisner, L. Talaue-McManus , B.S. Halpern, P.J. Kershaw, V.W.Y. Lam, K. Sherman</small><br/>
+  <small><a href="/data#460">Get indicator description, data and meta-information</a></small><br/>
+  <small><a href="/private_store/illustrations/lmes_risk_pattern/TWAP_LMEs_risk_pattern.png" target="_blank">Get map as an image</a> (click to display, right-click to download)</small>
+
+
   <h1>Identifying patterns of risk among Large Marine Ecosystems using multiple indicators</h1>
   <h2>K.M. Kleisner, L. Talaue-McManus , B.S. Halpern, P.J. Kershaw, V.W.Y. Lam, K. Sherman</h2>
 
   <b>Introduction</b>
-  <p>One of the two goals of the Transboundary Waters Assessment Programme (TWAP) is to conduct a baseline global assessment of five transboundary water system categories: (1) Large Marine Ecosystems (LMEs), (2) Open Oceans, (3) Aquifers, (4) River Basins, and (5) Lakes &amp; Reservoirs, with the aim of providing guidance to the GEF and other stakeholders for prioritization of interventions within these water systems. With the exception of the Open Oceans, these assessments are comparative and group the transboundary water systems into five risk categories (from very high to very low) based on a suite of indicators. Risk is broadly defined as the probability of adverse consequences for humans and the environment in relation to the changing states of transboundary waters. The LMEs assessment is based on indicators   under each of the five LME modules (Productivity, Fish &amp; Fisheries, Pollution & Ecosystem Health, Socioeconomics, and Governance), for which global data sets are available. Results of the individual indicators are presented by module on this website.  Triggers of risk are usually multiple factors, which may be biophysical, socioeconomic, or governance-related in some combination.  To identify patterns of risk among LMEs using multiple indicators, a number of indicators with strong directionality in indicating "good" or "bad" ecosystem states are used to identify groups of LMEs based on their similarities across the modules.
+  <p>One of the two goals of the Transboundary Waters Assessment Programme (TWAP) is to conduct a baseline global assessment of five transboundary water system categories: (1) Large Marine Ecosystems (LMEs), (2) Open Oceans, (3) Aquifers, (4) River Basins, and (5) Lakes &amp; Reservoirs, with the aim of providing guidance to the GEF and other stakeholders for prioritization of interventions within these water systems. With the exception of the Open Oceans, these assessments are comparative and group the transboundary water systems into five risk categories (from very high to very low) based on a suite of indicators. Risk is broadly defined as the probability of adverse consequences for humans and the environment in relation to the changing states of transboundary waters. The LMEs assessment is based on indicators under each of the five LME modules (Productivity, Fish &amp; Fisheries, Pollution &amp; Ecosystem Health, Socioeconomics, and Governance), for which global data sets are available. Results of the individual indicators are presented by module on this website. Triggers of risk are usually multiple factors, which may be biophysical, socioeconomic, or governance-related in some combination. To identify patterns of risk among LMEs using multiple indicators, a number of indicators with strong directionality in indicating "good" or "bad" ecosystem states are used to identify groups of LMEs based on their similarities across the modules.
   </p>
   <b>Approach</b>
   <ol>
-    <li> The simultaneous use of multiple indicators allows for the classification of large marine ecosystems into thematic clusters, and along axes defined by a combination of dominant indicators, and for the ranking of LMEs using risk scores. <a title="Here an explanation for those terms">Statistical classification and ordination techniques</a>  were used to identify clusters of LMEs subject to similar pressures and impacts;</li>
-    <li>Indicators that were strongly directional in indicating ‘good’ or ‘bad' ecosystems states, and which were assessed for at least 60 of the 66 LMEs, were chosen for this ranking analysis and used to cluster the LMEs: ‘Demersal Non-destructive Low-Bycatch Fishing’, ‘Pelagic Low Bycatch’, ‘Proportion of Collapsed and Overexploited Stocks’, ‘Capacity enhancing subsidies as a fraction of the value of fisheries’, ‘Proportion of Catch from Bottom Impacting Gear’, ‘Index of Coastal Eutrophication Potential’, ‘Plastic Debris Density’, ‘Percentage Change in Area of MPAs’, ‘Shipping Pressure’, ‘Percentage Rural Population within 100km of the Coast’, and the ‘Night Light Development Index’;</li>
-    <li> The Human Development Index was used as a measure of the socioeconomic status of an LME as well as a weighting factor in determining an overall risk score for each LME. The scores took into account the average of all fisheries indicators, and all metrics for pollution and ecosystem health used in the study. This approach is one of a number of ways to rank LMEs;
+    <li> The simultaneous use of multiple indicators allows for the classification of large marine ecosystems into thematic clusters, and along axes defined by a combination of dominant indicators, and for the ranking of LMEs using risk scores. 
+      <span class="ht" style="text-decoration:underline!important; text-decoration-style:dotted!important;">Statistical classification and ordination techniques
+	<span class="tooltip">Classification techniques order objects (e.g. LMEs) that are associated with values for multiple variables (indicators). Similar objects are placed near each other, and objects that are dissimilar are placed further away. Ordination methods, such as Principal Components Analysis, develops new sets of variables (principal components) based on the variance of the values of the original variables (the 11 indicators). The principal components can be used as axes in plotting the objects (the LMEs) to show how they are positioned in relation to one another, and to the indicators."
+	</span>
+      </span>  were used to identify clusters of LMEs subject to similar pressures and impacts;</li>
+    <li>Indicators that were strongly directional in indicating ‘good’ or ‘bad' ecosystems states, and which were assessed for at least 60 of the 66 LMEs, were chosen for this ranking analysis and used to cluster the LMEs: ‘Demersal Non-destructive Low-Bycatch Fishing’, ‘Pelagic Low Bycatch’, ‘Proportion of Collapsed and Overexploited Stocks’, ‘Capacity enhancing subsidies as a fraction of the value of fisheries’, ‘Proportion of Catch from Bottom Impacting Gear’, ‘Index of Coastal Eutrophication Potential’, ‘Plastic Debris Density’, ‘Percentage Change in Area of MPAs’, ‘Shipping Pressure’, ‘Percentage Rural Population within 100km of the Coast’, and the ‘Night Light Development Index’;
+</li>
+    <li>The Human Development Index was used as a measure of the socioeconomic status of an LME as well as a weighting factor in determining an overall risk score for each LME. The scores took into account the average of all fisheries indicators, and all metrics for pollution and ecosystem health used in the study. This approach is one of a number of ways to rank LMEs3;
     </li>
   </ol>
 
   <b>Results</b><br/>
   Figure 1 below illustrates how the LMEs cluster according to these indicators and lists the indicator(s) that were dominant in driving the clusters:<br/>
 
-  <p style="font-size:0.75em; text-align:center">Figure 1. The main LME clusters and associated indicators</p>
-  <img src="/private_store/illustrations/lmes_risk_pattern/lmes_risk_patterns_figure_1.png" style="display:block; margin:0 auto; "/>
+  <p style="font-size:0.75em; text-align:center">Figure 1. The main LME clusters and associated indicators (gey LMEs indicate no results).</p>
+  <img src="/private_store/illustrations/lmes_risk_pattern/8.1.ClustersMap-r.jpg" style="display:block; margin:0 auto; "/>
 
-  <p>The nature of these clusters informs the identification of LMEs of potential interest for policy and management interventions. The risk categorization provides an interpretation of the priority status of the LMEs within a human developmental framework.</p>
-  <p>The dominant risks associated with combinations of indicators can be illustrated spatially, as shown in the following maps (Figures 2 and 3). Shipping pressure (brown colors) and coastal rural population density (blue colors) are two of the strongest indicators defining LME groupings (Figure 2). Heavily developed regions such as the North Sea, East China Sea and Northeast U.S. Continental Shelf LMEs have higher risks associated with shipping pressure. LMEs that have higher risk due to vulnerable rural populations in coastal areas include the High Arctic LMEs.</p>
+  <p>
+The nature of these clusters informs the identification of LMEs of potential interest for policy and management interventions. The risk categorization provides an interpretation of the priority status of the LMEs within a human developmental framework</p>
+  <p>
+The dominant risks associated with combinations of indicators can be illustrated spatially, as shown in the following maps (Figures 2A and 2B). Shipping pressure (brown colors) and coastal rural population density (blue colors) are two of the strongest indicators defining LME groupings (Figure 2A). Heavily developed regions such as the North Sea, East China Sea and Northeast U.S. Continental Shelf LMEs have higher risks associated with shipping pressure. LMEs that have higher risk due to vulnerable rural populations in coastal areas include the High Arctic LMEs.</p>
   <br/>
-  <p style="font-size:0.75em; text-align:center">Figure 2. Shipping pressure (highly positive/brown colors) and coastal rural population density (highly negative/blue colors).</p>
-  <img src="/private_store/illustrations/lmes_risk_pattern/lmes_risk_patterns_figure_2.png" style="display:block; margin:0 auto" />
 
-  <p>High risk associated with pressures from catch from bottom impacting gear types (brown colors) and pressures due to demersal non-destructive low bycatch fishing (blue colors) were also strong indicators in defining the groupings (Figure 3). LMEs with high pressure from destructive bottom gears include the Southeast U.S. and the East Central Australian Shelf, Southwest Australian Shelf and Southeast Australian Shelf LMEs. Those with more pressure due to demersal non-destructive low bycatch fishing include LMEs in Asia like the Sulu-Celebes Sea, the Indonesian Sea and the South China Sea LMEs, as well as European LMEs like the Norwegian Sea, the Baltic Sea, and the Icelandic Shelf and Sea LMEs.</p>
+  <p>
+High risk associated with pressures from catch from bottom impacting gear types (brown colors) and pressures due to demersal non-destructive low bycatch fishing (blue colors) were also strong indicators in defining the groupings (Figure 2B). LMEs with high pressure from destructive bottom gears include the Southeast U.S. and the East Central Australian Shelf, Southwest Australian Shelf and Southeast Australian Shelf LMEs. Those with more pressure due to demersal non-destructive low bycatch fishing include LMEs in Asia like the Sulu-Celebes Sea, the Indonesian Sea and the South China Sea LMEs, as well as European LMEs like the Baltic Sea, and the Icelandic Shelf and Sea LMEs.</p>
 
-  <p style="font-size:0.75em; text-align:center">Figure 3. Catch from bottom impacting gear types (highly positive/brown colors) and pressures due to demersal non-destructive low bycatch fishing (highly negative/blue colors)</p>
-  <img src="/private_store/illustrations/lmes_risk_pattern/lmes_risk_patterns_figure_3.png" style="display:block; margin:0 auto"/>
+  <p style="font-size:0.75em; text-align:center">Figure 2. Risks associated with combinations of indicators (grey LMEs indicate no results).</p>
+  <img src="/private_store/illustrations/lmes_risk_pattern/8.3.PrincipleComponents-r.jpg" style="display:block; margin:0 auto"/>
 
-  <p>In order to provide an illustrative linear ranking of assessed units, which is often required by managers as a basis for setting priorities, the Human Development Index (HDI) was used to weight the LME risk scores. Other approaches could be taken, but the use of the HDI follows the premise that coastal populations of LMEs with lower socioeconomic development status will be at a higher risk for the same levels of environmental status, and may indicate situations where an LME population will have a limited ability to cope with degraded transboundary waters due to increased pressures and impacts on the coastal ecosystem and/or the increased dependence on ecosystem services. Low levels of human development based on educational attainment, life expectancy and per capita gross national income indicate few livelihood options and limited resources for basic existence, and much less for dealing with the impacts of natural disasters, climate change and degraded ecosystems. The results are shown in Figure 4, where LMEs with very high scores are colored red; those with medium risk scores in yellow, and LMEs with very low risk scores in blue. The LMEs that were at highest risk were those with the lowest HDI and included the Somali Coastal, Guinea and Canary Current LMEs (GEF-eligible LMEs). These LMEs had low fisheries related risks, but incurred high risks from pollution and low proportions of MPA Area coverage. LMEs with the lowest risk had high HDI status, but were also subject to pressures from pelagic low bycatch fishing levels and capacity-enhancing fisheries subsidies. </p>
-  <p>It should be noted that the LME rankings could change based on the indicators used as well as on the weighting or ranking scheme adopted. Results relate to the scale of the entire LME and do not reflect on any individual country's management of its coastal waters. </p>
+  <p>In order to provide an illustrative linear ranking of assessed units, which is often required by managers as a basis for setting priorities, the Human Development Index (HDI) was used to weight the LME risk scores. Other approaches could be taken, but the use of the HDI follows the premise that coastal populations of LMEs with lower socioeconomic development status will be at a higher risk for the same levels of environmental status, and may indicate situations where an LME population will have a limited ability to cope with degraded transboundary waters due to increased pressures and impacts on the coastal ecosystem and/or the increased dependence on ecosystem services. Low levels of human development based on educational attainment, life expectancy and per capita gross national income indicate few livelihood options and limited resources for basic existence, and much less for dealing with the impacts of natural disasters, climate change and degraded ecosystems. The results are shown in Figure 3, where LMEs with very high scores are colored red; those with medium risk scores in yellow, and LMEs with very low risk scores in blue. The LMEs that were at highest risk were those with the lowest HDI and included the Somali Coastal, Guinea and Canary Current LMEs (GEF-eligible LMEs). These LMEs had low fisheries related risks, but incurred high risks from pollution and low proportions of MPA Area coverage. LMEs with the lowest risk had high HDI status, but were also subject to pressures from pelagic low bycatch fishing levels and capacity-enhancing fisheries subsidies
+</p>
+  <p>
+It should be noted that the LME rankings could change based on the indicators used as well as on the weighting or ranking scheme adopted. Results relate to the scale of the entire LME and do not reflect on any individual country's management of its coastal waters. 
+</p>
 
-  <p style="font-size:0.75em; text-align:center">Figure 4. Risk levels of LMEs based on multivariate indicators weighted by the Human Development Index.</p>
-  <img src="/private_store/illustrations/lmes_risk_pattern/lme_twap_risk_factor.png" />
+  <p style="font-size:0.75em; text-align:center">Figure 3. Risk priorities of LMEs based on multivariate indicators weighted by human development (grey LMEs indicate no results).</p>
+  <img src="/private_store/illustrations/lmes_risk_pattern/0-14.TWAP_risk-01.jpg" />
 
-  <small><a href="/data#" target="_blank">Get indicator description, data and meta-information</a></small><br/>
-  <small><a href="/private_store/illustrations/lmes_risk_pattern/lme_twap_risk_factor.png" target="_blank">Get map as an image</a> (click to display, right-click to save to a file)</small><br/>
+  <small><a href="/data#460" target="_blank">Get indicator description, data and meta-information</a></small><br/>
+  <small><a href="/private_store/illustrations/lmes_risk_pattern/0-14.TWAP_risk-01.jpg" target="_blank">Get map as an image</a> (click to display, right-click to save to a file)</small><br/>
   <br/>
 
   <blockquote>
-    Multivariate and risk scoring techniques provided complementary approaches in delineating LMEs at risk through the simultaneous use of multiple indicators that measure biophysical, socioeconomic and governance pressures and states.
+    Multivariate and risk scoring techniques provided complementary approaches in delineating LMEs at risks through the simultaneous use of multiple indicators that measure biophysical, socioeconomic and governance pressures and states.
   </blockquote>
   <blockquote>
     Within the 11-indicator domain used in this study, LMEs with developing economies showed highest risks in terms of coastal eutrophication and plastic litter density, and moderate to high risks from collapsed and overexploited fish stocks.
   </blockquote>
   <blockquote>
-    LMEs encompassing developed nations suffered from high risks because of high shipping frequencies, high capacity-enhancing fisheries subsidies, and high catches from bottom-impacting gear
+    LMEs encompassing developed nations suffered from high risks because of high shipping frequencies, high capacity-enhancing fisheries subsidies, and high catches from bottom-impacting gear.
   </blockquote>
   <blockquote>
     All LMEs, except for the Australian shelf LMEs, the Red Sea and the Gulf of California are at risk because of low percentage of established recovery zones such as marine protected areas.
